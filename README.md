@@ -51,9 +51,19 @@ tipo de productos con el objeto de cubrir las diversas necesidades del mercado.
 
 ## Modelos de Paginas 
 
- https://wellnesstiendasaludable.com
- https://melitaygetos.gr
- https://tiendanatural.com.ar/
- https://pinchmans.ca 
- https://www.verde-ser.com/
+#https://wellnesstiendasaludable.com
 
+##Nos gusto el aspecto de las tarjetas de ofertas.
+
+ #https://melitaygetos.gr
+
+##Nos gusto mucho la estructuracion de general de la pagina.
+
+ #https://tiendanatural.com.ar/
+##Nos gusto mucho la presentacion de productos y el carrito. 
+
+#https://pinchmans.ca 
+##Nos gusto mucho la estatica en general, el menu desplegable y footer.
+
+#https://himalayausa.com/products/organic-ashwagandha
+##La forma y estructura del detalle de los produtos
