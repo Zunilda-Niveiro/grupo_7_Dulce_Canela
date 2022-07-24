@@ -8,7 +8,7 @@
     background-color: var(--colorCinco);
     background: linear-gradient(0deg, rgba(204,204,172,1) 0%, rgba(68,95,37,1) 100%);
 }
-.home__header--sup i, span{
+.home__header--i, .home__header--span{
     margin: 0 8px 0 15px;
     color: white;
     display: none;
@@ -16,6 +16,8 @@
 }
 #ubic, #ubic i, #cont, #cont i{
     display: inline;
+    margin: 0 8px 0 15px;
+    color: white;
 }
 
 /* NAVBAR */
@@ -86,7 +88,7 @@ a{
 }
 @media (min-width:768px){
     /* CAMBIO DE SPAN */
-    .home__header--sup i, span{
+    .home__header--i, .home__header--span{
         display: inline;
         font-size: 18px;
     
