@@ -14,18 +14,18 @@
     <header id="top" class="home__header">
         <!-- BARRA SUPERIOR -->
         <div class="home__header--sup">
-            <div >
+            <div>
                 <a href=""><span class="home__header--span"><i
                             class="fa-solid fa-location-dot home__header--i"></i>Calle 123, San Santus</span></a>
-                <a href=""><span id="ubic"><i class="fa-solid fa-location-dot"></i>Ubicación</span></a>
-                <a href="#"><span class="home__header--span"><i
+                <a href="#dire"><span id="ubic"><i class="fa-solid fa-location-dot"></i>Ubicación</span></a>
+                <a href="#dire"><span class="home__header--span"><i
                             class="fa-solid fa-clock  home__header--i"></i>Horarios</span></a>
             </div>
             <div>
                 <span class="home__header--span"><i class="fa-solid fa-phone  home__header--i"></i>+54 011
                     45621489</span>
-                <span id="cont"><i class="fa-solid fa-phone"></i>Contacto</span>
-                <span class="home__header--span"><i class="fa-brands fa-instagram  home__header--i"></i>Redes</span>
+                <a href="#dire"><span id="cont"><i class="fa-solid fa-phone"></i>Contacto</span></a>
+                <a href="#dire"><span class="home__header--span"><i class="fa-brands fa-instagram  home__header--i"></i>Redes</span></a>
             </div>
         </div>
         <!-- NAvEGACION -->
@@ -40,40 +40,67 @@
                 <li><a href="/login">Login</a></li>
             </ul>
             <!-- LOGO -->
-            <img class="home__header__nav--logo" src="/images/logo.jpg" alt="">
+            <img class="home__header__nav--logo" src="/images/logo.png" alt="">
         </nav>
         <!-- IMAGEN DE FONDO Y H1 -->
         <div class="home__header__h1">
             <h1>dulce canela almacén natural</h1>
         </div>
     </header>
-    <main>
+    <main class="home__main">
         <section>
-            <!-- NAVEGACION CATEGORIAS -->
-            <nav>
-                <ul>
-                    <li><a href=""></a></li>
-                </ul>
-            </nav>
             <!-- BUSQUEDA -->
-            <article>
+            <article class="home__main__busq">
                 <form action="">
                     <input type="text" name="" id="">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </form>
             </article>
+            <article class="home__main__cat">
+                <div class="home__main__cat--card">
+                    <img src="/images/productos/especias.jpg" alt="">
+                    <p>Especias</p>
+                    <a href="">Ver más</a>
+                </div>
+                <div class="home__main__cat--card">
+                    <img src="/images/productos/frutos-secos.jpg" alt="">
+                    <p>Frutos secos</p>
+                    <a href="">Ver más</a>
+                </div>
+                <div class="home__main__cat--card">
+                    <img src="/images/productos/harinas.jpg" alt="">
+                    <p>Harinas</p>
+                    <a href="">Ver más</a>
+                </div>
+                <div class="home__main__cat--card">
+                    <img src="/images/productos/infusiones.jpg" alt="">
+                    <p>infusiones</p>
+                    <a href="">Ver más</a>
+                </div>
+                <div class="home__main__cat--card">
+                    <img src="/images/productos/semillas.jpg" alt="">
+                    <p>semillas</p>
+                    <a href="">Ver más</a>
+                </div>
+                <div class="home__main__cat--card">
+                    <img src="/images/productos/snacks.jpg" alt="">
+                    <p>snacks</p>
+                    <a href="">Ver más</a>
+                </div>
+            </article>
         </section>
         <!-- OFERTA DEL DIA -->
-        <section>
-            <h3>Ofertas del día</h3>
-            <div>
-                <img src="" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde cupiditate, necessitatibus minima
-                    voluptatibus veniam eius!</p>
+        <section class="home__main__ofer">
+            <div class="home__main__ofer--div">
+                <div>
+                    <h3>Ofertas del día</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde cupiditate, necessitatibus minima
+                        voluptatibus veniam eius!</p>
+                </div>
             </div>
         </section>
         <!-- CARRUSEL -->
-        <img src="" alt="">
+        <img class="carousel" src="/images/productos/almacen.jpg" alt="">
     </main>
     <!-- FOOTER -->
     <footer class="footer">
@@ -84,7 +111,7 @@
                 <p>+54 011 45621489</p>
             </div>
             <hr>
-            <div>
+            <div id="dire">
                 <h5 class="footer__section--h5">Dirección</h5>
                 <p>Calle 123, San Santus</p>
             </div>

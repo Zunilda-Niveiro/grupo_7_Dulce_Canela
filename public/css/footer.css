@@ -1,6 +1,6 @@
 .footer{
     background-color: var(--colorPrimario);
-    color:var(--colorSecundario);
+    color:var(--colorCinco);
 }
 .footer__section--info{
     display: flex;
@@ -17,16 +17,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 15px;
-    border-top: 1px solid var(--colorCinco);
-    border-bottom: 1px solid var(--colorCinco);
+    padding: 15px;    
+    background-color:var(--colorCinco) ;
+    position: relative;
+    color: white;
+}
+.footer__section--copy p{
+    margin-top: 25px;
 }
 /* LOGO */
 .footer__section--copy img{
+    position: absolute;
     width: 50px;
     border-radius: 50%;
-    padding-bottom: 10px;
-
+    top: -25px;
+    left: calc(50% - 25px);
 }
 /* REDES */
 .footer__section--redes{
