@@ -1,41 +1,51 @@
 /* BARRA SUPERIOR */
-.home__header--sup{
+.home__header--sup {
     height: 50px;
     color: white;
     display: flex;
     align-items: center;
-    justify-content:space-between;
+    justify-content: space-between;
     background-color: var(--colorCinco);
-    background: linear-gradient(0deg, rgba(204,204,172,1) 0%, rgba(68,95,37,1) 100%);
+    background: linear-gradient(0deg, rgba(204, 204, 172, 1) 0%, rgba(68, 95, 37, 1) 100%);
 }
-.home__header--i, .home__header--span{
+
+.home__header--i,
+.home__header--span {
     margin: 0 8px 0 15px;
     color: white;
     display: none;
 
 }
-#ubic, #ubic i, #cont, #cont i{
+
+#ubic,
+#ubic i,
+#cont,
+#cont i {
     display: inline;
     margin: 0 8px 0 15px;
     color: white;
 }
 
 /* NAVBAR */
-.home__header{
+.home__header {
     background-color: var(--colorPrimario);
+
 }
-.home__header__nav{
+
+.home__header__nav {
     position: relative;
-    background-color: var(--colorPrimario);  
-   
+    background-color: var(--colorPrimario);
+
 }
-.home__header__nav--i{
+
+.home__header__nav--i {
     color: white;
     font-size: 20px;
     padding: 15px;
 }
-.home__header__nav ul{
-   display: flex;
+
+.home__header__nav ul {
+    display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center;
@@ -44,33 +54,37 @@
     max-height: 0;
     transition: all 0.5s;
     overflow: hidden;
-   
+
 }
 
-a{
+a {
     color: var(--colorSecundario);
 }
-#check{
+
+/* METODO PARA DESPLEGAR BARRA DE NAV */
+#check {
     display: none;
 }
-#check:checked + .home__header__nav ul{
+
+#check:checked+.home__header__nav ul {
     max-height: 250px;
-   /*  transition: all 0.5s; */
 }
 
-.home__header__nav ul li:last-child{
+.home__header__nav ul li:last-child {
     margin-bottom: 55px;
 }
+
 /* LOGO */
-.home__header__nav--logo{
+.home__header__nav--logo {
     width: 100px;
     border-radius: 50%;
     position: absolute;
     right: calc(50% - 50px);
     bottom: -50px;
 }
+
 /* IMAGEN DE FONDO Y H1 */
-.home__header__h1{
+.home__header__h1 {
     background-image: url(../images/header.jpg);
     background-size: cover;
     background-position: center;
@@ -79,37 +93,49 @@ a{
     flex-direction: column;
     justify-content: flex-end;
 }
-.home__header__h1 h1{
+
+.home__header__h1 h1 {
     font-family: var(--fuentePrincipal);
     color: white;
     padding: 35px;
     text-transform: uppercase;
     font-size: 1.5rem;
 }
-@media (min-width:768px){
+
+@media (min-width:768px) {
+
     /* CAMBIO DE SPAN */
-    .home__header--i, .home__header--span{
+    .home__header--i,
+    .home__header--span {
         display: inline;
         font-size: 18px;
-    
+
     }
-    #ubic, #ubic i, #cont, #cont i{
+
+    #ubic,
+    #ubic i,
+    #cont,
+    #cont i {
         display: none;
     }
 
 }
-@media (min-width:1024px){
-    .home__header__nav--i{
+
+@media (min-width:1024px) {
+    .home__header__nav--i {
         font-size: 30px;
         padding: 15px;
         margin-left: 100px;
     }
-    .home__header__h1 h1{
-        
+
+    /* TITULO PRINCIPAL */
+    .home__header__h1 h1 {
+
         font-size: 2rem;
         text-align: center;
     }
-    .home__header__h1{
-      background-position: 100% 60%;
+
+    .home__header__h1 {
+        background-position: 100% 60%;
     }
 }

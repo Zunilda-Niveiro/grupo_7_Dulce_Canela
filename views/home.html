@@ -25,7 +25,8 @@
                 <span class="home__header--span"><i class="fa-solid fa-phone  home__header--i"></i>+54 011
                     45621489</span>
                 <a href="#dire"><span id="cont"><i class="fa-solid fa-phone"></i>Contacto</span></a>
-                <a href="#dire"><span class="home__header--span"><i class="fa-brands fa-instagram  home__header--i"></i>Redes</span></a>
+                <a href="#dire"><span class="home__header--span"><i
+                            class="fa-brands fa-instagram  home__header--i"></i>Redes</span></a>
             </div>
         </div>
         <!-- NAvEGACION -->
@@ -46,6 +47,50 @@
         <div class="home__header__h1">
             <h1>dulce canela almacén natural</h1>
         </div>
+        <!-- CARRITO -->
+        <label for="cart"><i class="fa-solid fa-cart-arrow-down home__header__cart--i"></i></label>
+        <input type="checkbox" name="" id="cart">
+        <div class="home__header__cart">
+            <label for="cart"><i class="fa-solid fa-xmark home__header__cart--ix "></i></label>
+            <hr class="cart__hr">
+            <p>Mi Carrito</p>
+            <!-- CADA ARTICLE ES UN PRODUCTO SELECCIONADO EN CARRITO -->
+            <article class="home__header__cart--prod">
+                <img src="/images/productos/frutos-secos.jpg" alt="">
+                <div class="cart-desc">
+                    <div class="cart-nom">
+                        <h5>Frutos secos x 500gr</h5>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </div>
+                    <div class="cart-cant">
+                        <div class="cart-cant-controles">
+                            <i class="fa-solid fa-minus"></i>
+                            <input type="number" name="" id="">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                        <h5>$ 2250</h5>
+                    </div>
+                </div>
+            </article>
+            <article class="home__header__cart--prod">
+                <img src="/images/productos/snacks.jpg" alt="">
+                <div class="cart-desc">
+                    <div class="cart-nom">
+                        <h5>Snacks x 350gr</h5>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </div>
+                    <div class="cart-cant">
+                        <div class="cart-cant-controles">
+                            <i class="fa-solid fa-minus"></i>
+                            <input type="number" name="" id="">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                        <h5>$ 1050</h5>
+                    </div>
+                </div>
+            </article>
+            <a href="">Comprar</a>
+        </div>
     </header>
     <main class="home__main">
         <section>
@@ -56,6 +101,7 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </form>
             </article>
+            <!-- CADA ARTICLE ES UNA CATEGORIA DE PRODUCTO -->
             <article class="home__main__cat">
                 <div class="home__main__cat--card">
                     <img src="/images/productos/especias.jpg" alt="">
@@ -131,7 +177,7 @@
                         class="fa-brands fa-facebook"></i><span>Facebook</span></a>
             </div>
         </section>
-        <!-- COPYRIGHT -->
+        <!-- COPYRIGHT + LOGO -->
         <section class="footer__section--copy">
             <a href="#top"><img src="/images/logo.jpg" alt=""></a>
             <p>Copyright 2022 - Dulce Canela</p>
