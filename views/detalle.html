@@ -5,8 +5,151 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
+    <header id="top" class="home__header">
+        <!-- BARRA SUPERIOR -->
+        <div class="home__header--sup">
+            <div>
+                <a href=""><span class="home__header--span"><i
+                            class="fa-solid fa-location-dot home__header--i"></i>Calle 123, San Santus</span></a>
+                <a href="#dire"><span id="ubic"><i class="fa-solid fa-location-dot"></i>Ubicación</span></a>
+                <a href="#dire"><span class="home__header--span"><i
+                            class="fa-solid fa-clock  home__header--i"></i>Horarios</span></a>
+            </div>
+            <div>
+                <span class="home__header--span"><i class="fa-solid fa-phone  home__header--i"></i>+54 011
+                    45621489</span>
+                <a href="#dire"><span id="cont"><i class="fa-solid fa-phone"></i>Contacto</span></a>
+                <a href="#dire"><span class="home__header--span"><i
+                            class="fa-brands fa-instagram  home__header--i"></i>Redes</span></a>
+            </div>
+        </div>
+        <!-- NAvEGACION -->
+        <label for="check"><i class="fa-solid fa-bars home__header__nav--i"></i></label>
+        <input type="checkbox" name="check" id="check">
+        <nav class="home__header__nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/detalle">Detalle</a></li>
+                <li><a href="/carrito">Carrito</a></li>
+                <li><a href="/registro">Registro</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+            <!-- LOGO -->
+            <img class="home__header__nav--logo" src="/images/logo.jpg" alt="">
+        </nav>
+        <!-- IMAGEN DE FONDO Y H1 -->
+        <div class="home__header__h1">
+            <h1>dulce canela almacén natural</h1>
+        </div>
+        <!-- CARRITO -->
+        <label for="cart"><i class="fa-solid fa-cart-arrow-down home__header__cart--i"></i></label>
+        <input type="checkbox" name="" id="cart">
+        <div class="home__header__cart">
+            <label for="cart"><i class="fa-solid fa-xmark home__header__cart--ix "></i></label>
+            <hr class="cart__hr">
+            <p>Mi Carrito</p>
+            <!-- CADA ARTICLE ES UN PRODUCTO SELECCIONADO EN CARRITO -->
+            <article class="home__header__cart--prod">
+                <img src="/images/productos/frutos-secos.jpg" alt="">
+                <div class="cart-desc">
+                    <div class="cart-nom">
+                        <h5>Frutos secos x 500gr</h5>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </div>
+                    <div class="cart-cant">
+                        <div class="cart-cant-controles">
+                            <i class="fa-solid fa-minus"></i>
+                            <input type="number" name="" id="">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                        <h5>$ 2250</h5>
+                    </div>
+                </div>
+            </article>
+            <article class="home__header__cart--prod">
+                <img src="/images/productos/snacks.jpg" alt="">
+                <div class="cart-desc">
+                    <div class="cart-nom">
+                        <h5>Snacks x 350gr</h5>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </div>
+                    <div class="cart-cant">
+                        <div class="cart-cant-controles">
+                            <i class="fa-solid fa-minus"></i>
+                            <input type="number" name="" id="">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                        <h5>$ 1050</h5>
+                    </div>
+                </div>
+            </article>
+            <a href="">Comprar</a>
+        </div>
+    </header>
+
     
+    <main>
+    <section class="main__section">
+        <article class="section__caja1">
+            <div>
+                <img class="imagen" src="/images/header.jpg" alt="">
+            </div>
+                <img class="miniatura1" src="/images/logo.jpg" alt="">
+                <img class="miniatura2" src="/images/logo.jpg" alt="">
+                <img class="miniatura3" src="/images/logo.jpg" alt="">
+        </article>
+        <article class="section__caja2">
+                <h4>Producto</h4>
+                <hr>
+            <div class="section__valor_button">
+                <p class="section__valor">$1234</p>
+                <button>
+                    <i class="fa-regular fa-minus"></i>
+                    <p>1</p>
+                    <i class="fa-regular fa-plus"></i>
+                </button>
+            </div>
+                <hr>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio iste rerum placeat nostrum dolore. Sunt adipisci fugiat rerum, animi commodi in voluptatibus ipsam explicabo accusamus praesentium ducimus id tempore a.</p>
+            </div>
+            <div>
+                <button class="section__button_comprar">
+                    <p>Comprar</p>
+                </button>
+            </div>
+        </article>
+    </section>
+<section class="main__section2">
+            <h4>Productos similares</h4>
+    <article class="section_caja3">
+                <img src="/images/logo.jpg" alt="">
+            <div class="section__caja3_descripcion">
+                <h4>Articulo 1</h4>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum quam voluptas ea provident sed inventore quia illo quae totam delectus, placeat fugit consequatur temporibus, magnam aliquid sequi dolorem voluptatibus fugiat?</p>
+            </div>
+        </article>
+    <article class="section_caja4">
+            <div class="section__img">
+                <img src="/images/logo.jpg" alt="">
+            </div>
+            <div class="text">
+                <h4>Articulo 2</h4>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi veniam sit repudiandae accusamus ipsa id excepturi sapiente officia sed temporibus culpa recusandae fugiat placeat, libero porro soluta omnis similique quos?</p>
+            </div>
+    </article>
+        <articulo class="section_caja5">
+            <div>
+                <img src="/images/logo.jpg" alt="">
+            </div>
+            <div>
+                <h4>Articulo 3</h4>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem animi velit corrupti consectetur? Consequatur, quisquam. Libero voluptate nostrum itaque tempore commodi dolores, cumque perferendis tempora repellendus ut modi. Exercitationem, praesentium.</p>
+            </div>
+    </article>
+</section>
+    </main>
 </body>
 </html>
