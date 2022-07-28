@@ -27,7 +27,7 @@
     z-index: 99;
 }
 #resumen:checked + .resumen-oculto{
-    height: 150px;
+    height: 250px;
 }
 /* FORMULARIO DE COMPRA */
 .carrito__main__article{
