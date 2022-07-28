@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/logo2.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/e0b4e5cac3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/styles.css">
-    <title>Inicio</title>
+    <title>Dulce Canela: Inicio</title>
 </head>
 
 <body class="home">
@@ -36,6 +37,7 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/detalle">Detalle</a></li>
+                <li><a href="/productos">Productos</a></li>
                 <li><a href="/carrito">Carrito</a></li>
                 <li><a href="/registro">Registro</a></li>
                 <li><a href="/login">Login</a></li>
@@ -48,48 +50,54 @@
             <h1>dulce canela almacén natural</h1>
         </div>
         <!-- CARRITO -->
-        <label for="cart"><i class="fa-solid fa-cart-arrow-down home__header__cart--i"></i></label>
-        <input type="checkbox" name="" id="cart">
-        <div class="home__header__cart">
-            <label for="cart"><i class="fa-solid fa-xmark home__header__cart--ix "></i></label>
-            <hr class="cart__hr">
-            <p>Mi Carrito</p>
-            <!-- CADA ARTICLE ES UN PRODUCTO SELECCIONADO EN CARRITO -->
-            <article class="home__header__cart--prod">
-                <img src="/images/productos/frutos-secos.jpg" alt="">
-                <div class="cart-desc">
-                    <div class="cart-nom">
-                        <h5>Frutos secos x 500gr</h5>
-                        <i class="fa-solid fa-trash-can"></i>
-                    </div>
-                    <div class="cart-cant">
-                        <div class="cart-cant-controles">
-                            <i class="fa-solid fa-minus"></i>
-                            <input type="number" name="" id="">
-                            <i class="fa-solid fa-plus"></i>
+        <div class="home__header__carrito">
+            <label for="cart"><i class="fa-solid fa-cart-arrow-down home__header__cart--i"></i></label>
+            <input type="checkbox" name="" id="cart">
+            <div class="home__header__cart">
+                <label for="cart"><i class="fa-solid fa-xmark home__header__cart--ix "></i></label>
+                <hr class="cart__hr">
+                <p>Mi Carrito</p>
+                <!-- CADA ARTICLE ES UN PRODUCTO SELECCIONADO EN CARRITO -->
+                <article class="home__header__cart--prod">
+                    <img src="/images/productos/frutos-secos.jpg" alt="">
+                    <div class="cart-desc">
+                        <div class="cart-nom">
+                            <h5>Frutos secos x 500gr</h5>
+                            <i class="fa-solid fa-trash-can"></i>
                         </div>
-                        <h5>$ 2250</h5>
-                    </div>
-                </div>
-            </article>
-            <article class="home__header__cart--prod">
-                <img src="/images/productos/snacks.jpg" alt="">
-                <div class="cart-desc">
-                    <div class="cart-nom">
-                        <h5>Snacks x 350gr</h5>
-                        <i class="fa-solid fa-trash-can"></i>
-                    </div>
-                    <div class="cart-cant">
-                        <div class="cart-cant-controles">
-                            <i class="fa-solid fa-minus"></i>
-                            <input type="number" name="" id="">
-                            <i class="fa-solid fa-plus"></i>
+                        <div class="cart-cant">
+                            <div class="cart-cant-controles">
+                                <i class="fa-solid fa-minus"></i>
+                                <input type="number" name="" id="">
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <h5>$ 2250</h5>
                         </div>
-                        <h5>$ 1050</h5>
                     </div>
+                </article>
+                <article class="home__header__cart--prod">
+                    <img src="/images/productos/snacks.jpg" alt="">
+                    <div class="cart-desc">
+                        <div class="cart-nom">
+                            <h5>Snacks x 350gr</h5>
+                            <i class="fa-solid fa-trash-can"></i>
+                        </div>
+                        <div class="cart-cant">
+                            <div class="cart-cant-controles">
+                                <i class="fa-solid fa-minus"></i>
+                                <input type="number" name="" id="">
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <h5>$ 1050</h5>
+                        </div>
+                    </div>
+                </article>
+                <div class="cart-total">
+                    <p>total:</p>
+                    <p>3300</p>
                 </div>
-            </article>
-            <a href="">Comprar</a>
+                <a href="/carrito">Comprar</a>
+            </div>
         </div>
     </header>
     <main class="home__main">
@@ -97,6 +105,7 @@
             <!-- BUSQUEDA -->
             <article class="home__main__busq">
                 <form action="">
+                    <span>Buscar</span>
                     <input type="text" name="" id="">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </form>
@@ -106,32 +115,32 @@
                 <div class="home__main__cat--card">
                     <img src="/images/productos/especias.jpg" alt="">
                     <p>Especias</p>
-                    <a href="">Ver más</a>
+                    <a href="/productos">Ver más</a>
                 </div>
                 <div class="home__main__cat--card">
                     <img src="/images/productos/frutos-secos.jpg" alt="">
                     <p>Frutos secos</p>
-                    <a href="">Ver más</a>
+                    <a href="/productos">Ver más</a>
                 </div>
                 <div class="home__main__cat--card">
                     <img src="/images/productos/harinas.jpg" alt="">
                     <p>Harinas</p>
-                    <a href="">Ver más</a>
+                    <a href="/productos">Ver más</a>
                 </div>
                 <div class="home__main__cat--card">
                     <img src="/images/productos/infusiones.jpg" alt="">
                     <p>infusiones</p>
-                    <a href="">Ver más</a>
+                    <a href="/productos">Ver más</a>
                 </div>
                 <div class="home__main__cat--card">
                     <img src="/images/productos/semillas.jpg" alt="">
                     <p>semillas</p>
-                    <a href="">Ver más</a>
+                    <a href="/productos">Ver más</a>
                 </div>
                 <div class="home__main__cat--card">
                     <img src="/images/productos/snacks.jpg" alt="">
                     <p>snacks</p>
-                    <a href="">Ver más</a>
+                    <a href="/productos">Ver más</a>
                 </div>
             </article>
         </section>

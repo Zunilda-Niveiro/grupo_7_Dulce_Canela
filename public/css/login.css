@@ -1,24 +1,33 @@
 @import url(./style.css);
 
-
-
-#form_login{
-    display: flex;
-    flex-direction:column ;
-    width: 310px;
-    margin: 100px auto;
-    height: 80px;
+.main__login__section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-#form_login *{
-    border-radius: 5px;
-    border: transparent;
-    margin: 15px 0;
-    padding: 10px 10px;
+.main__login{
+    background-color: var(--colorCuatro);
 }
 
-#submit_btn{
-    background-color:  var(--Celeste);
-    color: white;
-    cursor: pointer;
+
+#form_login {
+  display: flex;
+  flex-direction: column;
+  width: 310px;
+  margin: 100px auto;
+  height: 80px;
+}
+
+#form_login * {
+  border-radius: 5px;
+  border: transparent;
+  margin: 15px 0;
+  padding: 10px 10px;
+}
+
+#submit_btn {
+  background-color: var(--Celeste);
+  color: white;
+  cursor: pointer;
 }

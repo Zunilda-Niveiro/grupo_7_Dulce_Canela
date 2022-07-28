@@ -1,3 +1,8 @@
-:root{
-    --Celeste: #1259c3;
-}
+@import 'general.css';
+@import 'header.css';
+@import 'footer.css';
+@import 'home.css';
+@import 'cart.css';
+@import 'carrito.css';
+@import 'productos.css';
+@import 'login.css';
