@@ -1,12 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/e0b4e5cac3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/styles.css">
     <title>Carrito</title>
 </head>
+
 <body>
-    
+    <header id="top" class="home__header">
+        <!-- BARRA SUPERIOR -->
+        <div class="home__header--sup">
+            <div>
+                <a href=""><span class="home__header--span"><i
+                            class="fa-solid fa-location-dot home__header--i"></i>Calle 123, San Santus</span></a>
+                <a href="#dire"><span id="ubic"><i class="fa-solid fa-location-dot"></i>Ubicación</span></a>
+                <a href="#dire"><span class="home__header--span"><i
+                            class="fa-solid fa-clock  home__header--i"></i>Horarios</span></a>
+            </div>
+            <div>
+                <span class="home__header--span"><i class="fa-solid fa-phone  home__header--i"></i>+54 011
+                    45621489</span>
+                <a href="#dire"><span id="cont"><i class="fa-solid fa-phone"></i>Contacto</span></a>
+                <a href="#dire"><span class="home__header--span"><i
+                            class="fa-brands fa-instagram  home__header--i"></i>Redes</span></a>
+            </div>
+        </div>
+        <!-- NAvEGACION -->
+        <label for="check"><i class="fa-solid fa-bars home__header__nav--i"></i></label>
+        <input type="checkbox" name="check" id="check">
+        <nav class="home__header__nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/detalle">Detalle</a></li>
+                <li><a href="/carrito">Carrito</a></li>
+                <li><a href="/registro">Registro</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+            <!-- LOGO -->
+            <img class="home__header__nav--logo" src="/images/logo.png" alt="">
+        </nav>
+        <!-- IMAGEN DE FONDO Y H1 -->
+        <div class="home__header__h1">
+            <h1>dulce canela almacén natural</h1>
+        </div>
+        <!-- CARRITO -->
+    </header>
+    <main class="carrito__main">
+        <section>
+            <article class="carrito__main--resumen">
+                <div class="resumen-visible">
+                    <label for="resumen"><i class="fa-solid fa-circle-plus"></i></label>
+                    <p>Ver detalles de mi compra:</p>
+                    <p>$ 3300</p>
+                </div>
+                <input type="checkbox" name="" id="resumen">
+                <div class="resumen-oculto">
+                    <article class="home__header__cart--prod">
+                        <img src="/images/productos/frutos-secos.jpg" alt="">
+                        <div class="cart-desc">
+                            <div class="cart-nom">
+                                <h5>Frutos secos x 500gr</h5>
+                                <i class="fa-solid fa-trash-can"></i>
+                            </div>
+                            <div class="cart-cant">
+                                <div class="cart-cant-controles">
+                                    <i class="fa-solid fa-minus"></i>
+                                    <input type="number" name="" id="">
+                                    <i class="fa-solid fa-plus"></i>
+                                </div>
+                                <h5>$ 2250</h5>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="home__header__cart--prod">
+                        <img src="/images/productos/harinas.jpg" alt="">
+                        <div class="cart-desc">
+                            <div class="cart-nom">
+                                <h5>Harinas</h5>
+                                <i class="fa-solid fa-trash-can"></i>
+                            </div>
+                            <div class="cart-cant">
+                                <div class="cart-cant-controles">
+                                    <i class="fa-solid fa-minus"></i>
+                                    <input type="number" name="" id="">
+                                    <i class="fa-solid fa-plus"></i>
+                                </div>
+                                <h5>$ 2250</h5>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </article>
+            <!-- FORMULARIO CARRITO -->
+            <article class="carrito__main__article">
+                <form action="">
+                    <p>Datos de contacto</p>
+                    <input type="email" name="" id="" placeholder="Email">
+                    <input type="checkbox" name="" id="ofertas">
+                    <label for="ofertas">Quiero recibir ofertas y novedades por mail</label>
+                    <p>Entrega</p>
+                    <select name="" id="pais">
+                        <option value="arg">Argentina</option>
+                        <option value="chl">Chile</option>
+                        <option value="uru">Uruguay</option>
+                    </select>
+                    <input type="text" name="" id="" placeholder="Código Postal">
+                    <div>
+                        <p>Datos del destinatario</p>
+                        <input type="text" name="" id="" placeholder="Nombre">
+                        <input type="text" name="" id="" placeholder="Apellido">
+                        <input type="text" name="" id="" placeholder="Teléfono">
+                    </div>
+                    <div>
+                        <p>Domicilio del destinatario</p>
+                        <input type="text" name="" id="" placeholder="Calle">
+                        <input type="text" name="" id="" placeholder="Número">
+                        <input type="text" name="" id="" placeholder="Departamento">
+                        <input type="text" name="" id="" placeholder="Barrio">
+                        <input type="text" name="" id="" placeholder="Ciudad">
+                    </div>
+                    <div>
+                        <p>Datos del facturación</p>
+                        <input type="text" name="" id="" placeholder="DNI o CUIL">
+                    </div>
+                    <div>
+                        <p>Medio de pago</p>
+                        <div class="medio-pago">
+                            <i class="fa-solid fa-credit-card"></i>
+                            <label for="tarjeta"><span>Tarjeta de crédito y débito</span></label>
+                            <input type="checkbox" name="" id="tarjeta">
+                            <div class="medio-pago-tarjeta">
+                                <input type="text" placeholder="Número de tarjeta">
+                                <input type="text" name="" id="" placeholder="Titular de tarjeta">
+                                <input type="text" name="" id="" placeholder="Vencimiento (MM/AA)">
+                                <input type="text" name="" id="" placeholder="CVV">
+                                <input type="text" name="" id="" placeholder="DNI Titular">
+                            </div>
+                        </div>
+                        <div class="medio-pago">
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                            <span>Rapipago o Pago fácil</span>
+                        </div>
+                        <div class="medio-pago">
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                            <span>Transferencia Bancaria</span>
+                        </div>
+                    </div>
+                </form>
+                <a href="/">Realizar Compra</a>
+            </article>
+        </section>
+    </main>
+    <footer class="footer">
+        <!-- COLUMNAS INFO -->
+        <section class="footer__section--info">
+            <div>
+                <h5 class="footer__section--h5">Contacto</h5>
+                <p>+54 011 45621489</p>
+            </div>
+            <hr>
+            <div id="dire">
+                <h5 class="footer__section--h5">Dirección</h5>
+                <p>Calle 123, San Santus</p>
+            </div>
+            <hr>
+            <div>
+                <h5 class="footer__section--h5">Horarios</h5>
+                <p>Lun-Vie de 8 a 17hs</p>
+            </div>
+            <hr>
+            <div class="footer__section--redes">
+                <h5 class="footer__section--h5">Redes</h5>
+                <a href="www.instagram.com" target="_blank"><i
+                        class="fa-brands fa-instagram-square"></i><span>Instagram</span></a>
+                <a href="http//:www.instagram.com" target="_blank"><i
+                        class="fa-brands fa-twitter"></i><span>Twitter</span></a>
+                <a href="http//:www.instagram.com" target="_blank"><i
+                        class="fa-brands fa-facebook"></i><span>Facebook</span></a>
+            </div>
+        </section>
+        <!-- COPYRIGHT + LOGO -->
+        <section class="footer__section--copy">
+            <a href="#top"><img src="/images/logo.jpg" alt=""></a>
+            <p>Copyright 2022 - Dulce Canela</p>
+        </section>
+    </footer>
 </body>
+
 </html>
