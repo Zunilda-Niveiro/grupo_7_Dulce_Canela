@@ -1,0 +1,78 @@
+@import url(./style.css);
+
+.main__login__section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 40vw;
+}
+
+.main__login {
+  background-color: var(--colorPrimario);
+}
+
+.main__login__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: #ccccac80;
+  border-radius: 15px;
+  margin: 20px 10px;
+  color: white;
+  box-shadow: 0 0 10px var(--colorCinco), 0 0 20px var(--colorCinco),
+    0 0 30px var(--colorCinco);
+  width: 90vw;
+  position: relative;
+  margin-left: 63vw;
+}
+
+.form__logo {
+  margin-top: 10px;
+  width: 100px;
+  border-radius: 50%;
+  right: calc(50% - 50px);
+}
+
+.form_style {
+  display: flex;
+  flex-direction: column;
+  width: 310px;
+  justify-content: center;
+}
+
+.form_style * {
+  border-radius: 5px;
+  border: transparent;
+  padding: 10px 10px;
+  color: var(--colorCinco);
+}
+
+.form_style input {
+  margin: 0px 18px 15px 18px;
+  max-width: 90%;
+}
+
+.submit_btn {
+  background-color: var(--colorCinco);
+  margin: 0px 18px 15px 18px;
+  max-width: 90%;
+  color: white;
+  cursor: pointer;
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 768px) {
+  .main__login__form {
+    width: 90vw;
+    margin-left: 0vw;
+  }
+  .main__login__section {
+    margin-left: 33%;
+  }
+}
+@media (min-width: 1024px) {
+  .main__login__form {
+    width: 90vw;
+  }
+}
