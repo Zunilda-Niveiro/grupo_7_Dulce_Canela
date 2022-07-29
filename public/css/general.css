@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+:root{
+    --colorPrimario: #ccccac;
+    --colorSecundario: #335b2e;
+    --colorTerciario:#83b747;
+    --colorCuatro:#deecce;
+    --colorCinco:#445f25;
+    --fuentePrincipal:"Bree Serif", serif;
+    --fuenteSecundaria:'Roboto', sans-serif;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: var(--fuenteSecundaria);
+}
