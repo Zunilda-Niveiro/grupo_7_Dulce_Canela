@@ -11,4 +11,5 @@ app.get('/carrito', (req, res) => res.sendFile(path.join(__dirname, 'views', 'ca
 app.get('/detalle', (req, res) => res.sendFile(path.join(__dirname, 'views', 'detalle.html')));
 app.get('/login', (req, res) => res.sendFile(path.join(__dirname, 'views', 'login.html')));
 app.get('/registro', (req, res) => res.sendFile(path.join(__dirname, 'views', 'registro.html')));
+app.get('/productos', (req, res) => res.sendFile(path.join(__dirname, 'views', 'productos.html')));
 app.listen(port, () => console.log('Server runnig in http://localhost:' + port));
