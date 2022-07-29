@@ -113,50 +113,28 @@
         </section>
         <!-- TITULO -->
         <h1>Bienvenid@s al Registro</h1>
-        <!-- LOGIN -->
+        <!-- REGISTRO -->
         <section class="main__login__section">
             <article class="main__login__form">
-                <img class="login--logo" src="/images/logo.png" alt="">
-                <form action="login" class="form_login">
-                    <form action="./show_data.html">
-                        <div class="container-form">
-                            <fieldset class="information2">
-                                <h4>Informacion Personal</h4>
-                                <label>
-                                    Ingrese Su nombre:
-                                    <input class="labelstyle" type="text" name="first-name" id="name"
-                                        placeholder="Ingrese su nombre" required>
-                                </label>
-                                <br>
-                                <label>
-                                    Apellido:
-                                    <input class="labelstyle" type="text" name="last_name" id="last_name"
-                                        placeholder="Ingrese su apellido" required>
-                                </label>
-                                <br>
-                            </fieldset>
-                            <h3>Informacion de Inicio de sesion</h3>
-                            <fieldset class="information1">
-                                <label>
-                                    Correo Electronico:
-                                    <input class="labelstyle" type="email" name="email" id="email"
-                                        placeholder="Ingrese su email" required>
-                                </label>
-                                <label>
-                                    Contraseña:
-                                    <input class="labelstyle" type="password" name="password" id="password"
-                                        placeholder="Ingrese su contraseña" required>
-                                </label>
-                                <label>
-                                    Confirmar contraseña:
-                                    <input class="labelstyle" type="password" name="password" id="password"
-                                        placeholder="Ingrese nuevamente su contraseña" required>
-                                </label>
-                            </fieldset>
-                            </fieldset>
-                        </div>
-                        <button class="submit_btn" type="submit">Crear Cuenta</button>
-                    </form>
+                <img class="form__logo" src="/images/logo.png" alt="">
+                <form action="Registro" class="form_style">
+                    <h3>Informacion Personal</h3>
+                    <input type="text" name="first-name" id="name" placeholder="Ingrese su nombre" required>
+                    <input type="text" name="last_name" id="last_name" placeholder="Ingrese su apellido" required>
+                    <input type="text" name="" id="" placeholder="Calle">
+                    <input type="text" name="" id="" placeholder="Número">
+                    <input type="text" name="" id="" placeholder="Departamento">
+                    <input type="text" name="" id="" placeholder="Barrio">
+                    <input type="text" name="" id="" placeholder="Ciudad">
+                    <h4>Seleccione imagen de Perfil</h4>
+                    <input type="file" name="imagensubida" accept="image/png, .jpeg, .jpg, image/gif">
+                    <h4>Informacion de Inicio de sesion</h4>
+                    <input type="email" name="email" id="email" placeholder="Ingrese su email" required>
+                    <input type="password" name="password" id="password" placeholder="Ingrese su contraseña" required>
+                    <input type="password" name="password" id="password" placeholder="Ingrese nuevamente su contraseña"
+                        required>
+                    <button class="submit_btn" type="submit">Crear Cuenta</button>
+                </form>
             </article>
         </section>
     </main>

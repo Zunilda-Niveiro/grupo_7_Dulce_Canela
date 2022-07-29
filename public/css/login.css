@@ -27,28 +27,28 @@
   margin-left: 63vw;
 }
 
-.login--logo {
+.form__logo {
   margin-top: 10px;
   width: 100px;
   border-radius: 50%;
   right: calc(50% - 50px);
 }
 
-.form_login {
+.form_style {
   display: flex;
   flex-direction: column;
   width: 310px;
   justify-content: center;
 }
 
-.form_login * {
+.form_style * {
   border-radius: 5px;
   border: transparent;
-  margin: 15px 0;
   padding: 10px 10px;
+  color: var(--colorCinco);
 }
 
-.form_login input {
+.form_style input {
   margin: 0px 18px 15px 18px;
   max-width: 90%;
 }
