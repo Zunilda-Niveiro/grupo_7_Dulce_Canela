@@ -1,0 +1,47 @@
+@import url(./style.css);
+
+
+.main__productos h4{
+    text-align: center;
+    color: var(--colorCinco);
+}
+
+
+
+/*<---------registration form--------->*/
+.container-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.labelstyle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  padding: 5px;
+  border-radius: 4px;
+  margin: 5px 5px 16px 5px;
+  border: 1px solid rgba(8, 39, 102, 0.805);
+  font-size: 18px;
+}
+
+.labelstyle p {
+  text-align: center;
+}
+
+.input-submit {
+  color: rgb(255, 255, 255);
+  background: rgba(0, 0, 0);
+  padding: 10px 20px;
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 45%;
+  margin-top: 1em;
+}
