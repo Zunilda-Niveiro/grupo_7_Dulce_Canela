@@ -1,0 +1,88 @@
+<header id="top" class="home__header">
+    <!-- BARRA SUPERIOR -->
+    <div class="home__header--sup">
+        <div>
+            <a href=""><span class="home__header--span"><i
+                        class="fa-solid fa-location-dot home__header--i"></i>Calle 123, San Santus</span></a>
+            <a href="#dire"><span id="ubic"><i class="fa-solid fa-location-dot"></i>Ubicación</span></a>
+            <a href="#dire"><span class="home__header--span"><i
+                        class="fa-solid fa-clock  home__header--i"></i>Horarios</span></a>
+        </div>
+        <div>
+            <span class="home__header--span"><i class="fa-solid fa-phone  home__header--i"></i>+54 011
+                45621489</span>
+            <a href="#dire"><span id="cont"><i class="fa-solid fa-phone"></i>Contacto</span></a>
+            <a href="#dire"><span class="home__header--span"><i
+                        class="fa-brands fa-instagram  home__header--i"></i>Redes</span></a>
+        </div>
+    </div>
+    <!-- NAvEGACION -->
+    <label for="check"><i class="fa-solid fa-bars home__header__nav--i"></i></label>
+    <input type="checkbox" name="check" id="check">
+    <nav class="home__header__nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/productos/detalle">Detalle</a></li>
+            <li><a href="/productos/productos">Productos</a></li>
+            <li><a href="/productos/carrito">Carrito</a></li>
+            <li><a href="/users/registro">Registro</a></li>
+            <li><a href="/users/login">Login</a></li>
+        </ul>
+        <!-- LOGO -->
+        <img class="home__header__nav--logo" src="/images/logo.png" alt="">
+    </nav>
+    <!-- IMAGEN DE FONDO Y H1 -->
+    <div class="home__header__h1">
+        <h1>dulce canela almacén natural</h1>
+    </div>
+    <!-- CARRITO -->
+    <div class="home__header__carrito">
+        <label for="cart"><i class="fa-solid fa-cart-arrow-down home__header__cart--i"></i></label>
+        <input type="checkbox" name="" id="cart">
+        <div class="home__header__cart">
+            <label for="cart"><i class="fa-solid fa-xmark home__header__cart--ix "></i></label>
+            <hr class="cart__hr">
+            <p>Mi Carrito</p>
+            <!-- CADA ARTICLE ES UN PRODUCTO SELECCIONADO EN CARRITO -->
+            <article class="home__header__cart--prod">
+                <img src="/images/productos/frutos-secos.jpg" alt="">
+                <div class="cart-desc">
+                    <div class="cart-nom">
+                        <h5>Frutos secos x 500gr</h5>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </div>
+                    <div class="cart-cant">
+                        <div class="cart-cant-controles">
+                            <i class="fa-solid fa-minus"></i>
+                            <input type="number" name="" id="">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                        <h5>$ 2250</h5>
+                    </div>
+                </div>
+            </article>
+            <article class="home__header__cart--prod">
+                <img src="/images/productos/snacks.jpg" alt="">
+                <div class="cart-desc">
+                    <div class="cart-nom">
+                        <h5>Snacks x 350gr</h5>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </div>
+                    <div class="cart-cant">
+                        <div class="cart-cant-controles">
+                            <i class="fa-solid fa-minus"></i>
+                            <input type="number" name="" id="">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                        <h5>$ 1050</h5>
+                    </div>
+                </div>
+            </article>
+            <div class="cart-total">
+                <p>total:</p>
+                <p>3300</p>
+            </div>
+            <a href="/productos/carrito">Comprar</a>
+        </div>
+    </div>
+</header>
