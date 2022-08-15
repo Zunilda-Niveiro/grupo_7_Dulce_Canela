@@ -1,49 +1,22 @@
-<%- include('./partials/head') %> 
+<%- include('./partials/head',{
+    title: 'Inicio'
+}) %> 
 
 <body class="home">
     <%- include('./partials/header') %> 
     <main class="home__main">
         <section>
             <!-- BUSQUEDA -->
-            <article class="home__main__busq">
-                <form action="">
-                    <span>Buscar</span>
-                    <input type="text" name="" id="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </form>
-            </article>
+            <%- include('./partials/busqueda') %> 
             <!-- CADA ARTICLE ES UNA CATEGORIA DE PRODUCTO -->
             <article class="home__main__cat">
-                <div class="home__main__cat--card">
-                    <img src="/images/productos/especias.jpg" alt="">
-                    <p>Especias</p>
-                    <a href="/productos">Ver más</a>
+                <% categorias.forEach(categoria => { %>
+                 <div class="home__main__cat--card">
+                    <img src="/images/categorias/<%= categoria.imagen %> " alt="">
+                    <p><%= categoria.nombre %> </p>
+                    <a href="/productos/productos/<%= categoria.idcat %> ">Ver más</a>
                 </div>
-                <div class="home__main__cat--card">
-                    <img src="/images/productos/frutos-secos.jpg" alt="">
-                    <p>Frutos secos</p>
-                    <a href="/productos">Ver más</a>
-                </div>
-                <div class="home__main__cat--card">
-                    <img src="/images/productos/harinas.jpg" alt="">
-                    <p>Harinas</p>
-                    <a href="/productos">Ver más</a>
-                </div>
-                <div class="home__main__cat--card">
-                    <img src="/images/productos/infusiones.jpg" alt="">
-                    <p>infusiones</p>
-                    <a href="/productos">Ver más</a>
-                </div>
-                <div class="home__main__cat--card">
-                    <img src="/images/productos/semillas.jpg" alt="">
-                    <p>semillas</p>
-                    <a href="/productos">Ver más</a>
-                </div>
-                <div class="home__main__cat--card">
-                    <img src="/images/productos/snacks.jpg" alt="">
-                    <p>snacks</p>
-                    <a href="/productos">Ver más</a>
-                </div>
+                <% }) %>             
             </article>
         </section>
         <!-- OFERTA DEL DIA -->
@@ -57,7 +30,7 @@
             </div>
         </section>
         <!-- CARRUSEL -->
-        <img class="carousel" src="/images/productos/almacen.jpg" alt="">
+        <img class="carousel" src="/images/almacen.jpg" alt="">
     </main>
     <!-- FOOTER -->
     <%- include('./partials/footer')  %> 

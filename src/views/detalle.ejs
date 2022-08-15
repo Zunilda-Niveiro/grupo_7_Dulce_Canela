@@ -1,67 +1,57 @@
-<%- include('./partials/head') %> 
+<%- include('./partials/head',{
+    title: 'Detalle'
+}) %>
+
 <body>
-    <%- include('./partials/header') %> 
-    <main>
-    <section class="main__section">
-        <article class="section__caja1">
-            <div>
-                <img class="imagen" src="/images/productos/productos-lista/amaranto1.jpg" alt="">
-            </div>
-                <img class="miniatura1" src="/images/productos/productos-lista/crocante_zapallo.jpg" alt="">
-                <img class="miniatura2" src="/images/productos/productos-lista/semillas-de-lino-trituradas.jpg" alt="">
-                <img class="miniatura3" src="/images/productos/productos-lista/quinoa-roja.jpeg" alt="">
-        </article>
-        <article class="section__caja2">
-                <h4>Producto</h4>
+    <%- include('./partials/header') %>
+    <main class="main__detalle">
+        <section class="main__detalle__section">
+            <article class="section__imagenes ">
+                <div class="section__imagenes--ppal">
+                    <img class="" src="/images/productos/<%= prod.imagen %>" alt="">
+                </div>
+                <div class="section__mini">
+                    <img class="section__imagenes__mini" src="/images/productos/amaranto1.jpg" alt="">
+                    <img class="section__imagenes__mini" src="/images/productos/amaranto1.jpg" alt="">
+                    <img class="section__imagenes__mini" src="/images/productos/amaranto1.jpg" alt="">
+                </div>
+            </article>
+            <article class="section__descripcion">
+                <h4><%= prod.nombre %> x <%= prod.cantidad %> gr</h4>
                 <hr>
-            <div class="section__valor_button">
-                <p class="section__valor">$1234</p>
-                <button>
-                    <i class="fa fa-minus" aria-hidden="true"></i>
-                    <input type="number" name="1">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                </button>
-            </div>
+                <div class="section__controles">
+                    <p class="">$ <%= prod.precio %> </p>
+                    <div>
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                        <input type="number" name="1">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </div>
+                </div>
                 <hr>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio iste rerum placeat nostrum dolore. Sunt adipisci fugiat rerum, animi commodi in voluptatibus ipsam explicabo accusamus praesentium ducimus id tempore a.</p>
-            </div>
-            <div>
-                <button class="section__button_comprar" >
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio iste rerum placeat nostrum dolore.
+                    Sunt adipisci fugiat rerum, animi commodi in voluptatibus ipsam explicabo accusamus praesentium
+                    ducimus id tempore a.</p>
+                <button class="">
                     <a href="#">Comprar</a>
                 </button>
-            </div>
-        </article>
-    </section>
-<section class="main__section2">
-            <h4>Productos similares</h4>
-            
-    <article class="section_caja3">
-                <img src="/images/productos/frutos-secos.jpg" alt="">
-            <div class="section__caja3_descripcion">
-                <h4>Articulo 1</h4>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            </div>
-        </article>
-    <article class="section_caja4">
-            <div class="section__img">
-                <img src="/images/productos/nueces.jpg" alt="">
-            </div>
-            <div class="section__caja4_descripcion">
-                <h4>Articulo 2</h4>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-            </div>
-    </article>
-        <articulo class="section_caja5">
-            <div class="section__img">
-                <img src="/images/productos/semillas.jpg" alt="">
-            </div>
-            <div class="section__caja5_descripcion">
-                <h4>Articulo 3</h4>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-    </article>
-</section>
+            </article>
+        </section>
+        <h4>Productos similares</h4>
+        <section class="section__similares">
+
+            <% for( let index = 0; index < 3; index++ ) { %>
+            <article class="section__similares__articulo">
+                <img class="section__similares__articulo--img" src="/images/productos/<%= productos[index].imagen %> "
+                    alt="">
+                <div class="">
+                    <h4><%= productos[index].nombre %> </h4>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                </div>
+            </article>
+            <% } %>
+        </section>
     </main>
-    <%- include('./partials/footer') %> 
+    <%- include('./partials/footer') %>
 </body>
+
 </html>

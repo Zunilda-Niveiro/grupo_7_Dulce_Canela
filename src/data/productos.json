@@ -1,0 +1,255 @@
+[
+    {   
+        "id":1,
+        "categoria": "semillas",   
+        "nombre" : "Semillas de Amaranto",
+        "cantidad":300,
+        "marca" : "Natura",
+        "precio":350,
+        "imagen":"amaranto1.jpg"
+    },
+    {   
+        "id":2,
+        "categoria": "semillas",
+        "nombre" : "Semillas de Zapallo",
+        "cantidad":250,
+        "marca" : "Natura",
+        "precio":550,
+        "imagen":"crocante_zapallo.jpg"
+    }, 
+    {   
+        "id":3,
+        "categoria": "semillas",
+        "nombre" : "Mix Salado",
+        "cantidad":400,
+        "marca" : "Natura",
+        "precio":460,
+        "imagen":"mix-salado.jpg"
+    },
+    {   
+        "id":4,
+        "categoria": "semillas",
+        "nombre" : "Pepitas de Zapallo",
+        "cantidad":200,
+        "marca" : "Natura",
+        "precio":380,
+        "imagen":"pepitascalabaza01.jpg"
+    },
+    {   
+        "id":5,
+        "categoria": "semillas",
+        "nombre" : "Pipas de Calabaza",
+        "cantidad":250,
+        "marca" : "Natura",
+        "precio":210,
+        "imagen":"pipas-de-calabaza_.jpg"
+    },
+    {   
+        "id":6,
+        "categoria": "semillas",
+        "nombre" : "Quinoa Roja",
+        "cantidad":100,
+        "marca" : "Natura",
+        "precio":275,
+        "imagen":"quinoa-roja.jpeg"
+    },
+    {   
+        "id":7,
+        "categoria": "semillas",
+        "nombre" : "Semillas de Chia",
+        "cantidad":200,
+        "marca" : "Natura",
+        "precio":380,
+        "imagen":"chia1.jpg"
+    },
+    {   
+        "id":8,
+        "categoria": "semillas",
+        "nombre" : "Semillas de Amapola",
+        "cantidad":100,
+        "marca" : "Natura",
+        "precio":240,
+        "imagen":"amapolas.jpg"
+    },
+    {   
+        "id":9,
+        "categoria": "semillas",
+        "nombre" : "Semillas de lino Trituradas",
+        "cantidad":100,
+        "marca" : "Natura",
+        "precio":190,
+        "imagen":"lino-trituradas.jpg"
+    },
+    {   
+        "id":10,
+        "categoria": "semillas",
+        "nombre" : "Semillas de Sesamo",
+        "cantidad":250,
+        "marca" : "Natura",
+        "precio":310,
+        "imagen":"semillas-sesamo.jpg"
+    },
+    {   
+        "id":11,
+        "categoria": "semillas",
+        "nombre" : "Semillas de Sesamo Negro",
+        "cantidad":300,
+        "marca" : "Natura",
+        "precio":280,
+        "imagen":"semillas-de-sesamo-negro1.jpg"
+    },
+    {   
+        "id":12,
+        "categoria": "semillas",
+        "nombre" : "Semillas de Quinoa",
+        "cantidad":500,
+        "marca" : "Natura",
+        "precio":380,
+        "imagen":"quinoa.jpg"
+    },
+    {   
+        "id":13,
+        "categoria": "semillas",
+        "nombre" : "Semillas de Lino",
+        "cantidad":100,
+        "marca" : "Natura",
+        "precio":180,
+        "imagen":"semillas-de-lino.jpg"
+    },    
+    {   
+        "id":14,
+        "categoria": "semillas",
+        "nombre" : "Semillas de Sesamo Integral",
+        "cantidad":500,
+        "marca" : "Natura",
+        "precio":380,
+        "imagen":"sesamo-integral.jpg"
+    },       
+    {   
+        "id":15,
+        "categoria": "infusiones",   
+        "nombre" : "Abedul",
+        "cantidad":300,
+        "marca" : "Natura",
+        "precio":350,
+        "imagen":"abedul.jpg"
+    },
+    {   
+        "id":16,
+        "categoria": "infusiones",
+        "nombre" : "Bardana",
+        "cantidad":250,
+        "marca" : "Natura",
+        "precio":550,
+        "imagen":"bardana.jpg"
+    }, 
+    {   
+        "id":17,
+        "categoria": "infusiones",
+        "nombre" : "Borraja",
+        "cantidad":400,
+        "marca" : "Natura",
+        "precio":460,
+        "imagen":"borraja.jpeg"
+    },
+    {   
+        "id":18,
+        "categoria": "infusiones",
+        "nombre" : "Cola de caballo",
+        "cantidad":200,
+        "marca" : "Natura",
+        "precio":380,
+        "imagen":"cola-de-caballo.jpg"
+    },
+    {   
+        "id":19,
+        "categoria": "infusiones",
+        "nombre" : "Eucalipto",
+        "cantidad":250,
+        "marca" : "Natura",
+        "precio":210,
+        "imagen":"eucalipto.jpg"
+    },
+    {   
+        "id":20,
+        "categoria": "infusiones",
+        "nombre" : "Lavanda",
+        "cantidad":100,
+        "marca" : "Natura",
+        "precio":275,
+        "imagen":"lavanda.jpg"
+    },
+    {   
+        "id":21,
+        "categoria": "infusiones",
+        "nombre" : "Llanten",
+        "cantidad":200,
+        "marca" : "Natura",
+        "precio":380,
+        "imagen":"llanten.jpg"
+    },
+    {   
+        "id":22,
+        "categoria": "infusiones",
+        "nombre" : "Malva",
+        "cantidad":100,
+        "marca" : "Natura",
+        "precio":240,
+        "imagen":"malva.jpg"
+    },
+    {   
+        "id":23,
+        "categoria": "infusiones",
+        "nombre" : "Manzanilla",
+        "cantidad":100,
+        "marca" : "Natura",
+        "precio":190,
+        "imagen":"manzanilla.jpg"
+    },
+    {   
+        "id":24,
+        "categoria": "infusiones",
+        "nombre" : "Marcela",
+        "cantidad":250,
+        "marca" : "Natura",
+        "precio":310,
+        "imagen":"marcela.jpg"
+    },
+    {   
+        "id":25,
+        "categoria": "infusiones",
+        "nombre" : "Menta Piperita",
+        "cantidad":300,
+        "marca" : "Natura",
+        "precio":280,
+        "imagen":"menta-piperita.jpg"
+    },
+    {   
+        "id":26,
+        "categoria": "infusiones",
+        "nombre" : "Salvia",
+        "cantidad":500,
+        "marca" : "Natura",
+        "precio":380,
+        "imagen":"salvia.jpg"
+    },
+    {   
+        "id":27,
+        "categoria": "infusiones",
+        "nombre" : "Te Blanco",
+        "cantidad":100,
+        "marca" : "Natura",
+        "precio":180,
+        "imagen":"teblanco.jpg"
+    },    
+    {   
+        "id":28,
+        "categoria": "infusiones",
+        "nombre" : "Tilo",
+        "cantidad":500,
+        "marca" : "Natura",
+        "precio":380,
+        "imagen":"tilo.jpg"
+    }
+    
+]
