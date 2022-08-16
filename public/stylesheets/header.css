@@ -67,7 +67,7 @@ a {
 }
 
 #check:checked+.home__header__nav ul {
-    max-height: 250px;
+    max-height: 300px;
 }
 
 .home__header__nav ul li:last-child {
