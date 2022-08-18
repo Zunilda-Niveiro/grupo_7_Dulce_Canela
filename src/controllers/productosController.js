@@ -19,6 +19,8 @@ module.exports = {
             carrito,
             productos
         })
+
+
     },
     detalle: (req, res) => {
         const prod = productos.find(producto => producto.id === +req.params.id)
@@ -34,7 +36,7 @@ module.exports = {
     },
     agregar: (req, res) => {
 
-       const carrito = loadCarrito();
+        const carrito = loadCarrito();
 
         if (carrito == undefined || carrito == "") {
             const nuevoProd = {
@@ -57,23 +59,20 @@ module.exports = {
                 return produ
             })
             if (!bandera) {
-                let idconst=aux.lenght;
+                let idconst = aux.lenght;
                 const nuevoProd = {
-                    id : idconst,
-                    id_producto : +req.params.id,
-                    cantidad_p : 1
+                    id: idconst,
+                    id_producto: +req.params.id,
+                    cantidad_p: 1
                 }
                 const prodNuevo = [...carrito, nuevoProd]
                 storeCarrito(prodNuevo)
             } else {
                 storeCarrito(aux)
             }
-
         }
-
         res.redirect('/')
     },
-
     busqueda: (req, res) => {
         const subprod = productos.filter(producto => producto.nombre.toLocaleLowerCase().includes(req.query.busqueda.toLocaleLowerCase()))
         let categ = "Resultados"
@@ -91,7 +90,7 @@ module.exports = {
         }
 
     },
-    remove: (req,res) => {
+    remove: (req, res) => {
         const carrito = loadCarrito();
 
         const carritoModificado = carrito.filter(car => car.id_producto != +req.params.id);

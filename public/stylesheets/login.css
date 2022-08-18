@@ -52,6 +52,11 @@
   margin: 0px 18px 15px 18px;
   max-width: 90%;
 }
+.form_style textarea {
+  margin: 0px 18px 15px 18px;
+  max-width: 90%;
+}
+
 
 .submit_btn {
   background-color: var(--colorCinco);

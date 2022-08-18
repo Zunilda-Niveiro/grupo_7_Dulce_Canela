@@ -1,0 +1,40 @@
+<%- include('./partials/head') %> 
+
+<body>
+    <%- include('./partials/header') %> 
+    <main class="main__productos">
+        <!-- BARRA BUSQUEDA -->
+        <section>
+            <article class="home__main__busq">
+                <form action="">
+                    <span>Buscar</span>
+                    <input type="text" name="" id="">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </form>
+            </article>
+        </section>
+        <!-- TITULO -->
+        <h1>Editar Producto</h1>
+        <!-- REGISTRO -->
+        <section class="main__login__section">
+            <article class="main__login__form">
+                <img class="form__logo" src="/images/logo.png" alt="">
+                <form action="Registro" class="form_style">
+                    <h3>Datos del Producto</h3>
+                        <img src="/images/productos/frutos-secos.jpg" alt="" class="edit__product__imagen">
+                    <input type="text" name="name-product" id="name" placeholder="Ingrese nombre de productor" required>
+                    <input type="text" name="brand-product" id="brand-product" placeholder="Ingrese Marca de producto" required>
+                    <input type="number" name="price" id="price" placeholder="Precio del Producto">
+                    <h4>Seleccione nueva imagen del producto</h4>
+                    <input type="file" name="imagensubida" accept="image/png, .jpeg, .jpg, image/gif">
+                    <textarea name="Detalle_de_producto" rows="10" cols="40">Descripción e información del producto anterior</textarea>
+                    <br>
+                    <button class="submit_btn" type="submit">Guardar edicion de producto</button>
+                </form>
+            </article>
+        </section>
+    </main>
+    <%- include('./partials/footer') %> 
+</body>
+
+</html>
