@@ -36,53 +36,5 @@
         <h1>dulce canela almacén natural</h1>
     </div>
     <!-- CARRITO -->
-    <div class="home__header__carrito">
-        <label for="cart"><i class="fa-solid fa-cart-arrow-down home__header__cart--i"></i></label>
-        <input type="checkbox" name="" id="cart">
-        <div class="home__header__cart">
-            <label for="cart"><i class="fa-solid fa-xmark home__header__cart--ix "></i></label>
-            <hr class="cart__hr">
-            <p>Mi Carrito</p>
-            <!-- CADA ARTICLE ES UN PRODUCTO SELECCIONADO EN CARRITO -->
-            <article class="home__header__cart--prod">
-                <img src="/images/productos/frutos-secos.jpg" alt="">
-                <div class="cart-desc">
-                    <div class="cart-nom">
-                        <h5>Frutos secos x 500gr</h5>
-                        <i class="fa-solid fa-trash-can"></i>
-                    </div>
-                    <div class="cart-cant">
-                        <div class="cart-cant-controles">
-                            <i class="fa-solid fa-minus"></i>
-                            <input type="number" name="" id="">
-                            <i class="fa-solid fa-plus"></i>
-                        </div>
-                        <h5>$ 2250</h5>
-                    </div>
-                </div>
-            </article>
-            <article class="home__header__cart--prod">
-                <img src="/images/productos/snacks.jpg" alt="">
-                <div class="cart-desc">
-                    <div class="cart-nom">
-                        <h5>Snacks x 350gr</h5>
-                        <i class="fa-solid fa-trash-can"></i>
-                    </div>
-                    <div class="cart-cant">
-                        <div class="cart-cant-controles">
-                            <i class="fa-solid fa-minus"></i>
-                            <input type="number" name="" id="">
-                            <i class="fa-solid fa-plus"></i>
-                        </div>
-                        <h5>$ 1050</h5>
-                    </div>
-                </div>
-            </article>
-            <div class="cart-total">
-                <p>total:</p>
-                <p>3300</p>
-            </div>
-            <a href="/productos/carrito">Comprar</a>
-        </div>
-    </div>
+    <%- include('./carrito_desp') %> 
 </header>

@@ -138,7 +138,7 @@
         "id":16,
         "categoria": "infusiones",
         "nombre" : "Bardana",
-        "cantidad":250,
+        "cantidad":150,
         "marca" : "Natura",
         "precio":550,
         "imagen":"bardana.jpg"

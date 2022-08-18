@@ -2,7 +2,10 @@
 #cart {
     display: none;
 }
-
+.cart-container{
+    overflow-y: scroll;
+    height: 70%;
+}
 /* CARRITO ICONO */
 .home__header__cart--i {
     position: fixed;
@@ -140,6 +143,7 @@
     text-transform: uppercase;
     font-size: larger;
     width: 100%;
+    background-color:var(--colorPrimario);
     padding: 15px;
 }
 /* MEDIA QUERIES */
