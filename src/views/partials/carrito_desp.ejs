@@ -14,7 +14,7 @@
                     <div class="cart-nom">
                         <h5>
                             <%= productos[car.id_producto - 1].nombre %> x <%=
-              productos[car.id_producto-1].cantidad%>gr
+                                     productos[car.id_producto-1].cantidad%>gr
                         </h5>
                         <form action="/productos/delete/<%= car.id_producto %>?_method=DELETE" method="POST">
                             <button type="submit">
@@ -37,7 +37,7 @@
         <div class="cart-total">
             <p>total:</p>
             <p>3300</p>
-            
+
         </div>
         <a href="/productos/carrito">Comprar</a>
     </div>

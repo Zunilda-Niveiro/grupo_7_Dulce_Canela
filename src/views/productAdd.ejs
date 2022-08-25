@@ -1,33 +1,36 @@
-<%- include('./partials/head') %> 
+<%- include('./partials/head',{
+    title: 'Agregar'
+}) %> 
 
 <body>
     <%- include('./partials/header') %> 
     <main class="main__productos">
         <!-- BARRA BUSQUEDA -->
-        <section>
-            <article class="home__main__busq">
-                <form action="">
-                    <span>Buscar</span>
-                    <input type="text" name="" id="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </form>
-            </article>
-        </section>
+       
         <!-- TITULO -->
         <h1>Agregar Productos</h1>
         <!-- REGISTRO -->
         <section class="main__login__section">
             <article class="main__login__form">
                 <img class="form__logo" src="/images/logo.png" alt="">
-                <form action="Registro" class="form_style">
+                <form action="/productos/productAdd" method="POST" enctype="multipart/form-data" class="form_style">
                     <h3>Datos del Producto</h3>
-                    <input type="text" name="name-product" id="name" placeholder="nombre de productor" required>
-                    <input type="text" name="brand-product" id="brand-product" placeholder="Ingrese Marca de producto" required>
-                    <input type="number" name="price" id="price" placeholder="Precio del Producto">
+                    <input type="text" name="nombre" id="name" placeholder="nombre de productor" required>
+                    <input type="text" name="marca" id="brand-product" placeholder="Ingrese Marca de producto" required>
+                    <input type="number" name="precio" id="price" placeholder="Precio del Producto">
+                    <input type="text" name="cantidad" id="" placeholder="Cantidad">
+                    <select name="categoria" id=""  class="form_style">
+                        <option value="especias">especias</option>
+                        <option value="frutos-secos">frutos secos</option>
+                        <option value="harinas">harinas</option>
+                        <option value="infusiones">infusiones</option>
+                        <option value="semillas">semillas</option>
+                        <option value="snacks">snacks</option>
+                    </select>
                     <h4>Seleccione imagen del producto</h4>
-                    <input type="file" name="imagensubida" accept="image/png, .jpeg, .jpg, image/gif">
-                    <textarea name="Detalle_de_producto" rows="10" cols="40">Ingrese breve descripción del producto</textarea>
-                    <br>
+                    <input type="file" name="imagen" accept="image/png, .jpeg, .jpg, image/gif, .webp">
+                    <textarea name="detalle" rows="10" cols="40" placeholder="Ingrese breve descripción del producto"></textarea>
+
                     <button class="submit_btn" type="submit">Agregar Producto</button>
                 </form>
             </article>

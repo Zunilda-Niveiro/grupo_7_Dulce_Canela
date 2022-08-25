@@ -22,6 +22,12 @@ module.exports = {
 
 
     },
+    agregarProd:(req,res) => {
+        const carrito = loadCarrito()
+       return res.render('productAdd',{
+        carrito
+       })
+    },
     detalle: (req, res) => {
         const prod = productos.find(producto => producto.id === +req.params.id)
         const carrito = loadCarrito();
@@ -32,7 +38,32 @@ module.exports = {
         })
     },
     carrito: (req, res) => {
-        return res.render('carrito')
+        const carrito = loadCarrito()
+        const productos = loadProducts()
+        return res.render('carrito',{
+            carrito,
+            productos
+        })
+    },
+    agregarProducto : (req,res) => {
+       
+        const productos = loadProducts()
+        const {nombre, marca, precio, cantidad, categoria, detalle} = req.body
+    
+        let productoNuevo = {
+            id : productos[productos.length - 1].id + 1,
+            categoria : categoria,
+            nombre : nombre,
+            cantidad : cantidad,
+            marca : marca,
+            precio : precio,
+            imagen : req.file.filename, 
+            detalle: detalle
+        }
+        producModificado = [...productos, productoNuevo];
+        storeProducts(producModificado);
+
+		return res.redirect('/')
     },
     agregar: (req, res) => {
 
@@ -71,7 +102,7 @@ module.exports = {
                 storeCarrito(aux)
             }
         }
-        res.redirect('/')
+        res.redirect('/productos/detalle/' + req.params.id)
     },
     busqueda: (req, res) => {
         const subprod = productos.filter(producto => producto.nombre.toLocaleLowerCase().includes(req.query.busqueda.toLocaleLowerCase()))
