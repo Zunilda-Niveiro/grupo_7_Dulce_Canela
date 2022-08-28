@@ -280,5 +280,75 @@
       "precio": "270",
       "imagen": "product-1661135365475.webp",
       "detalle": "Producto salado"
+   },
+   {
+      "id": 32,
+      "categoria": "harinas",
+      "nombre": "Harina de mandioca",
+      "cantidad": "1",
+      "marca": "Morixe",
+      "precio": "250",
+      "imagen": "product-1661690533939.jpg",
+      "detalle": "Presentamos la Fécula de Mandicoa Morixe. Ideal para hacer el más rico chipá y platos típicos. La presentación es de 1kg y es libre de gluten!"
+   },
+   {
+      "id": 33,
+      "categoria": "harinas",
+      "nombre": "Maizena",
+      "cantidad": "1",
+      "marca": "Maizena",
+      "precio": "150",
+      "imagen": "product-1661692644710.jpg",
+      "detalle": "Almidón de Maíz Maizena Sin Tacc 550 Gr."
+   },
+   {
+      "id": 34,
+      "categoria": "harinas",
+      "nombre": "Harina para Arepas",
+      "cantidad": "1",
+      "marca": "Morixe",
+      "precio": "250",
+      "imagen": "product-1661692762953.jpg",
+      "detalle": "Harina Morixe para Arepas 1 Kg."
+   },
+   {
+      "id": 35,
+      "categoria": "harinas",
+      "nombre": "Harina de Arroz",
+      "cantidad": "1",
+      "marca": "Dimax",
+      "precio": 300,
+      "imagen": "product-1661694728197.png",
+      "detalle": "Dimax Harina de Arroz por kg"
+   },
+   {
+      "id": 36,
+      "categoria": "harinas",
+      "nombre": "Harina de Arroz",
+      "cantidad": "1",
+      "marca": "Dimax",
+      "precio": 300,
+      "imagen": "product-1661694901790.png",
+      "detalle": "Dimax Harina de Arroz por kg"
+   },
+   {
+      "id": 37,
+      "categoria": "harinas",
+      "nombre": "Polenta",
+      "cantidad": "1",
+      "marca": "Morixe",
+      "precio": 200,
+      "imagen": "product-1661695073460.jpg",
+      "detalle": "Polenta sabor Queso x 250 gr - MORIXE"
+   },
+   {
+      "id": 38,
+      "categoria": "harinas",
+      "nombre": "Polenta Organica",
+      "cantidad": "1",
+      "marca": "Dicomere",
+      "precio": 254,
+      "imagen": "product-1661695298207.jpg",
+      "detalle": "Polenta Orgánica Rápida Cocción Sin TACC x 450 gr - DICOMERE"
    }
 ]

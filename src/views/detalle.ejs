@@ -4,7 +4,7 @@
 
 <body>
     <%- include('./partials/header') %>
-    <%- include('./partials/carrito_desp') %> 
+    <%- include('./partials/carrito_desp') %>
     <main class="main__detalle">
         <section class="main__detalle__section">
             <article class="section__imagenes ">
@@ -32,9 +32,14 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio iste rerum placeat nostrum dolore.
                     Sunt adipisci fugiat rerum, animi commodi in voluptatibus ipsam explicabo accusamus praesentium
                     ducimus id tempore a.</p>
-                <form action="/productos/agregar/<%= prod.id %> " method="POST">    
-                    <button type="submit" class="">Agregar</button>
+                <form action="/productos/agregar/<%= prod.id %> " method="POST">
+                    <button type="submit" class="btn-add">Agregar al carrito</button>
                 </form>
+                <a class="btn-edit" href="/productos/edit/<%= prod.id %>">Editar</a>
+                <form action="">
+                    
+                </form>
+
             </article>
         </section>
         <h4>Productos similares</h4>

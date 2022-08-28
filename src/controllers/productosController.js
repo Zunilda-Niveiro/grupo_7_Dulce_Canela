@@ -1,15 +1,15 @@
 const categorias = require('../data/categorias.json')
 const productos = require('../data/productos.json')
+
 const {
     loadCarrito,
-    loadProducts,
     storeCarrito,
-    storeProducts
+    loadProduct,
+    storeProduct,
 } = require('../data/db_Module')
 
 module.exports = {
     productos: (req, res) => {
-
         const categ = categorias.find(categoria => categoria.idcat == +req.params.id)
         const subprod = productos.filter(producto => producto.categoria == categ.nombre)
         const carrito = loadCarrito();
@@ -19,14 +19,12 @@ module.exports = {
             carrito,
             productos
         })
-
-
     },
-    agregarProd:(req,res) => {
+    agregarProd: (req, res) => {
         const carrito = loadCarrito()
-       return res.render('productAdd',{
-        carrito
-       })
+        return res.render('productAdd', {
+            carrito
+        })
     },
     detalle: (req, res) => {
         const prod = productos.find(producto => producto.id === +req.params.id)
@@ -39,36 +37,14 @@ module.exports = {
     },
     carrito: (req, res) => {
         const carrito = loadCarrito()
-        const productos = loadProducts()
-        return res.render('carrito',{
+        const productos = loadProduct()
+        return res.render('carrito', {
             carrito,
             productos
         })
     },
-    agregarProducto : (req,res) => {
-       
-        const productos = loadProducts()
-        const {nombre, marca, precio, cantidad, categoria, detalle} = req.body
-    
-        let productoNuevo = {
-            id : productos[productos.length - 1].id + 1,
-            categoria : categoria,
-            nombre : nombre,
-            cantidad : cantidad,
-            marca : marca,
-            precio : precio,
-            imagen : req.file.filename, 
-            detalle: detalle
-        }
-        producModificado = [...productos, productoNuevo];
-        storeProducts(producModificado);
-
-		return res.redirect('/')
-    },
     agregar: (req, res) => {
-
         const carrito = loadCarrito();
-
         if (carrito == undefined || carrito == "") {
             const nuevoProd = {
                 id: 1,
@@ -119,11 +95,60 @@ module.exports = {
                 categ
             })
         }
-
     },
+    agregarProducto: (req, res) => {
+        const productos = loadProduct();
+        const { nombre, marca, precio, cantidad, categoria, detalle } = req.body;
+        const newProduct = {
+            id: productos[productos.length - 1].id + 1,
+            categoria: categoria,
+            nombre: nombre.trim(),
+            cantidad: cantidad,
+            marca: marca,
+            precio: +precio,
+            imagen: req.file.filename,
+            detalle: detalle
+        };
+        const newProductlist = [...productos, newProduct];
+        storeProduct(newProductlist);
+        return res.redirect('/');
+    },
+    edit : (req,res)=>{
+        const products = loadProduct();
+        const prod = products.find(prod => prod.id === +req.params.id);
+        return res.render('productEdit',{
+            prod,
+        });
+    },
+    update : (req,res)=>{
+
+        return res.send(req.body)
+
+/*         const products = loadProduct();
+        const {id} = req.params;
+        const { nombre, marca, precio, cantidad, categoria, detalle } = req.body;
+        const productosModificados = products.map(prod =>{
+            if(prod.id === +id){
+                return {
+                    ...prod,
+                    nombre: nombre.trim(),
+                    marca: nombre.trim(),
+                    precio: +precio,
+                    cantidad: cantidad,
+                    categoria: categoria,
+                    imagen: imagen,
+                }
+            }
+            return prod
+        })
+        storeProduct(productosModificados)
+        return res.redirect('/productos/detalle/'+req.params.id); 
+ */    }
+    
+    
+    ,
     remove: (req, res) => {
         const carrito = loadCarrito();
-
         const carritoModificado = carrito.filter(car => car.id_producto != +req.params.id);
         storeCarrito(carritoModificado);
         return res.redirect('/')
