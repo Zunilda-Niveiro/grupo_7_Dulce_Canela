@@ -15,6 +15,7 @@ const storeProducts = (prod) =>{
     return fs.writeFileSync(path.join(__dirname,'productos.json'),JSON.stringify(prod,null,3),'utf-8')
 }
 
+
 module.exports = {
     loadProducts,
     loadCarrito,
