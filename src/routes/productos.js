@@ -14,11 +14,10 @@ router
     /* CARGA DETALLE DE PRODUCTO */
     .get('/detalle/:id', detalle)
     .get('/carrito', carrito)
-    .delete('/delete/:id', remove)
     .get('/productAdd', agregarProd)// Agregar Producto 
     .post('/productAdd', upload.single('imagen'), agregarProducto)
     .get('/edit/:id',edit)//Editar Producto - se agrega el id para saber que producto se va a editar
     .put('/update/:id',update)//Actualizar Producto - se agrega el id para saber que producto se va a editar
-
+    .delete('/delete/:id', remove)
 
 module.exports = router;

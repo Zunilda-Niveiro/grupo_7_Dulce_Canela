@@ -15,11 +15,11 @@
                 <img class="form__logo" src="/images/logo.png" alt="">
                 <form action="/productos/update/<%= prod.id %>?_method=PUT" class="form_style" method="POST">
                     <h3>Datos del Producto</h3>
-                    <input type="text" name="name" id="name" placeholder="nombre de productor" required value="<%= prod.nombre%>">
-                    <input type="text" name="marca" id="brand-product" placeholder="Ingrese Marca de producto" required required value="<%= prod.marca%>">
-                    <input type="number" name="precio" id="price" placeholder="Precio del Producto" required value="<%= prod.precio%>">
-                    <input type="text" name="cantidad" id="" placeholder="Cantidad" required value="<%= prod.cantidad%>">
-                    <select name="categoria" id="" class="form_style">
+                    <input type="text" name="nombre" id="nombre" placeholder="nombre de productor" required value="<%= prod.nombre%>">
+                    <input type="text" name="marca" id="marca" placeholder="Ingrese Marca de producto" required required value="<%= prod.marca%>">
+                    <input type="number" name="precio" id="precio" placeholder="Precio del Producto" required value="<%= prod.precio%>">
+                    <input type="text" name="cantidad" id="cantidad" placeholder="Cantidad" required value="<%= prod.cantidad%>">
+                    <select name="categoria" id="categoria" class="form_style">
                         <option selected hidden ><%= prod.categoria%></option>
                         <option value="Especias">Especias</option>
                         <option value="frutos-secos">Frutos secos</option>
@@ -29,7 +29,7 @@
                         <option value="Snacks">Snacks</option>
                     </select>
                     <h4>Seleccione imagen del producto</h4>
-                    <input type="file" name="imagen" id="imagen" accept="image/png, .jpeg, .jpg, image/gif, .webp">
+                    <input type="file" name="imagen" id="imagen"  value="<%= prod.imagen%>" accept="image/png, .jpeg, .jpg, image/gif, .webp">
                     <textarea name="detalle" rows="10" cols="40"
                         placeholder="<%= prod.detalle %>"></textarea>
                     

@@ -29,16 +29,17 @@
                     </div>
                 </div>
                 <hr>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio iste rerum placeat nostrum dolore.
-                    Sunt adipisci fugiat rerum, animi commodi in voluptatibus ipsam explicabo accusamus praesentium
-                    ducimus id tempore a.</p>
+                <p><%= prod.detalle %></p>
                 <form action="/productos/agregar/<%= prod.id %> " method="POST">
                     <button type="submit" class="btn-add">Agregar al carrito</button>
                 </form>
-                <a class="btn-edit" href="/productos/edit/<%= prod.id %>">Editar</a>
-                <form action="">
-                    
-                </form>
+
+                <div class="btns">
+                    <a class="btn-edit" href="/productos/edit/<%= prod.id %>">Editar</a>
+                    <form action="/productos/delete/<%= prod.id %>?_method=DELETE" method="POST">
+                        <a href=""> <button type="submit" class="btn-delete">Eliminar</button></a>
+                    </form>
+                </div>
 
             </article>
         </section>

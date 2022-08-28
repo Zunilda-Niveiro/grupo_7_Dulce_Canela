@@ -27,7 +27,8 @@ module.exports = {
         })
     },
     detalle: (req, res) => {
-        const prod = productos.find(producto => producto.id === +req.params.id)
+        const products = loadProduct();
+        const prod = products.find(producto => producto.id === +req.params.id)
         const carrito = loadCarrito();
         return res.render('detalle', {
             prod,
@@ -113,44 +114,41 @@ module.exports = {
         storeProduct(newProductlist);
         return res.redirect('/');
     },
-    edit : (req,res)=>{
+    edit: (req, res) => {
         const products = loadProduct();
         const prod = products.find(prod => prod.id === +req.params.id);
-        return res.render('productEdit',{
+        return res.render('productEdit', {
             prod,
         });
     },
-    update : (req,res)=>{
+    update: (req, res) => {
 
-        return res.send(req.body)
-
-/*         const products = loadProduct();
-        const {id} = req.params;
-        const { nombre, marca, precio, cantidad, categoria, detalle } = req.body;
-        const productosModificados = products.map(prod =>{
-            if(prod.id === +id){
+        const products = loadProduct();
+        const { id } = req.params;
+        const { nombre, marca, precio, cantidad, categoria,imagen, detalle } = req.body;
+        const productosModificados = products.map(prod => {
+            if (prod.id === +id) {
                 return {
                     ...prod,
-                    nombre: nombre.trim(),
-                    marca: nombre.trim(),
+                    nombre: nombre,
+                    marca: marca,
                     precio: +precio,
-                    cantidad: cantidad,
+                    cantidad: +cantidad,
                     categoria: categoria,
                     imagen: imagen,
+                    detalle: detalle,
                 }
             }
             return prod
         })
         storeProduct(productosModificados)
-        return res.redirect('/productos/detalle/'+req.params.id); 
- */    }
-    
-    
-    ,
+        return res.redirect('/productos/detalle/' + req.params.id);
+
+    },
     remove: (req, res) => {
-        const carrito = loadCarrito();
-        const carritoModificado = carrito.filter(car => car.id_producto != +req.params.id);
-        storeCarrito(carritoModificado);
+        const products = loadProduct();
+        const productsModify = products.filter(product => product.id !== +req.params.id )
+        storeProduct(productsModify);
         return res.redirect('/')
     }
 }

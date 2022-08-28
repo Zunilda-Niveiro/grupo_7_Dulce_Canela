@@ -282,36 +282,6 @@
       "detalle": "Producto salado"
    },
    {
-      "id": 32,
-      "categoria": "harinas",
-      "nombre": "Harina de mandioca",
-      "cantidad": "1",
-      "marca": "Morixe",
-      "precio": "250",
-      "imagen": "product-1661690533939.jpg",
-      "detalle": "Presentamos la Fécula de Mandicoa Morixe. Ideal para hacer el más rico chipá y platos típicos. La presentación es de 1kg y es libre de gluten!"
-   },
-   {
-      "id": 33,
-      "categoria": "harinas",
-      "nombre": "Maizena",
-      "cantidad": "1",
-      "marca": "Maizena",
-      "precio": "150",
-      "imagen": "product-1661692644710.jpg",
-      "detalle": "Almidón de Maíz Maizena Sin Tacc 550 Gr."
-   },
-   {
-      "id": 34,
-      "categoria": "harinas",
-      "nombre": "Harina para Arepas",
-      "cantidad": "1",
-      "marca": "Morixe",
-      "precio": "250",
-      "imagen": "product-1661692762953.jpg",
-      "detalle": "Harina Morixe para Arepas 1 Kg."
-   },
-   {
       "id": 35,
       "categoria": "harinas",
       "nombre": "Harina de Arroz",
