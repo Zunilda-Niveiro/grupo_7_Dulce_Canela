@@ -255,11 +255,11 @@
       "id": 29,
       "categoria": "especias",
       "nombre": "Curry",
-      "cantidad": "100",
+      "cantidad": 100,
       "marca": "El Sol",
-      "precio": "250",
+      "precio": 255,
       "imagen": "product-1661135044826.png",
-      "detalle": "Un sabor exótico"
+      "detalle": "Un sabor Exotico"
    },
    {
       "id": 30,
