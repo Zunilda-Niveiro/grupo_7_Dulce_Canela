@@ -1,31 +1,31 @@
 [
     {
-  "id": 1,
-  "first-name": "Esteban",
-  "last_name": "Rey",
-  "direction": "domicilio",
-  "image": "lcdmOb.png",
-  "email": "Esteban-Rey@gmail.com",
-  "password": "12345"
-},
-{
-  "id": 2,
-  "first-name": "Lucas",
-  "last_name": "Barros",
-  "direction": "domicilio",
-  "image": "hxpl.png",
-  "email": "LucasBarros@gmail.com",
-  "password": "Nagbacalan"
-},
-{
-  "id": 3,
-  "first-name": "Zunilda",
-  "last_name": "Niveiro",
-  "direction": "domicilio",
-  "image": "e4OG0s.png",
-  "email": "niveiro.zunilda@gmail.com",
-  "password": "4569ddl"
-},
+    "id": 1,
+    "first-name": "Esteban",
+    "last_name": "Rey",
+    "direction": "domicilio",
+    "image": "lcdmOb.png",
+    "email": "Esteban-Rey@gmail.com",
+    "password": "12345"
+    },
+    {
+    "id": 2,
+    "first-name": "Lucas",
+    "last_name": "Barros",
+    "direction": "domicilio",
+    "image": "hxpl.png",
+    "email": "LucasBarros@gmail.com",
+    "password": "Nagbacalan"
+    },
+    {
+    "id": 3,
+    "first-name": "Zunilda",
+    "last_name": "Niveiro",
+    "direction": "domicilio",
+    "image": "e4OG0s.png",
+    "email": "niveiro.zunilda@gmail.com",
+    "password": "4569ddl"
+    },
 {
     "id": 4,
     "first-name": "Shaine",
@@ -34,8 +34,8 @@
     "image": "8Ulee.jpg",
     "email": "516962.sd@gmail.com",
     "password": "Puan7Selatan"
-  },
-  {
+},
+{
     "id": 5,
     "first-name": "Betsy",
     "last_name": "Atwel",
@@ -43,5 +43,5 @@
     "image": "mcEz.jpg",
     "email": "49jklk@gmail.com",
     "password": "Prolet12"
-  }
+}
 ]
