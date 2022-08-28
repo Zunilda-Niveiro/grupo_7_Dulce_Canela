@@ -4,7 +4,7 @@
     "first-name": "Esteban",
     "last_name": "Rey",
     "direction": "domicilio",
-    "image": "lcdmOb.png",
+    "image": "logo.jpg",
     "email": "Esteban-Rey@gmail.com",
     "password": "12345"
     },
@@ -13,7 +13,7 @@
     "first-name": "Lucas",
     "last_name": "Barros",
     "direction": "domicilio",
-    "image": "hxpl.png",
+    "image": "logo.jpg",
     "email": "LucasBarros@gmail.com",
     "password": "Nagbacalan"
     },
@@ -22,7 +22,7 @@
     "first-name": "Zunilda",
     "last_name": "Niveiro",
     "direction": "domicilio",
-    "image": "e4OG0s.png",
+    "image": "logo.jpg",
     "email": "niveiro.zunilda@gmail.com",
     "password": "4569ddl"
     },
@@ -31,7 +31,7 @@
     "first-name": "Shaine",
     "last_name": "Dermott",
     "direction": "domicilio",
-    "image": "8Ulee.jpg",
+    "image": "logo.jpg",
     "email": "516962.sd@gmail.com",
     "password": "Puan7Selatan"
 },
@@ -40,7 +40,7 @@
     "first-name": "Betsy",
     "last_name": "Atwel",
     "direction": "domicilio",
-    "image": "mcEz.jpg",
+    "image": "logo.jpg",
     "email": "49jklk@gmail.com",
     "password": "Prolet12"
 }
