@@ -1,15 +1,11 @@
-<%- include('./partials/head') %> 
+<%- include('./partials/head',{
+    title: 'Carrito'
+}) %>
 
 <body>
-    <%- include('./partials/header') %> 
+    <%- include('./partials/header') %>
     <main class="carrito__main">
-        <article class="home__main__busq">
-            <form action="">
-                <span>Buscar</span>
-                <input type="text" name="" id="">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </form>
-        </article>
+        <%- include('./partials/busqueda') %>
         <section>
             <article class="carrito__main--resumen">
                 <div class="resumen-visible">
@@ -19,40 +15,32 @@
                 </div>
                 <input type="checkbox" name="" id="resumen">
                 <div class="resumen-oculto">
-                    <article class="home__header__cart--prod">
-                        <img src="/images/productos/frutos-secos.jpg" alt="">
-                        <div class="cart-desc">
-                            <div class="cart-nom">
-                                <h5>Frutos secos x 500gr</h5>
-                                <i class="fa-solid fa-trash-can"></i>
-                            </div>
-                            <div class="cart-cant">
-                                <div class="cart-cant-controles">
-                                    <i class="fa-solid fa-minus"></i>
-                                    <input type="number" name="" id="">
-                                    <i class="fa-solid fa-plus"></i>
+                    <% carrito.forEach(car => { %>
+                        <article class="home__header__cart--prod">
+                            <img src="/images/productos/<%= productos[car.id_producto - 1].imagen %>" alt="" />
+                            <div class="cart-desc">
+                                <div class="cart-nom">
+                                    <h5>
+                                        <%= productos[car.id_producto - 1].nombre %> x <%=
+                                                 productos[car.id_producto-1].cantidad%>gr
+                                    </h5>
+                                    <form action="/productos/delete/<%= car.id_producto %>?_method=DELETE" method="POST">
+                                        <button type="submit">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </form>
                                 </div>
-                                <h5>$ 2250</h5>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="home__header__cart--prod">
-                        <img src="/images/productos/harinas.jpg" alt="">
-                        <div class="cart-desc">
-                            <div class="cart-nom">
-                                <h5>Harinas</h5>
-                                <i class="fa-solid fa-trash-can"></i>
-                            </div>
-                            <div class="cart-cant">
-                                <div class="cart-cant-controles">
-                                    <i class="fa-solid fa-minus"></i>
-                                    <input type="number" name="" id="">
-                                    <i class="fa-solid fa-plus"></i>
+                                <div class="cart-cant">
+                                    <div class="cart-cant-controles">
+                                        <i class="fa-solid fa-minus"></i>
+                                        <input type="number" name="" id="" value="<%= car.cantidad_p %>" />
+                                        <i class="fa-solid fa-plus"></i>
+                                    </div>
+                                    <h5>$ <%= productos[car.id_producto - 1].precio %></h5>
                                 </div>
-                                <h5>$ 2250</h5>
                             </div>
-                        </div>
-                    </article>
+                        </article>
+                        <% }) %>
                 </div>
             </article>
             <!-- FORMULARIO CARRITO -->
@@ -115,7 +103,7 @@
             </article>
         </section>
     </main>
-    <%- include('./partials/footer') %> 
+    <%- include('./partials/footer') %>
 </body>
 
 </html>

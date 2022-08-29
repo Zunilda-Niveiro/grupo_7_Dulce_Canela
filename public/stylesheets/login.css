@@ -4,7 +4,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 40vw;
 }
 
 .main__login {
@@ -24,7 +23,6 @@
     0 0 30px var(--colorCinco);
   width: 90vw;
   position: relative;
-  margin-left: 63vw;
 }
 
 .form__logo {
@@ -37,8 +35,8 @@
 .form_style {
   display: flex;
   flex-direction: column;
-  width: 310px;
   justify-content: center;
+  width: 85%;
 }
 
 .form_style * {
@@ -46,13 +44,15 @@
   border: transparent;
   padding: 10px 10px;
   color: var(--colorCinco);
+  text-align: center;
 }
 
 .form_style input {
   margin: 0px 18px 15px 18px;
   max-width: 90%;
 }
-.form_style textarea {
+
+.form_style textarea, .form_style select {
   margin: 0px 18px 15px 18px;
   max-width: 90%;
 }
@@ -69,15 +69,16 @@
 /* MEDIA QUERIES */
 @media (min-width: 768px) {
   .main__login__form {
-    width: 90vw;
-    margin-left: 0vw;
+    width: 75vw;
+  
   }
   .main__login__section {
-    margin-left: 33%;
+    margin: 0 auto;
   }
 }
 @media (min-width: 1024px) {
   .main__login__form {
-    width: 90vw;
+    width: 50vw;
+  
   }
 }

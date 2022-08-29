@@ -81,6 +81,7 @@ a {
     position: absolute;
     right: calc(50% - 50px);
     bottom: -50px;
+    cursor: pointer;
 }
 
 /* IMAGEN DE FONDO Y H1 */

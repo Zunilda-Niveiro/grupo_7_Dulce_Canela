@@ -60,9 +60,16 @@
 .home__main__busq i {
     color: white;
 }
-
+.home__main__busq i:hover{
+    cursor: pointer;
+}
 .home__main__busq span {
     color: white;
+}
+.home__main__busq button{
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
 }
 
 /* OFERTA DEL DIA */
@@ -70,7 +77,7 @@
     display: flex;
     align-items: flex-end;
     text-align: center;
-    background-image: url('/images/productos/nueces.jpg');
+    background-image: url('/images/nueces.jpg');
     background-size: cover;
     width: 90vw;
     margin: 15px auto;

@@ -1,0 +1,47 @@
+[
+    {
+    "id": 1,
+    "first-name": "Esteban",
+    "last_name": "Rey",
+    "direction": "domicilio",
+    "image": "logo.jpg",
+    "email": "Esteban-Rey@gmail.com",
+    "password": "12345"
+    },
+    {
+    "id": 2,
+    "first-name": "Lucas",
+    "last_name": "Barros",
+    "direction": "domicilio",
+    "image": "logo.jpg",
+    "email": "LucasBarros@gmail.com",
+    "password": "Nagbacalan"
+    },
+    {
+    "id": 3,
+    "first-name": "Zunilda",
+    "last_name": "Niveiro",
+    "direction": "domicilio",
+    "image": "logo.jpg",
+    "email": "niveiro.zunilda@gmail.com",
+    "password": "4569ddl"
+    },
+{
+    "id": 4,
+    "first-name": "Shaine",
+    "last_name": "Dermott",
+    "direction": "domicilio",
+    "image": "logo.jpg",
+    "email": "516962.sd@gmail.com",
+    "password": "Puan7Selatan"
+},
+{
+    "id": 5,
+    "first-name": "Betsy",
+    "last_name": "Atwel",
+    "direction": "domicilio",
+    "image": "logo.jpg",
+    "email": "49jklk@gmail.com",
+    "password": "Prolet12"
+}
+]

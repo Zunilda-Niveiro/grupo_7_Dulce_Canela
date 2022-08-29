@@ -1,0 +1,612 @@
+[
+   {
+      "id": 1,
+      "categoria": "semillas",
+      "nombre": "Semillas de Amaranto",
+      "cantidad": 300,
+      "marca": "Natura",
+      "precio": 350,
+      "imagen": "amaranto1.jpg",
+      "detalle": "semper sapien a libero nam dui proin leo odio porttitor id"
+   },
+   {
+      "id": 2,
+      "categoria": "semillas",
+      "nombre": "Semillas de Zapallo",
+      "cantidad": 250,
+      "marca": "Natura",
+      "precio": 550,
+      "imagen": "crocante_zapallo.jpg",
+      "detalle": "vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id ornare imperdiet"
+   },
+   {
+      "id": 3,
+      "categoria": "semillas",
+      "nombre": "Mix Salado",
+      "cantidad": 400,
+      "marca": "Natura",
+      "precio": 460,
+      "imagen": "mix-salado.jpg",
+      "detalle": "eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id"
+   },
+   {
+      "id": 4,
+      "categoria": "semillas",
+      "nombre": "Pepitas de Zapallo",
+      "cantidad": 200,
+      "marca": "Natura",
+      "precio": 380,
+      "imagen": "pepitascalabaza01.jpg",
+      "detalle": "amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam"
+   },
+   {
+      "id": 5,
+      "categoria": "semillas",
+      "nombre": "Pipas de Calabaza",
+      "cantidad": 250,
+      "marca": "Natura",
+      "precio": 210,
+      "imagen": "pipas-de-calabaza_.jpg",
+      "detalle": "congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus"
+   },
+   {
+      "id": 6,
+      "categoria": "semillas",
+      "nombre": "Quinoa Roja",
+      "cantidad": 100,
+      "marca": "Natura",
+      "precio": 275,
+      "imagen": "quinoa-roja.jpeg",
+      "detalle": "habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla"
+   },
+   {
+      "id": 7,
+      "categoria": "semillas",
+      "nombre": "Semillas de Chia",
+      "cantidad": 200,
+      "marca": "Natura",
+      "precio": 380,
+      "imagen": "chia1.jpg",
+      "detalle": "mauris sit amet eros suspendisse accumsan tortor quis turpis sed"
+   },
+   {
+      "id": 8,
+      "categoria": "semillas",
+      "nombre": "Semillas de Amapola",
+      "cantidad": 100,
+      "marca": "Natura",
+      "precio": 240,
+      "imagen": "amapolas.jpg",
+      "detalle": "erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi"
+   },
+   {
+      "id": 9,
+      "categoria": "semillas",
+      "nombre": "Semillas de lino Trituradas",
+      "cantidad": 100,
+      "marca": "Natura",
+      "precio": 190,
+      "imagen": "lino-trituradas.jpg",
+      "detalle": "vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum"
+   },
+   {
+      "id": 10,
+      "categoria": "semillas",
+      "nombre": "Semillas de Sesamo",
+      "cantidad": 250,
+      "marca": "Natura",
+      "precio": 310,
+      "imagen": "semillas-sesamo.jpg",
+      "detalle": "semper sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut"
+   },
+   {
+      "id": 11,
+      "categoria": "semillas",
+      "nombre": "Semillas de Sesamo Negro",
+      "cantidad": 300,
+      "marca": "Natura",
+      "precio": 280,
+      "imagen": "semillas-de-sesamo-negro1.jpg",
+      "detalle": "enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum"
+   },
+   {
+      "id": 12,
+      "categoria": "semillas",
+      "nombre": "Semillas de Quinoa",
+      "cantidad": 500,
+      "marca": "Natura",
+      "precio": 380,
+      "imagen": "quinoa.jpg",
+      "detalle": "porttitor pede justo eu massa donec dapibus duis at velit eu est congue elementum in"
+   },
+   {
+      "id": 13,
+      "categoria": "semillas",
+      "nombre": "Semillas de Lino",
+      "cantidad": 100,
+      "marca": "Natura",
+      "precio": 180,
+      "imagen": "semillas-de-lino.jpg",
+      "detalle": "libero nullam sit amet turpis elementum ligula vehicula consequat morbi"
+   },
+   {
+      "id": 14,
+      "categoria": "semillas",
+      "nombre": "Semillas de Sesamo Integral",
+      "cantidad": 500,
+      "marca": "Natura",
+      "precio": 380,
+      "imagen": "sesamo-integral.jpg",
+      "detalle": "cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat"
+   },
+   {
+      "id": 15,
+      "categoria": "infusiones",
+      "nombre": "Abedul",
+      "cantidad": 300,
+      "marca": "Natura",
+      "precio": 350,
+      "imagen": "abedul.jpg",
+      "detalle": "ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere"
+   },
+   {
+      "id": 16,
+      "categoria": "infusiones",
+      "nombre": "Bardana",
+      "cantidad": 150,
+      "marca": "Natura",
+      "precio": 550,
+      "imagen": "bardana.jpg",
+      "detalle": "primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est"
+   },
+   {
+      "id": 17,
+      "categoria": "infusiones",
+      "nombre": "Borraja",
+      "cantidad": 400,
+      "marca": "Natura",
+      "precio": 460,
+      "imagen": "borraja.jpeg",
+      "detalle": "nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget eros"
+   },
+   {
+      "id": 18,
+      "categoria": "infusiones",
+      "nombre": "Cola de caballo",
+      "cantidad": 200,
+      "marca": "Natura",
+      "precio": 380,
+      "imagen": "cola-de-caballo.jpg",
+      "detalle": "posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet"
+   },
+   {
+      "id": 19,
+      "categoria": "infusiones",
+      "nombre": "Eucalipto",
+      "cantidad": 250,
+      "marca": "Natura",
+      "precio": 210,
+      "imagen": "eucalipto.jpg",
+      "detalle": "vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus"
+   },
+   {
+      "id": 20,
+      "categoria": "infusiones",
+      "nombre": "Lavanda",
+      "cantidad": 100,
+      "marca": "Natura",
+      "precio": 275,
+      "imagen": "lavanda.jpg",
+      "detalle": "morbi vel lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit"
+   },
+   {
+      "id": 21,
+      "categoria": "infusiones",
+      "nombre": "Llanten",
+      "cantidad": 200,
+      "marca": "Natura",
+      "precio": 380,
+      "imagen": "llanten.jpg",
+      "detalle": "turpis enim blandit mi in porttitor pede justo eu massa donec dapibus"
+   },
+   {
+      "id": 22,
+      "categoria": "infusiones",
+      "nombre": "Malva",
+      "cantidad": 100,
+      "marca": "Natura",
+      "precio": 240,
+      "imagen": "malva.jpg",
+      "detalle": "nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum"
+   },
+   {
+      "id": 23,
+      "categoria": "infusiones",
+      "nombre": "Manzanilla",
+      "cantidad": 100,
+      "marca": "Natura",
+      "precio": 190,
+      "imagen": "manzanilla.jpg",
+      "detalle": "ante vestibulum ante ipsum primis in faucibus orci luctus et ultrices"
+   },
+   {
+      "id": 24,
+      "categoria": "infusiones",
+      "nombre": "Marcela",
+      "cantidad": 250,
+      "marca": "Natura",
+      "precio": 310,
+      "imagen": "marcela.jpg",
+      "detalle": "nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec"
+   },
+   {
+      "id": 25,
+      "categoria": "infusiones",
+      "nombre": "Menta Piperita",
+      "cantidad": 300,
+      "marca": "Natura",
+      "precio": 280,
+      "imagen": "menta-piperita.jpg",
+      "detalle": "eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus"
+   },
+   {
+      "id": 26,
+      "categoria": "infusiones",
+      "nombre": "Salvia",
+      "cantidad": 500,
+      "marca": "Natura",
+      "precio": 380,
+      "imagen": "salvia.jpg",
+      "detalle": "id massa id nisl venenatis lacinia aenean sit amet justo"
+   },
+   {
+      "id": 27,
+      "categoria": "infusiones",
+      "nombre": "Te Blanco",
+      "cantidad": 100,
+      "marca": "Natura",
+      "precio": 180,
+      "imagen": "teblanco.jpg",
+      "detalle": "nisi venenatis tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat"
+   },
+   {
+      "id": 28,
+      "categoria": "infusiones",
+      "nombre": "Tilo",
+      "cantidad": 500,
+      "marca": "Natura",
+      "precio": 380,
+      "imagen": "tilo.jpg",
+      "detalle": "sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque duis"
+   },
+   {
+      "id": 29,
+      "categoria": "especias",
+      "nombre": "Curry",
+      "cantidad": "100",
+      "marca": "El Sol",
+      "precio": "250",
+      "imagen": "product-1661135044826.png",
+      "detalle": "suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus"
+   },
+   {
+      "id": 30,
+      "categoria": "especias",
+      "nombre": "Urucum",
+      "cantidad": "100",
+      "marca": "Solar",
+      "precio": "300",
+      "imagen": "product-1661135146649.png",
+      "detalle": "sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at"
+   },
+   {
+      "id": 31,
+      "categoria": "especias",
+      "nombre": "Sal Rosada Himalaya",
+      "cantidad": "100",
+      "marca": "Exo",
+      "precio": "270",
+      "imagen": "product-1661135365475.webp",
+      "detalle": "eget eros elementum pellentesque quisque porta volutpat erat quisque erat"
+   },
+   {
+      "id": 32,
+      "categoria": "especias",
+      "nombre": "Sal Marina",
+      "cantidad": "500",
+      "marca": "El Sol",
+      "precio": "250",
+      "imagen": "product-1661698788174.webp",
+      "detalle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor sit amet consectetur adipiscing elit"
+   },
+   {
+      "id": 33,
+      "categoria": "especias",
+      "nombre": "Pimentón Ahumado",
+      "cantidad": "100",
+      "marca": "El Huerto",
+      "precio": "290",
+      "imagen": "product-1661698862664.webp",
+      "detalle": "pellentesque habitant. Sapien nec sagittis aliquam malesuada bibendum arcu. Donec et odio pellentesque diam volutpat. Volutpat blandit aliquam"
+   },
+   {
+      "id": 34,
+      "categoria": "especias",
+      "nombre": "Curcuma",
+      "cantidad": "100",
+      "marca": "El Castillo",
+      "precio": "350",
+      "imagen": "product-1661698933296.webp",
+      "detalle": "etiam erat velit. Sociis natoque penatibus et magnis dis parturient. Gravida rutrum quisque non tellus orci ac auctor augue."
+   },
+   {
+      "id": 35,
+      "categoria": "especias",
+      "nombre": "Canela Molida",
+      "cantidad": "100",
+      "marca": "El Molino",
+      "precio": "145",
+      "imagen": "product-1661698981096.webp",
+      "detalle": "Pellentesque adipiscing commodo elit at imperdiet. Ipsum faucibus vitae aliquet nec ullamcorper sit amet risus. Duis convallis convallis tellus id"
+   },
+   {
+      "id": 36,
+      "categoria": "especias",
+      "nombre": "Cacao Puro",
+      "cantidad": "100",
+      "marca": "Colombia",
+      "precio": "189",
+      "imagen": "product-1661699061323.webp",
+      "detalle": "interdum velit. A erat nam at lectus urna duis convallis convallis tellus. Ac odio tempor orci dapibus."
+   },
+   {
+      "id": 37,
+      "categoria": "frutos-secos",
+      "nombre": "Almendras Guara",
+      "cantidad": "100",
+      "marca": "Solum",
+      "precio": "368",
+      "imagen": "product-1661699712946.jpeg",
+      "detalle": "Ornare quam viverra orci sagittis eu volutpat odio facilisis mauris. Enim sed faucibus turpis in eu mi bibendum neque egestas."
+   },
+   {
+      "id": 38,
+      "categoria": "frutos-secos",
+      "nombre": "Avellanas",
+      "cantidad": "100",
+      "marca": "Dolus",
+      "precio": "367",
+      "imagen": "product-1661700049275.jpeg",
+      "detalle": "Augue neque gravida in fermentum et sollicitudin ac orci phasellus. Purus gravida quis blandit turpis cursus in hac habitasse."
+   },
+   {
+      "id": 39,
+      "categoria": "frutos-secos",
+      "nombre": "Pistachos",
+      "cantidad": "100",
+      "marca": "Ferum",
+      "precio": "298",
+      "imagen": "product-1661700109509.jpeg",
+      "detalle": "Libero nunc consequat interdum varius sit amet mattis. Arcu ac tortor dignissim convallis aenean et tortor. Feugiat nisl pretium fusce id velit ut"
+   },
+   {
+      "id": 40,
+      "categoria": "frutos-secos",
+      "nombre": "Castañas de Cajú",
+      "cantidad": "150",
+      "marca": "Leruy",
+      "precio": "425",
+      "imagen": "product-1661700194747.jpeg",
+      "detalle": "ortor pretium viverra. In ornare quam viverra orci sagittis. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Placerat vestibulum"
+   },
+   {
+      "id": 41,
+      "categoria": "frutos-secos",
+      "nombre": "Mani Natural",
+      "cantidad": "100",
+      "marca": "Orus",
+      "precio": "260",
+      "imagen": "product-1661700271291.jpeg",
+      "detalle": "lectus mauris ultrices eros in cursus turpis massa. Nisl pretium fusce id velit ut tortor pretium viverra suspendisse."
+   },
+   {
+      "id": 42,
+      "categoria": "frutos-secos",
+      "nombre": "Nueces Pecan",
+      "cantidad": "100",
+      "marca": "Lorum",
+      "precio": "386",
+      "imagen": "product-1661700325164.jpeg",
+      "detalle": "Convallis tellus id interdum velit. Vivamus at augue eget arcu dictum varius duis at consectetur. "
+   },
+   {
+      "id": 43,
+      "categoria": "frutos-secos",
+      "nombre": "Nueces Mariposa",
+      "cantidad": "100",
+      "marca": "Oktum",
+      "precio": "389",
+      "imagen": "product-1661700398801.jpeg",
+      "detalle": "Dictum non consectetur a erat nam. Nulla porttitor massa id neque aliquam vestibulum morbi. Libero enim sed faucibus turpis."
+   },
+   {
+      "id": 44,
+      "categoria": "frutos-secos",
+      "nombre": "Almendras Non Pareil",
+      "cantidad": "100",
+      "marca": "Solum",
+      "precio": "410",
+      "imagen": "product-1661700457017.jpeg",
+      "detalle": "Mauris pharetra et ultrices neque ornare. Mi tempus imperdiet nulla malesuada pellentesque elit eget."
+   },
+   {
+      "id": 45,
+      "categoria": "harinas",
+      "nombre": "Harina de Garbanzos",
+      "cantidad": "100",
+      "marca": "Solum",
+      "precio": "90",
+      "imagen": "product-1661702454834.jpeg",
+      "detalle": "Vulputate eu scelerisque felis imperdiet. Sed risus pretium quam vulputate. "
+   },
+   {
+      "id": 46,
+      "categoria": "harinas",
+      "nombre": "Semolin",
+      "cantidad": "100",
+      "marca": "El Molino",
+      "precio": "120",
+      "imagen": "product-1661702517135.jpeg",
+      "detalle": "Non sodales neque sodales ut etiam sit amet nisl purus. Et magnis dis parturient montes nascetur."
+   },
+   {
+      "id": 47,
+      "categoria": "harinas",
+      "nombre": "Harina de Coco",
+      "cantidad": "100",
+      "marca": "El Molino",
+      "precio": "100",
+      "imagen": "product-1661702582509.jpeg",
+      "detalle": "Purus sit amet volutpat consequat. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci."
+   },
+   {
+      "id": 48,
+      "categoria": "harinas",
+      "nombre": "Fécula de Mandioca",
+      "cantidad": "100",
+      "marca": "El Molino",
+      "precio": "89",
+      "imagen": "product-1661702643467.jpeg",
+      "detalle": "Odio eu feugiat pretium nibh ipsum consequat nisl vel."
+   },
+   {
+      "id": 49,
+      "categoria": "harinas",
+      "nombre": "Fécula de Maíz",
+      "cantidad": "100",
+      "marca": "Lorem",
+      "precio": "78",
+      "imagen": "product-1661702700098.jpeg",
+      "detalle": "Aenean pharetra magna ac placerat vestibulum lectus mauris. Ac odio tempor orci dapibus ultrices in. Elit ut aliquam purus sit amet luctus venenatis lectus magna."
+   },
+   {
+      "id": 50,
+      "categoria": "harinas",
+      "nombre": "Harina de Arroz",
+      "cantidad": "100",
+      "marca": "El Molino",
+      "precio": "78",
+      "imagen": "product-1661702890784.png",
+      "detalle": "Platea dictumst quisque sagittis purus sit amet. Amet est placerat in egestas erat. Et malesuada fames ac turpis egestas maecenas. Urna id volutpat lacus laoreet. "
+   },
+   {
+      "id": 51,
+      "categoria": "harinas",
+      "nombre": "Harina de Avena",
+      "cantidad": "100",
+      "marca": "El Molino",
+      "precio": "75",
+      "imagen": "product-1661702944743.jpeg",
+      "detalle": "Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla facilisi. Nullam vehicula ipsum a arcu cursus vitae. "
+   },
+   {
+      "id": 52,
+      "categoria": "harinas",
+      "nombre": "Harina de Almendras",
+      "cantidad": "100",
+      "marca": "Lorem",
+      "precio": "115",
+      "imagen": "product-1661703002902.jpeg",
+      "detalle": "Ullamcorper malesuada proin libero nunc consequat interdum. Velit egestas dui id ornare arcu odio ut."
+   },
+   {
+      "id": 53,
+      "categoria": "harinas",
+      "nombre": "Harina de Lino Dorado",
+      "cantidad": "100",
+      "marca": "El Molino",
+      "precio": "98",
+      "imagen": "product-1661703063464.jpeg",
+      "detalle": "Nunc sed blandit libero volutpat. Velit sed ullamcorper morbi tincidunt ornare massa. In massa tempor nec feugiat nisl pretium fusce."
+   },
+   {
+      "id": 54,
+      "categoria": "harinas",
+      "nombre": "Harina Integral",
+      "cantidad": "100",
+      "marca": "Solum",
+      "precio": "68",
+      "imagen": "product-1661703115357.jpeg",
+      "detalle": "Amet consectetur adipiscing elit ut aliquam purus sit amet luctus. Praesent elementum facilisis leo vel. "
+   },
+   {
+      "id": 55,
+      "categoria": "snacks",
+      "nombre": "Chips de Mandioca",
+      "cantidad": "250",
+      "marca": "Nuestros Sabores",
+      "precio": "185",
+      "imagen": "product-1661707496255.jpg",
+      "detalle": "Vivamus arcu felis bibendum ut tristique et egestas quis ipsum. Elementum facilisis"
+   },
+   {
+      "id": 56,
+      "categoria": "snacks",
+      "nombre": "Nachos Originales",
+      "cantidad": "250",
+      "marca": "Macritas",
+      "precio": "280",
+      "imagen": "product-1661707554201.jpg",
+      "detalle": "leo vel fringilla est ullamcorper eget. Interdum velit laoreet id donec. Urna molestie at elementum"
+   },
+   {
+      "id": 57,
+      "categoria": "snacks",
+      "nombre": "Palitos de Arroz sabor Queso",
+      "cantidad": "200",
+      "marca": "Dos Hermanos",
+      "precio": "130",
+      "imagen": "product-1661707622499.jpg",
+      "detalle": "eu facilisis. Consectetur lorem donec massa sapien faucibus et molestie ac feugiat."
+   },
+   {
+      "id": 58,
+      "categoria": "snacks",
+      "nombre": "Chips de papas Rusticas",
+      "cantidad": "200",
+      "marca": "Nuestros Sabores",
+      "precio": "130",
+      "imagen": "product-1661707688584.jpg",
+      "detalle": "Convallis tellus id interdum velit. Vivamus at augue eget arcu dictum varius duis at consectetur. Dictum non consectetur a erat nam. "
+   },
+   {
+      "id": 59,
+      "categoria": "snacks",
+      "nombre": "Discos de Arroz sabor Jamón",
+      "cantidad": "200",
+      "marca": "Dos Hermanos",
+      "precio": "130",
+      "imagen": "product-1661707754615.jpg",
+      "detalle": "Nulla porttitor massa id neque aliquam vestibulum morbi. Libero enim sed faucibus turpis."
+   },
+   {
+      "id": 60,
+      "categoria": "snacks",
+      "nombre": "Snack de arroz sabor Panceta",
+      "cantidad": "200",
+      "marca": "Dos Hermanos",
+      "precio": "150",
+      "imagen": "product-1661707815598.png",
+      "detalle": "Mauris pharetra et ultrices neque ornare. Mi tempus imperdiet nulla malesuada pellentesque elit eget. Vulputate eu scelerisque felis imperdiet."
+   },
+   {
+      "id": 61,
+      "categoria": "snacks",
+      "nombre": "Chips de Batatas Fritas",
+      "cantidad": "250",
+      "marca": "Nuestros Sabores",
+      "precio": "160",
+      "imagen": "product-1661707889596.jpg",
+      "detalle": "Sed risus pretium quam vulputate. Non sodales neque sodales ut etiam sit amet nisl purus. Et magnis dis parturient montes nascetur."
+   }
+]

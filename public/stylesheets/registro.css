@@ -1,10 +1,4 @@
-@import url(./style.css);
 
-
-.main__productos h4{
-    text-align: center;
-    color: var(--colorCinco);
-}
 /*<---------registration form--------->*/
 .container-form {
   display: flex;

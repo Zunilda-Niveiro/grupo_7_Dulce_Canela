@@ -1,18 +1,12 @@
-<%- include('./partials/head') %> 
+<%- include('./partials/head',{
+    title: 'Login'
+}) %> 
 
 <body>
     <%- include('./partials/header') %> 
     <main class="main__productos">
         <!-- BARRA BUSQUEDA -->
-        <section>
-            <article class="home__main__busq">
-                <form action="">
-                    <span>Buscar</span>
-                    <input type="text" name="" id="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </form>
-            </article>
-        </section>
+        <%- include('./partials/busqueda') %> 
         <!-- TITULO -->
         <h1>Bienvenid@s</h1>
         <!-- LOGIN -->
