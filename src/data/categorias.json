@@ -1,0 +1,31 @@
+[{
+      "idcat": 1,
+      "nombre": "especias",
+      "imagen": "especias.jpg"
+   },
+   {
+      "idcat": 2,
+      "nombre": "frutos secos",
+      "imagen": "frutos-secos.jpg"
+   },
+   {
+      "idcat": 3,
+      "nombre": "harinas",
+      "imagen": "harinas.jpg"
+   },
+   {
+      "idcat": 4,
+      "nombre": "infusiones",
+      "imagen": "infusiones.jpg"
+   },
+   {
+      "idcat": 5,
+      "nombre": "semillas",
+      "imagen": "semillas.jpg"
+   },
+   {
+      "idcat": 6,
+      "nombre": "snacks",
+      "imagen": "snacks.jpg"
+   }
+]

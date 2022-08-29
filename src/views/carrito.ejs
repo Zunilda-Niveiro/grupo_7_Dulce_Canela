@@ -1,0 +1,109 @@
+<%- include('./partials/head',{
+    title: 'Carrito'
+}) %>
+
+<body>
+    <%- include('./partials/header') %>
+    <main class="carrito__main">
+        <%- include('./partials/busqueda') %>
+        <section>
+            <article class="carrito__main--resumen">
+                <div class="resumen-visible">
+                    <label for="resumen"><i class="fa-solid fa-circle-plus"></i></label>
+                    <p>Ver detalles de mi compra:</p>
+                    <p>$ 3300</p>
+                </div>
+                <input type="checkbox" name="" id="resumen">
+                <div class="resumen-oculto">
+                    <% carrito.forEach(car => { %>
+                        <article class="home__header__cart--prod">
+                            <img src="/images/productos/<%= productos[car.id_producto - 1].imagen %>" alt="" />
+                            <div class="cart-desc">
+                                <div class="cart-nom">
+                                    <h5>
+                                        <%= productos[car.id_producto - 1].nombre %> x <%=
+                                                 productos[car.id_producto-1].cantidad%>gr
+                                    </h5>
+                                    <form action="/productos/delete/<%= car.id_producto %>?_method=DELETE" method="POST">
+                                        <button type="submit">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="cart-cant">
+                                    <div class="cart-cant-controles">
+                                        <i class="fa-solid fa-minus"></i>
+                                        <input type="number" name="" id="" value="<%= car.cantidad_p %>" />
+                                        <i class="fa-solid fa-plus"></i>
+                                    </div>
+                                    <h5>$ <%= productos[car.id_producto - 1].precio %></h5>
+                                </div>
+                            </div>
+                        </article>
+                        <% }) %>
+                </div>
+            </article>
+            <!-- FORMULARIO CARRITO -->
+            <article class="carrito__main__article">
+                <form action="">
+                    <p>Datos de contacto</p>
+                    <input type="email" name="" id="" placeholder="Email">
+                    <input type="checkbox" name="" id="ofertas">
+                    <label for="ofertas">Quiero recibir ofertas y novedades por mail</label>
+                    <p>Entrega</p>
+                    <select name="" id="pais">
+                        <option value="arg">Argentina</option>
+                        <option value="chl">Chile</option>
+                        <option value="uru">Uruguay</option>
+                    </select>
+                    <input type="text" name="" id="" placeholder="Código Postal">
+                    <div>
+                        <p>Datos del destinatario</p>
+                        <input type="text" name="" id="" placeholder="Nombre">
+                        <input type="text" name="" id="" placeholder="Apellido">
+                        <input type="text" name="" id="" placeholder="Teléfono">
+                    </div>
+                    <div>
+                        <p>Domicilio del destinatario</p>
+                        <input type="text" name="" id="" placeholder="Calle">
+                        <input type="text" name="" id="" placeholder="Número">
+                        <input type="text" name="" id="" placeholder="Departamento">
+                        <input type="text" name="" id="" placeholder="Barrio">
+                        <input type="text" name="" id="" placeholder="Ciudad">
+                    </div>
+                    <div>
+                        <p>Datos del facturación</p>
+                        <input type="text" name="" id="" placeholder="DNI o CUIL">
+                    </div>
+                    <div>
+                        <p>Medio de pago</p>
+                        <div class="medio-pago">
+                            <i class="fa-solid fa-credit-card"></i>
+                            <label for="tarjeta"><span>Tarjeta de crédito y débito</span></label>
+                            <input type="checkbox" name="" id="tarjeta">
+                            <div class="medio-pago-tarjeta">
+                                <input type="text" placeholder="Número de tarjeta">
+                                <input type="text" name="" id="" placeholder="Titular de tarjeta">
+                                <input type="text" name="" id="" placeholder="Vencimiento (MM/AA)">
+                                <input type="text" name="" id="" placeholder="CVV">
+                                <input type="text" name="" id="" placeholder="DNI Titular">
+                            </div>
+                        </div>
+                        <div class="medio-pago">
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                            <span>Rapipago o Pago fácil</span>
+                        </div>
+                        <div class="medio-pago">
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                            <span>Transferencia Bancaria</span>
+                        </div>
+                    </div>
+                </form>
+                <a href="/">Realizar Compra</a>
+            </article>
+        </section>
+    </main>
+    <%- include('./partials/footer') %>
+</body>
+
+</html>

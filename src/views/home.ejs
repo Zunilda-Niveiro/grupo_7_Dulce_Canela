@@ -1,0 +1,40 @@
+<%- include('./partials/head',{
+    title: 'Inicio'
+}) %> 
+
+<body class="home">
+    <%- include('./partials/header') %> 
+    <%- include('./partials/carrito_desp') %> 
+    <main class="home__main">
+        <section>
+            <!-- BUSQUEDA -->
+            <%- include('./partials/busqueda') %> 
+            <!-- CADA ARTICLE ES UNA CATEGORIA DE PRODUCTO -->
+            <article class="home__main__cat">
+                <% categorias.forEach(categoria => { %>
+                 <div class="home__main__cat--card">
+                    <img src="/images/categorias/<%= categoria.imagen %> " alt="">
+                    <p><%= categoria.nombre %> </p>
+                    <a href="/productos/productos/<%= categoria.idcat %> ">Ver más</a>
+                </div>
+                <% }) %>             
+            </article>
+        </section>
+        <!-- OFERTA DEL DIA -->
+        <section class="home__main__ofer">
+            <div class="home__main__ofer--div">
+                <div>
+                    <h3>Ofertas del día</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde cupiditate, necessitatibus minima
+                        voluptatibus veniam eius!</p>
+                </div>
+            </div>
+        </section>
+        <!-- CARRUSEL -->
+        <img class="carousel" src="/images/almacen.jpg" alt="">
+    </main>
+    <!-- FOOTER -->
+    <%- include('./partials/footer')  %> 
+</body>
+
+</html>

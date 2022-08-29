@@ -1,0 +1,64 @@
+<%- include('./partials/head',{
+    title: 'Detalle'
+}) %>
+
+<body>
+    <%- include('./partials/header') %>
+    <%- include('./partials/carrito_desp') %>
+    <main class="main__detalle">
+        <section class="main__detalle__section">
+            <article class="section__imagenes ">
+                <div class="section__imagenes--ppal">
+                    <img class="" src="/images/productos/<%= prod.imagen %>" alt="">
+                </div>
+                <div class="section__mini">
+                    <img class="section__imagenes__mini" src="/images/productos/amaranto1.jpg" alt="">
+                    <img class="section__imagenes__mini" src="/images/productos/amaranto1.jpg" alt="">
+                    <img class="section__imagenes__mini" src="/images/productos/amaranto1.jpg" alt="">
+                </div>
+            </article>
+            <article class="section__descripcion">
+                <h4><%= prod.nombre %> x <%= prod.cantidad %> gr</h4>
+                <hr>
+                <div class="section__controles">
+                    <p class="">$ <%= prod.precio %> </p>
+                    <div>
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                        <input type="number" name="1">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <hr>
+                <p><%= prod.detalle %></p>
+                <form action="/productos/agregar/<%= prod.id %> " method="POST">
+                    <button type="submit" class="btn-add">Agregar al carrito</button>
+                </form>
+
+                <div class="btns">
+                    <a class="btn-edit" href="/productos/edit/<%= prod.id %>">Editar</a>
+                    <form action="/productos/delete/<%= prod.id %>?_method=DELETE" method="POST">
+                        <a href=""> <button type="submit" class="btn-delete">Eliminar</button></a>
+                    </form>
+                </div>
+
+            </article>
+        </section>
+        <h4>Productos similares</h4>
+        <section class="section__similares">
+
+            <% for( let index = 0; index < 3; index++ ) { %>
+            <article class="section__similares__articulo">
+                <img class="section__similares__articulo--img" src="/images/productos/<%= productos[index].imagen %> "
+                    alt="">
+                <div class="">
+                    <h4><%= productos[index].nombre %> </h4>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                </div>
+            </article>
+            <% } %>
+        </section>
+    </main>
+    <%- include('./partials/footer') %>
+</body>
+
+</html>
