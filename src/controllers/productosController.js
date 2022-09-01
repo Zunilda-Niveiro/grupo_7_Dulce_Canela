@@ -129,7 +129,6 @@ module.exports = {
     const products = loadProduct();
     const { id } = req.params;
     const { nombre, marca, precio, cantidad, categoria, imagen, detalle } = req.body;
-   
       const productosModificados = products.map((prod) => {
       if (prod.id === +id) {
         return {
@@ -139,7 +138,7 @@ module.exports = {
           precio: +precio,
           cantidad: +cantidad,
           categoria: categoria,
-          imagen: imagen == "" ? prod.imagen : imagen,
+          imagen: req.file ? req.file.filename : prod.imagen ,
           detalle: detalle,
         };
       }
