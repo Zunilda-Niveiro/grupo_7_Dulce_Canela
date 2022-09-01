@@ -60,14 +60,6 @@ width: 100%;
 .section__descripcion p{
     padding: 15px;
 }
-.section__descripcion button{
-    padding: 8px 14px;
-    border-radius: 5px;
-    margin:10px auto;
-    border: none;
-    color:var(--colorSecundario); 
-    box-shadow: 2px 2px 10px var(--colorSecundario);
-}
 /* SECCION SIMILARES */
 .section__similares h4{
     margin: 15px auto;

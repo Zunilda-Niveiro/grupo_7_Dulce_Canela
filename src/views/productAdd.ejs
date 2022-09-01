@@ -1,12 +1,12 @@
 <%- include('./partials/head',{
     title: 'Agregar'
-}) %> 
+}) %>
 
 <body>
-    <%- include('./partials/header') %> 
+    <%- include('./partials/header') %>
     <main class="main__productos">
         <!-- BARRA BUSQUEDA -->
-       
+
         <!-- TITULO -->
         <h1>Agregar Productos</h1>
         <!-- REGISTRO -->
@@ -19,24 +19,38 @@
                     <input type="text" name="marca" id="brand-product" placeholder="Ingrese Marca de producto" required>
                     <input type="number" name="precio" id="price" placeholder="Precio del Producto">
                     <input type="text" name="cantidad" id="" placeholder="Cantidad">
-                    <select name="categoria" id=""  class="form_style">
-                        <option value="especias">especias</option>
-                        <option value="frutos-secos">frutos secos</option>
-                        <option value="harinas">harinas</option>
-                        <option value="infusiones">infusiones</option>
-                        <option value="semillas">semillas</option>
-                        <option value="snacks">snacks</option>
+                    <select name="categoria" id="" class="form_style">
+                        <option selected hidden>Seleccionar categoria...</option>
+                        <option value="especias">Especias</option>
+                        <option value="frutos-secos">Frutos secos</option>
+                        <option value="harinas">Harinas</option>
+                        <option value="infusiones">Infusiones</option>
+                        <option value="semillas">Semillas</option>
+                        <option value="snacks">Snacks</option>
                     </select>
                     <h4>Seleccione imagen del producto</h4>
                     <input type="file" name="imagen" accept="image/png, .jpeg, .jpg, image/gif, .webp">
-                    <textarea name="detalle" rows="10" cols="40" placeholder="Ingrese breve descripción del producto"></textarea>
+                    <textarea name="detalle" rows="10" cols="40"
+                        placeholder="Ingrese breve descripción del producto"></textarea>
 
-                    <button class="submit_btn" type="submit">Agregar Producto</button>
+                    <button class="submit_btn" type="submit" onclick="confirmar()">Agregar Producto</button>
                 </form>
             </article>
         </section>
     </main>
-    <%- include('./partials/footer') %> 
+    <%- include('./partials/footer') %>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmar() {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Articulo creado Correctamente',
+                showConfirmButton: false,
+                timer: 2500
+            })
+        }
+    </script>
 </body>
 
 </html>
