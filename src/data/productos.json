@@ -1,15 +1,5 @@
 [
    {
-      "id": 1,
-      "categoria": "semillas",
-      "nombre": "Semillas de Amaranto",
-      "cantidad": 300,
-      "marca": "Natura",
-      "precio": 350,
-      "imagen": "amaranto1.jpg",
-      "detalle": "semper sapien a libero nam dui proin leo odio porttitor id"
-   },
-   {
       "id": 2,
       "categoria": "semillas",
       "nombre": "Semillas de Zapallo",
@@ -458,16 +448,6 @@
       "precio": "120",
       "imagen": "product-1661702517135.jpeg",
       "detalle": "Non sodales neque sodales ut etiam sit amet nisl purus. Et magnis dis parturient montes nascetur."
-   },
-   {
-      "id": 47,
-      "categoria": "harinas",
-      "nombre": "Harina de Coco",
-      "cantidad": "100",
-      "marca": "El Molino",
-      "precio": "100",
-      "imagen": "product-1661702582509.jpeg",
-      "detalle": "Purus sit amet volutpat consequat. Vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci."
    },
    {
       "id": 48,
