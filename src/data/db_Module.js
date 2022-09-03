@@ -18,9 +18,21 @@ const storeProduct = (producto) => {
     return fs.writeFileSync(path.join(__dirname, 'productos.json'), JSON.stringify(producto, null, 3), 'utf-8')
 }
 
+const loadUsers = () =>{
+    return JSON.parse(fs.readFileSync(path.join(__dirname, 'user.json'), 'utf-8'))
+}
+
+const storeUsers = (users) => {
+    return fs.writeFileSync(path.join(__dirname, 'user.json'), JSON.stringify(producto, null, 3), 'utf-8')
+}
+        
+
+
 module.exports = {
     loadProduct,
     loadCarrito,
     storeProduct,
-    storeCarrito
+    storeCarrito,
+    loadUsers,
+    storeUsers
 }
