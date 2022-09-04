@@ -1,47 +1,55 @@
 [
-    {
-    "id": 1,
-    "nombre": "Esteban",
-    "apellido": "Rey",
-    "direccion": "domicilio",
-    "image": "logo.jpg",
-    "email": "Esteban-Rey@gmail.com",
-    "contrasena": "12345"
-    },
-    {
-    "id": 2,
-    "nombre": "Lucas",
-    "apellido": "Barros",
-    "direccion": "domicilio",
-    "image": "logo.jpg",
-    "email": "LucasBarros@gmail.com",
-    "contrasena": "Nagbacalan"
-    },
-    {
-    "id": 3,
-    "nombre": "Zunilda",
-    "apellido": "Niveiro",
-    "direccion": "domicilio",
-    "image": "logo.jpg",
-    "email": "niveiro.zunilda@gmail.com",
-    "contrasena": "4569ddl"
-    },
-{
-    "id": 4,
-    "nombre": "Shaine",
-    "apellido": "Dermott",
-    "direccion": "domicilio",
-    "image": "logo.jpg",
-    "email": "516962.sd@gmail.com",
-    "contrasena": "Puan7Selatan"
-},
-{
-    "id": 5,
-    "nombre": "Betsy",
-    "apellido": "Atwel",
-    "direccion": "domicilio",
-    "image": "logo.jpg",
-    "email": "49jklk@gmail.com",
-    "contrasena": "Prolet12"
-}
+   {
+      "id": 1,
+      "nombre": "Esteban",
+      "apellido": "Rey",
+      "direccion": "domicilio",
+      "imagen": "logo.jpg",
+      "email": "Esteban-Rey@gmail.com",
+      "contrasena": "12345"
+   },
+   {
+      "id": 2,
+      "nombre": "Lucas",
+      "apellido": "Barros",
+      "direccion": "domicilio",
+      "imagen": "logo.jpg",
+      "email": "LucasBarros@gmail.com",
+      "contrasena": "Nagbacalan"
+   },
+   {
+      "id": 3,
+      "nombre": "Zunilda",
+      "apellido": "Niveiro",
+      "direccion": "domicilio",
+      "imagen": "logo.jpg",
+      "email": "niveiro.zunilda@gmail.com",
+      "contrasena": "4569ddl"
+   },
+   {
+      "id": 4,
+      "nombre": "Shaine",
+      "apellido": "Dermott",
+      "direccion": "domicilio",
+      "imagen": "logo.jpg",
+      "email": "516962.sd@gmail.com",
+      "contrasena": "Puan7Selatan"
+   },
+   {
+      "id": 5,
+      "nombre": "Betsy",
+      "apellido": "Atwel",
+      "direccion": "domicilio",
+      "imagen": "logo.jpg",
+      "email": "49jklk@gmail.com",
+      "contrasena": "Prolet12"
+   },
+   {
+      "id": 6,
+      "nombre": "Lucas",
+      "apellido": "Barros",
+      "imagen": "user-1662331819806.png",
+      "email": "lucasb@hotmail.com",
+      "contrasena": "$2a$10$3eMjusSql4jzR86dgVcOl.V/wds0azX8E0OHfDRk54.qz.6usQWM2"
+   }
 ]

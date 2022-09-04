@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const {uploadUser} = require('../middleware/uploadFiles')
 
 const {login,registro,procesoRegistro} = require('../controllers/userController')
 
@@ -10,7 +11,7 @@ router
 
     .get('/login',login)
 
-    .post('/registro', registroValidacion,procesoRegistro)
+    .post('/registro',uploadUser.single('imagenUser'),registroValidacion,procesoRegistro)
 
 
 

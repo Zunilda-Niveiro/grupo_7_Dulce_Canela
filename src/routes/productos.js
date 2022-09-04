@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../middleware/uploadFiles')
+const {upload} = require('../middleware/uploadFiles')
 const { productos, detalle, carrito, busqueda, agregar, remove, agregarProd, agregarProducto, edit, update,removeCarrito } = require('../controllers/productosController')
 
 
