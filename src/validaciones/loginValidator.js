@@ -8,7 +8,7 @@ module.exports = [
     .notEmpty().withMessage('Debes introducir un email').bail()
     .isEmail().withMessage('Debe ser un email válido'),
 
-    body('password')
+    body('contrasena')
     .notEmpty().withMessage('Debes introducir una contraseña obligatoria').bail()
     .custom((value, {req}) => {
         let user = users.find(user =>user.email === req.body.email.trim() && bcryptjs.compareSync(value, user.password))
