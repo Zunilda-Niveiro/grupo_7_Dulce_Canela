@@ -32,9 +32,11 @@ module.exports = {
             storeUsers(usuariosTodos)
             res.redirect('/')
         }else{
+
             res.render('registro',{
                 errors : errors.mapped(),
                 old : req.body
+                
             })
         }
     }
