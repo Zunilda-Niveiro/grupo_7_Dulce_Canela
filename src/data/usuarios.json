@@ -42,7 +42,8 @@
       "direccion": "domicilio",
       "imagen": "logo.jpg",
       "email": "49jklk@gmail.com",
-      "contrasena": "Prolet12"
+      "contrasena": "Prolet12",
+      "tipo": "user"
    },
    {
       "id": 6,
