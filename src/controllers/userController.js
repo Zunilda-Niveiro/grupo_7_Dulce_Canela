@@ -16,16 +16,18 @@ module.exports = {
         if (errors.isEmpty()) {
 
             const usuarios = loadUsers();
-            const{nombre,apellido,direccion,email,contrasena} = req.body
-           
+            const{nombre,apellido,domicilio,email,contrasena} = req.body
+        
+                
             const usuario = {
                 id: usuarios[usuarios.length - 1] ? usuarios[usuarios.length - 1].id + 1 : 1,
                 nombre: nombre.trim(),
                 apellido: apellido.trim(),
-                direccion: direccion.trim(),
-                imagen: req.file.filename,
+                direccion: domicilio.trim(),
+                imagen: req.file ? req.file.filename : 'userDefault.png',
                 email: email.trim(),
-                contrasena: bcrypt.hashSync(contrasena,10)
+                contrasena: bcrypt.hashSync(contrasena,10),
+                rol:"user",
             }
 
             const usuariosTodos = [...usuarios,usuario]

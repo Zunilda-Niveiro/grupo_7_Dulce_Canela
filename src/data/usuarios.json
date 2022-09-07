@@ -6,7 +6,8 @@
       "direccion": "domicilio",
       "imagen": "logo.jpg",
       "email": "Esteban-Rey@gmail.com",
-      "contrasena": "12345"
+      "contrasena": "12345",
+      "rol": "user"
    },
    {
       "id": 2,
@@ -15,7 +16,8 @@
       "direccion": "domicilio",
       "imagen": "logo.jpg",
       "email": "LucasBarros@gmail.com",
-      "contrasena": "Nagbacalan"
+      "contrasena": "Nagbacalan",
+      "rol": "user"
    },
    {
       "id": 3,
@@ -24,7 +26,8 @@
       "direccion": "domicilio",
       "imagen": "logo.jpg",
       "email": "niveiro.zunilda@gmail.com",
-      "contrasena": "4569ddl"
+      "contrasena": "4569ddl",
+      "rol": "user"
    },
    {
       "id": 4,
@@ -33,7 +36,8 @@
       "direccion": "domicilio",
       "imagen": "logo.jpg",
       "email": "516962.sd@gmail.com",
-      "contrasena": "Puan7Selatan"
+      "contrasena": "Puan7Selatan",
+      "rol": "user"
    },
    {
       "id": 5,
@@ -43,14 +47,6 @@
       "imagen": "logo.jpg",
       "email": "49jklk@gmail.com",
       "contrasena": "Prolet12",
-      "tipo": "user"
-   },
-   {
-      "id": 6,
-      "nombre": "Lucas",
-      "apellido": "Barros",
-      "imagen": "user-1662331819806.png",
-      "email": "lucasb@hotmail.com",
-      "contrasena": "$2a$10$3eMjusSql4jzR86dgVcOl.V/wds0azX8E0OHfDRk54.qz.6usQWM2"
+      "rol": "user"
    }
 ]
