@@ -1,0 +1,52 @@
+[
+   {
+      "id": 1,
+      "nombre": "Esteban",
+      "apellido": "Rey",
+      "direccion": "domicilio",
+      "imagen": "logo.jpg",
+      "email": "Esteban-Rey@gmail.com",
+      "contrasena": "12345",
+      "rol": "user"
+   },
+   {
+      "id": 2,
+      "nombre": "Lucas",
+      "apellido": "Barros",
+      "direccion": "domicilio",
+      "imagen": "logo.jpg",
+      "email": "LucasBarros@gmail.com",
+      "contrasena": "Nagbacalan",
+      "rol": "user"
+   },
+   {
+      "id": 3,
+      "nombre": "Zunilda",
+      "apellido": "Niveiro",
+      "direccion": "domicilio",
+      "imagen": "logo.jpg",
+      "email": "niveiro.zunilda@gmail.com",
+      "contrasena": "4569ddl",
+      "rol": "user"
+   },
+   {
+      "id": 4,
+      "nombre": "Shaine",
+      "apellido": "Dermott",
+      "direccion": "domicilio",
+      "imagen": "logo.jpg",
+      "email": "516962.sd@gmail.com",
+      "contrasena": "Puan7Selatan",
+      "rol": "user"
+   },
+   {
+      "id": 5,
+      "nombre": "Betsy",
+      "apellido": "Atwel",
+      "direccion": "domicilio",
+      "imagen": "logo.jpg",
+      "email": "49jklk@gmail.com",
+      "contrasena": "Prolet12",
+      "rol": "user"
+   }
+]

@@ -13,22 +13,32 @@
         <section class="main__login__section">
             <article class="main__login__form">
                 <img class="form__logo" src="/images/logo.png" alt="">
-                <form action="Registro" class="form_style">
+
+                <form action="" class="form_style" method="POST" enctype="multipart/form-data">
                     <h3>Informacion Personal</h3>
-                    <input type="text" name="first-name" id="name" placeholder="Ingrese su nombre" required>
-                    <input type="text" name="last_name" id="last_name" placeholder="Ingrese su apellido" required>
-                    <input type="text" name="" id="" placeholder="Calle">
-                    <input type="text" name="" id="" placeholder="Número">
-                    <input type="text" name="" id="" placeholder="Departamento">
-                    <input type="text" name="" id="" placeholder="Barrio">
-                    <input type="text" name="" id="" placeholder="Ciudad">
+
+                    <input class="<%= locals.errors && errors.nombre ? "input_error" : null %> " type="text" name="nombre" value="<%= locals.old && old.nombre ? old.nombre : null %>" id="name" placeholder="Ingrese su nombre" >
+                    <small class="error_msg"><%= locals.errors && errors.nombre ? errors.nombre.msg : null %> </small>
+
+                    <input class="<%= locals.errors && errors.apellido ? "input_error" : null %> " type="text" name="apellido" id="last_name" value="<%= locals.old && old.apellido ? old.apellido : null %>" placeholder="Ingrese su apellido" >
+                    <small class="error_msg"><%= locals.errors && errors.apellido ? errors.apellido.msg : null %> </small>
+
+                    <input class="<%= locals.errors && errors.domicilio ? "input_error" : null %> " type="text" name="domicilio" id="" placeholder="Domicilio" value="<%= locals.old && old.domicilio ? old.domicilio : null %>">
+                    <small class="error_msg"><%= locals.errors && errors.domicilio ? errors.domicilio.msg : null %> </small>
+    
                     <h4>Seleccione imagen de Perfil</h4>
-                    <input type="file" name="imagensubida" accept="image/png, .jpeg, .jpg, image/gif">
+                    <input type="file" name="imagenUser" accept="image/png, .jpeg, .jpg, image/gif">
+
                     <h4>Informacion de Inicio de sesion</h4>
-                    <input type="email" name="email" id="email" placeholder="Ingrese su email" required>
-                    <input type="password" name="password" id="password" placeholder="Ingrese su contraseña" required>
-                    <input type="password" name="password" id="password" placeholder="Ingrese nuevamente su contraseña"
-                        required>
+                    <input class="<%= locals.errors && errors.email ? "input_error" : null %> " type="email" name="email" id="email" placeholder="Ingrese su email" value="<%= locals.old && old.email ? old.email : null %>" >
+                    <small class="error_msg"><%= locals.errors && errors.email ? errors.email.msg : null %> </small>
+
+                    <input class="<%= locals.errors && errors.contrasena ? "input_error" : null %> " type="password" name="contrasena" id="password" placeholder="Ingrese su contraseña" >
+                    <small class="error_msg"><%= locals.errors && errors.contrasena ? errors.contrasena.msg : null %> </small>
+
+                    <input class="<%= locals.errors && errors.contrasena2 ? "input_error" : null %> " type="password" name="contrasena2" id="password" placeholder="Ingrese nuevamente su contraseña" >
+                    <small class="error_msg"><%= locals.errors && errors.contrasena2 ? errors.contrasena2.msg : null %> </small>
+
                     <button class="submit_btn" type="submit">Crear Cuenta</button>
                 </form>
             </article>
