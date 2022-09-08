@@ -19,11 +19,11 @@ const storeProduct = (producto) => {
 }
 
 const loadUsers = () =>{
-    return JSON.parse(fs.readFileSync(path.join(__dirname, 'user.json'), 'utf-8'))
+    return JSON.parse(fs.readFileSync(path.join(__dirname, 'usuario.json'), 'utf-8'))
 }
 
 const storeUsers = (users) => {
-    return fs.writeFileSync(path.join(__dirname, 'user.json'), JSON.stringify(producto, null, 3), 'utf-8')
+    return fs.writeFileSync(path.join(__dirname, 'usuario.json'), JSON.stringify(producto, null, 3), 'utf-8')
 }
         
 
