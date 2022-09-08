@@ -4,7 +4,7 @@ module.exports = [
     check('nombre')
     .notEmpty().withMessage('Debes introducir un Nombre'),
 
-    check('apelllido')
+    check('apellido')
     .notEmpty().withMessage('Debes introducir un Apellido'),
 
     body('email')

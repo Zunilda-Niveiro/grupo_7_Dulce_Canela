@@ -1,5 +1,6 @@
 const categorias = require("../data/categorias.json");
 const productos = require("../data/productos.json");
+const {validationResult} = require('express-validator');
 
 const {
   loadCarrito,
@@ -102,21 +103,32 @@ module.exports = {
     }
   },
   agregarProducto: (req, res) => {
-    const productos = loadProduct();
-    const { nombre, marca, precio, cantidad, categoria, detalle } = req.body;
-    const newProduct = {
-      id: productos[productos.length - 1].id + 1,
-      categoria: categoria,
-      nombre: nombre.trim(),
-      cantidad: cantidad,
-      marca: marca,
-      precio: +precio,
-      imagen: req.file.filename,
-      detalle: detalle,
-    };
-    const newProductlist = [...productos, newProduct];
-    storeProduct(newProductlist);
-    return res.redirect("/");
+    const errors = validationResult(req)
+    if(errors.isEmpty()){
+
+      const productos = loadProduct();
+      const { nombre, marca, precio, cantidad, categoria, detalle, imagen } = req.body;
+      const newProduct = {
+        id: productos[productos.length - 1].id + 1,
+        categoria: categoria,
+        nombre: nombre.trim(),
+        cantidad: cantidad,
+        marca: marca,
+        precio: +precio,
+        imagen: imagen ? imagen : null,
+        detalle: detalle,
+        
+      };
+      const newProductlist = [...productos, newProduct];
+      storeProduct(newProductlist);
+      return res.redirect("/");
+
+    }else{
+      res.render('productAdd',{
+        errors : errors.mapped(),
+        old : req.body
+      })
+    }
   },
   edit: (req, res) => {
     const products = loadProduct();
@@ -126,26 +138,36 @@ module.exports = {
     });
   },
   update: (req, res) => {
-    const products = loadProduct();
-    const { id } = req.params;
-    const { nombre, marca, precio, cantidad, categoria, imagen, detalle } = req.body;
-      const productosModificados = products.map((prod) => {
-      if (prod.id === +id) {
-        return {
-          ...prod,
-          nombre: nombre,
-          marca: marca,
-          precio: +precio,
-          cantidad: +cantidad,
-          categoria: categoria,
-          imagen: req.file ? req.file.filename : prod.imagen ,
-          detalle: detalle,
-        };
-      }
-      return prod;
-    });
-    storeProduct(productosModificados);
-    return res.redirect("/productos/detalle/" + req.params.id);
+    const errors = validationResult(req)
+    if(errors.isEmpty()){ 
+      const products = loadProduct();
+      const { id } = req.params;
+      const { nombre, marca, precio, cantidad, categoria, imagen, detalle } = req.body;
+        const productosModificados = products.map((prod) => {
+        if (prod.id === +id) {
+          return {
+            ...prod,
+            nombre: nombre,
+            marca: marca,
+            precio: +precio,
+            cantidad: +cantidad,
+            categoria: categoria,
+            imagen: req.file ? req.file.filename : prod.imagen ,
+            detalle: detalle,
+          };
+        }
+        return prod;
+
+      });
+      storeProduct(productosModificados);
+      return res.redirect("/productos/detalle/" + req.params.id);
+    }else{
+      const { id } = req.params;
+      res.render('productEdit' ,{
+        errors : errors.mapped(),
+        prod : req.body
+      })
+    }
   },
   remove: (req, res) => {
     const products = loadProduct();

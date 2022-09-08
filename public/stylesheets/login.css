@@ -1,4 +1,4 @@
-@import url(./style.css);
+
 
 .main__login__section {
   display: flex;
@@ -48,7 +48,7 @@
 }
 
 .form_style input {
-  margin: 0px 18px 15px 18px;
+  margin: 10px 18px 0px 18px;
   max-width: 90%;
 }
 
