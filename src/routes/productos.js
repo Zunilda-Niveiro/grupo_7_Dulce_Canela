@@ -20,7 +20,7 @@ router
     .get('/productAdd', agregarProd)// Agregar Producto 
     .post('/productAdd', upload.single('imagen'), agregarProducto)
     .get('/edit/:id',edit)//Editar Producto - se agrega el id para saber que producto se va a editar
-    .put('/update/:id',update)//Actualizar Producto - se agrega el id para saber que producto se va a editar
+    .put('/update/:id',upload.single('imagen'),update)//Actualizar Producto - se agrega el id para saber que producto se va a editar
     .delete('/delete/:id', remove)
 
 module.exports = router;

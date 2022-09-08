@@ -273,21 +273,21 @@
       "id": 29,
       "categoria": "especias",
       "nombre": "Curry",
-      "cantidad": "100",
+      "cantidad": 100,
       "marca": "El Sol",
-      "precio": "250",
+      "precio": 250,
       "imagen": "product-1661135044826.png",
-      "detalle": "suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus"
+      "detalle": "eget eros elementum pellentesque quisque porta volutpat erat quisque erat"
    },
    {
       "id": 30,
       "categoria": "especias",
       "nombre": "Urucum",
-      "cantidad": "100",
+      "cantidad": 100,
       "marca": "Solar",
-      "precio": "300",
+      "precio": 300,
       "imagen": "product-1661135146649.png",
-      "detalle": "sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at"
+      "detalle": "eget eros elementum pellentesque quisque porta volutpat erat quisque erat"
    },
    {
       "id": 31,

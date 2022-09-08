@@ -31,3 +31,16 @@ En este sprint surgio el punto de inflexion en el equipo de trabajo. Todas las d
 <span> Hacer Menos :</span> Trabajar descorninados, no cumplir con lo que definimos como objetivos. No compartir las inquietudes con el resto de los integrantes. 
 <span> Dejar de hacer :</span> No demostrar interes por el proyecto.
 
+## Sprint 4
+
+Queda en claro a estas alturas que el entendimiento sobre la forma de trabajo y visión se consolida día a día. En este Sprint se confirmó que la comunicación, aunque a veces no cómoda para todos, dio mejores resultados y se completo el trabajo en tiempo y forma.
+
+Comenzar a hacer: diagramar mas reuniones cortas para fortalecer el entendimiento y consolidar el trabajo.
+
+Hacer más: aunque ya en práctica, la comunicación sigue siendo un tema a mejorar.
+
+Continuar haciendo: seguir construyendo juntos a pesar de las diferencias para lograr un objetivo común y demostrar así nuestro conocimiento.
+
+Hacer menos: por el momento solo encontramos puntos para fortalecer, este sprint el menos es más. 
+
+Dejar de hacer: no volver a la dinámica inicial. El silencio como recurso. 
