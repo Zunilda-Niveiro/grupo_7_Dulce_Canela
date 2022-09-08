@@ -300,16 +300,6 @@
       "detalle": "eget eros elementum pellentesque quisque porta volutpat erat quisque erat"
    },
    {
-      "id": 32,
-      "categoria": "especias",
-      "nombre": "Sal Marina",
-      "cantidad": "500",
-      "marca": "El Sol",
-      "precio": "250",
-      "imagen": "product-1661698788174.webp",
-      "detalle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor sit amet consectetur adipiscing elit"
-   },
-   {
       "id": 33,
       "categoria": "especias",
       "nombre": "Pimentón Ahumado",
