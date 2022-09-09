@@ -1,3 +1,4 @@
+
 <%- include('./partials/head',{
     title: 'Login'
 }) %> 
@@ -13,15 +14,19 @@
         <section class="main__login__section">
             <article class="main__login__form">
                 <img class="form__logo" src="/images/logo.png" alt="">
-                <form action="login" class="form_style">
-                    <input type="text" name="" placeholder="Nombre de usuario">
-                    <input type="text" name="" placeholder="Contraseña">
-                    <label for="RegContraseña"><input type="checkbox" name="" id="RegContraseña">¿Recordar Contraseña?</label>
+                <form action="" class="form_style" method="post">
+                    <input  class="<%= locals.errors && errors.email ? "input_error" : null %>" type="text" name="email" placeholder="Nombre de usuario">
+                    <small class="error_msg"><%= locals.errors && errors.email ? errors.email.msg : null %> </small>
+
+                    <input  class="<%= locals.errors && errors.contrasena ? "input_error" : null %>" type="password" name="contrasena" placeholder="Contraseña">
+                    <small class="error_msg"><%= locals.errors && errors.contrasena ? errors.contrasena.msg : null %> </small>
+
+                    <label for="recordarme"><input type="checkbox" name="recordarme" id="recordarme">¿Recordar Contraseña?</label>
                     <button class="submit_btn" type="submit">Iniciar Sesion</button>
                     <button class="submit_btn" type="submit">Registrarse</button>
                 </form>
 
-            </article>
+            </article> 
         </section>
     </main>
     <%- include('./partials/footer') %> 

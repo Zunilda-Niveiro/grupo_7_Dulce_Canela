@@ -3,7 +3,7 @@ var router = express.Router();
 const {loginValidacion, registroValidacion} = require('../validaciones');
 
 const {uploadUser} = require('../middleware/uploadFiles')
-const {login,registro,procesoRegistro} = require('../controllers/userController')
+const {login,registro,procesoRegistro, procesoLogin} = require('../controllers/userController')
 
 
 /* GET users listing. */
@@ -11,9 +11,13 @@ const {login,registro,procesoRegistro} = require('../controllers/userController'
 router
     .get('/registro',registro)
 
+    .post('/registro',uploadUser.single('imagenUser'),registroValidacion,procesoRegistro)
+
     .get('/login',login)
 
-    .post('/registro',uploadUser.single('imagenUser'),registroValidacion,procesoRegistro)
+    .post('/login', loginValidacion, procesoLogin)
+
+    
 
 
 

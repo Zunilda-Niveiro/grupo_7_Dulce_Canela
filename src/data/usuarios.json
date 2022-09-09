@@ -26,7 +26,7 @@
       "direccion": "domicilio",
       "imagen": "logo.jpg",
       "email": "niveiro.zunilda@gmail.com",
-      "contrasena": "4569ddl",
+      "contrasena":"$2a$10$.ssAqRcfwN7Y0N1/SKVmnuVzNeJ9RJ/jYlI8l4LuGw..l0xFVN03u",
       "rol": "user"
    },
    {
@@ -47,6 +47,16 @@
       "imagen": "logo.jpg",
       "email": "49jklk@gmail.com",
       "contrasena": "Prolet12",
+      "rol": "user"
+   },
+   {
+      "id": 6,
+      "nombre": "noemi",
+      "apellido": "ejemplo",
+      "direccion": "lomas",
+      "imagen": "userDefault.png",
+      "email": "ejemplo@gmail.com",
+      "contrasena": "$2a$10$.ssAqRcfwN7Y0N1/SKVmnuVzNeJ9RJ/jYlI8l4LuGw..l0xFVN03u",
       "rol": "user"
    }
 ]

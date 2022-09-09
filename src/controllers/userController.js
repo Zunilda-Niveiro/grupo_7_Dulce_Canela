@@ -14,6 +14,24 @@ module.exports = {
         return res.render('login')
     },
 
+    procesoLogin : (req,res) =>{
+        const errors = validationResult(req)
+
+        if(errors.isEmpty()){
+            let usuario = loadUsers().find(usuario => usuario.email === req.body.email)
+            const {recordarme} = req.body
+            req.session.userLogin = usuario
+            if(recordarme){
+            res.cookie('DulceCanela', req.session.userLogin,{maxAge:1000*60})
+            }
+            return res.redirect('/')
+        }else{
+            return res.render('login', {
+                errors :errors.mapped()
+            })
+        }
+    },
+
     procesoRegistro : (req,res) => {
         const errors = validationResult(req)
         
@@ -30,7 +48,7 @@ module.exports = {
                 direccion: domicilio.trim(),
                 imagen: req.file ? req.file.filename : 'userDefault.png',
                 email: email.trim(),
-                contrasena: bcrypt.hashSync(contrasena,10),
+                contrasena: bcryptjs.hashSync(contrasena,10),
                 rol:"user",
             }
 

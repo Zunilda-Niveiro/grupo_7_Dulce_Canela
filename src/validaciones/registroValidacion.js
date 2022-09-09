@@ -21,7 +21,7 @@ module.exports = [
     body('contrasena2')
     .notEmpty().withMessage('vuelve a ingresar la contraseña').bail()
     .custom((value, {req}) => {
-    if (value !== req.body.password){
+    if (value !== req.body.contrasena){
         return false
     }else{
         return true
