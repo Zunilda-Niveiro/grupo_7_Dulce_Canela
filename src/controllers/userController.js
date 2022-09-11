@@ -45,7 +45,7 @@ module.exports = {
                 id: usuarios[usuarios.length - 1] ? usuarios[usuarios.length - 1].id + 1 : 1,
                 nombre: nombre.trim(),
                 apellido: apellido.trim(),
-                direccion: domicilio.trim(),
+                domicilio: domicilio.trim(),
                 imagen: req.file ? req.file.filename : 'userDefault.png',
                 email: email.trim(),
                 contrasena: bcryptjs.hashSync(contrasena,10),

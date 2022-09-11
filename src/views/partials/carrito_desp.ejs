@@ -9,12 +9,13 @@
         <div class="cart-container">
             <% carrito.forEach(car => { %>
             <article class="home__header__cart--prod">
-                <img src="/images/productos/<%= productos[car.id_producto - 1].imagen %>" alt="" />
+                <% let product = productos.find(prod => prod.id === car.id_producto) %> 
+                <img src="/images/productos/<%= product.imagen %>" alt="" />
                 <div class="cart-desc">
                     <div class="cart-nom">
                         <h5>
-                            <%= productos[car.id_producto - 1].nombre %> x <%=
-                                     productos[car.id_producto-1].cantidad%>gr
+                            <%= product.nombre %> x <%=
+                                     product.cantidad%>gr
                         </h5>
                         <form action="/productos/deleteCarrito/<%= car.id_producto %>?_method=DELETE" method="POST">
                             <button type="submit">
@@ -28,7 +29,7 @@
                             <input type="number" name="" id="" value="<%= car.cantidad_p %>" />
                             <i class="fa-solid fa-plus"></i>
                         </div>
-                        <h5>$ <%= productos[car.id_producto - 1].precio %></h5>
+                        <h5>$ <%= product.precio %></h5>
                     </div>
                 </div>
             </article>
@@ -36,8 +37,7 @@
         </div>
         <div class="cart-total">
             <p>total:</p>
-            <p>3300</p>
-
+            <p>3000</p>
         </div>
         <a href="/productos/carrito">Comprar</a>
     </div>
