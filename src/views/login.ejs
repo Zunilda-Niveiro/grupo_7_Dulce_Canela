@@ -1,3 +1,4 @@
+
 <%- include('./partials/head',{
     title: 'Login'
 }) %> 
@@ -16,10 +17,19 @@
                 <form action="" class="form_style" method="post">
                     <input  class="<%= locals.errors && errors.email ? "input_error" : null %>" type="text" name="email" placeholder="Nombre de usuario">
                     <small class="error_msg"><%= locals.errors && errors.email ? errors.email.msg : null %> </small>
+<<<<<<< HEAD
                     <input  class="<%= locals.errors && errors.contrasena ? "input_error" : null %>" type="password" name="contrasena" placeholder="Contraseña">
                     <small class="error_msg"><%= locals.errors && errors.contrasena ? errors.contrasena.msg : null %> </small>
                     <label for="recordarme"><input type="checkbox" name="recordarme" id="recordarme">¿Recordar Contraseña?</label>
                     <button class="submit_btn" type="submit" onclick="confirmarLogin()">Iniciar Sesion</button>
+=======
+
+                    <input  class="<%= locals.errors && errors.contrasena ? "input_error" : null %>" type="password" name="contrasena" placeholder="Contraseña">
+                    <small class="error_msg"><%= locals.errors && errors.contrasena ? errors.contrasena.msg : null %> </small>
+
+                    <label for="recordarme"><input type="checkbox" name="recordarme" id="recordarme">¿Recordar Contraseña?</label>
+                    <button class="submit_btn" type="submit">Iniciar Sesion</button>
+>>>>>>> 08730cb25301fc501d81a34091525b96222dbb42
                     <button class="submit_btn" type="submit">Registrarse</button>
                 </form>
 

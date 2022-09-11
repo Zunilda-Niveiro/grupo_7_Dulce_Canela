@@ -28,6 +28,7 @@ module.exports = [
             max: 12
         }).withMessage('La contraseña debe ser entre 6 y 12 caracteres de largo'),
     body('contrasena2')
+<<<<<<< HEAD
         .notEmpty().withMessage('vuelve a ingresar la contraseña').bail()
         .custom((value, { req }) => {
             if (value !== req.body.contrasena) {
@@ -36,5 +37,15 @@ module.exports = [
                 return true
             }
         }).withMessage('Las contraseñas no coinciden')
+=======
+    .notEmpty().withMessage('vuelve a ingresar la contraseña').bail()
+    .custom((value, {req}) => {
+    if (value !== req.body.contrasena){
+        return false
+    }else{
+        return true
+    }
+    }).withMessage('Las contraseñas no coinciden')
+>>>>>>> 08730cb25301fc501d81a34091525b96222dbb42
 
 ]

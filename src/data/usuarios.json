@@ -26,7 +26,11 @@
       "direccion": "domicilio",
       "imagen": "logo.jpg",
       "email": "niveiro.zunilda@gmail.com",
+<<<<<<< HEAD
       "contrasena": "$2a$10$.ssAqRcfwN7Y0N1/SKVmnuVzNeJ9RJ/jYlI8l4LuGw..l0xFVN03u",
+=======
+      "contrasena":"$2a$10$.ssAqRcfwN7Y0N1/SKVmnuVzNeJ9RJ/jYlI8l4LuGw..l0xFVN03u",
+>>>>>>> 08730cb25301fc501d81a34091525b96222dbb42
       "rol": "user"
    },
    {
@@ -58,6 +62,7 @@
       "email": "ejemplo@gmail.com",
       "contrasena": "$2a$10$.ssAqRcfwN7Y0N1/SKVmnuVzNeJ9RJ/jYlI8l4LuGw..l0xFVN03u",
       "rol": "user"
+<<<<<<< HEAD
    },
    {
       "id": 7,
@@ -78,5 +83,7 @@
       "email": "estebanbraianrey2@gmail.com",
       "contrasena": "$2a$10$9./J/H.mkuQ.2tP02PWlfeBgItWRKmLw4lxPP1Hfb6M5jx8FB5MKu",
       "rol": "user"
+=======
+>>>>>>> 08730cb25301fc501d81a34091525b96222dbb42
    }
 ]
