@@ -12,6 +12,6 @@ module.exports = [
     .notEmpty().withMessage('Debes introducir una contraseña obligatoria').bail()
     .custom((value, {req}) => {
         let user = users.find(user =>user.email === req.body.email.trim() && bcryptjs.compareSync(value, user.contrasena))
-        return !!user
+        return user ? true : false
     }).withMessage('Email y/o contraseña incorrecto')
 ]
