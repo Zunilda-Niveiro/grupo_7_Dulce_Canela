@@ -1,7 +1,13 @@
+
 [
    {
       "id": 1,
-      "id_producto": 29,
+      "id_producto": 32,
+      "cantidad_p": 1
+   },
+   {
+      "id_producto": 5,
       "cantidad_p": 1
    }
 ]
+
