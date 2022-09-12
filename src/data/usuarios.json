@@ -50,6 +50,7 @@
       "rol": "user"
    },
    {
+<<<<<<< HEAD
       "id": 6,
       "nombre": "noemi",
       "apellido": "ejemplo",
@@ -77,6 +78,14 @@
       "imagen": "user-1662904710341.jpg",
       "email": "estebanbraianrey2@gmail.com",
       "contrasena": "$2a$10$9./J/H.mkuQ.2tP02PWlfeBgItWRKmLw4lxPP1Hfb6M5jx8FB5MKu",
+=======
+      "nombre": "asdasd",
+      "apellido": "asdasd",
+      "domicilio": "",
+      "imagen": "userDefault.png",
+      "email": "aasd@asda.com",
+      "contrasena": "$2a$10$9YxhP8lFBvQ/wGoZKDfCkOOXBj40q5nSRijNoFnwM9d9dptoCXDW2",
+>>>>>>> aa69ee559378de107e9dd0e634591c306a7a004e
       "rol": "user"
    }
 ]
