@@ -22,13 +22,23 @@
     <nav class="home__header__nav">
         <ul>
             <li><a href="/">Home</a></li>
+
+            <% if(locals.userLogin){ %>
+            <li><a href="/users/logout">Cerrar Sesion</a></li>
+            <li><a href="/users/perfil">Mi Perfil</a></li>
+            <% if(userLogin.rol === "admi"){ %>
+            <li><a href="/productos/productAdd">Agregar Producto</a></li>
+            <li><a href="/productos/productEdit">Editar Producto</a></li>
+            <% } %>
+            <% } else{ %>
             <li><a href="/productos/detalle/1">Detalle</a></li>
             <li><a href="/productos/productos/1">Productos</a></li>
             <li><a href="/productos/carrito">Carrito</a></li>
             <li><a href="/users/registro">Registro</a></li>
             <li><a href="/users/login">Login</a></li>
-            <li><a href="/productos/productAdd">Agregar Producto</a></li>
-            <li><a href="/productos/productEdit">Editar Producto</a></li>
+            <% }%>
+
+
         </ul>
         <!-- LOGO -->
         <label for="check"><img class="home__header__nav--logo" src="/images/logo.png" alt="" /></label>

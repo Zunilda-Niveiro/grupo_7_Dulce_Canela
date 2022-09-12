@@ -1,6 +1,8 @@
 module.exports = (req,res,next) => {
-    if(req.session.DulceCanela){
+
+    if(req.session.userLogin){
         res.locals.userLogin = req.session.userLogin
     }
+
     next()
 }
