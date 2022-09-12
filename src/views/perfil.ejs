@@ -14,7 +14,7 @@
             <article class="main__login__form">
                 <img class="form__logo" src="/images/logo.png" alt="">
 
-                <form action="/user/update/<%= user.id%>?_method=PUT" class="form_style" method="POST" enctype="multipart/form-data">
+                <form action="/users/update/<%= user.id %>?_method=PUT" class="form_style" method="POST" enctype="multipart/form-data">
                     <h3>Informacion Personal</h3>
 
                     <input class="<%= locals.errors && errors.nombre ? "input_error" : null %> " type="text" name="nombre" value="<%= locals.old && old.nombre ? old.nombre : null %>" id="name" placeholder=" <%= user.nombre%> " >
