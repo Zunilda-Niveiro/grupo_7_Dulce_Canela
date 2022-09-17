@@ -5,14 +5,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--colorCinco);
-    background: linear-gradient(0deg, rgba(204, 204, 172, 1) 0%, rgba(68, 95, 37, 1) 100%);
+    background-color: var(--colorPrimario);
 }
 
 .home__header--i,
 .home__header--span {
     margin: 0 8px 0 15px;
-    color: white;
+    color: var(--colorFuente);
     display: none;
 
 }
@@ -23,7 +22,7 @@
 #cont i {
     display: inline;
     margin: 0 8px 0 15px;
-    color: white;
+    color:var(--colorFuente);
 }
 
 /* NAVBAR */
@@ -39,7 +38,7 @@
 }
 
 .home__header__nav--i {
-    color: white;
+    color:var(--colorFuente);
     font-size: 20px;
     padding: 15px;
 }
@@ -58,7 +57,7 @@
 }
 
 a {
-    color: var(--colorSecundario);
+    color: var(--colorFuente);
 }
 
 /* METODO PARA DESPLEGAR BARRA DE NAV */
@@ -82,6 +81,7 @@ a {
     right: calc(50% - 50px);
     bottom: -50px;
     cursor: pointer;
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.7));
 }
 
 /* IMAGEN DE FONDO Y H1 */
@@ -97,7 +97,7 @@ a {
 
 .home__header__h1 h1 {
     font-family: var(--fuentePrincipal);
-    color: white;
+    color:var(--colorFuente);
     padding: 35px;
     text-transform: uppercase;
     font-size: 1.5rem;
@@ -110,7 +110,7 @@ a {
     .home__header--span {
         display: inline;
         font-size: 18px;
-
+        filter: drop-shadow(2px 2px 5px rgba(49, 49, 49, 0.7));
     }
 
     #ubic,

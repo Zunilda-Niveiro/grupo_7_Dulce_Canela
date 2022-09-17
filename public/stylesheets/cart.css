@@ -3,7 +3,7 @@
     display: none;
 }
 .cart-container{
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 70%;
 }
 /* CARRITO ICONO */
@@ -11,7 +11,7 @@
     position: fixed;
     right: 15px;
     top: 65px;
-    color: white;
+    color: var(--colorFuente);
     font-size: 20px;
     z-index: 101;
     background-color: rgba(0, 0, 0, 0.356);
@@ -25,7 +25,7 @@
     position: relative;
     left: 15px;
     top: 10px;
-    color: rgb(0, 0, 0);
+    color: var(--colorFuente);
     font-size: 25px;
     cursor: pointer;
 }
@@ -51,7 +51,7 @@
     width: 75%;
     border: none;
     background-color: var(--colorSecundario);
-    color: white;
+    color: var(--colorFuente);
     padding: 8px 16px;
     border-radius: 8px;
     position: absolute;
@@ -65,7 +65,7 @@
     margin-top: 15px;
     padding-left: 15px;
     text-align: center;
-    color: var(--colorSecundario);
+    color: var(--colorFuente);
     text-transform: uppercase;
 }
 
@@ -84,11 +84,10 @@
     display: flex;
     gap: 10px;
     margin: 10px;
-    color: var(--colorSecundario);
-    border: 1px solid var(--colorSecundario);
+    color: var(--colorFuente);
     padding: 10px;
     border-radius: 15px;
-    box-shadow: 3px 3px 15px var(--colorSecundario);
+    box-shadow: 3px 3px 15px var(--colorFuenteOscura);
 }
 
 /* TEXTOS INTERNOS CARRITO */

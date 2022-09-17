@@ -1,8 +1,19 @@
-
 [
    {
       "id": 1,
-      "id_producto": 32,
+      "id_producto": 30,
+      "cantidad_p": 1
+   },
+   {
+      "id_producto": 38,
+      "cantidad_p": 2
+   },
+   {
+      "id_producto": 43,
+      "cantidad_p": 1
+   },
+   {
+      "id_producto": 3,
       "cantidad_p": 1
    },
    {
@@ -10,4 +21,3 @@
       "cantidad_p": 1
    }
 ]
-
