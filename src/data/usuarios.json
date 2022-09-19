@@ -67,7 +67,7 @@
       "imagen": "user-1662904303581.jpg",
       "email": "estebanbraianrey@gmail.com",
       "contrasena": "$2a$10$vQoEurTumsD8omfUvOSluOWqgbHF5/P3/kxZGFKdXIwDGFjcLCTN2",
-      "rol": "user"
+      "rol": "admi"
    },
    {
       "id": 8,
@@ -78,5 +78,15 @@
       "email": "lucas@mail.com",
       "contrasena": "$2a$10$WoCnQ.izBmwD0ZmaR/xGl.63wGSoF7yRoRDFfQXvi7PVXLyqMvNS2",
       "rol": "admi"
+   },
+   {
+      "id": 9,
+      "nombre": "Juan Pablo",
+      "apellido": "Segundo",
+      "direccion": "calle Falsa 123",
+      "imagen": "user-1663627286926.jpg",
+      "email": "estebanrey14@gmail.com",
+      "contrasena": "$2a$10$Dug6TYEypeAcGnpVMtDRaO5Ye2/kTE8kEfVZFLqWBDgYtya.tsn2S",
+      "rol": "user"
    }
 ]

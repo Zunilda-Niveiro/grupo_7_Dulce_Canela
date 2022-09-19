@@ -19,7 +19,7 @@ router
     .get('/carrito', carrito)
     .get('/productAdd', agregarProd)// Agregar Producto 
     .post('/productAdd', upload.single('imagen'), agregarProductoValidaciones, agregarProducto)
-    .get('/edit/:id',edit)//Editar Producto - se agrega el id para saber que producto se va a editar
+    .get('/productEdit/:id',edit)//Editar Producto - se agrega el id para saber que producto se va a editar
     .put('/update/:id',upload.single('imagen'), editarProductosValidaciones,update)//Actualizar Producto - se agrega el id para saber que producto se va a editar
     .delete('/delete/:id', remove)
 
