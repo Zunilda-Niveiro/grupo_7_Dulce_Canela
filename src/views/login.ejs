@@ -15,7 +15,7 @@
             <article class="main__login__form">
                 <img class="form__logo" src="/images/logo.png" alt="">
                 <form action="" class="form_style" method="post">
-                    <input  class="<%= locals.errors && errors.email ? "input_error" : null %>" type="text" name="email" placeholder="Nombre de usuario">
+                    <input  class="<%= locals.errors && errors.email ? "input_error" : null %>" type="text" name="email" placeholder="Nombre de usuario" value='<%= locals.old && old.email ? old.email:null%>'>
                     <small class="error_msg"><%= locals.errors && errors.email ? errors.email.msg : null %> </small>
 
                     <input  class="<%= locals.errors && errors.contrasena ? "input_error" : null %>" type="password" name="contrasena" placeholder="Contraseña">
@@ -23,7 +23,7 @@
 
                     <label for="recordarme"><input type="checkbox" name="recordarme" id="recordarme">¿Recordar Contraseña?</label>
                     <button class="submit_btn" type="submit">Iniciar Sesion</button>
-                   <a class="submit_btn" href="registro">Registrarse</a>
+                    <a class="submit_btn" href="registro">Registrarse</a>
                 </form>
 
             </article> 

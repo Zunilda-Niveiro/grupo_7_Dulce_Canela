@@ -1,4 +1,5 @@
 const {check, body} = require('express-validator');
+const users = require('../data/db_Module').loadUsers()
 
 module.exports = [
     check('nombre')
@@ -9,7 +10,15 @@ module.exports = [
 
     body('email')
     .notEmpty().withMessage('Debes introducir un email').bail()
-    .isEmail().withMessage('Debe ser un email válido'),
+    .isEmail().withMessage('Debe ser un email válido').bail()
+    .custom((value, {req})=>{
+        let user = users.find(user=> user.email === value.trim())
+        if(user){
+            return false
+        }else{
+            return true
+        }
+    }).withMessage('El email ya se encuentra registrado'),
 
     check('contrasena')
     .notEmpty().withMessage('Debes introducir una contraseña obligatoria').bail()

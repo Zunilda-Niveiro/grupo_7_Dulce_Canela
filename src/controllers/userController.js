@@ -17,17 +17,24 @@ module.exports = {
     procesoLogin: (req, res) => {
         const errors = validationResult(req)
         if (errors.isEmpty()) {
-            let { id, firstName, rol, avatar } = loadUsers().find(user => user.email === req.body.email);
+            let { id, nombre, rol, imagen } = loadUsers().find(user => user.email === req.body.email);
             req.session.userLogin = {
                 id,
-                firstName,
+                nombre,
                 rol,
-                avatar
+                imagen,
             }
+            if(req.body.recordarme){ 
+                res.cookie('DulceCanela', req.session.userLogin,{
+                    maxAge:1000*60
+                })
+            }
+            
             return res.redirect('/')
         } else {
             return res.render('login', {
-                errors: errors.mapped()
+                errors: errors.mapped(),
+                old:req.body
             })
         }
     },
