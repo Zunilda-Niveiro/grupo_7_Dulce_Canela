@@ -8,6 +8,9 @@ module.exports = [
     check('apellido')
     .notEmpty().withMessage('Debes introducir un Apellido'),
 
+    check('domicilio')
+    .notEmpty().withMessage('debes introducir una direccion'),
+
     body('email')
     .notEmpty().withMessage('Debes introducir un email').bail()
     .isEmail().withMessage('Debe ser un email válido').bail()
