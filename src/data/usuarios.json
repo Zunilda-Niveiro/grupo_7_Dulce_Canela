@@ -88,5 +88,15 @@
       "email": "estebanrey14@gmail.com",
       "contrasena": "$2a$10$Dug6TYEypeAcGnpVMtDRaO5Ye2/kTE8kEfVZFLqWBDgYtya.tsn2S",
       "rol": "user"
+   },
+   {
+      "id": 10,
+      "nombre": "Esteban Roberto",
+      "apellido": "Castillo",
+      "direccion": "condarco 123",
+      "imagen": "user-1663631279998.jpg",
+      "email": "esteban@gmail.com",
+      "contrasena": "$2a$10$OYEio8UsRzRAixy.1hsYu.D2oHoIXdAP/WitMWaDKWDcwGWkB1tUy",
+      "rol": "user"
    }
 ]
