@@ -17,6 +17,7 @@ router
     .get('/perfil',userSessionCheck,perfil)
     .get('/logout',logout)
     .put('/update/:id',update)
+    
 
 
 
