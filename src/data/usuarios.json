@@ -77,7 +77,7 @@
       "imagen": "userDefault.png",
       "email": "lucas@mail.com",
       "contrasena": "$2a$10$WoCnQ.izBmwD0ZmaR/xGl.63wGSoF7yRoRDFfQXvi7PVXLyqMvNS2",
-      "rol": "admi"
+      "rol": "user"
    },
    {
       "id": 9,
