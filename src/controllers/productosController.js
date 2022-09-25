@@ -130,10 +130,10 @@ module.exports = {
       })
     }
   },
-  edit: (req, res) => {
+  editarProducto: (req, res) => {
     const products = loadProduct();
     const prod = products.find((prod) => prod.id === +req.params.id);
-    return res.render("productEdit", {
+    return res.render("edicionDeProductos", {
       prod,
     });
   },
