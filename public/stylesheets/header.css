@@ -57,8 +57,28 @@
 
 }
 
+.home__header__nav h3{
+    color: var(--colorSecundario);
+}
+
 a {
     color: var(--colorSecundario);
+}
+
+
+/* imagen de usuario */
+.imagen_de_usuario {
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.imagen_de_usuario img{
+    background-size: 32px 32px;
+    height: 42px;
+    width: 52px;
+    border-radius: 50%;
 }
 
 /* METODO PARA DESPLEGAR BARRA DE NAV */

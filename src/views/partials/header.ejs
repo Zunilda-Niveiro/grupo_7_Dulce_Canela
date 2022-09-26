@@ -1,6 +1,15 @@
 <header id="top" class="home__header">
+
     <!-- BARRA SUPERIOR -->
     <div class="home__header--sup">
+        <% if(locals.userLogin){ %>
+            <div class="imagen_de_usuario">
+                <h3>Bienvenid@ <%= userLogin.nombre %> </h3>
+                <img src="/images/usuarios/<%= userLogin.imagen ? userLogin.imagen : 'userDefault.png' %>" alt="" srcset="">
+
+            </div>
+            <% } %>
+    
         <div>
             <a href=""><span class="home__header--span"><i class="fa-solid fa-location-dot home__header--i"></i>Calle
                     123,
@@ -9,6 +18,8 @@
             <a href="#dire"><span class="home__header--span"><i
                         class="fa-solid fa-clock home__header--i"></i>Horarios</span></a>
         </div>
+
+
         <div>
             <span class="home__header--span"><i class="fa-solid fa-phone home__header--i"></i>+54 011 45621489</span>
             <a href="#dire"><span id="cont"><i class="fa-solid fa-phone"></i>Contacto</span></a>
@@ -21,6 +32,11 @@
     <input type="checkbox" name="check" id="check" />
     <nav class="home__header__nav">
         <ul>
+            <% if(locals.userLogin){ %>
+                <h3>Bienvenid@ <%= userLogin.nombre %> </h3>
+                <% } %>
+        
+        
             <li><a href="/">Home</a></li>
 
             <% if(locals.userLogin){ %>
