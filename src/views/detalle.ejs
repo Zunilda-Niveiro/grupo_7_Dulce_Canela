@@ -34,13 +34,16 @@
                     <button type="submit" class="btn-add">Agregar al carrito</button>
                 </form>
 
-                <div class="btns">
-                    <a class="btn-edit" href="/productos/edit/<%= prod.id %>">Editar</a>
-                    <form action="/productos/delete/<%= prod.id %>?_method=DELETE" method="POST">
-                        <a href=""> <button type="submit" class="btn-delete">Eliminar</button></a>
-                    </form>
-                </div>
-
+                <% if(locals.userLogin){ %>
+                <% if (userLogin.rol === 'admi') { %>
+                    <div class="btns">
+                        <a class="btn-edit" href="/productos/edicionDeProductos/<%= prod.id %>">Editar</a>
+                        <form action="/productos/delete/<%= prod.id %>?_method=DELETE" method="POST">
+                            <a href=""> <button type="submit" class="btn-delete">Eliminar</button></a>
+                        </form>
+                    </div>
+                <% } %>
+                <% } %>
             </article>
         </section>
         <h4>Productos similares</h4>
