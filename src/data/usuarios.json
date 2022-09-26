@@ -98,5 +98,25 @@
       "email": "esteban@gmail.com",
       "contrasena": "$2a$10$OYEio8UsRzRAixy.1hsYu.D2oHoIXdAP/WitMWaDKWDcwGWkB1tUy",
       "rol": "user"
+   },
+   {
+      "id": 11,
+      "nombre": "Roberto",
+      "apellido": "Figueroa",
+      "direccion": "Falsa 123",
+      "imagen": "user-1664230919268.png",
+      "email": "estebannrey@gmail.com",
+      "contrasena": "$2a$10$40kcKXiOcUdG8wSlizdQPuoXNbntahdsj.K0dMb9oAw3oR3ZhEldi",
+      "rol": "user"
+   },
+   {
+      "id": 12,
+      "nombre": "Braian Esteban",
+      "apellido": "Rey",
+      "direccion": "condarco 2081",
+      "imagen": "user-1664234298924.jpg",
+      "email": "esteban12345@gmail.com",
+      "contrasena": "$2a$10$Iobe6fxozJOvJTlhHtJstOj2jIphFG7J8KMGJbRPTqtzSciyvFzxi",
+      "rol": "user"
    }
 ]

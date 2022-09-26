@@ -5,8 +5,8 @@
         <% if(locals.userLogin){ %>
             <div class="imagen_de_usuario">
                 <h3>Bienvenid@ <%= userLogin.nombre %> </h3>
-                <img src="/images/usuarios/<%= userLogin.imagen ? userLogin.imagen : 'userDefault.png' %>" alt="" srcset="">
-
+                
+                <a href="/users/perfil"><img src="/images/usuarios/<%= userLogin.imagen ? userLogin.imagen : 'userDefault.png' %>" alt="" srcset="">
             </div>
             <% } %>
     
@@ -46,7 +46,7 @@
             <li><a href="/productos/productos/1">Productos</a></li>
             <li><a href="/productos/carrito">Carrito</a></li>
             <li><a href="/users/registro">Registro</a></li>
-            <li><a href="/users/login">Login</a></li>
+            <li><a href="/users/login/#login">Login</a></li>
             <% }%>
 
 
