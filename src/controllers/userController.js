@@ -24,17 +24,17 @@ module.exports = {
                 rol,
                 imagen,
             }
-            if(req.body.recordarme){ 
-                res.cookie('DulceCanela', req.session.userLogin,{
-                    maxAge:1000*60
+            if (req.body.recordarme) {
+                res.cookie('DulceCanela', req.session.userLogin, {
+                    maxAge: 1000 * 60
                 })
             }
-            
+
             return res.redirect('/')
         } else {
             return res.render('login', {
                 errors: errors.mapped(),
-                old:req.body
+                old: req.body
             })
         }
     },
