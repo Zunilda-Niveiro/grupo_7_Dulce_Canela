@@ -56,8 +56,32 @@
 
 }
 
+.home__header__nav h3{
+    color: var(--colorSecundario);
+}
+
 a {
     color: var(--colorFuente);
+}
+
+
+/* imagen de usuario */
+.imagen_de_usuario {
+    margin-left: 10px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.imagen_de_usuario img{
+    height: 52px;
+    width: 52px;
+    border-radius: 50%;
+    -webkit-border-radius: 200px 200px 200px 200px;
+-moz-border-radius: 200px 200px 200px 200px;
+border: 2px solid var(--colorSecundario);
+object-fit: cover;
 }
 
 /* METODO PARA DESPLEGAR BARRA DE NAV */

@@ -1,6 +1,15 @@
 <header id="top" class="home__header">
+
     <!-- BARRA SUPERIOR -->
     <div class="home__header--sup">
+        <% if(locals.userLogin){ %>
+            <div class="imagen_de_usuario">
+                <h3>Bienvenid@ <%= userLogin.nombre %> </h3>
+                
+                <a href="/users/perfil"><img src="/images/usuarios/<%= userLogin.imagen ? userLogin.imagen : 'userDefault.png' %>" alt="" srcset="">
+            </div>
+            <% } %>
+    
         <div>
             <a href=""><span class="home__header--span"><i class="fa-solid fa-location-dot home__header--i"></i>Calle
                     123,
@@ -9,6 +18,8 @@
             <a href="#dire"><span class="home__header--span"><i
                         class="fa-solid fa-clock home__header--i"></i>Horarios</span></a>
         </div>
+
+
         <div>
             <span class="home__header--span"><i class="fa-solid fa-phone home__header--i"></i>+54 011 45621489</span>
             <a href="#dire"><span id="cont"><i class="fa-solid fa-phone"></i>Contacto</span></a>
@@ -20,22 +31,22 @@
     <label for="check"><i class="fa-solid fa-bars home__header__nav--i"></i></label>
     <input type="checkbox" name="check" id="check" />
     <nav class="home__header__nav">
-        <ul>
+        <ul>        
             <li><a href="/">Home</a></li>
 
             <% if(locals.userLogin){ %>
             <li><a href="/users/logout">Cerrar Sesion</a></li>
             <li><a href="/users/perfil">Mi Perfil</a></li>
+            <li><a href="/productos/carrito">Carrito</a></li>
             <% if(userLogin.rol === "admi"){ %>
             <li><a href="/productos/productAdd">Agregar Producto</a></li>
-            <li><a href="/productos/productEdit">Editar Producto</a></li>
+            <li><a href="/productos/productos/1">Productos</a></li>
             <% } %>
             <% } else{ %>
-            <li><a href="/productos/detalle/1">Detalle</a></li>
             <li><a href="/productos/productos/1">Productos</a></li>
             <li><a href="/productos/carrito">Carrito</a></li>
             <li><a href="/users/registro">Registro</a></li>
-            <li><a href="/users/login">Login</a></li>
+            <li><a href="/users/login/#login">Login</a></li>
             <% }%>
 
 
