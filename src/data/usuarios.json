@@ -98,5 +98,15 @@
       "email": "esteban@gmail.com",
       "contrasena": "$2a$10$OYEio8UsRzRAixy.1hsYu.D2oHoIXdAP/WitMWaDKWDcwGWkB1tUy",
       "rol": "user"
+   },
+   {
+      "id": 11,
+      "nombre": "vanesa",
+      "apellido": "lopez",
+      "direccion": "uriburu",
+      "imagen": "userDefault.png",
+      "email": "vanesaLopez@gmail.com",
+      "contrasena": "$2a$10$NETflbymA/yvwYEjhHzKlupQmpfMSiHMsatr1eBPzvcq9C1VhhaCy",
+      "rol": "user"
    }
 ]
