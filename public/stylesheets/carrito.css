@@ -8,8 +8,8 @@
 }
 /* RESUMEN DEL CARRITO */
 .resumen-visible{
-    background-color: var(--colorSecundario);
-    color: white;
+    background-color: var(--colorPrimario);
+    color: var(--colorFuente);
     padding: 15px;
     display: flex;
     justify-content: space-between;
@@ -22,7 +22,7 @@
     overflow: hidden;
     transition: all 0.5s;
     position: absolute;
-    background-color: var(--colorCuatro);
+    background-color: var(--colorPrimario);
     width: 100%;
     z-index: 99;
 }
@@ -32,7 +32,7 @@
 /* FORMULARIO DE COMPRA */
 .carrito__main__article{
     width: 90%;
-    color: var(--colorSecundario);
+    color: var(--colorFuenteOscura);
     text-align: center;
     margin: 15px;
   
@@ -64,7 +64,7 @@
     width: 75%;
     border: none;
     background-color: var(--colorSecundario);
-    color: white;
+    color: var(--colorFuente);
     padding: 8px 16px;
     border-radius: 8px;
     text-align: center;
@@ -81,7 +81,7 @@
     background-color: white;
     margin:15px 0 ;
     border: 1px solid var(--colorSecundario);
-    color: var(--colorSecundario);
+    color: var(--colorFuenteOscura);
 }
 .medio-pago-tarjeta{
     width: 100%;

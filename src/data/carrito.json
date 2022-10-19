@@ -2,5 +2,13 @@
    {
       "id_producto": 5,
       "cantidad_p": 1
+   },
+   {
+      "id_producto": 30,
+      "cantidad_p": 3
+   },
+   {
+      "id_producto": 38,
+      "cantidad_p": 2
    }
 ]
