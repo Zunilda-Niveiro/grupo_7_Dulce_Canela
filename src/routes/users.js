@@ -3,7 +3,7 @@ var router = express.Router();
 const { loginValidacion, registroValidacion } = require('../validaciones');
 
 const { uploadUser } = require('../middleware/uploadFiles')
-const { login, registro, procesoRegistro, procesoLogin,perfil,logout,update } = require('../controllers/userController');
+const { login, registro, procesoRegistro, procesoLogin,perfil,logout,update,administracionUsuarios } = require('../controllers/userController');
 const userSessionCheck = require('../middleware/userSessionCheck');
 
 
@@ -17,6 +17,7 @@ router
     .get('/perfil',userSessionCheck,perfil)
     .get('/logout',logout)
     .put('/update/:id',update)
+    .get('/administracionUsuarios',userSessionCheck, administracionUsuarios)
     
 
 
