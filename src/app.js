@@ -12,7 +12,7 @@ const localsUsersCkeck = require('./middleware/localsUsersCheck');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productosRouter = require('./routes/productos')
-
+require('dotenv').config()
 var app = express();
 
 // view engine setup
