@@ -1,15 +1,22 @@
-const categorias = require('../data/categorias.json')
-const { loadCarrito, loadProduct, storeCarrito, storeProducts } = require('../data/db_Module')
+
+const { loadCarrito} = require('../data/db_Module')
+const db = require('../database/models');
 
 
 module.exports = {
     home: (req, res) => {
-        const productos = loadProduct();
+
         const carrito = loadCarrito();
-        return res.render('home', {
-            productos,
-            categorias,
-            carrito
-        })
+        
+        const categorias = db.Category.findAll()
+        const productos = db.Product.findAll()
+        
+        Promise.all([categorias,productos])
+            .then(([categorias,productos]) => res.render('home',{
+                productos,
+                categorias,
+                carrito,
+
+            }))
     }
 }
