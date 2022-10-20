@@ -1,6 +1,6 @@
 const categorias = require("../data/categorias.json");
 const productos = require("../data/productos.json");
-const {validationResult} = require('express-validator');
+const { validationResult } = require('express-validator');
 
 const {
   loadCarrito,
@@ -104,7 +104,7 @@ module.exports = {
   },
   agregarProducto: (req, res) => {
     const errors = validationResult(req)
-    if(errors.isEmpty()){
+    if (errors.isEmpty()) {
 
       const productos = loadProduct();
       const { nombre, marca, precio, cantidad, categoria, detalle, imagen } = req.body;
@@ -117,16 +117,16 @@ module.exports = {
         precio: +precio,
         imagen: imagen ? imagen : null,
         detalle: detalle,
-        
+
       };
       const newProductlist = [...productos, newProduct];
       storeProduct(newProductlist);
       return res.redirect("/");
 
-    }else{
-      res.render('productAdd',{
-        errors : errors.mapped(),
-        old : req.body
+    } else {
+      res.render('productAdd', {
+        errors: errors.mapped(),
+        old: req.body
       })
     }
   },
@@ -139,11 +139,11 @@ module.exports = {
   },
   update: (req, res) => {
     const errors = validationResult(req)
-    if(errors.isEmpty()){ 
+    if (errors.isEmpty()) {
       const products = loadProduct();
       const { id } = req.params;
       const { nombre, marca, precio, cantidad, categoria, imagen, detalle } = req.body;
-        const productosModificados = products.map((prod) => {
+      const productosModificados = products.map((prod) => {
         if (prod.id === +id) {
           return {
             ...prod,
@@ -152,7 +152,7 @@ module.exports = {
             precio: +precio,
             cantidad: +cantidad,
             categoria: categoria,
-            imagen: req.file ? req.file.filename : prod.imagen ,
+            imagen: req.file ? req.file.filename : prod.imagen,
             detalle: detalle,
           };
         }
@@ -161,11 +161,11 @@ module.exports = {
       });
       storeProduct(productosModificados);
       return res.redirect("/productos/detalle/" + req.params.id);
-    }else{
+    } else {
       const { id } = req.params;
-      res.render('productEdit' ,{
-        errors : errors.mapped(),
-        prod : req.body
+      res.render('productEdit', {
+        errors: errors.mapped(),
+        prod: req.body
       })
     }
   },

@@ -1,55 +1,68 @@
 <%- include('./partials/head',{
     title: 'Registro'
-}) %> 
+}) %>
 
 <body>
-    <%- include('./partials/header') %> 
+    <%- include('./partials/header') %>
     <main class="main__productos">
         <!-- BARRA BUSQUEDA -->
-        <%- include('./partials/busqueda') %> 
+        <%- include('./partials/busqueda') %>
         <!-- TITULO -->
-        <h1>Bienvenid@s <%= user.nombre%>  al Perfil de Usuario</h1>
+        <h1>Bienvenid@s <%= user.nombre%> al Perfil de Usuario</h1>
         <!-- REGISTRO -->
         <section class="main__login__section">
             <article class="main__login__form">
 
                 <% if(locals.userLogin){ %>
-                    <img src="/images/usuarios/<%= userLogin.imagen ? userLogin.imagen : 'userDefault.png' %>"
-                <% } %>
+                <img src="/images/usuarios/<%= userLogin.imagen ? userLogin.imagen : 'userDefault.png' %>" <% } %> <img
+                    class="form__logo" src="/images/logo.png" alt="">
 
-                <img class="form__logo" src="/images/logo.png" alt="">
-
-                <form action="/users/update/<%= user.id %>?_method=PUT" class="form_style" method="POST" enctype="multipart/form-data">
+                <form action="/users/update/<%= user.id %>?_method=PUT" class="form_style" method="POST"
+                    enctype="multipart/form-data">
                     <h3>Informacion Personal</h3>
 
-                    <input class="<%= locals.errors && errors.nombre ? "input_error" : null %> " type="text" name="nombre" value="<%= locals.old && old.nombre ? old.nombre : null %>" id="name" placeholder=" <%= user.nombre%> " >
+                    <input class="<%= locals.errors && errors.nombre ? "input_error" : null %> " type="text"
+                        name="nombre" value="<%= locals.old && old.nombre ? old.nombre : null %>" id="name"
+                        placeholder=" <%= user.nombre%> ">
                     <small class="error_msg"><%= locals.errors && errors.nombre ? errors.nombre.msg : null %> </small>
 
-                    <input class="<%= locals.errors && errors.apellido ? "input_error" : null %> " type="text" name="apellido" id="last_name" value="<%= locals.old && old.apellido ? old.apellido : null %>" placeholder="<%= user.apellido%>" >
-                    <small class="error_msg"><%= locals.errors && errors.apellido ? errors.apellido.msg : null %> </small>
+                    <input class="<%= locals.errors && errors.apellido ? "input_error" : null %> " type="text"
+                        name="apellido" id="last_name" value="<%= locals.old && old.apellido ? old.apellido : null %>"
+                        placeholder="<%= user.apellido%>">
+                    <small class="error_msg"><%= locals.errors && errors.apellido ? errors.apellido.msg : null %>
+                    </small>
 
-                    <input class="<%= locals.errors && errors.domicilio ? "input_error" : null %> " type="text" name="domicilio" id="" placeholder="<%= user.direccion%>" value="<%= locals.old && old.domicilio ? old.domicilio : null %>">
-                    <small class="error_msg"><%= locals.errors && errors.domicilio ? errors.domicilio.msg : null %> </small>
-    
+                    <input class="<%= locals.errors && errors.domicilio ? "input_error" : null %> " type="text"
+                        name="domicilio" id="" placeholder="<%= user.direccion%>"
+                        value="<%= locals.old && old.domicilio ? old.domicilio : null %>">
+                    <small class="error_msg"><%= locals.errors && errors.domicilio ? errors.domicilio.msg : null %>
+                    </small>
+
                     <h4>Seleccione imagen de Perfil</h4>
                     <input type="file" name="imagenUser" accept="image/png, .jpeg, .jpg, image/gif">
 
                     <h4>Informacion de Inicio de sesion</h4>
-                    <input class="<%= locals.errors && errors.email ? "input_error" : null %> " type="email" name="email" id="email" placeholder="<%= user.email%>" value="<%= locals.old && old.email ? old.email : null %>" >
+                    <input class="<%= locals.errors && errors.email ? "input_error" : null %> " type="email"
+                        name="email" id="email" placeholder="<%= user.email%>"
+                        value="<%= locals.old && old.email ? old.email : null %>">
                     <small class="error_msg"><%= locals.errors && errors.email ? errors.email.msg : null %> </small>
 
-                    <input class="<%= locals.errors && errors.contrasena ? "input_error" : null %> " type="password" name="contrasena" id="password" placeholder="Ingrese su contraseña" >
-                    <small class="error_msg"><%= locals.errors && errors.contrasena ? errors.contrasena.msg : null %> </small>
+                    <input class="<%= locals.errors && errors.contrasena ? "input_error" : null %> " type="password"
+                        name="contrasena" id="password" placeholder="Ingrese su contraseña">
+                    <small class="error_msg"><%= locals.errors && errors.contrasena ? errors.contrasena.msg : null %>
+                    </small>
 
-                    <input class="<%= locals.errors && errors.contrasena2 ? "input_error" : null %> " type="password" name="contrasena2" id="password" placeholder="Ingrese nuevamente su contraseña" >
-                    <small class="error_msg"><%= locals.errors && errors.contrasena2 ? errors.contrasena2.msg : null %> </small>
+                    <input class="<%= locals.errors && errors.contrasena2 ? "input_error" : null %> " type="password"
+                        name="contrasena2" id="password" placeholder="Ingrese nuevamente su contraseña">
+                    <small class="error_msg"><%= locals.errors && errors.contrasena2 ? errors.contrasena2.msg : null %>
+                    </small>
 
                     <button class="submit_btn" type="submit">Guardar Cambios</button>
                 </form>
             </article>
         </section>
     </main>
-    <%- include('./partials/footer') %> 
+    <%- include('./partials/footer') %>
 </body>
 
 </html>
