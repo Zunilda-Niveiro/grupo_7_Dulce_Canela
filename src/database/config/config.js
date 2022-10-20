@@ -1,14 +1,13 @@
-
 module.exports={
   "development": {
     "username": "root",
-    "password": "root",
+    "password": 'root',
     "database": "dulce_canela",
-    "host": "127.0.0.1",
-    port:3306,
+    "host": "localhost",
+    "port":3306,
     "dialect": "mysql"
   },
-  /* "test": {
+  "test": {
     "username": "root",
     "password": null,
     "database": "database_test",
@@ -21,5 +20,5 @@ module.exports={
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
-  } */
+  }
 }

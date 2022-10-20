@@ -12,10 +12,10 @@
             <!-- CADA ARTICLE ES UNA CATEGORIA DE PRODUCTO -->
             <article class="home__main__cat">
                 <% categorias.forEach(categoria => { %>
-                 <div class="home__main__cat--card">
-                    <img src="/images/categorias/<%= categoria.imagen %> " alt="">
-                    <p><%= categoria.nombre %> </p>
-                    <a href="/productos/productos/<%= categoria.idcat %> ">Ver más</a>
+                <div class="home__main__cat--card">
+                    <img src="/images/categorias/<%= categoria.image %> " alt="">
+                    <p><%= categoria.name %> </p>
+                    <a href="/productos/productos/<%= categoria.id %> ">Ver más</a>
                 </div>
                 <% }) %>             
             </article>

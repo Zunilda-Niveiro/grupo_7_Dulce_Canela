@@ -1,22 +1,28 @@
 'use strict';
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Avatars', {
+    await queryInterface.createTable('Carts', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      file: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      user_id: {
+      order_id: {
         type: Sequelize.INTEGER,
         references : {
           model : {
-            tableName : 'Users'
+            tableName : 'Orders'
+          },
+          key : 'id'
+        }
+      },
+      paymentmethod_id: {
+        type: Sequelize.INTEGER,
+        references : {
+          model : {
+            tableName : 'PaymentMethods'
           },
           key : 'id'
         }
@@ -26,12 +32,14 @@ module.exports = {
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        type: Sequelize.DATE
+      },
+      deletedAt: {
         type: Sequelize.DATE
       }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Avatars');
+    await queryInterface.dropTable('Carts');
   }
 };
