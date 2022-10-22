@@ -3,6 +3,8 @@ const { validationResult } = require('express-validator');
 const { loadUsers, storeUsers } = require('../data/db_Module');
 const bcryptjs = require('bcryptjs');
 
+const db = require('../database/models')
+
 
 
 module.exports = {
@@ -41,7 +43,21 @@ module.exports = {
 
     procesoRegistro: (req, res) => {
         const errors = validationResult(req)
+        const { nombre, apellido, domicilio, email, contrasena } = req.body
+
         if (errors.isEmpty()) {
+            db.User.create({
+                nombre : nombre.trim(),
+                apellido : apellido.trim(),
+                domicilio : domicilio.trim(),
+                imagen: req.file ? req.file.filename : 'userDefault.png',
+                email: email.trim(),
+                contrasena: bcryptjs.hashSync(contrasena, 10),
+                rol: "user",
+            }).then(user =>{
+                
+            })
+
             const usuarios = loadUsers();
             const { nombre, apellido, domicilio, email, contrasena } = req.body
 
