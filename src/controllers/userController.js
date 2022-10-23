@@ -1,7 +1,7 @@
 
 const { validationResult } = require('express-validator');
-const { loadUsers, storeUsers } = require('../data/db_Module');
 const bcryptjs = require('bcryptjs');
+const db = require('../database/models');
 
 const db = require('../database/models')
 
@@ -18,21 +18,29 @@ module.exports = {
 
     procesoLogin: (req, res) => {
         const errors = validationResult(req)
+    
         if (errors.isEmpty()) {
-            let { id, nombre, rol, imagen } = loadUsers().find(user => user.email === req.body.email);
-            req.session.userLogin = {
-                id,
-                nombre,
-                rol,
-                imagen,
-            }
-            if (req.body.recordarme) {
-                res.cookie('DulceCanela', req.session.userLogin, {
-                    maxAge: 1000 * 60
-                })
-            }
-
-            return res.redirect('/')
+        
+            db.User.findOne({
+                where:{
+                    email:req.body.email
+                }
+            })
+                .then(user=>{
+                    req.session.userLogin = {
+                        id:user.id,
+                        nombre:user.firstname,
+                        rol:user.rol_id == 1 ? 1 : 2,
+                        imagen:user.avatar,
+                    }
+                    if (req.body.recordarme) {
+                        res.cookie('DulceCanela', req.session.userLogin, {
+                            maxAge: 1000 * 60
+                        })
+                    }
+                    return res.redirect('/')
+                }) 
+                .catch(error => console.log(error))
         } else {
             return res.render('login', {
                 errors: errors.mapped(),
@@ -46,34 +54,23 @@ module.exports = {
         const { nombre, apellido, domicilio, email, contrasena } = req.body
 
         if (errors.isEmpty()) {
-            db.User.create({
-                nombre : nombre.trim(),
-                apellido : apellido.trim(),
-                domicilio : domicilio.trim(),
-                imagen: req.file ? req.file.filename : 'userDefault.png',
-                email: email.trim(),
-                contrasena: bcryptjs.hashSync(contrasena, 10),
-                rol: "user",
-            }).then(user =>{
-                
-            })
-
-            const usuarios = loadUsers();
             const { nombre, apellido, domicilio, email, contrasena } = req.body
-
-            const usuario = {
-                id: usuarios[usuarios.length - 1] ? usuarios[usuarios.length - 1].id + 1 : 1,
-                nombre: nombre.trim(),
-                apellido: apellido.trim(),
-                direccion: domicilio.trim(),
-                imagen: req.file ? req.file.filename : 'userDefault.png',
+        
+            db.User.create({
+                firstname: nombre.trim(),
+                surname: apellido.trim(),
+                address: domicilio.trim(),
+                avatar: req.file ? req.file.filename : 'userDefault.png',
                 email: email.trim(),
-                contrasena: bcryptjs.hashSync(contrasena, 10),
-                rol: "user",
-            }
-            const usuariosTodos = [...usuarios, usuario]
-            storeUsers(usuariosTodos)
-            res.redirect('/')
+                password: bcryptjs.hashSync(contrasena, 10),
+                rol_id: 1,
+                createdAt: new Date()
+            })
+            .then(user => {
+                    res.redirect('/users/login') 
+                })
+            .catch(error => console.log(error))
+            
         } else {
 
             res.render('registro', {
@@ -83,13 +80,53 @@ module.exports = {
         }
     },
     perfil: (req, res) => {
-        let user = loadUsers().find(user => user.id === req.session.userLogin.id);
-        return res.render('perfil', {
-            user,
+        db.User.findOne({
+            where:{
+                id:req.session.userLogin.id
+            }
+        })
+        .then(user => {
+            return res.render('perfil', {
+                user,
+                old:user
+            })
         })
     },
     update: (req, res) => {
-        return res.send(req.body)
+        const errors = validationResult(req)
+        if (errors.isEmpty()) {
+            const { nombre, apellido, domicilio, email, contrasena } = req.body
+        
+            db.User.update({
+                firstname: nombre.trim(),
+                surname: apellido.trim(),
+                address: domicilio.trim(),
+                avatar: req.file ? req.file.filename : 'userDefault.png',
+                email: email.trim(),
+                password: bcryptjs.hashSync(contrasena, 10),
+                rol_id: 1,
+                updatedAt: new Date()
+            },{
+                where:{id:req.params.id}
+            })
+            .then(user => {
+                    res.redirect('/users/perfil') 
+                })
+            .catch(error => console.log(error))
+            
+        } else {
+
+            res.render('perfil', {
+                errors: errors.mapped(),
+                old: {
+                    firstname: req.body.nombre.trim(),
+                    surname: req.body.apellido.trim(),
+                    address: req.body.domicilio.trim(),
+                    email: req.body.email.trim(),
+                    id:req.params.id
+                }
+            })
+        }
     },
     logout: (req, res) => {
         req.session.destroy()

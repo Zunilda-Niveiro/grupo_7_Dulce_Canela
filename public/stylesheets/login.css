@@ -18,9 +18,9 @@
   background-color: #ccccac80;
   border-radius: 15px;
   margin: 20px 10px;
-  color: white;
-  box-shadow: 0 0 10px var(--colorCinco), 0 0 20px var(--colorCinco),
-    0 0 30px var(--colorCinco);
+  color: var(--colorFuenteOscura);
+  box-shadow: 0 0 10px var(--colorFuenteOscura), 0 0 20px var(--colorFuenteOscura),
+    0 0 30px var(--colorFuenteOscura);
   width: 90vw;
   position: relative;
 }
@@ -59,7 +59,7 @@
 
 
 .submit_btn {
-  background-color: var(--colorCinco);
+  background-color: var(--colorSecundario);
   margin: 0px 18px 15px 18px;
   max-width: 90%;
   color: white;

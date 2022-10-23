@@ -9,6 +9,7 @@ const users = usuarios.map(usuario => {
     surname:usuario.apellido,
     email:usuario.email,
     password:usuario.contrasena,
+    avatar:usuario.imagen,
     rol_id:usuario.rol == 'user' ? 1 : 2,
     address:usuario.direccion,
     createdAt: new Date()
