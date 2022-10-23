@@ -16,7 +16,7 @@ router
     .post('/login', loginValidacion, procesoLogin)
     .get('/perfil',userSessionCheck,perfil)
     .get('/logout',logout)
-    .put('/update/:id',update)
+    .put('/update/:id', uploadUser.single('imagenUser'), registroValidacion,update)
 
 
 
