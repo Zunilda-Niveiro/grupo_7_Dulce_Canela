@@ -1,6 +1,7 @@
 const categorias = require("../data/categorias.json");
 const productos = require("../data/productos.json");
 const {validationResult} = require('express-validator');
+const db = require('../database/models')
 
 const {
   loadCarrito,
@@ -10,32 +11,50 @@ const {
 } = require("../data/db_Module");
 
 module.exports = {
+
   productos: (req, res) => {
-    const categ = categorias.find((categoria) => categoria.idcat == +req.params.id);
-    const subprod = productos.filter((producto) => producto.categoria == categ.nombre);
-    const carrito = loadCarrito();
-    return res.render("productos", {
-      subprod,
-      categ: categ.nombre,
+  
+    db.Product.findAll({
+      include : ['imagenes','categoria'],
+      where : {
+        category_id : req.params.id
+      }
+    })
+    .then((subproductos) =>{
+    
+      const carrito = loadCarrito();
+      return res.render("productos", {
+      subprod:subproductos,
+      categ: subproductos[0].categoria.name,
       carrito,
-      productos,
     });
+    })    
   },
+
   agregarProd: (req, res) => {
     const carrito = loadCarrito();
     return res.render("productAdd", {
       carrito,
     });
   },
+
   detalle: (req, res) => {
-    const products = loadProduct();
-    const prod = products.find((producto) => producto.id === +req.params.id);
+
     const carrito = loadCarrito();
-    return res.render("detalle", {
-      prod,
-      productos,
-      carrito,
-    });
+
+    db.Product.findByPk(req.params.id,{
+      include : ['imagenes','categoria'],
+    })
+      .then(producto => {
+        return res.render("detalle", {
+        prod:producto,
+        productos,
+        carrito,
+      });
+      })
+    
+    
+    
   },
   carrito: (req, res) => {
     const carrito = loadCarrito();
@@ -45,6 +64,7 @@ module.exports = {
       productos,
     });
   },
+  
   agregar: (req, res) => {
     const carrito = loadCarrito();
     if (carrito == undefined || carrito == "") {

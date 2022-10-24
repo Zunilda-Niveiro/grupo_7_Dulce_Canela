@@ -9,7 +9,7 @@
         <section class="main__detalle__section">
             <article class="section__imagenes ">
                 <div class="section__imagenes--ppal">
-                    <img class="" src="/images/productos/<%= prod.imagen %>" alt="">
+                    <img class="" src="/images/productos/<%= prod.imagenes[0].file %>" alt="">
                 </div>
                 <div class="section__mini">
                     <img class="section__imagenes__mini" src="/images/productos/amaranto1.jpg" alt="">
@@ -18,10 +18,10 @@
                 </div>
             </article>
             <article class="section__descripcion">
-                <h4><%= prod.nombre %> x <%= prod.cantidad %> gr</h4>
+                <h4><%= prod.name %> x <%= prod.amount %> gr</h4>
                 <hr>
                 <div class="section__controles">
-                    <p class="">$ <%= prod.precio %> </p>
+                    <p class="">$ <%= prod.price %> </p>
                     <div>
                         <i class="fa fa-minus" aria-hidden="true"></i>
                         <input type="number" name="1">
@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <hr>
-                <p><%= prod.detalle %></p>
+                <p><%= prod.detail %></p>
                 <form action="/productos/agregar/<%= prod.id %> " method="POST">
                     <button type="submit" class="btn-add">Agregar al carrito</button>
                 </form>
