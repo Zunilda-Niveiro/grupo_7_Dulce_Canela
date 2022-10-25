@@ -51,10 +51,10 @@
 
             <% for( let index = 0; index < 3; index++ ) { %>
             <article class="section__similares__articulo">
-                <img class="section__similares__articulo--img" src="/images/productos/<%= productos[index].imagen %> "
+                <img class="section__similares__articulo--img" src="/images/productos/<%= productos[index].imagenes[0].file %> "
                     alt="">
                 <div class="">
-                    <h4><%= productos[index].nombre %> </h4>
+                    <h4><%= productos[index].name %> </h4>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
                 </div>
             </article>

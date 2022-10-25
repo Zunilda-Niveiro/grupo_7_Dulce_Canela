@@ -1,4 +1,3 @@
-const categorias = require("../data/categorias.json");
 const productos = require("../data/productos.json");
 const {validationResult} = require('express-validator');
 const db = require('../database/models')
@@ -6,14 +5,16 @@ const db = require('../database/models')
 const {
   loadCarrito,
   storeCarrito,
-  loadProduct,
-  storeProduct,
 } = require("../data/db_Module");
 
 module.exports = {
 
   productos: (req, res) => {
-  
+    
+    if(req.session.userLogin && (req.session.userLogin.rol === 'user') ){
+      
+    }
+
     db.Product.findAll({
       include : ['imagenes','categoria'],
       where : {
@@ -30,31 +31,30 @@ module.exports = {
     });
     })    
   },
-
   agregarProd: (req, res) => {
     const carrito = loadCarrito();
     return res.render("productAdd", {
       carrito,
     });
   },
-
   detalle: (req, res) => {
 
     const carrito = loadCarrito();
 
-    db.Product.findByPk(req.params.id,{
-      include : ['imagenes','categoria'],
-    })
-      .then(producto => {
-        return res.render("detalle", {
-        prod:producto,
-        productos,
-        carrito,
-      });
+    db.Product.findByPk(req.params.id,{include : ['imagenes','categoria']})
+    .then(product => {
+      db.Product.findAll({
+        include:['imagenes'],
+        where:{category_id : product.category_id}
       })
-    
-    
-    
+      .then(products =>{
+        return res.render("detalle", {
+                prod:product,
+                productos:products,
+                carrito,
+              });
+      })
+    })
   },
   carrito: (req, res) => {
 
@@ -67,7 +67,6 @@ module.exports = {
       productos,
     });
   },
-  
   agregar: (req, res) => {
     const carrito = loadCarrito();
     if (carrito == undefined || carrito == "") {
@@ -204,7 +203,6 @@ module.exports = {
     });
     })
   },
-
   update: (req, res) => {
     const errors = validationResult(req)
     if(errors.isEmpty()){ 
@@ -285,14 +283,18 @@ module.exports = {
       })
     }
   },
-
   remove: (req, res) => {
-    db.Product.destroy({
+    db.Image.destroy({
+      where:{product_id:req.params.id}
+    })
+    .then(resul => {
+      db.Product.destroy({
       where:{id:req.params.id}
     })
-    .then(() => {
+    .then(result => {
       return res.redirect("/");
-    })    
+    })
+    }) 
   },
   removeCarrito: (req, res) => {
     const carrito = loadCarrito();
