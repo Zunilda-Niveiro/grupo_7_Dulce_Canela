@@ -28,7 +28,7 @@ module.exports = {
                     req.session.userLogin = {
                         id:user.id,
                         nombre:user.firstname,
-                        rol:user.rol_id == 1 ? 1 : 2,
+                        rol:user.rol_id == 1 ? 'user' : 'admi',
                         imagen:user.avatar,
                     }
                     if (req.body.recordarme) {

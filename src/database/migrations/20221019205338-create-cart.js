@@ -18,14 +18,19 @@ module.exports = {
           key : 'id'
         }
       },
-      paymentmethod_id: {
+      product_id:{
+        allowNull: false,
         type: Sequelize.INTEGER,
         references : {
           model : {
-            tableName : 'PaymentMethods'
+            tableName : 'Products'
           },
           key : 'id'
         }
+      },
+      quantity:{
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

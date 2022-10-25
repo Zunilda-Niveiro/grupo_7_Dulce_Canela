@@ -21,11 +21,11 @@ module.exports = {
           key : 'id'
         }
       },
-      product_id: {
-        type: Sequelize.INTEGER,
+      method_id:{
+        type:Sequelize.INTEGER,
         references : {
           model : {
-            tableName : 'Products'
+            tableName : 'PaymentMethods'
           },
           key : 'id'
         }

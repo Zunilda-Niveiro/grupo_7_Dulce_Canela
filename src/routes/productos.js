@@ -17,10 +17,13 @@ router
     .delete('/deleteCarrito/:id', removeCarrito)
 
     .get('/carrito', carrito)
-    .get('/productAdd',userSessionCheck,userSessionCheck, agregarProd)// Agregar Producto 
+
+    .get('/productAdd',userSessionCheck, agregarProd)// Agregar Producto 
     .post('/productAdd', upload.single('imagen'), agregarProductoValidaciones, agregarProducto)
+
     .get('/edicionDeProductos/:id',userSessionCheck,editarProducto)//Editar Producto - se agrega el id para saber que producto se va a editar
     .put('/update/:id',upload.single('imagen'), editarProductosValidaciones,update)//Actualizar Producto - se agrega el id para saber que producto se va a editar
+    
     .delete('/delete/:id', remove)
 
 module.exports = router;
