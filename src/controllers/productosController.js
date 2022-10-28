@@ -2,6 +2,8 @@ const categorias = require("../data/categorias.json");
 const productos = require("../data/productos.json");
 const { validationResult } = require('express-validator');
 
+const db = require('../database/models')
+
 const {
   loadCarrito,
   storeCarrito,
@@ -10,6 +12,8 @@ const {
 } = require("../data/db_Module");
 
 module.exports = {
+
+
   productos: (req, res) => {
     const categ = categorias.find((categoria) => categoria.idcat == +req.params.id);
     const subprod = productos.filter((producto) => producto.categoria == categ.nombre);

@@ -30,16 +30,6 @@
       "detalle": "amet lobortis sapien sapien non mi integer ac neque duis bibendum morbi non quam"
    },
    {
-      "id": 5,
-      "categoria": "semillas",
-      "nombre": "Pipas de Calabaza",
-      "cantidad": 250,
-      "marca": "Natura",
-      "precio": 210,
-      "imagen": "pipas-de-calabaza_.jpg",
-      "detalle": "congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus"
-   },
-   {
       "id": 6,
       "categoria": "semillas",
       "nombre": "Quinoa Roja",
