@@ -15,20 +15,20 @@
                 <img class="form__logo" src="/images/logo.png" alt="">
                 <form action="/productos/update/<%= prod.id %>?_method=PUT" class="form_style" method="POST" enctype="multipart/form-data">
                     <h3>Datos del Producto</h3>
-                    <input class="<%= locals.errors && errors.nombre ? "input_error" : null %> " type="text" name="nombre" id="nombre" placeholder="nombre de productor"  value="<%= prod.nombre%>">
+                    <input class="<%= locals.errors && errors.nombre ? "input_error" : null %> " type="text" name="nombre" id="nombre" placeholder="nombre de productor"  value="<%= prod.name%>">
                     <small class="error_msg"><%= locals.errors && errors.nombre ? errors.nombre.msg : null %> </small>
 
-                    <input class="<%= locals.errors && errors.marca ? "input_error" : null %> "type="text" name="marca" id="marca" placeholder="Ingrese Marca de producto"  value="<%= prod.marca%>">
+                    <input class="<%= locals.errors && errors.marca ? "input_error" : null %> "type="text" name="marca" id="marca" placeholder="Ingrese Marca de producto"  value="<%= prod.marca.name%>">
                     <small class="error_msg"><%= locals.errors && errors.marca ? errors.marca.msg : null %> </small>
 
-                    <input class="<%= locals.errors && errors.precio ? "input_error" : null %> "type="number" name="precio" id="precio" placeholder="Precio del Producto"  value="<%= prod.precio%>">
+                    <input class="<%= locals.errors && errors.precio ? "input_error" : null %> "type="number" name="precio" id="precio" placeholder="Precio del Producto"  value="<%= prod.price%>">
                     <small class="error_msg"><%= locals.errors && errors.precio ? errors.precio.msg : null %> </small>
 
-                    <input class="<%= locals.errors && errors.cantidad ? "input_error" : null %> "type="text" name="cantidad" id="cantidad" placeholder="Cantidad"  value="<%= prod.cantidad%>">
+                    <input class="<%= locals.errors && errors.cantidad ? "input_error" : null %> "type="text" name="cantidad" id="cantidad" placeholder="Cantidad"  value="<%= prod.amount%>">
                     <small class="error_msg"><%= locals.errors && errors.cantidad ? errors.cantidad.msg : null %> </small>
 
                     <select class="<%= locals.errors && errors.categoria ? "input_error" : null %> "name="categoria" id="categoria" class="form_style">
-                        <option selected hidden ><%= prod.categoria%></option>
+                        <option selected hidden ><%= prod.categoria.name%></option>
                         <option value="Especias">Especias</option>
                         <option value="frutos-secos">Frutos secos</option>
                         <option value="Harinas">Harinas</option>
@@ -41,7 +41,7 @@
                     <h4>Seleccione imagen del producto</h4>
                     <input type="file" name="imagen" id="imagen"  value="<%= prod.imagen%>" accept="image/png, .jpeg, .jpg, image/gif, .webp">
                     <textarea class="<%= locals.errors && errors.detalle ? "input_error" : null %> " name="detalle" rows="10" cols="40"
-                        placeholder="<%= prod.detalle %>"></textarea>
+                        ><%= prod.detail %></textarea>
                     <small class="error_msg"><%= locals.errors && errors.detalle ? errors.detalle.msg : null %> </small>
                     <button class="submit_btn" type="submit">Guardar Edicion de Producto</button>
                 </form>

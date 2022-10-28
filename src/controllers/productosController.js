@@ -1,29 +1,33 @@
-const categorias = require("../data/categorias.json");
 const productos = require("../data/productos.json");
-const { validationResult } = require('express-validator');
-
-const db = require('../database/models')
+const {validationResult} = require('express-validator');
 
 const {
   loadCarrito,
   storeCarrito,
-  loadProduct,
-  storeProduct,
 } = require("../data/db_Module");
 
 module.exports = {
-
-
   productos: (req, res) => {
-    const categ = categorias.find((categoria) => categoria.idcat == +req.params.id);
-    const subprod = productos.filter((producto) => producto.categoria == categ.nombre);
-    const carrito = loadCarrito();
-    return res.render("productos", {
-      subprod,
-      categ: categ.nombre,
+    
+    if(req.session.userLogin && (req.session.userLogin.rol === 'user') ){
+      
+    }
+
+    db.Product.findAll({
+      include : ['imagenes','categoria'],
+      where : {
+        category_id : req.params.id
+      }
+    })
+    .then((subproductos) =>{
+    
+      const carrito = loadCarrito();
+      return res.render("productos", {
+      subprod:subproductos,
+      categ: subproductos[0].categoria.name,
       carrito,
-      productos,
     });
+    })    
   },
   agregarProd: (req, res) => {
     const carrito = loadCarrito();
@@ -32,16 +36,28 @@ module.exports = {
     });
   },
   detalle: (req, res) => {
-    const products = loadProduct();
-    const prod = products.find((producto) => producto.id === +req.params.id);
+
     const carrito = loadCarrito();
-    return res.render("detalle", {
-      prod,
-      productos,
-      carrito,
-    });
+
+    db.Product.findByPk(req.params.id,{include : ['imagenes','categoria']})
+    .then(product => {
+      db.Product.findAll({
+        include:['imagenes'],
+        where:{category_id : product.category_id}
+      })
+      .then(products =>{
+        return res.render("detalle", {
+                prod:product,
+                productos:products,
+                carrito,
+              });
+      })
+    })
   },
   carrito: (req, res) => {
+
+    db.Product.findAll()
+
     const carrito = loadCarrito();
     const productos = loadProduct();
     return res.render("carrito", {
@@ -108,7 +124,7 @@ module.exports = {
   },
   agregarProducto: (req, res) => {
     const errors = validationResult(req)
-    if (errors.isEmpty()) {
+    if(errors.isEmpty()){
 
       const productos = loadProduct();
       const { nombre, marca, precio, cantidad, categoria, detalle, imagen } = req.body;
@@ -121,33 +137,37 @@ module.exports = {
         precio: +precio,
         imagen: imagen ? imagen : null,
         detalle: detalle,
-
+        
       };
       const newProductlist = [...productos, newProduct];
       storeProduct(newProductlist);
       return res.redirect("/");
 
-    } else {
-      res.render('productAdd', {
-        errors: errors.mapped(),
-        old: req.body
+    }else{
+      res.render('productAdd',{
+        errors : errors.mapped(),
+        old : req.body
       })
     }
   },
   editarProducto: (req, res) => {
-    const products = loadProduct();
-    const prod = products.find((prod) => prod.id === +req.params.id);
-    return res.render("edicionDeProductos", {
+    db.Product.findOne({
+      include : ['imagenes','categoria','marca'],
+      where:{id:+req.params.id}
+    })
+    .then(prod => {
+      return res.render("edicionDeProductos", {
       prod,
     });
+    })
   },
   update: (req, res) => {
     const errors = validationResult(req)
-    if (errors.isEmpty()) {
+    if(errors.isEmpty()){ 
       const products = loadProduct();
       const { id } = req.params;
       const { nombre, marca, precio, cantidad, categoria, imagen, detalle } = req.body;
-      const productosModificados = products.map((prod) => {
+        const productosModificados = products.map((prod) => {
         if (prod.id === +id) {
           return {
             ...prod,
@@ -156,7 +176,7 @@ module.exports = {
             precio: +precio,
             cantidad: +cantidad,
             categoria: categoria,
-            imagen: req.file ? req.file.filename : prod.imagen,
+            imagen: req.file ? req.file.filename : prod.imagen ,
             detalle: detalle,
           };
         }
@@ -165,21 +185,26 @@ module.exports = {
       });
       storeProduct(productosModificados);
       return res.redirect("/productos/detalle/" + req.params.id);
-    } else {
+    }else{
       const { id } = req.params;
-      res.render('productEdit', {
-        errors: errors.mapped(),
-        prod: req.body
+      res.render('productEdit' ,{
+        errors : errors.mapped(),
+        prod : req.body
       })
     }
   },
   remove: (req, res) => {
-    const products = loadProduct();
-    const productsModify = products.filter(
-      (product) => product.id !== +req.params.id
-    );
-    storeProduct(productsModify);
-    return res.redirect("/");
+    db.Image.destroy({
+      where:{product_id:req.params.id}
+    })
+    .then(resul => {
+      db.Product.destroy({
+      where:{id:req.params.id}
+    })
+    .then(result => {
+      return res.redirect("/");
+    })
+    }) 
   },
   removeCarrito: (req, res) => {
     const carrito = loadCarrito();

@@ -4,8 +4,8 @@
 const productos = require('../../data/productos.json');
 let marcas=[];
 productos.forEach(product => {
-  if (!marcas.includes(product.marca)){
-    marcas.push(product.marca)
+  if (!marcas.includes(product.marca.toLocaleLowerCase())){
+    marcas.push(product.marca.toLocaleLowerCase())
   }
 });
 const brands = marcas.map(marca =>{

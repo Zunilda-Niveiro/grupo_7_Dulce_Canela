@@ -1,7 +1,4 @@
 const {check, body} = require('express-validator');
-const users = require('../data/db_Module').loadUsers();
-const bcryptjs = require('bcryptjs');
-
 module.exports = [
     check('nombre')
     .notEmpty().withMessage('Debes introducir nombre del producto'),
@@ -18,8 +15,5 @@ module.exports = [
 
     check('categoria')
     .notEmpty().withMessage('Debes seleccionar una categoria'),
-
-    check('imagen')
-    .notEmpty().withMessage('Debes introducir una imagen'),
     
 ]

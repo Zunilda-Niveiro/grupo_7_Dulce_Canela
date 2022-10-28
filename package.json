@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./src/bin/www",
-    "db-revert":"sequelize db:migrate:undo:all & sequelize db:migrate & sequelize db:seed:all & nodemon"
+    "db-revert": "sequelize db:migrate:undo:all & sequelize db:migrate & sequelize db:seed:all & nodemon"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -20,7 +20,7 @@
     "morgan": "~1.9.1",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^2.3.3",
-    "nodemon": "^2.0.19",
+    "nodemon": "^2.0.20",
     "override": "^0.0.1",
     "sequelize": "^6.25.3",
     "sweetalert2": "^11.4.29"
