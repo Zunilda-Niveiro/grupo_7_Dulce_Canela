@@ -45,7 +45,7 @@ Hacer menos: por el momento solo encontramos puntos para fortalecer, este sprint
 
 Dejar de hacer: no volver a la dinámica inicial. El silencio como recurso. 
 
-
+## Sprint 5
 En este sprint las cosas fluyeron mucho mejor. Cada instancia se cumplio correctamente 
 <span> Partiendo por que debemos dejar de hacer:</span> Creemos que aun es notoria a falta de reclamos internos ante las fallas de cada uno de los integrandes.
 <span> Hacer Mas :</span> Aumentar la comunicacion interna durante y post sprint 
