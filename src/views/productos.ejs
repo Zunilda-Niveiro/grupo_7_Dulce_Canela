@@ -10,7 +10,6 @@
         <!-- CATEGORIAS PRODUCTOS // SERIA DESLIZABLE EN EL FUTURO-->
         <h3>CATEGORIAS</h3>
         <section class="home__main__categorias">
-
             <div class="main__productos__categ">
                 <img src="/images/categorias/especias.jpg" alt="">
                 <p>Especias </p>
@@ -26,7 +25,6 @@
                 <p>Harinas</p>
                 <a href="/productos">Ver más</a>
             </div>
-
         </section>
         <!-- TITULO -->
         <h1><%= categ %></h1>
@@ -47,7 +45,6 @@
             </article>
             <% }) %>
         </section>
-
         <% } %>
         <% if (userLogin.rol === 'user') { %>
         <section class="main__productos__section">
@@ -62,9 +59,7 @@
             </article>
             <% }) %>
         </section>
-
         <% } %>
-
         <% } else { %>
         <section class="main__productos__section">
             <% subprod.forEach(producto => { %>
@@ -78,7 +73,6 @@
             </article>
             <% }) %>
         </section>
-
         <% } %>
     </main>
     <%- include('./partials/footer') %>
