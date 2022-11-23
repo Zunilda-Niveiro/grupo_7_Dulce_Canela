@@ -1,22 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const {upload} = require('../middleware/uploadFiles')
-const { productos, detalle, carrito, busqueda, agregar, remove, agregarProd, agregarProducto, editarProducto, update,removeCarrito } = require('../controllers/productosController')
+const { productos, detalle, carrito, busqueda, remove, agregarProducto, editarProducto, update,agregarProd } = require('../controllers/productosController')
 const { editarProductosValidaciones, agregarProductoValidaciones} = require('../validaciones')
 const userSessionCheck = require('../middleware/userSessionCheck');
+
 router
     /* CARGA VISTA PRODUCTOS POR CATEGORIA SELECCIONADA */
     .get('/productos/:id', productos)
-    /* AGREGA PRODUCTO A CARRITO */
-    .post('/agregar/:id', agregar)
     /* BARRA DE BUSQUEDA */
     .get('/buscar', busqueda)
     /* CARGA DETALLE DE PRODUCTO */
     .get('/detalle/:id', detalle)
-    /* ELIMINA PRODUCTOS DEL CARRITO  */
-    .delete('/deleteCarrito/:id', removeCarrito)
 
-    .get('/carrito', carrito)
+    .get('/carrito',carrito)
 
     .get('/productAdd',userSessionCheck, agregarProd)// Agregar Producto 
     .post('/productAdd', upload.single('imagen'), agregarProductoValidaciones, agregarProducto)

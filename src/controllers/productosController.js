@@ -1,10 +1,4 @@
-const productos = require("../data/productos.json");
 const {validationResult} = require('express-validator');
-
-const {
-  loadCarrito,
-  storeCarrito,
-} = require("../data/db_Module");
 
 module.exports = {
   productos: (req, res) => {
@@ -21,23 +15,19 @@ module.exports = {
     })
     .then((subproductos) =>{
     
-      const carrito = loadCarrito();
+      
       return res.render("productos", {
       subprod:subproductos,
       categ: subproductos[0].categoria.name,
-      carrito,
     });
     })    
   },
   agregarProd: (req, res) => {
-    const carrito = loadCarrito();
+    
     return res.render("productAdd", {
-      carrito,
     });
   },
   detalle: (req, res) => {
-
-    const carrito = loadCarrito();
 
     db.Product.findByPk(req.params.id,{include : ['imagenes','categoria']})
     .then(product => {
@@ -49,57 +39,16 @@ module.exports = {
         return res.render("detalle", {
                 prod:product,
                 productos:products,
-                carrito,
               });
       })
     })
   },
   carrito: (req, res) => {
-
     db.Product.findAll()
-
-    const carrito = loadCarrito();
-    const productos = loadProduct();
     return res.render("carrito", {
-      carrito,
-      productos,
     });
   },
   agregar: (req, res) => {
-    const carrito = loadCarrito();
-    if (carrito == undefined || carrito == "") {
-      const nuevoProd = {
-        id: 1,
-        id_producto: +req.params.id,
-        cantidad_p: 1,
-      };
-      const prodNuevo = [...carrito, nuevoProd];
-      storeCarrito(prodNuevo);
-    } else {
-      let bandera = false;
-      let aux = carrito.map((produ) => {
-        if (produ.id_producto == +req.params.id) {
-          bandera = true;
-          return {
-            ...produ,
-            cantidad_p: produ.cantidad_p + 1,
-          };
-        }
-        return produ;
-      });
-      if (!bandera) {
-        let idconst = aux.lenght;
-        const nuevoProd = {
-          id: idconst,
-          id_producto: +req.params.id,
-          cantidad_p: 1,
-        };
-        const prodNuevo = [...carrito, nuevoProd];
-        storeCarrito(prodNuevo);
-      } else {
-        storeCarrito(aux);
-      }
-    }
     res.redirect("/productos/detalle/" + req.params.id);
   },
   busqueda: (req, res) => {
@@ -205,14 +154,5 @@ module.exports = {
       return res.redirect("/");
     })
     }) 
-  },
-  removeCarrito: (req, res) => {
-    const carrito = loadCarrito();
-
-    const carritoModificado = carrito.filter(
-      (car) => car.id_producto != +req.params.id
-    );
-    storeCarrito(carritoModificado);
-    return res.redirect("/");
-  },
+  }
 };
