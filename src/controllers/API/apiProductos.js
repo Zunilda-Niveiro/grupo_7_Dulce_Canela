@@ -2,6 +2,7 @@ const {validationResult} = require("express-validator");
 const db = require("../../database/models");
 const {literal,Op} = require("sequelize");
 const path = require("path");
+const fs = require('fs');
 
 const options = (req) => {
     return {
@@ -161,7 +162,7 @@ module.exports = {
             });
         }
     },
-    getImage: (req, res) => {
+    getImage:(req, res) => {
         return res.sendFile(
             path.join(
                 __dirname,
@@ -175,4 +176,21 @@ module.exports = {
             )
         );
     },
+    remove: async (req, res) =>{
+        try {
+            producto = await db.Product.findByPk(req.params.id,options(req))
+
+            if (producto.imagenes.length) {
+                producto.imagenes.forEach(image => {
+					fs.existsSync(path.join(__dirname,'..','..','public','images','productos',image.file)) && fs.unlinkSync(path.join(__dirname,'..','..','public','images','productos',image.file))
+				});
+            }
+            await producto.destroy()
+            return res.status(200).json({
+                data:producto
+            })
+        } catch (error) {
+            console.log(error) 
+        }
+    }
 };
