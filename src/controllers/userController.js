@@ -26,17 +26,10 @@ module.exports = {
             })
                 .then(user => {
                     req.session.userLogin = {
-<<<<<<< HEAD
                         id: user.id,
                         nombre: user.firstname,
-                        rol: user.rol_id == 1 ? 1 : 2,
+                        rol: user.rol_id == 1 ? 'user' : 'admi',
                         imagen: user.avatar,
-=======
-                        id:user.id,
-                        nombre:user.firstname,
-                        rol:user.rol_id == 1 ? 'user' : 'admi',
-                        imagen:user.avatar,
->>>>>>> b313ea98a7196c26befdbab920ff3a55b6e0c0ab
                     }
                     if (req.body.recordarme) {
                         res.cookie('DulceCanela', req.session.userLogin, {
