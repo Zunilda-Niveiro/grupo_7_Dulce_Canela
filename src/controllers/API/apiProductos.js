@@ -1,6 +1,6 @@
 const {validationResult} = require("express-validator");
 const db = require("../../database/models");
-const {literal,Op} = require("sequelize");
+const {literal,Op, where} = require("sequelize");
 const path = require("path");
 const fs = require('fs');
 
@@ -179,18 +179,24 @@ module.exports = {
     remove: async (req, res) =>{
         try {
             producto = await db.Product.findByPk(req.params.id,options(req))
-
-            if (producto.imagenes.length) {
-                producto.imagenes.forEach(image => {
+            
+            if (producto && producto.imagenes.length) {
+                producto.imagenes.forEach(async image => {
 					fs.existsSync(path.join(__dirname,'..','..','public','images','productos',image.file)) && fs.unlinkSync(path.join(__dirname,'..','..','public','images','productos',image.file))
+                    await db.Image.destroy({where:{product_id:image.id}})
 				});
             }
             await producto.destroy()
             return res.status(200).json({
+                ok:true,
                 data:producto
             })
         } catch (error) {
             console.log(error) 
+            return res.status(400).json({
+                ok:false,
+                errors:error
+            })
         }
     }
 };
