@@ -183,7 +183,6 @@ module.exports = {
             if (producto && producto.imagenes.length) {
                 producto.imagenes.forEach(async image => {
 					fs.existsSync(path.join(__dirname,'..','..','public','images','productos',image.file)) && fs.unlinkSync(path.join(__dirname,'..','..','public','images','productos',image.file))
-                    await db.Image.destroy({where:{product_id:image.id}})
 				});
             }
             await producto.destroy()
