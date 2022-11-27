@@ -39,8 +39,8 @@
                     <small class="error_msg"><%= locals.errors && errors.categoria ? errors.categoria.msg : null %> </small>
 
                     <h4>Seleccione imagen del producto</h4>
-                    <input class="<%= locals.errors && errors.imagen ? "input_error" : null %> " type="file" name="imagen" accept="image/png, .jpeg, .jpg, image/gif, .webp">
-                    <small class="error_msg"><%= locals.errors && errors.imagen ? errors.imagen.msg : null %> </small>
+                    <input id="imagen" class="<%= locals.errors && errors.imagen ? "input_error" : null %> " type="file" name="imagen" accept="image/png, .jpeg, .jpg, image/gif, .webp">
+                    <small id="imagenError" class="error_msg"><%= locals.errors && errors.imagen ? errors.imagen.msg : null %> </small>
                     <textarea id="detalle" class="<%= locals.errors && errors.detalle ? "input_error" : null %> " name="detalle" rows="10" cols="40" placeholder="Ingrese breve descripción del producto"></textarea>
                     <small id="detalleError" class="error_msg"><%= locals.errors && errors.detalle ? errors.detalle.msg : null %> </small>
 

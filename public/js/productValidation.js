@@ -1,5 +1,5 @@
 const $ = (element) => document.getElementById(element);
-console.log('cargadoooo')
+
 window.addEventListener('load', function(){
 
 const msgError = (element, msg, target) => {
@@ -32,7 +32,7 @@ $("name").addEventListener("blur", function ({ target }) {
                 msgError("detalleError", "El detalle es obligatorio", target);
                 break;
             case this.value.trim().length < 20:
-                msgError("detalleError", "El detalle como mínimino debe tener 20 caracteres", target);
+                msgError("detalleError", `Minimo 20 caracteres, faltan: ${20 - this.value.trim().length}`, target);
                 break;
             default:
                 validField("detalleError", target);
@@ -40,4 +40,16 @@ $("name").addEventListener("blur", function ({ target }) {
             }
         });
 
+    $("imagen").addEventListener('change', function(e){
+
+        let exten = this.value.split('\\').pop()
+        const extValid = /(.jpg|.jpeg|.png|.gif)$/i;
+
+        if(!extValid.exec(exten)){
+            msgError("imagenError", "Imagen Invalida - Extensiones permitidas .jpg|.jpeg|.png|.gif ", e.target);
+            this.value ='';
+        }else{
+            validField("imagenError",e.target); 
+        }
+    })
 })
