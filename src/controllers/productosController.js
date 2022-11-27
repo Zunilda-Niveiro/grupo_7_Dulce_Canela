@@ -78,7 +78,6 @@ module.exports = {
     
     const { nombre, marca, precio, cantidad, categoria, detalle, imagen } = req.body;
 
-    
     if(errors.isEmpty()){
       
       const marc = db.Brand.findOne({where:{name:marca.trim().toLocaleLowerCase()}})
