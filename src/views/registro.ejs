@@ -29,7 +29,7 @@
                     <small class="error_msg"><%= locals.errors && errors.domicilio ? errors.domicilio.msg : null %> </small>
     
                     <h4>Seleccione imagen de Perfil</h4>
-                    <input type="file" name="imagenUser" accept="image/png, .jpeg, .jpg, image/gif">
+                    <input type="file" name="imagenUser" id="imagen" accept="image/png, .jpeg, .jpg, image/gif">
                     <small id="imagenError"></small>
 
                     <h4>Informacion de Inicio de sesion</h4>
@@ -41,8 +41,10 @@
                     <small class="error_msg"><%= locals.errors && errors.contrasena ? errors.contrasena.msg : null %> </small>
                     <small id="contrasenaError"></small>
 
-                    <input class="<%= locals.errors && errors.contrasena2 ? "input_error" : null %> " type="password" name="contrasena2" id="password" placeholder="Ingrese nuevamente su contraseña" >
+                    <input class="<%= locals.errors && errors.contrasena2 ? "input_error" : null %> " type="password" name="contrasena2" id="password2" placeholder="Ingrese nuevamente su contraseña" >
                     <small class="error_msg"><%= locals.errors && errors.contrasena2 ? errors.contrasena2.msg : null %> </small>
+                    <small id="contrasenaError2"></small>
+                
 
                     <button class="submit_btn" type="submit">Crear Cuenta</button>
                 </form>

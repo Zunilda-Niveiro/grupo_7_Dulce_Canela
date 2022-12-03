@@ -1,23 +1,47 @@
 console.log("conexion exitosa")
-const exRegAlfa = /^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/
-const exRegEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/
-const exRegPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,8}/
+const exRegs ={
+    exRegAlfa : /^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/,
+    exRegEmail : /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/,
+    exRegPass : /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[><$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,8}/
+};
 
-const msgError = (element, msg, {target}) => {
+
+
+
+const msgError = (element, msg, target) => {
     $(element).innerText = msg;
-    target.classList.add('error_msg');
-};
+    target.classList.add('input_error');
+}
 
-const cleanField = (element, target) => {
+const validField = (element, target) => {
     $(element).innerText = null;
-    target.classList.remove('error_msg', 'is-valid')
-};
-
-const validField = (element,{target}) => {
-    cleanField(element, target)
-    target.classList.add('error_msg');
+    target.classList.remove('msgError','input_error');
     
 };
+
+//varifica el email, una vez que salgo del campo email
+
+const verifyEmail = async (email) => {
+    
+try {
+    let response = await fetch('/api/users/verified', {
+        method : 'POST',
+        body : JSON.stringify({
+            email : email
+            }),
+        headers : {
+            'content-Type' : 'application/json'
+        }
+    });
+
+    let result = await response.json();
+    console.log(result)
+    return result.verified
+
+} catch (error) {
+    console.error
+}
+}
 
 $('name').addEventListener('blur', function({ target}){
     switch (true) {
@@ -27,7 +51,7 @@ $('name').addEventListener('blur', function({ target}){
         case this.value.trim().length < 2 :
             msgError('nombreError',"El nombre debe tener como mínimo dos caracteres", target);
             break
-        case !exRegAlfa.test(this.value):
+        case !exRegs.exRegAlfa.test(this.value):
             msgError('nombreError',"Solo se permiten caracteres alfabéticos", target);
             break
         default:
@@ -35,9 +59,7 @@ $('name').addEventListener('blur', function({ target}){
             break;
     }
 }); 
-$('name').addEventListener('focus', function({target}){
-    cleanField('nombreError', target)
-});
+
 
 $("last_name").addEventListener("blur", function ({ target }) {
     switch (true) {
@@ -51,40 +73,34 @@ $("last_name").addEventListener("blur", function ({ target }) {
             target
         );
         break;
-            case !exRegAlfa.test(this.value):
+            case !exRegs.exRegAlfa.test(this.value):
         msgError('apellidoError', "El apellido debe tener solo letras", target);
         break;
             default:
-        validField('apellidoError', target);
+        validField('apellidoError', target)
         break;
     }
     });
 
-$('last_name').addEventListener('focus', function({target}){
-    cleanField('apellidoError', target)
-});
+    $("imagen").addEventListener('change', function(e){
 
+        let exten = this.value.split('\\').pop()
+        const extValid = /(.jpg|.jpeg|.png|.gif)$/i;
 
-$("imagen").addEventListener('change', function(e){
+        if(!extValid.exec(exten)){
+            msgError("imagenError", "Imagen Invalida - Extensiones permitidas .jpg|.jpeg|.png|.gif ", e.target);
+            this.value ='';
+        }else{
+            validField("imagenError",e.target); 
+        }
+    })
 
-    let exten = this.value.split('\\').pop()
-    const extValid = /(.jpg|.jpeg|.png|.gif)$/i;
-
-    if(!extValid.exec(exten)){
-        msgError("imagenError", "Imagen Invalida - Extensiones permitidas .jpg|.jpeg|.png|.gif ", e.target);
-        this.value ='';
-    }else{
-        validField("imagenError",e.target); 
-    }
-})
-
-
-$('email').addEventListener('blur', async function(target){
+$('email').addEventListener('blur', async function({target}) {
     switch (true) {
         case !this.value.trim():
-            msgError('emailError',"El email es obligatorio", target);
+            msgError('emailError',"El email es obligatorio", target)
             break;
-        case !exRegEmail.test(this.value):
+        case !exRegs.exRegEmail.test(this.value):
             msgError('emailError',"El email tiene un formato inválido", target);
             break
         case await verifyEmail(this.value):
@@ -95,25 +111,19 @@ $('email').addEventListener('blur', async function(target){
             break;
     }
 });
-
-$('email').addEventListener('focus', function({target}){
-    cleanField('emailError', target)
-});
-
-$("password").addEventListener("focus", () => {
-    $("contrasenaError").hidden = false;
-});
-
-    $("password").addEventListener("blur", function ({ target }) {
-    $("contrasenaError").hidden = true;
+    $("password").addEventListener("blur", function ({target}) {
     switch (true) {
         case !this.value.trim():
-            msgError("contrasenaError", "La contraseña es obligatoria", target);
+            msgError("contrasenaError", "La contraseña es obligatoria", target)
             break;
-        case !exRegPass.test(this.value):
+            case this.value.trim().length < 6 || this.value.trim().length > 8:
+                msgError("contrasenaError", "entre 6 y 8 caracteres", target)
+            break;
+        case !exRegs.exRegPass.test(this.value):
+            console.log(this.value)
             msgError(
             "contrasenaError",
-            "La contraseña debe tener un símbolo, una número, una mayúscula, una minúscula y entre 6 y 8 caracteres",
+            "La contraseña debe tener un símbolo, una número, una mayúscula, una minúscula",
             target
         );
         break;
@@ -123,5 +133,21 @@ $("password").addEventListener("focus", () => {
     }
     });
 
-
+    $("password2").addEventListener("blur", function ({target}) {
+        switch (true) {
+            case !this.value.trim():
+                msgError("contrasenaError2", "Debes verificar la contraseña", target);
+                break;
+            case !this.value.trim() !== $('password').value.trim():
+                msgError(
+                "contrasenaError2",
+                "La contraseña no coincide",
+                target
+            );
+            break;
+                default:
+            validField("contrasenaError2", target);
+            break;
+        }
+        });
     

@@ -13,8 +13,8 @@ module.exports = {
             const { nombre, apellido, domicilio, email, contrasena } = req.body
         
             db.User.create({
-                firstname: nombre.trim(),
-                surname: apellido.trim(),
+                name: nombre.trim(),
+                last_name: apellido.trim(),
                 address: domicilio.trim(),
                 avatar: req.file ? req.file.filename : 'userDefault.png',
                 email: email.trim(),
