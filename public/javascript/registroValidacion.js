@@ -2,7 +2,7 @@ console.log("conexion exitosa")
 const exRegs ={
     exRegAlfa : /^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/,
     exRegEmail : /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/,
-    exRegPass : /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[><$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,8}/
+    exRegPass : /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!¡%*?&<>¿])[A-Za-z\d$@$!¡%*?&><¿]{6,8}/
 };
 
 
@@ -123,7 +123,7 @@ $('email').addEventListener('blur', async function({target}) {
             console.log(this.value)
             msgError(
             "contrasenaError",
-            "La contraseña debe tener un símbolo, una número, una mayúscula, una minúscula",
+            "La contraseña debe tener un símbolo, un número, una mayúscula, una minúscula",
             target
         );
         break;
