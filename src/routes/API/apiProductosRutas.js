@@ -13,6 +13,7 @@ router
 
     .post('/productAdd', upload.single('imagen'), agregarProductoValidaciones, agregarProducto)
 
+    .delete('/remove/:id',remove)
 
     .get('/images/:image',getImage)
 
