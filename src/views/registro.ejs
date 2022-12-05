@@ -21,7 +21,9 @@
                         name="nombre" value="<%= locals.old && old.nombre ? old.nombre : null %>" id="name"
                         placeholder="Ingrese su nombre">
                     <small class="error_msg"><%= locals.errors && errors.nombre ? errors.nombre.msg : null %> </small>
+                    <small id="nombreError"></small>
 
+<<<<<<< HEAD
                     <input class="<%= locals.errors && errors.apellido ? "input_error" : null %> " type="text"
                         name="apellido" id="last_name" value="<%= locals.old && old.apellido ? old.apellido : null %>"
                         placeholder="Ingrese su apellido">
@@ -33,16 +35,24 @@
                         value="<%= locals.old && old.domicilio ? old.domicilio : null %>">
                     <small class="error_msg"><%= locals.errors && errors.domicilio ? errors.domicilio.msg : null %>
                     </small>
+=======
+                    <input class="<%= locals.errors && errors.apellido ? "input_error" : null %> " type="text" name="apellido" id="last_name" value="<%= locals.old && old.apellido ? old.apellido : null %>" placeholder="Ingrese su apellido" >
+                    <small class="error_msg"><%= locals.errors && errors.apellido ? errors.apellido.msg : null %> </small>
+                    <small id="apellidoError"></small>
+>>>>>>> 184f964de688cd56b437b72c89a37b0389a0c2da
 
                     <h4>Seleccione imagen de Perfil</h4>
-                    <input type="file" name="imagenUser" accept="image/png, .jpeg, .jpg, image/gif">
+                    <input type="file" name="imagenUser" id="imagen" accept="image/png, .jpeg, .jpg, image/gif">
+                    <small id="imagenError"></small>
 
                     <h4>Informacion de Inicio de sesion</h4>
                     <input class="<%= locals.errors && errors.email ? "input_error" : null %> " type="email"
                         name="email" id="email" placeholder="Ingrese su email"
                         value="<%= locals.old && old.email ? old.email : null %>">
                     <small class="error_msg"><%= locals.errors && errors.email ? errors.email.msg : null %> </small>
+                    <small id="emailError"></small>
 
+<<<<<<< HEAD
                     <input class="<%= locals.errors && errors.contrasena ? "input_error" : null %> " type="password"
                         name="contrasena" id="password" placeholder="Ingrese su contraseña">
                     <small class="error_msg"><%= locals.errors && errors.contrasena ? errors.contrasena.msg : null %>
@@ -52,13 +62,30 @@
                         name="contrasena2" id="password" placeholder="Ingrese nuevamente su contraseña">
                     <small class="error_msg"><%= locals.errors && errors.contrasena2 ? errors.contrasena2.msg : null %>
                     </small>
+=======
+                    <input class="<%= locals.errors && errors.contrasena ? "input_error" : null %> " type="password" name="contrasena" id="password" placeholder="Ingrese su contraseña" >
+                    <small class="error_msg"><%= locals.errors && errors.contrasena ? errors.contrasena.msg : null %> </small>
+                    <small id="contrasenaError"></small>
+
+                    <input class="<%= locals.errors && errors.contrasena2 ? "input_error" : null %> " type="password" name="contrasena2" id="password2" placeholder="Ingrese nuevamente su contraseña" >
+                    <small class="error_msg"><%= locals.errors && errors.contrasena2 ? errors.contrasena2.msg : null %> </small>
+                    <small id="contrasenaError2"></small>
+                
+>>>>>>> 184f964de688cd56b437b72c89a37b0389a0c2da
 
                     <button class="submit_btn" type="submit">Crear Cuenta</button>
                 </form>
             </article>
         </section>
     </main>
+<<<<<<< HEAD
     <%- include('./partials/footer') %>
+=======
+    <%- include('./partials/footer') %> 
+    <%- include('./partials/script') %> 
+    <script src="/javascript/registroValidacion.js"></script>
+    
+>>>>>>> 184f964de688cd56b437b72c89a37b0389a0c2da
 </body>
 
 </html>

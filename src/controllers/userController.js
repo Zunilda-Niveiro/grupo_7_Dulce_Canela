@@ -125,33 +125,34 @@ module.exports = {
             })
         }
     },
+
     logout: (req, res) => {
         req.session.destroy()
         return res.redirect('/')
     },
-    administracionUsuarios: (req, res) => {
-        const usuarios = loadUsers();
-        const users = usuarios.find((users) => users.id === +req.params.id);
-        return res.render("administracionUsuarios", {
-            users,
-        });
 
+    //agregado metodo de api verificar email
+    verifyEmail : async (req,res) => {
+        console.log('>>>>>>>>>>>>>>>>>>>>>', req.body)
+        try {
+            const {email} = req.body;
+            let user = await db.User.findOne({
+                where : {
+                    email
+                }
+            })
 
+            return res.status(200).json({
+                ok : true,
+                verified : user ? true : false
+            })
 
-
-
-        const usuario = {
-            id: usuarios[usuarios.length - 1] ? usuarios[usuarios.length - 1].id + 1 : 1,
-            nombre: nombre.trim(),
-            apellido: apellido.trim(),
-            direccion: domicilio.trim(),
-            imagen: req.file ? req.file.filename : 'userDefault.png',
-            email: email.trim(),
-            contrasena: bcryptjs.hashSync(contrasena, 10),
-            rol: "user",
+        } catch (error) {
+            return res.status(error.status || 500).json({
+                ok : false,
+                error : error.message
+            })
         }
-
-
-    }
+    },
 
 }
