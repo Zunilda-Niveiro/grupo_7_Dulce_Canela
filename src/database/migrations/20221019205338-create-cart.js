@@ -11,24 +11,24 @@ module.exports = {
       },
       order_id: {
         type: Sequelize.INTEGER,
-        references : {
-          model : {
-            tableName : 'Orders'
+        references: {
+          model: {
+            tableName: 'Orders'
           },
-          key : 'id'
+          key: 'id'
         }
       },
-      product_id:{
+      product_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references : {
-          model : {
-            tableName : 'Products'
+        references: {
+          model: {
+            tableName: 'Products'
           },
-          key : 'id'
+          key: 'id'
         }
       },
-      quantity:{
+      quantity: {
         allowNull: false,
         type: Sequelize.INTEGER
       },

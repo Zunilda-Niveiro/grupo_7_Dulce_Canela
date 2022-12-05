@@ -15,14 +15,8 @@
                 <img class="form__logo" src="/images/logo.png" alt="">
                 <form action="/productos/productAdd" method="POST" enctype="multipart/form-data" class="form_style">
                     <h3>Datos del Producto</h3>
-<<<<<<< HEAD
-                    <input class="<%= locals.errors && errors.nombre ? "input_error" : null %> " type="text"
-                        name="nombre" id="name" placeholder="nombre de productor">
-                    <small class="error_msg"><%= locals.errors && errors.nombre ? errors.nombre.msg : null %> </small>
-=======
                     <input class="<%= locals.errors && errors.nombre ? "input_error" : null %> " type="text" name="nombre" id="name" placeholder="nombre de productor" value="<%= locals.old && old.nombre ? old.nombre : null %>" >
                     <small id="errorNombre" class="error_msg"><%= locals.errors && errors.nombre ? errors.nombre.msg : null %> </small>
->>>>>>> acc00a4fe22580915c1fd1131098a8ad1a3a3140
 
                     <input class="<%= locals.errors && errors.marca ? "input_error" : null %> " type="text" name="marca"
                         id="brand-product" placeholder="Ingrese Marca de producto">
@@ -51,17 +45,10 @@
                     </small>
 
                     <h4>Seleccione imagen del producto</h4>
-<<<<<<< HEAD
-                    <input type="file" name="imagen" accept="image/png, .jpeg, .jpg, image/gif, .webp">
-                    <textarea class="<%= locals.errors && errors.detalle ? "input_error" : null %> " name="detalle"
-                        rows="10" cols="40" placeholder="Ingrese breve descripción del producto"></textarea>
-                    <small class="error_msg"><%= locals.errors && errors.detalle ? errors.detalle.msg : null %> </small>
-=======
                     <input id="imagen" class="<%= locals.errors && errors.imagen ? "input_error" : null %> " type="file" name="imagen" accept="image/png, .jpeg, .jpg, image/gif, .webp">
                     <small id="imagenError" class="error_msg"><%= locals.errors && errors.imagen ? errors.imagen.msg : null %> </small>
                     <textarea id="detalle" class="<%= locals.errors && errors.detalle ? "input_error" : null %> " name="detalle" rows="10" cols="40" placeholder="Ingrese breve descripción del producto"></textarea>
                     <small id="detalleError" class="error_msg"><%= locals.errors && errors.detalle ? errors.detalle.msg : null %> </small>
->>>>>>> acc00a4fe22580915c1fd1131098a8ad1a3a3140
 
                     <button class="submit_btn" type="submit" onclick="confirmar()">Agregar Producto</button>
                 </form>

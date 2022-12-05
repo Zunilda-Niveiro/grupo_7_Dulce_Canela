@@ -14,20 +14,20 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
-        references : {
-          model : {
-            tableName : 'Users'
+        references: {
+          model: {
+            tableName: 'Users'
           },
-          key : 'id'
+          key: 'id'
         }
       },
-      method_id:{
-        type:Sequelize.INTEGER,
-        references : {
-          model : {
-            tableName : 'PaymentMethods'
+      method_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'PaymentMethods'
           },
-          key : 'id'
+          key: 'id'
         }
       },
       createdAt: {

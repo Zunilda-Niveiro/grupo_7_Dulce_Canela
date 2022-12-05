@@ -75,24 +75,10 @@ module.exports = {
     const errors = validationResult(req)
     if (errors.isEmpty()) {
 
-<<<<<<< HEAD
-      const productos = loadProduct();
-      const { nombre, marca, precio, cantidad, categoria, detalle, imagen } = req.body;
-      const newProduct = {
-        id: productos[productos.length - 1].id + 1,
-        categoria: categoria,
-        nombre: nombre.trim(),
-        cantidad: cantidad,
-        marca: marca,
-        precio: +precio,
-        imagen: imagen ? imagen : null,
-        detalle: detalle,
-=======
     if(errors.isEmpty()){
       
       const marc = db.Brand.findOne({where:{name:marca.trim().toLocaleLowerCase()}})
       const categ = db.Category.findOne({where:{name:categoria}}) 
->>>>>>> acc00a4fe22580915c1fd1131098a8ad1a3a3140
 
       };
       const newProductlist = [...productos, newProduct];

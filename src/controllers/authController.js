@@ -1,6 +1,6 @@
-const { hashSync, compareSync} = require("bcryptjs");
+const { hashSync, compareSync } = require("bcryptjs");
 const db = require("../database/models");
-const {sendSequelizeError, createError } = require("../helpers");
+const { sendSequelizeError, createError } = require("../helpers");
 const { sing } = require("jsonwebtoken");
 
 
@@ -11,7 +11,7 @@ module.exports = {
 
         if (errors.isEmpty()) {
             const { nombre, apellido, domicilio, email, contrasena } = req.body
-        
+
             db.User.create({
                 name: nombre.trim(),
                 last_name: apellido.trim(),
@@ -22,11 +22,11 @@ module.exports = {
                 rol_id: 1,
                 createdAt: new Date()
             })
-            .then(user => {
-                    res.redirect('/users/login') 
+                .then(user => {
+                    res.redirect('/users/login')
                 })
-            .catch(error => console.log(error))
-            
+                .catch(error => console.log(error))
+
         } else {
 
             res.render('registro', {
@@ -36,16 +36,16 @@ module.exports = {
         }
     },
 
-//registrarse
-    signIn: async(req, res) => {
+    //registrarse
+    signIn: async (req, res) => {
         try {
-            const { email, contrasena} = req.body;
+            const { email, contrasena } = req.body;
 
-            if(!email || !contrasena){
+            if (!email || !contrasena) {
                 throw createError(404, 'se requiere email y contrasena');
             }
             let user = await db.User.findOne({
-                where : {
+                where: {
                     email
                 }
             });
