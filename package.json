@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node ./src/bin/www",
+    "server": "nodemon ./src/bin/www",
+    "client:start": "cd admin & npm run start",
+    "dev": "concurrently \"npm run server\" \"npm run client:start\"",
     "db-revert": "sequelize db:migrate:undo:all & sequelize db:migrate & sequelize db:seed:all & nodemon"
   },
   "dependencies": {
@@ -25,5 +28,9 @@
     "override": "^0.0.1",
     "sequelize": "^6.25.3",
     "sweetalert2": "^11.4.8"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
   }
-}
+  }
+
