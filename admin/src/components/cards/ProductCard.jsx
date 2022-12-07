@@ -1,15 +1,15 @@
 import React from 'react'
 
-export const ProductCard = () => {
+export const ProductCard = ({name,imagenes}) => {
   return (
-    <div class="card">
-        <div class="blob"></div>
-        <span class="img"></span>
-        <h2>Producto<br/><span>1</span></h2>
+    <div className="card">
+        <div className="blob"></div>
+        <span className="img" style={{ backgroundImage: `url('${imagenes[0].url}')` }}></span>
+        <h2>{name}</h2>
         <p>
-        <i class="fas fa-edit"></i>
-        <i class="fas fa-trash-alt"></i>
-        <i class="fas fa-external-link-alt"></i>
+        <i className="fas fa-edit"></i>
+        <i className="fas fa-trash-alt"></i>
+        <i className="fas fa-external-link-alt"></i>
         </p>
     </div>
   )

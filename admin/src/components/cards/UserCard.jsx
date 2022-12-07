@@ -4,7 +4,7 @@ export const UserCard = () => {
   return (
     <div>
         <img src="" alt="" />
-        <h3></h3>
+        <h3>AS</h3>
         
     </div>
   )

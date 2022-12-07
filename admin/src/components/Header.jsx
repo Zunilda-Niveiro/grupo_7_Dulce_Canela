@@ -1,20 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import {Fetch} from '../hooks/Fetch'
+import {getData} from '../hooks/GetData'
+
 export const Header = () => {
 
     const [state, setstate] = useState({
         loading:true,
         userImage:'/images/userDefault.png'
     });
-
-    const getData = async (endpoint) =>{
-        try {
-            let response = await Fetch(endpoint)
-            return response;
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
 useEffect(() => {
     getData('/productos/detalle/5')
@@ -29,7 +21,7 @@ useEffect(() => {
 }, []);
 
     return (
-        <div className='Header'>
+        <div className='Header' id='id_header'>
             <div className='HeaderAvatar' style={{ backgroundImage: `url('${state.userImage}')` }}></div>        
             <p>Usuario</p>
         </div>

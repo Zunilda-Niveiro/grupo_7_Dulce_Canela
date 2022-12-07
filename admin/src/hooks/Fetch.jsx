@@ -1,5 +1,5 @@
-import React from 'react'
-const apiUrlBase = "http://localhost:4000/api";
+
+const apiUrlBase = process.env.REACT_APP_API_URL_BASE;
 
 
 export const Fetch = async (endpoint, method="GET",data) => {
