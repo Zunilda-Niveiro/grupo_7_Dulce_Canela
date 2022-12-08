@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState } from 'react'
 import {getData} from '../hooks/GetData'
 
 export const Header = () => {
@@ -24,6 +24,7 @@ useEffect(() => {
         <div className='Header' id='id_header'>
             <div className='HeaderAvatar' style={{ backgroundImage: `url('${state.userImage}')` }}></div>        
             <p>Usuario</p>
+           
         </div>
     )
 }
