@@ -1,9 +1,10 @@
-import React, {useEffect,useState} from 'react'
+import React, {useEffect,useState,useRef} from 'react'
 import { ProductCard } from '../components/cards/ProductCard'
 import { getData } from '../hooks/GetData';
 
 export const Products = () => {
 
+/* inicialización de estados */
 const [products, setProducts] = useState({ 
   loading:true,
   data:[],
@@ -11,6 +12,10 @@ const [products, setProducts] = useState({
 });
 const [page, setPage] = useState(1)
 
+/* capturar elementos */
+const elModal = useRef(null) 
+
+/* Carga inicial */
 useEffect(() => {
   getData(`/productos?limit=16&page=${page}`)
  
@@ -26,6 +31,7 @@ useEffect(() => {
     .catch((error) => console.log(error))
 }, []);
 
+/*Funciones pagina siguiente y anterior  */
 const paginaNext = async() => {
 
   let maxPage = Math.round(products.meta.total / 16)
@@ -43,7 +49,7 @@ const paginaNext = async() => {
         })
     })
   }else{
-    alert('no hay mas productos')
+    elModal.current.style.display='block';
   }
 }
 const paginaBack = async() => {
@@ -61,18 +67,33 @@ const paginaBack = async() => {
         })
     })
   }else{
-    alert('no hay mas productos')
+    elModal.current.style.display='block';
   }
 }
 
-useEffect(()=>{console.log('Productos actualizados')},[products])
+/* Cierra modal */
+function cerrar() {
+  return elModal.current.style.display = 'none'
+  
+}
+/* Actualizacion de estados */
+useEffect(()=>{console.log('%cProductos actualizados','color:lightgreen')},[products])
 
 
+/* Html */
   return (
     <div className='productos'>
+       <div className="modal" ref={elModal}>
+        <div className="modal-content">
+            <span className="close" onClick={cerrar}>&times;</span>
+            <p>No existen mas productos</p>
+        </div>
+      </div>
+
       {
         products.data.map((product,index) =>(<ProductCard {...product} key={product.name + index}/>))
       }
+
       <div className='controls'>
         <button className='button'onClick={paginaBack}>Anterior</button>
           <ul>
