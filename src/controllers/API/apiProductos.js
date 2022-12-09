@@ -85,7 +85,7 @@ module.exports = {
                     limit: limit,
                     offset: offset,
                 },
-                data: products,
+                data:{products},
             });
         } catch (error) {
             console.log(error);
@@ -94,10 +94,12 @@ module.exports = {
     detalle: async (req, res) => {
         try {
             const producto = await db.Product.findByPk(req.params.id, options(req));
-
+            
             return res.status(200).json({
                 ok: true,
-                data: producto,
+                data:{
+                    producto
+                },
             });
         } catch (error) {
             console.log(error);

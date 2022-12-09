@@ -8,29 +8,19 @@
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
-  color: white;
-}
-
-.App-header{
-  background-color: blueviolet;
-  height: 150px;
+  /* color: white; */
+/*   outline: 1px red solid; */
 }
 .BodyHome{
-  width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: rgb(166, 214, 166);
   display: grid;
-  grid-template-columns: repeat(8,1fr);
-  grid-template-rows: repeat(8,1fr);
+  grid-template-columns: 150px auto;
+  grid-template-rows: 80px auto 50px ;
   grid-template-areas: 
-    "sidebar header header header header header header header"
-    "sidebar contenido contenido contenido contenido contenido contenido contenido"
-    "sidebar contenido contenido contenido contenido contenido contenido contenido"
-    "sidebar contenido contenido contenido contenido contenido contenido contenido"
-    "sidebar contenido contenido contenido contenido contenido contenido contenido"
-    "sidebar contenido contenido contenido contenido contenido contenido contenido"
-    "sidebar contenido contenido contenido contenido contenido contenido contenido"
-    "sidebar footer footer footer footer footer footer footer"
+    "sidebar header "
+    "sidebar contenido "
+    "sidebar footer"
     ;
 }
 
@@ -44,7 +34,6 @@
   padding: 15px;
   z-index: 1;
   color: white;
-
 }
 
 .HeaderAvatar{
@@ -60,11 +49,10 @@
 .SideBar{
 grid-area: sidebar;
 background: linear-gradient(180deg, rgba(33,33,33,1) 0%, rgba(78,78,78,1) 100%);
-position: relative;
+/* position: relative; */
 display: flex;
 flex-direction: column;
 align-items: center;
-padding: 20px;
 gap: 15px;
 z-index: 3;
 color: white;
@@ -78,13 +66,22 @@ color: white;
 .SideBar ul{
   margin-top: 20px;
 }
+.SideBar ul li{
+  border-bottom: rgba(255, 255, 255, 0.664) solid 1px;
+  margin-top: 10px;
+}
+.SideBar ul li:hover{
+  filter: drop-shadow(10px 11px 10px rgb(255, 255, 255));
+}
 .SideBar ul li i{
   color: white;
-  padding: 15px;
+  padding: 10px;
   filter: drop-shadow(0 0 0.5rem rgb(255, 255, 255));
+  height: 55px;
 }
 .SideBar ul li i:hover{
   filter: drop-shadow(0 0 0.5rem rgb(54, 218, 89));
+  
 }
 
 
@@ -93,10 +90,88 @@ grid-area: contenido;
 background-color:var(--color-two);
 box-shadow: inset 6px 6px 38px -1px rgba(0,0,0,0.75);
 }
+.productos{
+  max-height: calc(100vh - 130px);
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: black;
+  overflow-x: auto;
+  position: relative;
+}
 .Footer{
 grid-area: footer;
 background: linear-gradient(270deg, rgba(33,33,33,1) 0%, rgba(78,78,78,1) 100%);
 }
+
+.controls{
+  width: 350px;
+  height: 50px;
+  border-radius: 15px;
+  background-color: #ffffff52;
+  position: fixed;
+  bottom: 5px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.controls ul li{
+  border-radius: 50px;
+  background-color: black;
+  padding: 8px  15px;
+  font-size: 20px;
+  border: 1px white solid;
+}
+.button{
+  padding:10px 15px;
+  border-radius: 8px;
+  color: black;
+  width: 100px;
+}
+/* Modals */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.507);
+}
+
+.modal-content {
+  background-color: #7a7a7a70;
+  margin: 25% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 70%; 
+  height: 30%;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 24px;
+}
+.modal-content p{
+  padding: 30px;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* Fin Modals */
 
 /* Tarjetas */
 .card {
@@ -107,7 +182,6 @@ background: linear-gradient(270deg, rgba(33,33,33,1) 0%, rgba(78,78,78,1) 100%);
   text-align: center;
   transition: all 0.5s;
   position: relative;
-  margin: 10px;
  }
  
  .card:hover {
@@ -124,9 +198,7 @@ background: linear-gradient(270deg, rgba(33,33,33,1) 0%, rgba(78,78,78,1) 100%);
   visibility: visible;
   transition: all 0.3s;
  }
- /* .card>span{
-  background-image: url('https://lascameliaslp.com.ar/wp-content/uploads/Mix-de-semillas-e1650905472194.jpg');
- } */
+
  .card:hover .blob {
   height: 0;
  }
@@ -155,14 +227,18 @@ background: linear-gradient(270deg, rgba(33,33,33,1) 0%, rgba(78,78,78,1) 100%);
  
  .card h2 {
   padding: 15px 10px;
-  font-size: 25px;
+  font-size: 18px;
   transition: all 0.1s;
   z-index: -99;
   line-height: 17px;
+  color: black;
  }
  
  .card span {
   font-size: 18px;
+  color: black;
+  background-size: cover;
+  background-position: center;
  }
  
  .card:hover h2 {
