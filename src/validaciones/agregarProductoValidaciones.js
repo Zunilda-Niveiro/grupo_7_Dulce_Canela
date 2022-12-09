@@ -24,12 +24,20 @@ module.exports = [
     
     body('imagen')
     .custom((value, {req}) => {
-        const fileExtension = req.file.mimetype.split('/').pop()
+        let imagenes = req.files
         const fileType = ['jpeg','jpg','png','gif']
-        if (req.file && fileType.includes(fileExtension) ) {
-            return true
-        } else {
+        let bandera=true;
+        if (imagenes.length >= 4) {
             return false
         }
-    }).withMessage('Debes cargar una imagen valida')
+        imagenes.forEach(imagen => {
+            const fileExtension = imagen.mimetype.split('/').pop()
+         
+            if (!(fileType.includes(fileExtension)) ) {
+                bandera=false
+                return false
+            } 
+        });
+        return bandera
+     }).withMessage('Debes cargar entre 1 y 3 imagenes validas')
 ]

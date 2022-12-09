@@ -85,7 +85,7 @@ module.exports = {
                     limit: limit,
                     offset: offset,
                 },
-                data:{products},
+                data:products,
             });
         } catch (error) {
             console.log(error);
@@ -94,11 +94,20 @@ module.exports = {
     detalle: async (req, res) => {
         try {
             const producto = await db.Product.findByPk(req.params.id, options(req));
-            
+                    
             return res.status(200).json({
                 ok: true,
                 data:{
-                    producto
+                    'id':producto.id,
+                    'name':producto.name,
+                    'price':producto.price,
+                    'detail':producto.detail,
+                    'amount':producto.amount,
+                    'discount':producto.discount,
+                    'url':producto.url,
+                    'imagenes':producto.imagenes,
+                    'marca':producto.marca.name,
+                    'categoria':producto.categoria.name
                 },
             });
         } catch (error) {
@@ -106,7 +115,7 @@ module.exports = {
         }
     },
     agregarProducto: async (req, res) => {
-        /* desglose de errores */
+       
         let errors = validationResult(req);
         const {
             nombre,
@@ -116,27 +125,30 @@ module.exports = {
             categoria,
             detalle,
             imagen
-        } =
-        req.body;
+        } = req.body;
+
         let errorsDetail = {};
-        console.log(errors.isEmpty());
 
         if (errors.isEmpty()) {
+
             const categ = await db.Category.findOne({
                 where: {
                     name: categoria,
                 },
             });
+
             let brand = await db.Brand.findOne({
                 where: {
                     name: marca,
                 },
             });
+
             if (!brand) {
                 brand = await db.Brand.create({
                     name: marca,
                 });
             }
+
             const newProduct = await db.Product.create({
                 name: nombre.trim(),
                 price: precio,
@@ -146,6 +158,19 @@ module.exports = {
                 category_id: categ.id,
                 brand_id: brand.id,
             });
+
+            if(req.files){
+                let images = req.files.map(file => {
+                    return {
+                        file:file.filename,
+                        product_id:newProduct.id
+                    }
+                })
+                await db.Image.bulkCreate(images)               
+            };
+          
+            await newProduct.reload(options(req))
+
             return res.status(200).json({
                 ok: true,
                 data: newProduct,
@@ -165,19 +190,17 @@ module.exports = {
         }
     },
     getImage:(req, res) => {
-        return res.sendFile(
-            path.join(
-                __dirname,
-                "..",
-                "..",
-                "..",
-                "public",
-                "images",
-                "productos",
-                req.params.image
-            )
-        );
+
+       if (fs.existsSync(path.join(__dirname,"..","..","..","public","images","productos",req.params.image))) {
+            return res.sendFile(path.join(__dirname,"..","..","..","public","images","productos",req.params.image));
+       } else {
+        return res.status(404).json({
+            ok: false,
+            errors:'No existe el archivo'
+        }); 
+       }
     },
+
     remove: async (req, res) =>{
         try {
             producto = await db.Product.findByPk(req.params.id,options(req))
