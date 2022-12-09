@@ -1,5 +1,5 @@
 import React, {useEffect,useState,useRef} from 'react'
-import { ProductCard } from '../components/cards/ProductCard'
+import {Link} from 'react-router-dom'
 import { getData } from '../hooks/GetData';
 
 export const Products = () => {
@@ -79,7 +79,6 @@ function cerrar() {
 /* Actualizacion de estados */
 useEffect(()=>{console.log('%cProductos actualizados','color:lightgreen')},[products])
 
-
 /* Html */
   return (
     <div className='productos'>
@@ -91,7 +90,17 @@ useEffect(()=>{console.log('%cProductos actualizados','color:lightgreen')},[prod
       </div>
 
       {
-        products.data.map((product,index) =>(<ProductCard {...product} key={product.name + index}/>))
+        products.data.map((product, index) =>(
+          <div className="card" key={index}>
+            <div className="blob"></div>
+            <span className="img" style={{ backgroundImage: `url('${product.imagenes[0].url}')` }}></span>
+            <h2>{product.name}</h2>
+            <p>
+              <Link to={`/Products/${index+1}`}><i className="fas fa-edit" ></i></Link>
+              <i className="fas fa-trash-alt"></i>
+            </p>
+          </div>
+        ))
       }
 
       <div className='controls'>
