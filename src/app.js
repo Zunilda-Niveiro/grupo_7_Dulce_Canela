@@ -15,8 +15,9 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productosRouter = require('./routes/productos');
 const apiRouter = require('./routes/API/apiProductosRutas');
-const apiUsers = require('./routes/API/apiUsers');
-const authRouter = require('./routes/API/auth');
+
+const apiUsers = require('./routes/API/apiUsersRutas');
+const apiUsersauth = require('./routes/API/auth');
 require('dotenv').config()
 var app = express();
 
@@ -46,7 +47,9 @@ app.use('/users', usersRouter);
 app.use('/productos', productosRouter);
 app.use('/api/productos',apiRouter);
 app.use('/api/users', apiUsers);
-app.use('/auth', authRouter);
+//app.use('/auth', authRouter);
+app.use('/api/apiUsersauth',apiUsersauth)
+
 
 
 
