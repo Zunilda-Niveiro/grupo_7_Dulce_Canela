@@ -17,7 +17,7 @@ module.exports = [
                 email : req.body.email
             }
         }).then(user => {
-            console.log('>>>>>>>>>>>>>' + bcryptjs.compareSync(value, user.password))
+            
             if(!user || !bcryptjs.compareSync(value, user.password)){
                 return Promise.reject()
             }

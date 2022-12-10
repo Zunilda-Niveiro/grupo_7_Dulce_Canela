@@ -15,7 +15,7 @@ const router = createBrowserRouter(
             <Route path='/Products' element={<Products/>}/>
             <Route path='/Users' element={<Users/>}/>
             <Route path='/Products/:id' element={<ProductEdit/>}/>
-        </Route>
+       </Route>
     )
 )
 

@@ -9,57 +9,32 @@ const fs = require('fs');
 
 module.exports = {
 
-    usuariosRegistrados: async (req, res) => {
-        try {
-            let {
-                limit = 4,
-                page = 1,
-                order = "ASC",
-                sortBy = "id",
-                search = "",
-            } = req.query;
-            limit = limit > 16 ? 16 : +limit;
-            page = +page;
-            let offset = +limit * (+page - 1);
-
-
-        } catch (error) {
-
-            console.log(error)
-
-        }
-
-    },
-    registro: async (req, res) => {
-        try {
-
-
-        } catch (error) {
-            console.log(error);
-        }
-
-    },
-    login: async (req, res) => {
-        try {
-
-        } catch (error) {
-            console.log(error);
-        }
-    },
     procesoLogin: async (req, res) => {
         try {
 
 
 
         } catch (error) {
-            console.log(error);
+            let errors = sendSequelizeError(error);
+            return res.status(error.status || 500).json({
+                ok: false,
+                errors,
+            });
+
         }
     },
     procesoRegistro: async (req, res) => {
         try {
+            const { firstname, surname, email, password, avatar, rol_id, address } = req.body
+            
+
 
         } catch (error) {
-            console.log(error);
+            let errors = sendSequelizeError(error);
+            return res.status(error.status || 500).json({
+                ok: false,
+                errors,
+            });
         }
     },
     perfil: async (req, res) => {
@@ -76,13 +51,14 @@ module.exports = {
             console.log(error);
         }
     },
-    logout: async (req, res) => {
+    remove: async (req, res) => {
         try {
 
         } catch (error) {
             console.log(error);
         }
     },
+
 
     verifyEmail: async (req, res) => {
         console.log('>>>>>>>>>>>>>>>>>>>>>', req.body)
