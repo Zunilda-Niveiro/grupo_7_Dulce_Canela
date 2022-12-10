@@ -1,4 +1,4 @@
-const { hashSync, compareSync} = require("bcryptjs");
+const { hashSync, compareSync } = require("bcryptjs");
 const db = require("../database/models");
 const {sendSequelizeError, createError, createErrorExpress } = require("../helpers");
 const { sing } = require("jsonwebtoken");
@@ -24,7 +24,6 @@ module.exports = {
                 rol_id: 1,
                 createdAt: new Date()
             });
-
             const token = sign(
                 {
                     id,
@@ -53,8 +52,8 @@ module.exports = {
         
             
 
-//registrarse
-    signIn: async(req, res) => {
+    //registrarse
+    signIn: async (req, res) => {
         try {
 
             let errors = await validationResult(req);
@@ -68,7 +67,7 @@ module.exports = {
                 throw createError(404, 'se requiere email y contrasena');
             }
             let user = await db.User.findOne({
-                where : {
+                where: {
                     email
                 }
             });

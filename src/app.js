@@ -9,6 +9,8 @@ const session = require('express-session');
 const cookieCheck = require('./middleware/cookieCheck');
 const localsUsersCkeck = require('./middleware/localsUsersCheck');
 
+const cors = require('cors')
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productosRouter = require('./routes/productos');
@@ -34,7 +36,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
-
+app.use(cors())
 app.use(cookieCheck);
 app.use(localsUsersCkeck);
 

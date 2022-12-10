@@ -1,12 +1,12 @@
 <%- include('./partials/head',{
     title: 'Registro'
-}) %> 
+}) %>
 
 <body>
-    <%- include('./partials/header') %> 
+    <%- include('./partials/header') %>
     <main class="main__productos">
         <!-- BARRA BUSQUEDA -->
-        <%- include('./partials/busqueda') %> 
+        <%- include('./partials/busqueda') %>
         <!-- TITULO -->
         <h1>Bienvenid@s al Registro</h1>
         <!-- REGISTRO -->
@@ -17,7 +17,9 @@
                 <form action="" class="form_style" method="POST" enctype="multipart/form-data">
                     <h3>Informacion Personal</h3>
 
-                    <input class="<%= locals.errors && errors.nombre ? "input_error" : null %> " type="text" name="nombre" value="<%= locals.old && old.nombre ? old.nombre : null %>" id="name" placeholder="Ingrese su nombre" >
+                    <input class="<%= locals.errors && errors.nombre ? "input_error" : null %> " type="text"
+                        name="nombre" value="<%= locals.old && old.nombre ? old.nombre : null %>" id="name"
+                        placeholder="Ingrese su nombre">
                     <small class="error_msg"><%= locals.errors && errors.nombre ? errors.nombre.msg : null %> </small>
                     <small id="nombreError"></small>
 
@@ -25,15 +27,14 @@
                     <small class="error_msg"><%= locals.errors && errors.apellido ? errors.apellido.msg : null %> </small>
                     <small id="apellidoError"></small>
 
-                    <input class="<%= locals.errors && errors.domicilio ? "input_error" : null %> " type="text" name="domicilio" id="" placeholder="Domicilio" value="<%= locals.old && old.domicilio ? old.domicilio : null %>">
-                    <small class="error_msg"><%= locals.errors && errors.domicilio ? errors.domicilio.msg : null %> </small>
-    
                     <h4>Seleccione imagen de Perfil</h4>
                     <input type="file" name="imagenUser" id="imagen" accept="image/png, .jpeg, .jpg, image/gif">
                     <small id="imagenError"></small>
 
                     <h4>Informacion de Inicio de sesion</h4>
-                    <input class="<%= locals.errors && errors.email ? "input_error" : null %> " type="email" name="email" id="email" placeholder="Ingrese su email" value="<%= locals.old && old.email ? old.email : null %>" >
+                    <input class="<%= locals.errors && errors.email ? "input_error" : null %> " type="email"
+                        name="email" id="email" placeholder="Ingrese su email"
+                        value="<%= locals.old && old.email ? old.email : null %>">
                     <small class="error_msg"><%= locals.errors && errors.email ? errors.email.msg : null %> </small>
                     <small id="emailError"></small>
 

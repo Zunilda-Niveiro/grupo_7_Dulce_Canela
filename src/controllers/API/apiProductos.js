@@ -1,26 +1,26 @@
-const {validationResult} = require("express-validator");
+const { validationResult } = require("express-validator");
 const db = require("../../database/models");
-const {literal,Op, where} = require("sequelize");
+const { literal, Op } = require("sequelize");
 const path = require("path");
 const fs = require('fs');
 
 const options = (req) => {
     return {
         include: [{
-                association: "imagenes",
-                attributes: {
-                    exclude: ["createdAt", "updatedAt", "deletedAt", "product_id"],
-                    include: [[literal(`CONCAT('${req.protocol}://${req.get("host")}/api/productos/images/',file)`),"url"]],
-                },
+            association: "imagenes",
+            attributes: {
+                exclude: ["createdAt", "updatedAt", "deletedAt", "product_id"],
+                include: [[literal(`CONCAT('${req.protocol}://${req.get("host")}/api/productos/images/',file)`), "url"]],
             },
-            {
-                association: "categoria",
-                attributes: ["name"],
-            },
-            {
-                association: "marca",
-                attributes: ["name"],
-            },
+        },
+        {
+            association: "categoria",
+            attributes: ["name"],
+        },
+        {
+            association: "marca",
+            attributes: ["name"],
+        },
         ],
         attributes: {
             exclude: [
@@ -30,7 +30,7 @@ const options = (req) => {
                 "category_id",
                 "brand_id",
             ],
-            include: [[literal(`CONCAT('${req.protocol}://${req.get("host")}/api/productos/detalle/',Product.id)`),"url"]],
+            include: [[literal(`CONCAT('${req.protocol}://${req.get("host")}/api/productos/detalle/',Product.id)`), "url"]],
         },
     };
 };
@@ -40,10 +40,10 @@ module.exports = {
         try {
             let {
                 limit = 4,
-                    page = 1,
-                    order = "ASC",
-                    sortBy = "id",
-                    search = "",
+                page = 1,
+                order = "ASC",
+                sortBy = "id",
+                search = "",
             } = req.query;
 
             limit = limit > 16 ? 16 : +limit;
@@ -51,9 +51,9 @@ module.exports = {
             let offset = +limit * (+page - 1);
 
             order = ["ASC", "DESC"].includes(order.toUpperCase()) ? order.toUpperCase() : "ASC";
-                    sortBy = ["name", "price", "category", "newest"].includes(sortBy.toLowerCase()) ? sortBy : "id";
+            sortBy = ["name", "price", "category", "newest"].includes(sortBy.toLowerCase()) ? sortBy : "id";
 
-            const {count,rows: products} = await db.Product.findAndCountAll({
+            const { count, rows: products } = await db.Product.findAndCountAll({
                 ...options(req),
                 subQuery: false,
                 limit,
@@ -61,20 +61,20 @@ module.exports = {
                 order: [[sortBy, order]],
                 where: {
                     [Op.or]: [{
-                            name: {
-                                [Op.substring]: search,
-                            },
+                        name: {
+                            [Op.substring]: search,
                         },
-                        {
-                            detail: {
-                                [Op.substring]: search,
-                            },
+                    },
+                    {
+                        detail: {
+                            [Op.substring]: search,
                         },
-                        {
-                            "$categoria.name$": {
-                                [Op.substring]: search,
-                            },
+                    },
+                    {
+                        "$categoria.name$": {
+                            [Op.substring]: search,
                         },
+                    },
                     ],
                 },
             });
@@ -115,7 +115,7 @@ module.exports = {
             detalle,
             imagen
         } =
-        req.body;
+            req.body;
         let errorsDetail = {};
         console.log(errors.isEmpty());
 
@@ -162,7 +162,7 @@ module.exports = {
             });
         }
     },
-    getImage:(req, res) => {
+    getImage: (req, res) => {
         return res.sendFile(
             path.join(
                 __dirname,
@@ -176,25 +176,25 @@ module.exports = {
             )
         );
     },
-    remove: async (req, res) =>{
+    remove: async (req, res) => {
         try {
-            producto = await db.Product.findByPk(req.params.id,options(req))
-            
+            producto = await db.Product.findByPk(req.params.id, options(req))
+
             if (producto && producto.imagenes.length) {
                 producto.imagenes.forEach(async image => {
-					fs.existsSync(path.join(__dirname,'..','..','public','images','productos',image.file)) && fs.unlinkSync(path.join(__dirname,'..','..','public','images','productos',image.file))
-				});
+                    fs.existsSync(path.join(__dirname, '..', '..', 'public', 'images', 'productos', image.file)) && fs.unlinkSync(path.join(__dirname, '..', '..', 'public', 'images', 'productos', image.file))
+                });
             }
             await producto.destroy()
             return res.status(200).json({
-                ok:true,
-                data:producto
+                ok: true,
+                data: producto
             })
         } catch (error) {
-            console.log(error) 
+            console.log(error)
             return res.status(400).json({
-                ok:false,
-                errors:error
+                ok: false,
+                errors: error
             })
         }
     }

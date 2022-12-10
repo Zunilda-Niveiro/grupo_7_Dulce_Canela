@@ -1,9 +1,9 @@
 
 const express = require('express');
 const router = express.Router();
-const {upload} = require('../../middleware/uploadFiles')
-const { productos, detalle,remove, agregarProducto, update,getImage } = require('../../controllers/API/apiProductos')
-const { editarProductosValidaciones, agregarProductoValidaciones} = require('../../validaciones')
+const { upload } = require('../../middleware/uploadFiles')
+const { productos, detalle, remove, agregarProducto, update, getImage } = require('../../controllers/API/apiProductos')
+const { editarProductosValidaciones, agregarProductoValidaciones } = require('../../validaciones')
 
 router
     /* PRODUCTOS TODOS */
@@ -13,8 +13,8 @@ router
 
     .post('/productAdd', upload.single('imagen'), agregarProductoValidaciones, agregarProducto)
 
-    .delete('/remove/:id',remove)
+    .delete('/remove/:id', remove)
 
-    .get('/images/:image',getImage)
+    .get('/images/:image', getImage)
 
 module.exports = router;

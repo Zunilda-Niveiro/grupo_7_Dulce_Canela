@@ -1,12 +1,12 @@
 <%- include('./partials/head',{
     title: 'Registro'
-}) %> 
+}) %>
 
 <body>
-    <%- include('./partials/header') %> 
+    <%- include('./partials/header') %>
     <main class="main__productos">
         <!-- BARRA BUSQUEDA -->
-        <%- include('./partials/busqueda') %> 
+        <%- include('./partials/busqueda') %>
         <!-- TITULO -->
         <h1>Bienvenid@s <%= locals.old && old.firstname ? old.firstname : null %>  a tu Perfil</h1>
         <!-- REGISTRO -->
@@ -14,8 +14,8 @@
             <article class="main__login__form">
 
                 <% if(locals.userLogin){ %>
-                    <img src="/images/usuarios/<%= userLogin.imagen ? userLogin.imagen : 'userDefault.png' %>"
-                <% } %>
+                <img src="/images/usuarios/<%= userLogin.imagen ? userLogin.imagen : 'userDefault.png' %>" <% } %> <img
+                    class="form__logo" src="/images/logo.png" alt="">
 
                 <img class="form__logo" src="/images/logo.png" alt="">
 
@@ -38,18 +38,22 @@
                     <input class="<%= locals.errors && errors.email ? "input_error" : null %> " type="email" name="email" id="email" value="<%= locals.old && old.email ? old.email : null %>" >
                     <small class="error_msg"><%= locals.errors && errors.email ? errors.email.msg : null %> </small>
 
-                    <input class="<%= locals.errors && errors.contrasena ? "input_error" : null %> " type="password" name="contrasena" id="password" placeholder="Ingrese su contraseña" >
-                    <small class="error_msg"><%= locals.errors && errors.contrasena ? errors.contrasena.msg : null %> </small>
+                    <input class="<%= locals.errors && errors.contrasena ? "input_error" : null %> " type="password"
+                        name="contrasena" id="password" placeholder="Ingrese su contraseña">
+                    <small class="error_msg"><%= locals.errors && errors.contrasena ? errors.contrasena.msg : null %>
+                    </small>
 
-                    <input class="<%= locals.errors && errors.contrasena2 ? "input_error" : null %> " type="password" name="contrasena2" id="password" placeholder="Ingrese nuevamente su contraseña" >
-                    <small class="error_msg"><%= locals.errors && errors.contrasena2 ? errors.contrasena2.msg : null %> </small>
+                    <input class="<%= locals.errors && errors.contrasena2 ? "input_error" : null %> " type="password"
+                        name="contrasena2" id="password" placeholder="Ingrese nuevamente su contraseña">
+                    <small class="error_msg"><%= locals.errors && errors.contrasena2 ? errors.contrasena2.msg : null %>
+                    </small>
 
                     <button class="submit_btn" type="submit">Guardar Cambios</button>
                 </form>
             </article>
         </section>
     </main>
-    <%- include('./partials/footer') %> 
+    <%- include('./partials/footer') %>
 </body>
 
 </html>
