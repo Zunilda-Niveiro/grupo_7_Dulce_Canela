@@ -1,5 +1,6 @@
-import React, {useEffect,useState,useRef} from 'react'
+import React, {useEffect,useState} from 'react'
 import {Link} from 'react-router-dom'
+import  Modal from '../components/cards/Modal/Modal';
 import { getData } from '../hooks/GetData';
 
 export const Products = () => {
@@ -11,9 +12,7 @@ const [products, setProducts] = useState({
   meta:[]
 });
 const [page, setPage] = useState(1)
-
-/* capturar elementos */
-const elModal = useRef(null) 
+const [openModal,setOpenModal] = useState(false)
 
 /* Carga inicial */
 useEffect(() => {
@@ -39,17 +38,17 @@ const paginaNext = async() => {
   if (page < maxPage){
     let newPage= page + 1
     await setPage(newPage);
-   
+    
     getData(`/productos?limit=16&page=${newPage}`)
-        .then((response) => {
-          setProducts({
-          ...products,
-          loading:false,
-          data:response.data
+      .then((response) => {
+        setProducts({
+        ...products,
+        loading:false,
+        data:response.data
         })
-    })
+      })
   }else{
-    elModal.current.style.display='block';
+    setOpenModal(true)
   }
 }
 const paginaBack = async() => {
@@ -67,36 +66,31 @@ const paginaBack = async() => {
         })
     })
   }else{
-    elModal.current.style.display='block';
+    setOpenModal(true)
   }
 }
 
-/* Cierra modal */
-function cerrar() {
-  return elModal.current.style.display = 'none'
-  
-}
 /* Actualizacion de estados */
 useEffect(()=>{console.log('%cProductos actualizados','color:lightgreen')},[products])
 
 /* Html */
   return (
     <div className='productos'>
-       <div className="modal" ref={elModal}>
-        <div className="modal-content">
-            <span className="close" onClick={cerrar}>&times;</span>
-            <p>No existen mas productos</p>
-        </div>
-      </div>
+      
+      {openModal && <Modal 
+        closeModal={setOpenModal} 
+        title={'Atención'}
+        explain={'No hay mas productos para navegar'}
+        />}
 
       {
         products.data.map((product, index) =>(
-          <div className="card" key={index}>
+          <div className="card" key={product.id}>
             <div className="blob"></div>
             <span className="img" style={{ backgroundImage: `url('${product.imagenes[0].url}')` }}></span>
-            <h2>{product.name}</h2>
+            <h2>{product.name} <br/> {product.id + 1}</h2>
             <p>
-              <Link to={`/Products/${index+1}`}><i className="fas fa-edit" ></i></Link>
+              <Link to={`/Products/${product.id}`}><i className="fas fa-edit" ></i></Link>
               <i className="fas fa-trash-alt"></i>
             </p>
           </div>
