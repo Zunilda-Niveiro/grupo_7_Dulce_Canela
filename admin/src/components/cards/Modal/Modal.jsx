@@ -1,18 +1,8 @@
 import React from 'react'
 import './Modal.css'
-function Modal({closeModal,title,explain,accept,imagen}) {
-  function optionClick(opt) {
-   
-    console.log('-a-a-a-a',opt);
-    if (opt) {
-      accept(true);
-      closeModal(false);
-    }else{
-      accept(false);
-      closeModal(false);
-    }
-  }
 
+function Modal({closeModal,title,explain,acceptResult,imagen}) {
+  
   return (
     <div className='modalBackground'>
         <div className="modalContainer">
@@ -25,8 +15,8 @@ function Modal({closeModal,title,explain,accept,imagen}) {
             <p>{explain}</p>
             </div>
             <div className="footer">
-                <button onClick={()=>optionClick(true)}>Aceptar</button>
-                <button onClick={()=>optionClick(false)}>Cancelar</button>
+                <button onClick={()=>acceptResult(true)}>Aceptar</button>
+                <button onClick={()=>closeModal(false)}>Cancelar</button>
             </div>
         </div>
     </div>
