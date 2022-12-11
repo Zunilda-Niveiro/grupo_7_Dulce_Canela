@@ -176,6 +176,11 @@ module.exports = {
                 data: newProduct,
             });
         } else {
+            if(req.files.length > 0){
+                req.files.forEach(({filename}) => {
+                    fs.existsSync(path.resolve(__dirname,'..','..','..','public','images','productos',filename)) &&  fs.unlinkSync(path.resolve(__dirname,'..','..','..','public','images','productos',filename))
+                })
+            }
             errors = errors.mapped();
             for (const key in errors) {
                 errorsDetail = {
@@ -262,55 +267,6 @@ module.exports = {
                     data: product,
                 });
 
-            } else {
-                errors = errors.mapped();
-                for (const key in errors) {
-                    errorsDetail = {
-                        ...errorsDetail,
-                        [key]: errors[key].msg,
-                    };
-                }
-                return res.status(200).json({
-                    ok: false,
-                    errors: errorsDetail,
-                });
-            };
-        } catch (error) {
-            console.log(error)
-            return res.status(error.status || 500).json({
-                ok: false,
-                errors: error.message,
-            });
-        }
-    },
-    remove: async (req, res) => {
-        try {
-            producto = await db.Product.findByPk(req.params.id, options(req))
-
-            if (producto && producto.imagenes.length) {
-                producto.imagenes.forEach(async image => {
-                    fs.existsSync(path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', image.file)) && fs.unlinkSync(path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', image.file))
-                });
-            }
-            if (producto) {
-                await producto.destroy()
-                return res.status(200).json({
-                    ok: true,
-                    msg: 'Producto eliminado con éxito!'
-                })
-            } else {
-                return res.status(400).json({
-                    ok: false,
-                    error: 'Producto no encontrado'
-                })
-            }
-
-        } catch (error) {
-            console.log(error)
-            return res.status(400).json({
-                ok: false,
-                errors: error
-            })
         }
     }
 };
