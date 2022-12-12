@@ -22,9 +22,11 @@ const [openModal,setOpenModal] = useState({
     imagen:[],
     accept:false
 })
-const [deleteImag,setDeleteImag] = useState(false)
 const[classState,setClassState] = useState('')
-const [upImage,setUpImage] = useState([])
+const [upImage,setUpImage] = useState({
+    lista:[],
+    delete:false
+})
 
 const id = useParams().id
 
@@ -41,23 +43,26 @@ const id = useParams().id
             })
         })
  }, []);
-/* useEffect(() => {
-    console.log('%c-----------Control Modal:','color:blue',openModal);
-    if (openModal.imagen.id) {
-        setImagenes({
-            cant:imagenes.cant - 1,
-            lista:imagenes.lista.filter((img)=>img.id !== openModal.imagen.id),
-            borrar:[0,'']
-        })
-        setOpenModal({
-            isOpen:false,
-            title:'',
-            explain:'',
-            imagen:[],
-            accept:false
-        })
+useEffect(() => {
+    console.log('%c-----------Control Modal:','color:black',openModal);
+    console.log('%c-----------Control Modal:','color:ligthgreen',upImage);
+    console.log('%c-----------Control Modal:','color:white',imagenes);
+    if (openModal.accept && imagenes.borrar) {
+        console.log('%c-----------Control Modal:','color:pink',imagenes.borrar);
+    }else{
+        if (openModal.accept) {
+           setOpenModal({
+                isOpen:false,
+                title:openModal.title,
+                explain:openModal.explain,
+                imagen:openModal.imagen,
+                accept:false
+            }) 
+        }
+        
     }
-}, [openModal]); */
+
+}, [openModal]);
 
 const handleChange = event => {
     const name = event.target.name;
@@ -85,24 +90,29 @@ const backState = () =>{
   setProduct({modificado:product.original})
 }
 const handleDelete= (isOpen,image)=> {
-
-        setOpenModal({
+    console.log('%c-----------Handle Original:','color:yellow',image.name);
+    if (image.id) {
+        setImagenes({
+            cant:imagenes.cant - 1,
+            lista:imagenes.lista,
+            borrar:[image.id,image]
+        })
+    }else{
+        console.log('%c-----------Handle Original:','color:red',image.name);
+        setUpImage({
+            lista:image,
+            delete:true
+        })
+    }
+    console.log('%c-----------Handle IDID:','color:purple',image.id);
+    console.log('%c-----------Handle UPUP:','color:purple',upImage);
+    setOpenModal({
             isOpen:isOpen,
             title:'Esta seguro de eliminar?',
             explain:'Esta imagen se perdera',
-            imagen:image.url ? image.url : image,
+            imagen:image.url ? image.url : URL.createObjectURL(image),
             accept:false
-        })
-        console.log('%c-----------asdasdadsasdasdas','color:green',openModal)
-        if(openModal.accept){
-            console.log('%c-----------asdasdadsasdasdas','color:red');
-        }
-        /* no ingresa, useeffect?? */
-        setImagenes({
-            cant:imagenes.cant,
-            lista:imagenes.lista,
-            borrar:[image.id,image.url]
-        })
+        })      
 }
 
 const imageAmount = (e) =>{
@@ -117,7 +127,10 @@ const imageAmount = (e) =>{
             accept:false
         })
    }else{
-    setUpImage(e.target.files)
+    setUpImage({
+        lista:e.target.files,
+        delete:false
+    })
    }
 }
   return (
@@ -172,8 +185,8 @@ const imageAmount = (e) =>{
                     </div>)
             } 
             {
-                upImage.length > 3 ? imageAmount() :  
-                Array.from(upImage).map(item =>{
+                upImage.lista.length > 3 ? imageAmount() :  
+                Array.from(upImage.lista).map(item =>{
                     return (
                         <div title="Imagenes cargadas" className='image_product' style={{ backgroundImage: `url('${item ? URL.createObjectURL(item): null}')` }}>
                             <i className="fas fa-trash-alt" onClick={()=>handleDelete(true,item)}></i>

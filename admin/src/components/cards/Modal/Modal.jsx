@@ -2,7 +2,7 @@ import React from 'react'
 import './Modal.css'
 
 function Modal({closeModal,options,accept}) {
-  let {isOpent,title,explain,imagen} = options
+  let {title,explain,imagen} = options
   return (
     <div className='modalBackground'>
         <div className="modalContainer">
