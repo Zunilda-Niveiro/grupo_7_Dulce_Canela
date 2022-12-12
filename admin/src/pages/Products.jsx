@@ -13,12 +13,13 @@ const [products, setProducts] = useState({
 });
 const [page, setPage] = useState(1)
 const [openModal,setOpenModal] = useState(false)
-
-/* Carga inicial */
+const [acceptModal,setAcceptModal] = useState(false)
+/* Carga inicial Productos*/
 useEffect(() => {
   getData(`/productos?limit=16&page=${page}`)
  
     .then(({data,meta}) => {
+        
         setProducts({
           ...products,
           loading:false,
@@ -32,9 +33,7 @@ useEffect(() => {
 
 /*Funciones pagina siguiente y anterior  */
 const paginaNext = async() => {
-
   let maxPage = Math.round(products.meta.total / 16)
-
   if (page < maxPage){
     let newPage= page + 1
     await setPage(newPage);
@@ -72,7 +71,12 @@ const paginaBack = async() => {
 
 /* Actualizacion de estados */
 useEffect(()=>{console.log('%cProductos actualizados','color:lightgreen')},[products])
-
+useEffect(()=>{
+  if (acceptModal) {
+    setOpenModal(false)
+    setAcceptModal(false)
+  }
+},[acceptModal])
 /* Html */
   return (
     <div className='productos'>
@@ -81,6 +85,8 @@ useEffect(()=>{console.log('%cProductos actualizados','color:lightgreen')},[prod
         closeModal={setOpenModal} 
         title={'Atención'}
         explain={'No hay mas productos para navegar'}
+        acceptResult={setAcceptModal}
+        
         />}
 
       {

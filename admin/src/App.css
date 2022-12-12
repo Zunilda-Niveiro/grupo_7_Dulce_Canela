@@ -263,3 +263,14 @@ background: linear-gradient(270deg, rgba(33,33,33,1) 0%, rgba(78,78,78,1) 100%);
   
  }
 /* Fin Tarjetas */
+/* error */
+.error_msg{
+  color: red;
+  font-size: 12px;
+  padding: 5px;
+  display: none;
+}
+.input_error{
+  box-shadow: 1px 1px 10px red;
+  display: inline-block;
+}
