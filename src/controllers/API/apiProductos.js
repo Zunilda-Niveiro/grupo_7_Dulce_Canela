@@ -112,6 +112,10 @@ module.exports = {
             });
         } catch (error) {
             console.log(error);
+            return res.status(200).json({
+                ok: false,
+                errors: 'Producto no encontrado'
+            });
         }
     },
     agregarProducto: async (req, res) => {
@@ -176,9 +180,9 @@ module.exports = {
                 data: newProduct,
             });
         } else {
-            if(req.files.length > 0){
-                req.files.forEach(({filename}) => {
-                    fs.existsSync(path.resolve(__dirname,'..','..','..','public','images','productos',filename)) &&  fs.unlinkSync(path.resolve(__dirname,'..','..','..','public','images','productos',filename))
+            if (req.files.length > 0) {
+                req.files.forEach(({ filename }) => {
+                    fs.existsSync(path.resolve(__dirname, '..', '..', '..', 'public', 'images', 'productos', filename)) && fs.unlinkSync(path.resolve(__dirname, '..', '..', '..', 'public', 'images', 'productos', filename))
                 })
             }
             errors = errors.mapped();
@@ -224,49 +228,113 @@ module.exports = {
                     },
                 });
 
+
+                let product = await db.Product.findByPk(req.params.id, options(req));
+
                 if (!brandFound) {
                     brandFound = await db.Brand.create({
                         name: brand,
                     });
                 }
+                if (product) {
+                    product.name = name.trim() || product.name;
+                    product.price = price || product.price;
+                    product.detail = detail.trim() || product.detail;
+                    product.amount = amount || product.amount;
+                    product.discount = discount || product.discount;
+                    product.category_id = categ.id || product.category_id;
+                    product.brand_id = brandFound.id || product.brand_id;
+                    await product.save();
 
-                let product = await db.Product.findByPk(req.params.id, options(req));
+                    if (req.files && req.files.length) {
 
-                product.name = name.trim() || product.name;
-                product.price = price || product.price;
-                product.detail = detail.trim() || product.detail;
-                product.amount = amount || product.amount;
-                product.discount = discount || product.discount;
-                product.category_id = categ.id || product.category_id;
-                product.brand_id = brandFound.id || product.brand_id;
-                await product.save();
+                        req.files.forEach(async (file, index) => {
 
-                if (req.files && req.files.length) {
-                    req.files.forEach(async (file, index) => {
-
-                        if (product.imagenes[index]) {
-                            fs.existsSync(path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', product.imagenes[index].file)) && fs.unlinkSync(path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', product.imagenes[index].file))
-                            product.imagenes[index].file = file.filename;
-                            product.imagenes[index].dataValues.url = `${req.protocol}://${req.get('host')}/productos/images/${file.filename}`
-                            await product.imagenes[index].save();
-                            await product.reload(options(req))
-                        } else {
-                            console.log(file.filename, path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', file.filename));
-                            await db.Image.create({
-                                product_id: product.id,
-                                file: file.filename,
-                                url: path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', file.filename)
-                            })
-                            await product.reload(options(req))
-                        }
+                            if (product.imagenes[index]) {
+                                fs.existsSync(path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', product.imagenes[index].file)) && fs.unlinkSync(path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', product.imagenes[index].file))
+                                product.imagenes[index].file = file.filename;
+                                product.imagenes[index].dataValues.url = `${req.protocol}://${req.get('host')}/productos/images/${file.filename}`
+                                await product.imagenes[index].save();
+                                await product.reload(options(req))
+                            } else {
+                                console.log(file.filename, path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', file.filename));
+                                await db.Image.create({
+                                    product_id: product.id,
+                                    file: file.filename,
+                                    url: path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', file.filename)
+                                })
+                                await product.reload(options(req))
+                            }
+                        });
+                    }
+                    return res.status(201).json({
+                        ok: true,
+                        data: product,
+                    });
+                } else {
+                    errorsDetail = {
+                        ...errorsDetail,
+                        producto: 'No existe el producto',
+                    }
+                    return res.status(200).json({
+                        ok: false,
+                        errors: errorsDetail,
                     });
                 }
-
-                return res.status(201).json({
-                    ok: true,
-                    data: product,
+            } else {
+                if (req.files.length > 0) {
+                    req.files.forEach(({ filename }) => {
+                        fs.existsSync(path.resolve(__dirname, '..', '..', '..', 'public', 'images', 'productos', filename)) && fs.unlinkSync(path.resolve(__dirname, '..', '..', '..', 'public', 'images', 'productos', filename))
+                    })
+                }
+                errors = errors.mapped();
+                for (const key in errors) {
+                    errorsDetail = {
+                        ...errorsDetail,
+                        [key]: errors[key].msg,
+                    };
+                }
+                return res.status(200).json({
+                    ok: false,
+                    errors: errorsDetail,
                 });
+            };
+        } catch (error) {
+            console.log(error)
+            return res.status(error.status || 500).json({
+                ok: false,
+                errors: error.message,
+            });
+        }
+    },
+    remove: async (req, res) => {
+        try {
+            producto = await db.Product.findByPk(req.params.id, options(req))
 
+            if (producto && producto.imagenes.length) {
+                producto.imagenes.forEach(async image => {
+                    fs.existsSync(path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', image.file)) && fs.unlinkSync(path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', image.file))
+                });
+            }
+            if (producto) {
+                await producto.destroy()
+                return res.status(200).json({
+                    ok: true,
+                    msg: 'Producto eliminado con éxito!'
+                })
+            } else {
+                return res.status(400).json({
+                    ok: false,
+                    error: 'Producto no encontrado'
+                })
+            }
+
+        } catch (error) {
+            console.log(error)
+            return res.status(400).json({
+                ok: false,
+                errors: error
+            })
         }
     }
 };
