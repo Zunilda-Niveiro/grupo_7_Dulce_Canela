@@ -1,8 +1,8 @@
 import React from 'react'
 import './Modal.css'
 
-function Modal({closeModal,title,explain,acceptResult,imagen}) {
-  
+function Modal({closeModal,options,accept}) {
+  let {isOpent,title,explain,imagen} = options
   return (
     <div className='modalBackground'>
         <div className="modalContainer">
@@ -11,11 +11,11 @@ function Modal({closeModal,title,explain,acceptResult,imagen}) {
             </div>
             <div className="title"><h2>{title}</h2></div>
             <div className="body">
-             {imagen &&  <img src={imagen.borrar[1]} alt="" />}
+             {imagen &&  <img src={imagen} alt="" />}
             <p>{explain}</p>
             </div>
             <div className="footer">
-                <button onClick={()=>acceptResult(true)}>Aceptar</button>
+                <button onClick={()=>accept(true)}>Aceptar</button>
                 <button onClick={()=>closeModal(false)}>Cancelar</button>
             </div>
         </div>
