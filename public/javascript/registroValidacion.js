@@ -138,7 +138,7 @@ $('email').addEventListener('blur', async function({target}) {
             case !this.value.trim():
                 msgError("contrasenaError2", "Debes verificar la contraseña", target);
                 break;
-            case !this.value.trim() !== $('password').value.trim():
+            case this.value.trim() !== $('password').value.trim():
                 msgError(
                 "contrasenaError2",
                 "La contraseña no coincide",
