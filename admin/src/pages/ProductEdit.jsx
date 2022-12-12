@@ -23,10 +23,7 @@ const [openModal,setOpenModal] = useState({
     accept:false
 })
 const[classState,setClassState] = useState('')
-const [upImage,setUpImage] = useState({
-    lista:[],
-    delete:false
-})
+const [upImage,setUpImage] = useState([])
 
 const id = useParams().id
 
@@ -44,24 +41,34 @@ const id = useParams().id
         })
  }, []);
 useEffect(() => {
-    console.log('%c-----------Control Modal:','color:black',openModal);
-    console.log('%c-----------Control Modal:','color:ligthgreen',upImage);
-    console.log('%c-----------Control Modal:','color:white',imagenes);
-    if (openModal.accept && imagenes.borrar) {
-        console.log('%c-----------Control Modal:','color:pink',imagenes.borrar);
-    }else{
-        if (openModal.accept) {
-           setOpenModal({
-                isOpen:false,
+  
+    if (openModal.accept && (imagenes.borrar[0]) > 0) {
+        setImagenes({
+            cant:imagenes.cant - 1,
+            lista:imagenes.lista.filter(img => img.id !== imagenes.borrar[0]),
+            borrar:[0,'']})
+        setOpenModal({isOpen:false,
                 title:openModal.title,
                 explain:openModal.explain,
-                imagen:openModal.imagen,
-                accept:false
-            }) 
-        }
+                imagen:[],
+                accept:false})
         
-    }
+    }else{
+        if (openModal.accept && imagenes.borrar[0]) {
 
+           setUpImage(upImage.filter(imag=>imagenes.borrar[1] !== imag))
+       
+           setOpenModal({isOpen:false,
+                title:openModal.title,
+                explain:openModal.explain,
+                imagen:[],
+                accept:false})
+            setImagenes({
+                cant:imagenes.cant,
+                lista:imagenes.lista,
+                borrar:[0,'']})
+        } 
+    }
 }, [openModal]);
 
 const handleChange = event => {
@@ -73,7 +80,7 @@ const handleChange = event => {
     })
 }
 
-const onChangePicture = e => {
+/* const onChangePicture = e => {
     let exten = e.target.files[0].type.split('/').pop()
     if (!extValid.exec(exten)) {
         setClassState('input_error')
@@ -85,34 +92,32 @@ const onChangePicture = e => {
                 borrar:[imagenes.borrar.id,imagenes.borrar.url]
             })      
     }
-}
+} */
 const backState = () =>{
   setProduct({modificado:product.original})
 }
-const handleDelete= (isOpen,image)=> {
-    console.log('%c-----------Handle Original:','color:yellow',image.name);
-    if (image.id) {
+const handleDelete= (isOpen,imagen)=> {
+  
+    if (imagen.id) {
         setImagenes({
             cant:imagenes.cant - 1,
             lista:imagenes.lista,
-            borrar:[image.id,image]
+            borrar:[imagen.id,imagen]
         })
     }else{
-        console.log('%c-----------Handle Original:','color:red',image.name);
-        setUpImage({
-            lista:image,
-            delete:true
+        setImagenes({
+            cant:imagenes.cant,
+            lista:imagenes.lista,
+            borrar:[imagen.name,imagen]
         })
     }
-    console.log('%c-----------Handle IDID:','color:purple',image.id);
-    console.log('%c-----------Handle UPUP:','color:purple',upImage);
     setOpenModal({
             isOpen:isOpen,
             title:'Esta seguro de eliminar?',
             explain:'Esta imagen se perdera',
-            imagen:image.url ? image.url : URL.createObjectURL(image),
+            imagen:imagen.url ? imagen.url : URL.createObjectURL(imagen),
             accept:false
-        })      
+        })     
 }
 
 const imageAmount = (e) =>{
@@ -127,10 +132,7 @@ const imageAmount = (e) =>{
             accept:false
         })
    }else{
-    setUpImage({
-        lista:e.target.files,
-        delete:false
-    })
+    setUpImage(Array.from(e.target.files))
    }
 }
   return (
@@ -184,15 +186,11 @@ const imageAmount = (e) =>{
                         <i className="fas fa-trash-alt" onClick={()=>handleDelete(true,imagen)}></i>
                     </div>)
             } 
-            {
-                upImage.lista.length > 3 ? imageAmount() :  
-                Array.from(upImage.lista).map(item =>{
-                    return (
-                        <div title="Imagenes cargadas" className='image_product' style={{ backgroundImage: `url('${item ? URL.createObjectURL(item): null}')` }}>
+            {  upImage.length > 3 ? imageAmount() :  
+               Array.from(upImage).map(item =>
+                        <div key={item.name} title="Imagenes cargadas" className='image_product' style={{ backgroundImage: `url('${item ? URL.createObjectURL(item): null}')` }}>
                             <i className="fas fa-trash-alt" onClick={()=>handleDelete(true,item)}></i>
-                        </div>
-                    )
-                })
+                        </div>)
             } 
         </div>
        <input multiple type="file" onChange={(e)=>{
