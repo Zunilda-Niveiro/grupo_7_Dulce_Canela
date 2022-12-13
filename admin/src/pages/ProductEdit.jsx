@@ -3,7 +3,7 @@ import { useParams} from 'react-router-dom'
 import Modal from '../components/cards/Modal/Modal'
 import { getData } from '../hooks/GetData'
 
-
+//trabajando en validaciones-creando api de categorias
 const ProductEdit = () => {
 const extValid = /(jpg|jpeg|png|gif)$/i;
 const [product, setProduct] = useState({
@@ -51,8 +51,7 @@ useEffect(() => {
                 title:openModal.title,
                 explain:openModal.explain,
                 imagen:[],
-                accept:false})
-        
+                accept:false})   
     }else{
         if (openModal.accept && imagenes.borrar[0]) {
 
@@ -67,32 +66,28 @@ useEffect(() => {
                 cant:imagenes.cant,
                 lista:imagenes.lista,
                 borrar:[0,'']})
-        } 
+        }
+        else{ 
+            if (openModal.accept && openModal.title === 'Tipo de archivo incorrecto') {
+                setOpenModal({isOpen:false,
+                    title:openModal.title,
+                    explain:openModal.explain,
+                    imagen:[],
+                    accept:false}) 
+            }
+
+        }
     }
 }, [openModal]);
 
 const handleChange = event => {
     const name = event.target.name;
     const value = event.target.value;
-
     setProduct({original:product.original, modificado:{...product.modificado,
       [name]: value}
     })
 }
 
-/* const onChangePicture = e => {
-    let exten = e.target.files[0].type.split('/').pop()
-    if (!extValid.exec(exten)) {
-        setClassState('input_error')
-        e.target.value=null
-    }else{
-            setImagenes({
-                cant:imagenes.cant + 1,
-                lista:[...imagenes.lista],
-                borrar:[imagenes.borrar.id,imagenes.borrar.url]
-            })      
-    }
-} */
 const backState = () =>{
   setProduct({modificado:product.original})
 }
@@ -132,8 +127,52 @@ const imageAmount = (e) =>{
             accept:false
         })
    }else{
+    for (let i = 0; i < e.target.files.length; i++) {
+
+        let exten = e.target.files[i].type.split('/').pop()
+
+        if (!extValid.exec(exten)) {
+            setOpenModal({
+                isOpen:true,
+                title:'Tipo de archivo incorrecto',
+                explain:`El archivo ${e.target.files[i].name} es de formato invalido por favor ingrese otro`,
+                imagen:null,
+                accept:false
+            }) 
+            e.target.value=null
+    }
     setUpImage(Array.from(e.target.files))
    }
+}}
+const validation = (e) =>{
+    console.log('%c...............','color:brown',e.target.name)
+   let element = e.target
+    switch (element.name) {
+        case 'name':
+            switch (true) {
+                case !element.value.trim():
+                    alert("El nombre es obligatorio");
+                    break;
+                case element.value.trim().length < 5:
+                    alert("El nombre como mínimino debe tener cinco caracteres" );
+                    break;
+                default:
+                    //limpiar input
+                break;
+            }
+            break;
+        case 'price':
+            console.log('daihdvbagsdaus')
+            break;
+        case 'detalle':
+            console.log('daihdvbagsdaus')
+            break;
+        case 'cantidad':
+            console.log('daihdvbagsdaus')
+            break;    
+        default:
+            break;
+    }
 }
   return (
     <div>
@@ -153,7 +192,7 @@ const imageAmount = (e) =>{
             />}
         <form action="">
             <div>
-                <label>Nombre:<input type="text" name="name" id="" value={product.modificado.name || ""} onChange={handleChange}/></label>
+                <label>Nombre:<input type="text" name="name" id="" value={product.modificado.name || ""} onBlur={validation} onChange={handleChange} /></label>
             </div>
             <div>
                 <label>Precio:<input type="text" name="price" id="" value={product.modificado.price || ""} onChange={handleChange}/></label>
@@ -171,7 +210,7 @@ const imageAmount = (e) =>{
                 <label>Marca:<input type="text" name="marca" id="" value={product.modificado.marca || ""} onChange={handleChange}/></label>
             </div>
             <div>
-                <label>Categoria:<input type="text" name="categoria" id="" value={product.modificado.categoria || ""} onChange={handleChange}/></label>
+                <label>Categoria:<input type="text" name="categoria" id="" value={product.modificado.categoria || ""} onBlur={validation} onChange={handleChange}/></label>
             </div>
              <small className={`error_msg ${classState}`}>Formato de archivo incorrecto</small>
             <div>
