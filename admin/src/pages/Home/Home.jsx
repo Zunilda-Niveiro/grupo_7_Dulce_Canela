@@ -25,11 +25,20 @@ const [totales,setTotales] = useState({
     data: 0,
   },
 });
-
+const [ultimoProd, setUltimoProd] = useState({})
+useEffect(()=>{
+  getData('/productos?sortBy=newest&limit=1')
+    .then(({data}) =>{
+      setUltimoProd({
+        name:data[0].name,
+        imagenes:data[0].imagenes.map((image)=> image.url),
+        amount:data[0].amount
+      })
+    })
+},[])
 useEffect(() => {
   getData('/totals')
     .then(({data}) =>{
-      console.log(data);
       setTotales({
         loading: false,
         products: {
@@ -53,13 +62,22 @@ useEffect(() => {
       })
     })
 }, []);
-  
+console.log('-.-.-.-.-.-',ultimoProd);
   return (
     <div className="homeMain">
       <div className='cardContainer'>
         <HomeCards {...totales.products}/>
         <HomeCards {...totales.users}/>
         <HomeCards {...totales.categories}/>
+      </div>
+      <div className="endContainer">
+        <div className="sectionContainer">
+          <div className="imgProd" style={{ backgroundImage: `url('${ultimoProd.imagenes}')` }}></div>
+          <div className="dataProd"></div>
+        </div>
+        <div className="sectionContainer">
+       
+        </div>
       </div>
     </div>
   )

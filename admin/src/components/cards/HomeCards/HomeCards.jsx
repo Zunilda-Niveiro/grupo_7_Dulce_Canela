@@ -9,7 +9,6 @@ export const HomeCards = ({title,color,icon,data}) => {
           <p>{title}</p >
           <span>{data}</span>
         </div>
-       
     </div>
   )
 }
