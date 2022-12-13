@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.card_main{
+    width: 250px;
+    height: 100px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: dimgray;
+    box-shadow: -1px 10px 10px rgba(0, 0, 0, 0.295);
+    display: flex;
+    color: white;
+}
+.cardBorde{
+    width: 40px;
+    height: 100%;
+    border-top-left-radius: 14px;
+    box-shadow: rgba(255, 255, 255, 0.541) 10px 0px 20px;
+}
+.cardBody{
+    display: flex;
+    gap: 7px;
+    justify-content:space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+.cardBody p, .cardBody span{
+    text-shadow: 10px 05px 10px black;
+}
