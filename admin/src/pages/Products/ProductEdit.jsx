@@ -2,10 +2,12 @@ import React, {useState,useEffect} from 'react'
 import { useParams} from 'react-router-dom'
 import Modal from '../../components/cards/Modal/Modal'
 import { getData } from '../../hooks/GetData'
+import './ProductEdit.css'
 
-//trabajando en validaciones-creando api de categorias
 const ProductEdit = () => {
+
 const extValid = /(jpg|jpeg|png|gif)$/i;
+
 const [product, setProduct] = useState({
     original:{},
     modificado:{}
@@ -23,10 +25,26 @@ const [openModal,setOpenModal] = useState({
     accept:false
 })
 const[classState,setClassState] = useState('')
+
 const [upImage,setUpImage] = useState([])
 
-const id = useParams().id
+const [categories, setCategories] = useState({
+    cant:0,
+    categ:[]
+})
 
+const id = useParams().id
+/* Inicializacion de categorias */
+useEffect(() => {
+  getData('/categorias')
+    .then(({data,meta})=>{
+        setCategories({
+            cant:meta.total,
+            categ:data
+        })
+  })
+}, []);
+/* Inicializacion de producto seleccionado */
  useEffect(() => {
     getData(`/productos/detalle/${id}`)
         .then(({data})=>{
@@ -40,6 +58,7 @@ const id = useParams().id
             })
         })
  }, []);
+ /* Seguimiento de Modal */
 useEffect(() => {
   
     if (openModal.accept && (imagenes.borrar[0]) > 0) {
@@ -79,7 +98,7 @@ useEffect(() => {
         }
     }
 }, [openModal]);
-
+/* Evento de modificacion de datos */
 const handleChange = event => {
     const name = event.target.name;
     const value = event.target.value;
@@ -87,10 +106,11 @@ const handleChange = event => {
       [name]: value}
     })
 }
-
+/* Reiniciar estado de producto modificado */
 const backState = () =>{
   setProduct({modificado:product.original})
 }
+/* Eliminacion de imagenes */
 const handleDelete= (isOpen,imagen)=> {
   
     if (imagen.id) {
@@ -114,7 +134,7 @@ const handleDelete= (isOpen,imagen)=> {
             accept:false
         })     
 }
-
+/* Validacion de cantidad de imagenes */
 const imageAmount = (e) =>{
     
    if (e.target.files.length > (3 - imagenes.cant)) {
@@ -144,8 +164,9 @@ const imageAmount = (e) =>{
     setUpImage(Array.from(e.target.files))
    }
 }}
+
 const validation = (e) =>{
-    console.log('%c...............','color:brown',e.target.name)
+
    let element = e.target
     switch (element.name) {
         case 'name':
@@ -174,8 +195,9 @@ const validation = (e) =>{
             break;
     }
 }
+console.log(product);
   return (
-    <div>
+    <div className='bodyProdEdit'>
         <h2>Edición de producto:</h2>
         {openModal.isOpen && <Modal 
             closeModal={(auxi)=>setOpenModal({ isOpen:auxi,
@@ -191,33 +213,51 @@ const validation = (e) =>{
                 accept:aux})} 
             />}
         <form action="">
-            <div>
-                <label>Nombre:<input type="text" name="name" id="" value={product.modificado.name || ""} onBlur={validation} onChange={handleChange} /></label>
+            <div className='formSection'>
+                <div>
+                    <label>Nombre:</label>
+                    <input type="text" name="name" id="" value={product.modificado.name || ""} onBlur={validation} onChange={handleChange} />
+                </div>
+                <div>
+                    <label>Precio:</label>
+                    <input type="text" name="price" id="" value={product.modificado.price || ""} onChange={handleChange}/>
+                </div>
+                <div>
+                    <label>Detalle:</label>
+                    <textarea  cols="30" rows="5" name="detail" id="" value={product.modificado.detail || ""} onChange={handleChange}></textarea>
+                </div>
             </div>
-            <div>
-                <label>Precio:<input type="text" name="price" id="" value={product.modificado.price || ""} onChange={handleChange}/></label>
+            <div className='formSection'>
+                <div>
+                    <label>Cantidad:</label>
+                    <input type="text" name="amount" id="" value={product.modificado.amount || ""} onChange={handleChange}/>
+                </div>
+                <div>
+                    <label>Descuento:</label>
+                    <input type="text" name="discount" id="" value={product.modificado.discount || ""} onChange={handleChange}/>
+                </div>
+                <div>
+                    <label>Marca:</label>
+                    <input type="text" name="marca" id="" value={product.modificado.marca || ""} onChange={handleChange}/>
+                </div>
+            
+                <div>
+                    <label>Categoria:</label>
+                    <select >
+                        {
+                            categories.categ.map((category)=>(
+                                <option value={category.name} key={category.name} selected={product.modificado.categoria}>{category.name}</option>
+                            ))
+                        }
+                    </select>
+                </div>
             </div>
-            <div>
-                <label>Detalle:<textarea cols="30" rows="5" name="detail" id="" value={product.modificado.detail || ""} onChange={handleChange}></textarea></label>
-            </div>
-            <div>
-                <label>Cantidad:<input type="text" name="amount" id="" value={product.modificado.amount || ""} onChange={handleChange}/></label>
-            </div>
-            <div>
-                <label>Descuento:<input type="text" name="discount" id="" value={product.modificado.discount || ""} onChange={handleChange}/></label>
-            </div>
-            <div>
-                <label>Marca:<input type="text" name="marca" id="" value={product.modificado.marca || ""} onChange={handleChange}/></label>
-            </div>
-            <div>
-                <label>Categoria:<input type="text" name="categoria" id="" value={product.modificado.categoria || ""} onBlur={validation} onChange={handleChange}/></label>
-            </div>
-             <small className={`error_msg ${classState}`}>Formato de archivo incorrecto</small>
-            <div>
+             <small className={`error_msg ${classState}`}>Formato de archivo incorrecto</small>  
+        </form> 
+         <div className='formButtons'>
                 <button>Guardar Cambios</button>
                 <button onClick={backState}>Cancelar</button>
             </div>
-        </form>
         <div className='image_container'>
             {
                 imagenes.lista.map((imagen,index) => 
