@@ -5,8 +5,8 @@ const { upload } = require('../../middleware/uploadFiles')
 const { procesoLogin, procesoRegistro, verifyEmail } = require('../../controllers/API/apiUser')
 
 // ************ Controller Require ************
-const {signUp, signIn} = require('../../controllers/authController');
-const {uploadUser} = require('../../middleware/uploadFiles');
+const { signUp, signIn } = require('../../controllers/API/authController');
+const { uploadUser } = require('../../middleware/uploadFiles');
 
 /* /users */
 router

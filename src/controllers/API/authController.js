@@ -1,19 +1,19 @@
 const { hashSync, compareSync } = require("bcryptjs");
-const db = require("../database/models");
-const {sendSequelizeError, createError, createErrorExpress } = require("../helpers");
+const db = require("../../database/models");
+const { sendSequelizeError, createError, createErrorExpress } = require("../../helpers");
 const { sing } = require("jsonwebtoken");
 
 
 module.exports = {
     signUp: async (req, res) => {
-        try{
+        try {
             let errors = await validationResult(req);
             console.log(errors)
-            if(!errors.isEmpty()){
+            if (!errors.isEmpty()) {
                 throw createErrorExpress(errors, req)
             }
-            const { surname, firstname, address, email, password} = req.body;
-        
+            const { surname, firstname, address, email, password } = req.body;
+
             const { id } = await db.User.create({
                 surname: surname && surname.trim(),
                 firstname: firstname && firstname.trim(),
@@ -41,16 +41,16 @@ module.exports = {
                 data: token,
 
             });
-            } catch (error){
-                let errors = sendSequelizeError(error);
-                return res.status(error.satus || 500).json({
-                    ok: false,
-                    errors,
-                });
-            }
-        },
-        
-            
+        } catch (error) {
+            let errors = sendSequelizeError(error);
+            return res.status(error.satus || 500).json({
+                ok: false,
+                errors,
+            });
+        }
+    },
+
+
 
     //registrarse
     signIn: async (req, res) => {
@@ -58,12 +58,12 @@ module.exports = {
 
             let errors = await validationResult(req);
             console.log(errors)
-            if(!errors.isEmpty()){
+            if (!errors.isEmpty()) {
                 throw createErrorExpress(errors, req)
             }
-            const { email, password} = req.body;
+            const { email, password } = req.body;
 
-            if(!email || !password){
+            if (!email || !password) {
                 throw createError(404, 'se requiere email y contrasena');
             }
             let user = await db.User.findOne({
@@ -71,7 +71,7 @@ module.exports = {
                     email
                 }
             });
-            if(!user || !compareSync(password, user.password)) {
+            if (!user || !compareSync(password, user.password)) {
                 throw createError(401, "Credenciales inválidas");
             }
             const token = sign(
@@ -90,7 +90,7 @@ module.exports = {
                 data: token,
             });
 
-        } catch(error) {
+        } catch (error) {
             let errors = sendSequelizeError(error);
             return res.status(error.status || 500).json({
                 ok: false,
@@ -98,7 +98,7 @@ module.exports = {
             });
         }
     }
-    }
+}
 
 
 
