@@ -12,8 +12,14 @@ const [products, setProducts] = useState({
   meta:[]
 });
 const [page, setPage] = useState(1)
-const [openModal,setOpenModal] = useState(false)
-const [acceptModal,setAcceptModal] = useState(false)
+const [openModal,setOpenModal] = useState({
+  isOpen:false,
+  title:'',
+  explain:'',
+  imagen:[],
+  accept:false
+})
+
 /* Carga inicial Productos*/
 useEffect(() => {
   getData(`/productos?limit=16&page=${page}`)
@@ -47,9 +53,16 @@ const paginaNext = async() => {
         })
       })
   }else{
-    setOpenModal(true)
+    setOpenModal({
+      isOpen:true,
+      title:'No hay mas productos',
+      explain:'Se alcanzo el maximo de productos',
+      imagen:[],
+      accept:false
+    })
   }
 }
+/* optimizar y crear una unica funcion pendiente */
 const paginaBack = async() => {
 
   if (page > 1){
@@ -65,29 +78,48 @@ const paginaBack = async() => {
         })
     })
   }else{
-    setOpenModal(true)
+    setOpenModal({
+      isOpen:true,
+      title:'No hay mas productos',
+      explain:'Se alcanzo el maximo de productos',
+      imagen:[],
+      accept:false
+    })
   }
 }
 
 /* Actualizacion de estados */
 useEffect(()=>{console.log('%cProductos actualizados','color:lightgreen')},[products])
+
 useEffect(()=>{
-  if (acceptModal) {
-    setOpenModal(false)
-    setAcceptModal(false)
+  if (openModal.accept) {
+    setOpenModal({
+      isOpen:false,
+      title:'No hay mas productos',
+      explain:'Se alcanzo el maximo de productos',
+      imagen:[],
+      accept:false
+    })
   }
-},[acceptModal])
+},[openModal])
+
 /* Html */
   return (
     <div className='productos'>
       
-      {openModal && <Modal 
-        closeModal={setOpenModal} 
-        title={'Atención'}
-        explain={'No hay mas productos para navegar'}
-        acceptResult={setAcceptModal}
-        
-        />}
+      {openModal.isOpen && <Modal 
+            closeModal={(auxi)=>setOpenModal({ isOpen:auxi,
+                title:openModal.title,
+                explain:openModal.explain,
+                imagen:openModal.imagen,
+                accept:openModal.accept})} 
+            options={openModal}
+            accept={(aux)=>setOpenModal({ isOpen:openModal.isOpen,
+                title:openModal.title,
+                explain:openModal.explain,
+                imagen:openModal.imagen,
+                accept:aux})} 
+            />}
 
       {
         products.data.map((product, index) =>(
