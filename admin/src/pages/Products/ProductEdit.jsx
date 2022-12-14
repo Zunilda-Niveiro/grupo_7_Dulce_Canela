@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react'
 import { useParams} from 'react-router-dom'
-import Modal from '../components/cards/Modal/Modal'
-import { getData } from '../hooks/GetData'
+import Modal from '../../components/cards/Modal/Modal'
+import { getData } from '../../hooks/GetData'
 
 //trabajando en validaciones-creando api de categorias
 const ProductEdit = () => {

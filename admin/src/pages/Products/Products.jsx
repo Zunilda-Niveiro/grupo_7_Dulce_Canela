@@ -1,7 +1,8 @@
 import React, {useEffect,useState} from 'react'
-import {Link} from 'react-router-dom'
-import  Modal from '../components/cards/Modal/Modal';
-import { getData } from '../hooks/GetData';
+
+import  Modal from '../../components/cards/Modal/Modal';
+import { ProdUserCard } from '../../components/cards/ProdUserCard/ProdUserCard';
+import { getData } from '../../hooks/GetData';
 
 export const Products = () => {
 
@@ -123,15 +124,7 @@ useEffect(()=>{
 
       {
         products.data.map((product, index) =>(
-          <div className="card" key={product.id}>
-            <div className="blob"></div>
-            <span className="img" style={{ backgroundImage: `url('${product.imagenes[0].url}')` }}></span>
-            <h2>{product.name} <br/> {product.id + 1}</h2>
-            <p>
-              <Link to={`/Products/${product.id}`}><i className="fas fa-edit" ></i></Link>
-              <i className="fas fa-trash-alt"></i>
-            </p>
-          </div>
+          <ProdUserCard {...product} color='#20BF55' key={product.id}/>
         ))
       }
 

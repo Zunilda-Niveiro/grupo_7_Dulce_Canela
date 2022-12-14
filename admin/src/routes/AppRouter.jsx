@@ -3,9 +3,9 @@ import {Route,createBrowserRouter,createRoutesFromElements,RouterProvider} from 
 import { Home } from '../pages/Home/Home'
 import { Root } from '../pages/Root'
 import {Categorias} from '../pages/Categorias'
-import {Products} from '../pages/Products'
+import {Products} from '../pages/Products/Products'
 import {Users} from '../pages/Users'
-import ProductEdit from '../pages/ProductEdit'
+import ProductEdit from '../pages/Products/ProductEdit'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
