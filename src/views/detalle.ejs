@@ -4,7 +4,6 @@
 
 <body>
     <%- include('./partials/header') %>
-    <%- include('./partials/carrito_desp') %>
     <main class="main__detalle">
         <section class="main__detalle__section">
             <article class="section__imagenes ">
@@ -30,10 +29,9 @@
                 </div>
                 <hr>
                 <p><%= prod.detail %></p>
-                <form action="/productos/agregar/<%= prod.id %> " method="POST">
+                <form action="/" method="get">
                     <button type="submit" class="btn-add">Agregar al carrito</button>
                 </form>
-
                 <% if(locals.userLogin){ %>
                 <% if (userLogin.rol === 'admi') { %>
                     <div class="btns">

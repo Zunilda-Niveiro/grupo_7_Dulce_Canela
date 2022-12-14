@@ -15,16 +15,12 @@
                 </div>
                 <input type="checkbox" name="" id="resumen">
                 <div class="resumen-oculto">
-                    <% carrito.forEach(car => { %>
                         <article class="home__header__cart--prod">
-                            <img src="/images/productos/<%= productos[car.id_producto - 1].imagen %>" alt="" />
+                            <img src="/images/productos/1" alt="" />
                             <div class="cart-desc">
                                 <div class="cart-nom">
-                                    <h5>
-                                        <%= productos[car.id_producto - 1].nombre %> x <%=
-                                                 productos[car.id_producto-1].cantidad%>gr
-                                    </h5>
-                                    <form action="/productos/delete/<%= car.id_producto %>?_method=DELETE" method="POST">
+                                    <h5>400 gr</h5>
+                                    <form action="/productos/delete/<%=1 %>?_method=DELETE" method="POST">
                                         <button type="submit">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </button>
@@ -33,14 +29,13 @@
                                 <div class="cart-cant">
                                     <div class="cart-cant-controles">
                                         <i class="fa-solid fa-minus"></i>
-                                        <input type="number" name="" id="" value="<%= car.cantidad_p %>" />
+                                        <input type="number" name="" id="" value="1" />
                                         <i class="fa-solid fa-plus"></i>
                                     </div>
-                                    <h5>$ <%= productos[car.id_producto - 1].precio %></h5>
+                                    <h5>$ 300</h5>
                                 </div>
                             </div>
                         </article>
-                        <% }) %>
                 </div>
             </article>
             <!-- FORMULARIO CARRITO -->
