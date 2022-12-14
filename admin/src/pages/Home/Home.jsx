@@ -26,16 +26,27 @@ const [totales,setTotales] = useState({
   },
 });
 const [ultimoProd, setUltimoProd] = useState({})
+const [categories,setCategories] = useState({
+  totales:0,
+  data:[]
+})
+
+/* CARGA DE ULTIMO PRODUCTO */
 useEffect(()=>{
   getData('/productos?sortBy=newest&limit=1')
     .then(({data}) =>{
       setUltimoProd({
         name:data[0].name,
         imagenes:data[0].imagenes.map((image)=> image.url),
-        amount:data[0].amount
+        amount:data[0].amount,
+        brand:data[0].marca,
+        category:data[0].categoria,
+        price:data[0].price
+
       })
     })
 },[])
+/* TOTALES DE SECCIONES */
 useEffect(() => {
   getData('/totals')
     .then(({data}) =>{
@@ -62,7 +73,17 @@ useEffect(() => {
       })
     })
 }, []);
-console.log('-.-.-.-.-.-',ultimoProd);
+/* CARGA DE CATEGORIAS */
+useEffect(() => {
+  getData('/categorias')
+    .then(({data,meta})=>{
+      setCategories({
+        totales:meta.total,
+        data:data
+      })
+    })
+}, [])
+
   return (
     <div className="homeMain">
       <div className='cardContainer'>
@@ -72,11 +93,23 @@ console.log('-.-.-.-.-.-',ultimoProd);
       </div>
       <div className="endContainer">
         <div className="sectionContainer">
-          <div className="imgProd" style={{ backgroundImage: `url('${ultimoProd.imagenes}')` }}></div>
-          <div className="dataProd"></div>
+          <div className="imgProd " style={{ backgroundImage: `url('${ultimoProd.imagenes}')` }}><p className='textLastProd'>Último producto</p></div>
+          <div className="dataProd">
+            <p className='textLastProd'>{ultimoProd.name}</p>
+            <p className='textLastProd'>Marca: {ultimoProd.brand}</p>
+            <p className='textLastProd'>Cantidad: {ultimoProd.amount}</p>
+            <p className='textLastProd'>Categoria: {ultimoProd.category}</p>
+            <p className='textLastProd'>Precio: ${ultimoProd.price}</p>
+          </div>
         </div>
-        <div className="sectionContainer">
-       
+        <div className="sectionContainer column">
+           {
+            categories.data.map(category=>(
+              <div className="categCard">
+                <p>{category.name}</p>
+              </div>
+            ))
+           }
         </div>
       </div>
     </div>
