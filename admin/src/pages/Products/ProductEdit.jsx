@@ -198,7 +198,7 @@ const validation = (e) =>{
 console.log(product);
   return (
     <div className='bodyProdEdit'>
-        <h2>Edición de producto:</h2>
+        <h2 className='tituloProdEdit'>Edición de producto:</h2>
         {openModal.isOpen && <Modal 
             closeModal={(auxi)=>setOpenModal({ isOpen:auxi,
                 title:openModal.title,
@@ -216,48 +216,50 @@ console.log(product);
             <div className='formSection'>
                 <div>
                     <label>Nombre:</label>
-                    <input type="text" name="name" id="" value={product.modificado.name || ""} onBlur={validation} onChange={handleChange} />
+                    <input className='inputsSet' type="text" name="name" id="" value={product.modificado.name || ""} onBlur={validation} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Precio:</label>
-                    <input type="text" name="price" id="" value={product.modificado.price || ""} onChange={handleChange}/>
+                    <input className='inputsSet' type="text" name="price" id="" value={product.modificado.price || ""} onChange={handleChange}/>
                 </div>
                 <div>
                     <label>Detalle:</label>
-                    <textarea  cols="30" rows="5" name="detail" id="" value={product.modificado.detail || ""} onChange={handleChange}></textarea>
+                    <textarea className='inputsSet'  cols="30" rows="5" name="detail" id="" value={product.modificado.detail || ""} onChange={handleChange}></textarea>
                 </div>
             </div>
             <div className='formSection'>
                 <div>
                     <label>Cantidad:</label>
-                    <input type="text" name="amount" id="" value={product.modificado.amount || ""} onChange={handleChange}/>
+                    <input className='inputsSet' type="text" name="amount" id="" value={product.modificado.amount || ""} onChange={handleChange}/>
                 </div>
                 <div>
                     <label>Descuento:</label>
-                    <input type="text" name="discount" id="" value={product.modificado.discount || ""} onChange={handleChange}/>
+                    <input className='inputsSet' type="text" name="discount" id="" value={product.modificado.discount || ""} onChange={handleChange}/>
                 </div>
                 <div>
                     <label>Marca:</label>
-                    <input type="text" name="marca" id="" value={product.modificado.marca || ""} onChange={handleChange}/>
+                    <input className='inputsSet' type="text" name="marca" id="" value={product.modificado.marca || ""} onChange={handleChange}/>
                 </div>
             
                 <div>
                     <label>Categoria:</label>
-                    <select >
+                    <select className='inputsSet' >
                         {
                             categories.categ.map((category)=>(
-                                <option value={category.name} key={category.name} selected={product.modificado.categoria}>{category.name}</option>
+                                <option value={category.name} key={category.name} selected={product.modificado.categoria == category.name ? category.name : null}>{category.name}</option>
                             ))
                         }
                     </select>
                 </div>
             </div>
              <small className={`error_msg ${classState}`}>Formato de archivo incorrecto</small>  
-        </form> 
-         <div className='formButtons'>
-                <button>Guardar Cambios</button>
-                <button onClick={backState}>Cancelar</button>
-            </div>
+        </form>
+        <div className="file-input">
+            <input id="file" className='inpProdEdit' multiple type="file" onChange={(e)=>{
+                imageAmount(e)
+                    }} />
+            <label htmlFor="file">Subir Imagen</label>
+        </div>   
         <div className='image_container'>
             {
                 imagenes.lista.map((imagen,index) => 
@@ -272,9 +274,11 @@ console.log(product);
                         </div>)
             } 
         </div>
-       <input multiple type="file" onChange={(e)=>{
-         imageAmount(e)
-       }} />
+        <div className='formButtons'>
+                <button className='btnGuardar'>Guardar Cambios</button>
+                <button className='btnCancelar' onClick={backState}>Cancelar</button>
+        </div>
+        
     </div>
   )
 }

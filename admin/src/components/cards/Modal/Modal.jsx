@@ -11,8 +11,8 @@ function Modal({closeModal,options,accept}) {
             </div>
             <div className="title"><h2>{title}</h2></div>
             <div className="body">
-             {imagen &&  <img src={imagen} alt="" />}
-            <p>{explain}</p>
+             {imagen &&  <img className='bodyImg' src={imagen} alt="" />}
+            <p className="title">{explain}</p>
             </div>
             <div className="footer">
                 <button onClick={()=>accept(true)}>Aceptar</button>
