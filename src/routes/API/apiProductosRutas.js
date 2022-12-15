@@ -15,7 +15,7 @@ router
     /*GUARDADO DE PRODUCTO*/
     .post('/productAdd', upload.array('image'), agregarProductoValidaciones, agregarProducto)
 
-    /*ELIMINACIÓN DE PRODUCTO*/
+    /*ACTUALIZACION DE PRODUCTO*/
     .patch('/update/:id',upload.array('image'),agregarProductoValidaciones,update)
 
     /*ELIMINACIÓN DE PRODUCTO*/

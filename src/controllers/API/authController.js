@@ -1,4 +1,5 @@
 const { hashSync, compareSync } = require("bcryptjs");
+const { validationResult } = require('express-validator');
 const db = require("../../database/models");
 const { sendSequelizeError, createError, createErrorExpress } = require("../../helpers");
 const { sing } = require("jsonwebtoken");
@@ -74,7 +75,7 @@ module.exports = {
             if (!user || !compareSync(password, user.password)) {
                 throw createError(401, "Credenciales inválidas");
             }
-            const token = sign(
+            const token = sing(
                 {
                     id: user.id,
                     is_admin: user.is_admin,

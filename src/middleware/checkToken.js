@@ -1,6 +1,6 @@
 
-const {sedSequelizeError} = require ("../helpers");
-const {verify} = require('jsonwebtoken');
+const { sedSequelizeError } = require("../helpers");
+const { verify } = require('jsonwebtoken');
 const checkToken = (req, res, next) => {
     try {
         const token = req.header('Authorization');
@@ -11,17 +11,14 @@ const checkToken = (req, res, next) => {
             if (err) {
                 throw createError(403, "Token inválido")
             }
-
             req.userToken = decoded
-
         });
-
+        next()
     } catch (error) {
         let errors = sendSequelizeError(error);
         return res.status(error.status || 500).json({
             ok: false,
             errors,
         });
-
     }
 }

@@ -52,13 +52,15 @@ module.exports = {
 
             order = ["ASC", "DESC"].includes(order.toUpperCase()) ? order.toUpperCase() : "ASC";
             sortBy = ["name", "price", "category", "newest"].includes(sortBy.toLowerCase()) ? sortBy : "id";
+            let orderQuery = sortBy === "category" ? ['category', 'name', order] : sortBy === "newest" ? ['createdAt', 'DESC'] : [sortBy, order]
+
 
             const { count, rows: products } = await db.Product.findAndCountAll({
                 ...options(req),
                 subQuery: false,
                 limit,
                 offset,
-                order: [[sortBy, order]],
+                order: [orderQuery],
                 where: {
                     [Op.or]: [{
                         name: {
@@ -78,6 +80,20 @@ module.exports = {
                     ],
                 },
             });
+            let productsClean = products.map((product) => {
+                return {
+                    'id': product.id,
+                    'name': product.name,
+                    'price': product.price,
+                    'detail': product.detail,
+                    'amount': product.amount,
+                    'discount': product.discount,
+                    'url': product.url,
+                    'imagenes': product.imagenes,
+                    'marca': product.marca.name,
+                    'categoria': product.categoria.name
+                }
+            })
             return res.status(200).json({
                 ok: true,
                 meta: {
@@ -85,7 +101,7 @@ module.exports = {
                     limit: limit,
                     offset: offset,
                 },
-                data: products,
+                data: productsClean
             });
         } catch (error) {
             console.log(error);

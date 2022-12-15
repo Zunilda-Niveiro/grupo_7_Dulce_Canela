@@ -15,9 +15,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productosRouter = require('./routes/productos');
 const apiRouter = require('./routes/API/apiProductosRutas');
-
-const apiUsers = require('./routes/API/apiUsersRutas');
-const apiUsersauth = require('./routes/API/auth');
+const apiCategoriesRouter = require('./routes/API/apiCategoriasRutas');
+const apiTotalsRouter = require('./routes/API/apiTotales');
 require('dotenv').config()
 var app = express();
 
@@ -31,7 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname,'..', 'public')));
 
-app.use(methodOverride('_method')); // Pasar poder pisar el method="POST" en el formulario por PUT y DELETE
+app.use(methodOverride('_method'));
 app.use(session({
   secret:'DulceCanela',
   resave: false,
@@ -45,12 +44,9 @@ app.use(localsUsersCkeck);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/productos', productosRouter);
-app.use('/api/productos',apiRouter);
-app.use('/api/users', apiUsers);
-//app.use('/auth', authRouter);
-app.use('/api/apiUsersauth',apiUsersauth)
-
-
+app.use('/api/productos',apiRouter)
+app.use('/api/categorias',apiCategoriesRouter)
+app.use('/api/totals',apiTotalsRouter)
 
 
 

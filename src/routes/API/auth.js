@@ -11,7 +11,7 @@ const { uploadUser } = require('../../middleware/uploadFiles');
 /* /users */
 router
     .post('/signup', uploadUser.single('avatar'), signUp)
-    .post('/signin', signIn)
+    .post('/signin', loginValidacion, signIn)
     .post('/login', procesoLogin)
     .post('/registro', uploadUser.single('imagenUser'), procesoRegistro)
     .post('/verified', verifyEmail) //agregado ruta para validar el email
