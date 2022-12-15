@@ -24,13 +24,15 @@ const [openModal,setOpenModal] = useState({
     imagen:[],
     accept:false
 })
-const[classState,setClassState] = useState('')
-
 const [upImage,setUpImage] = useState([])
 
 const [categories, setCategories] = useState({
     cant:0,
     categ:[]
+})
+const [error,setError] = useState({
+    state:false,
+    msg:''
 })
 
 const id = useParams().id
@@ -44,7 +46,7 @@ useEffect(() => {
         })
   })
 }, []);
-/* Inicializacion de producto seleccionado */
+/* Inicializacion de producto e imagenes seleccionado */
  useEffect(() => {
     getData(`/productos/detalle/${id}`)
         .then(({data})=>{
@@ -94,6 +96,13 @@ useEffect(() => {
                     imagen:[],
                     accept:false}) 
             }
+            if (openModal.accept && openModal.title === 'Demasiadas imágenes') {
+                setOpenModal({isOpen:false,
+                    title:openModal.title,
+                    explain:openModal.explain,
+                    imagen:[],
+                    accept:false}) 
+            }
 
         }
     }
@@ -108,14 +117,25 @@ const handleChange = event => {
 }
 /* Reiniciar estado de producto modificado */
 const backState = () =>{
-  setProduct({modificado:product.original})
+    setProduct({
+        original:product.original,
+        modificado:product.original})
+    setImagenes({
+        cant:product.original.imagenes.length,
+        lista:product.original.imagenes,
+        borrar:[0,'']
+    })
+    setUpImage([])
+    setError(false)
+    window.location.reload()
 }
 /* Eliminacion de imagenes */
 const handleDelete= (isOpen,imagen)=> {
-  
+    console.log('-------cant imagenes', imagenes.cant)
+    console.log('-------imagenes subidas', upImage.length);
     if (imagen.id) {
         setImagenes({
-            cant:imagenes.cant - 1,
+            cant:imagenes.cant,
             lista:imagenes.lista,
             borrar:[imagen.id,imagen]
         })
@@ -133,17 +153,19 @@ const handleDelete= (isOpen,imagen)=> {
             imagen:imagen.url ? imagen.url : URL.createObjectURL(imagen),
             accept:false
         })     
+    console.log('-------cant imagenes ..post', imagenes.cant)
+    console.log('-------imagenes subidas..post', upImage.length);    
 }
 /* Validacion de cantidad de imagenes */
 const imageAmount = (e) =>{
-    
-   if (e.target.files.length > (3 - imagenes.cant)) {
+  
+   if (e.target.files.length > (3 - (imagenes.cant + upImage.length))) {
         e.target.value=null
         setOpenModal({
             isOpen:true,
             title:'Demasiadas imágenes',
             explain:`Solo puede subir un maximo de ${3 - imagenes.cant}`,
-            imagen:null,
+            imagen:[],
             accept:false
         })
    }else{
@@ -164,38 +186,102 @@ const imageAmount = (e) =>{
     setUpImage(Array.from(e.target.files))
    }
 }}
+const guardarCambios =() =>{
 
+}
 const validation = (e) =>{
 
    let element = e.target
+
     switch (element.name) {
         case 'name':
             switch (true) {
                 case !element.value.trim():
-                    alert("El nombre es obligatorio");
+                    setError({
+                        state:true,
+                        msg:'Nombre: Este campo es obligatorio'                     
+                    })
+                    e.target.style.boxShadow = '5px 5px 15px red' 
                     break;
                 case element.value.trim().length < 5:
-                    alert("El nombre como mínimino debe tener cinco caracteres" );
+                    setError({
+                        state:true,
+                        msg:'Nombre: El nombre como mínimino debe tener cinco caracteres'                       
+                    })
+                    e.target.style.boxShadow = '5px 5px 15px red' 
                     break;
                 default:
-                    //limpiar input
-                break;
+                    setError(false)
+                    e.target.style.boxShadow = '' 
+                break    
             }
             break;
         case 'price':
-            console.log('daihdvbagsdaus')
+            switch (true) {
+                case !element.value.trim():
+                    setError({
+                        state:true,
+                        msg:'Precio: Este campo es obligatorio'                     
+                    })
+                    e.target.style.boxShadow = '5px 5px 15px red' 
+                    break;
+                case isNaN(element.value.trim()):
+                    setError({
+                        state:true,
+                        msg:'Precio: Solo se permiten numeros'                       
+                    })
+                    e.target.style.boxShadow = '5px 5px 15px red' 
+                    break;
+                default:
+                    setError(false)
+                    e.target.style.boxShadow = '' 
+                break    
+            }
             break;
-        case 'detalle':
-            console.log('daihdvbagsdaus')
+        case 'detail':
+            switch (true) {
+                case !element.value.trim():
+                    setError({
+                        state:true,
+                        msg:'Detalle: Este campo es obligatorio'                     
+                    })
+                    e.target.style.boxShadow = '5px 5px 15px red' 
+                    break;
+                case element.value.trim().length < 20:
+                    setError({
+                        state:true,
+                        msg:'Detalle: El detalle como mínimino debe tener 20 caracteres'                       
+                    })
+                    e.target.style.boxShadow = '5px 5px 15px red' 
+                    break;
+                default:
+                    setError(false)
+                    e.target.style.boxShadow = '' 
+                break    
+            }
             break;
-        case 'cantidad':
-            console.log('daihdvbagsdaus')
-            break;    
+        case 'marca':
+                switch (true) {
+                    case !element.value.trim():
+                        setError({
+                            state:true,
+                            msg:'Marca: Este campo es obligatorio'                     
+                        })
+                        e.target.style.boxShadow = '5px 5px 15px red' 
+                        break;
+                    default:
+                        setError(false)
+                        e.target.style.boxShadow = '' 
+                    break    
+                }
+                break;    
         default:
             break;
     }
+    
+
 }
-console.log(product);
+
   return (
     <div className='bodyProdEdit'>
         <h2 className='tituloProdEdit'>Edición de producto:</h2>
@@ -220,11 +306,11 @@ console.log(product);
                 </div>
                 <div>
                     <label>Precio:</label>
-                    <input className='inputsSet' type="text" name="price" id="" value={product.modificado.price || ""} onChange={handleChange}/>
+                    <input className='inputsSet' type="text" name="price" id="" value={product.modificado.price || ""} onBlur={validation} onChange={handleChange}/>
                 </div>
                 <div>
                     <label>Detalle:</label>
-                    <textarea className='inputsSet'  cols="30" rows="5" name="detail" id="" value={product.modificado.detail || ""} onChange={handleChange}></textarea>
+                    <textarea className='inputsSet'  cols="30" rows="5" name="detail" id="" value={product.modificado.detail || ""} onBlur={validation} onChange={handleChange}></textarea>
                 </div>
             </div>
             <div className='formSection'>
@@ -238,7 +324,7 @@ console.log(product);
                 </div>
                 <div>
                     <label>Marca:</label>
-                    <input className='inputsSet' type="text" name="marca" id="" value={product.modificado.marca || ""} onChange={handleChange}/>
+                    <input className='inputsSet' type="text" name="marca" id="" value={product.modificado.marca || ""} onBlur={validation} onChange={handleChange}/>
                 </div>
             
                 <div>
@@ -252,14 +338,14 @@ console.log(product);
                     </select>
                 </div>
             </div>
-             <small className={`error_msg ${classState}`}>Formato de archivo incorrecto</small>  
         </form>
-        <div className="file-input">
-            <input id="file" className='inpProdEdit' multiple type="file" onChange={(e)=>{
-                imageAmount(e)
-                    }} />
-            <label htmlFor="file">Subir Imagen</label>
-        </div>   
+        {error.state ? <label className='error_msg'>{error.msg}</label> : <label> </label>}
+        {   (imagenes.lista.length + upImage.length) < 3 ?
+            <div className="file-input">
+                <input id="file" className='inpProdEdit' multiple type="file" onChange={(e)=>{imageAmount(e)}} />
+                <label htmlFor="file">Subir Imagen</label>
+            </div> : null
+        }
         <div className='image_container'>
             {
                 imagenes.lista.map((imagen,index) => 
@@ -267,7 +353,7 @@ console.log(product);
                         <i className="fas fa-trash-alt" onClick={()=>handleDelete(true,imagen)}></i>
                     </div>)
             } 
-            {  upImage.length > 3 ? imageAmount() :  
+            { upImage.length > 3 ? imageAmount() :  
                Array.from(upImage).map(item =>
                         <div key={item.name} title="Imagenes cargadas" className='image_product' style={{ backgroundImage: `url('${item ? URL.createObjectURL(item): null}')` }}>
                             <i className="fas fa-trash-alt" onClick={()=>handleDelete(true,item)}></i>
@@ -275,7 +361,7 @@ console.log(product);
             } 
         </div>
         <div className='formButtons'>
-                <button className='btnGuardar'>Guardar Cambios</button>
+                <button className='btnGuardar' onClick={guardarCambios}>Guardar Cambios</button>
                 <button className='btnCancelar' onClick={backState}>Cancelar</button>
         </div>
         

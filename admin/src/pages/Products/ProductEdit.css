@@ -103,5 +103,16 @@ input:hover + label,
 input:focus + label {
     box-shadow: 5px 5px 20px rgb(255, 255, 255), 5px 5px 20px rgb(68, 68, 68);
 }
-
+.error_msg{
+  color: red;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  font-weight: bolder;
+  width: 50vw;
+  text-align: center;
+  margin: 0 auto;
+}
+.input_error{
+  box-shadow: 5px 5px 15px red;
+}
   
