@@ -25,24 +25,24 @@ module.exports = {
       },
       discount: {
         type: Sequelize.INTEGER,
-        defaultValue:0
+        defaultValue: 0
       },
       category_id: {
         type: Sequelize.INTEGER,
-        references : {
-          model : {
-            tableName : 'Categories'
+        references: {
+          model: {
+            tableName: 'Categories'
           },
-          key : 'id'
+          key: 'id'
         }
       },
       brand_id: {
         type: Sequelize.INTEGER,
-        references : {
-          model : {
-            tableName : 'Brands'
+        references: {
+          model: {
+            tableName: 'Brands'
           },
-          key : 'id'
+          key: 'id'
         }
       },
       createdAt: {

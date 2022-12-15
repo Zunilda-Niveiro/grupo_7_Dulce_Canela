@@ -18,13 +18,12 @@
             <a href="#dire"><span class="home__header--span"><i
                         class="fa-solid fa-clock home__header--i"></i>Horarios</span></a>
         </div>
-
-
         <div>
             <span class="home__header--span"><i class="fa-solid fa-phone home__header--i"></i>+54 011 45621489</span>
             <a href="#dire"><span id="cont"><i class="fa-solid fa-phone"></i>Contacto</span></a>
             <a href="#dire"><span class="home__header--span"><i
                         class="fa-brands fa-instagram home__header--i"></i>Redes</span></a>
+
         </div>
     </div>
     <!-- NAvEGACION -->
@@ -41,10 +40,10 @@
             <% if(userLogin.rol === "admi"){ %>
             <li><a href="/productos/productAdd">Agregar Producto</a></li>
             <li><a href="/productos/productos/1">Productos</a></li>
+            <li><a href="/users/administracionUsuarios">Administracion de Usuarios</a></li>
             <% } %>
             <% } else{ %>
             <li><a href="/productos/productos/1">Productos</a></li>
-            <li><a href="/productos/carrito">Carrito</a></li>
             <li><a href="/users/registro">Registro</a></li>
             <li><a href="/users/login/#login">Login</a></li>
             <% }%>

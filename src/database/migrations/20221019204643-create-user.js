@@ -32,11 +32,11 @@ module.exports = {
       rol_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references : {
-          model : {
-            tableName : 'Rols'
+        references: {
+          model: {
+            tableName: 'Rols'
           },
-          key : 'id'
+          key: 'id'
         }
       },
       address: {
