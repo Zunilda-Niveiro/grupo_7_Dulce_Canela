@@ -177,15 +177,3 @@ padding-right: 25px;
   color: black;
   width:80px;
 }
-
-/* error */
-.error_msg{
-  color: red;
-  font-size: 12px;
-  padding: 5px;
-  display: none;
-}
-.input_error{
-  box-shadow: 1px 1px 10px red;
-  display: inline-block;
-}
