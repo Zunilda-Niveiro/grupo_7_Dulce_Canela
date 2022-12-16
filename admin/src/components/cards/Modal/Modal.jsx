@@ -1,15 +1,6 @@
 import React from 'react'
 import './Modal.css'
 
-<<<<<<< HEAD
-function Modal({ closeModal, options, accept }) {
-  let { title, explain, imagen } = options
-  return (
-    <div className='modalBackground'>
-      <div className="modalContainer">
-        <div className="titleCloseBtn">
-          <button onClick={() => closeModal(false)}> x </button>
-=======
 function Modal({closeModal,options,accept}) {
   let {title,explain,imagen} = options
   console.log('%c.......','color:red',imagen);
@@ -28,7 +19,6 @@ function Modal({closeModal,options,accept}) {
                 <button onClick={()=>accept(true)}>Aceptar</button>
                 <button onClick={()=>closeModal(false)}>Cancelar</button>
             </div>
->>>>>>> 8b1432422b37be089fa1cd0f7bfc97e036eda03c
         </div>
         <div className="title"><h2>{title}</h2></div>
         <div className="body">
@@ -40,7 +30,6 @@ function Modal({closeModal,options,accept}) {
           <button onClick={() => closeModal(false)}>Cancelar</button>
         </div>
       </div>
-    </div>
   )
 }
 
