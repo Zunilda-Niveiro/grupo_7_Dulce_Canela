@@ -19,7 +19,9 @@ const options = (req) => {
             },
             {
                 association: "marca",
-                attributes: ["name"],
+                attributes: {
+                    include:["name","id"]
+                }
             },
         ],
         attributes: {
@@ -90,7 +92,7 @@ module.exports = {
                 'discount':product.discount,
                 'url':product.url,
                 'imagenes':product.imagenes,
-                'marca':product.marca.name,
+                'marca':[product.marca.id,product.marca.name],
                 'categoria':product.categoria.name}
             })
             return res.status(200).json({
@@ -109,7 +111,7 @@ module.exports = {
     detalle: async (req, res) => {
         try {
             const producto = await db.Product.findByPk(req.params.id, options(req));
-                    
+            console.log(producto.marca);      
             return res.status(200).json({
                 ok: true,
                 data:{
@@ -121,7 +123,7 @@ module.exports = {
                     'discount':producto.discount,
                     'url':producto.url,
                     'imagenes':producto.imagenes,
-                    'marca':producto.marca.name,
+                    'marca':{id:producto.marca.id,name:producto.marca.name},
                     'categoria':producto.categoria.name
                 },
             });
@@ -272,7 +274,6 @@ module.exports = {
                                 await product.imagenes[index].save();
                                 await product.reload(options(req))
                             }else{
-                                console.log(file.filename,path.join(__dirname,'..','..','..','public','images','productos',file.filename));
                                 await db.Image.create({
                                     product_id:product.id,
                                     file:file.filename,
@@ -297,7 +298,7 @@ module.exports = {
                     });
                 }             
 			}else{
-                if(req.files.length > 0){
+                if(req.files && req.files.length > 0){
                     req.files.forEach(({filename}) => {
                         fs.existsSync(path.resolve(__dirname,'..','..','..','public','images','productos',filename)) &&  fs.unlinkSync(path.resolve(__dirname,'..','..','..','public','images','productos',filename))
                     })

@@ -33,7 +33,7 @@ const [categories,setCategories] = useState({
 
 /* CARGA DE ULTIMO PRODUCTO */
 useEffect(()=>{
-  getData('/productos?sortBy=newest&limit=1')
+  getData('/productos?sortBy=newest&limit=1','GET')
     .then(({data}) =>{
       setUltimoProd({
         name:data[0].name,
@@ -48,7 +48,7 @@ useEffect(()=>{
 },[])
 /* TOTALES DE SECCIONES */
 useEffect(() => {
-  getData('/totals')
+  getData('/totals','GET')
     .then(({data}) =>{
       setTotales({
         loading: false,
@@ -75,7 +75,7 @@ useEffect(() => {
 }, []);
 /* CARGA DE CATEGORIAS */
 useEffect(() => {
-  getData('/categorias')
+  getData('/categorias', 'GET')
     .then(({data,meta})=>{
       setCategories({
         totales:meta.total,

@@ -38,7 +38,7 @@ const [error,setError] = useState({
 const id = useParams().id
 /* Inicializacion de categorias */
 useEffect(() => {
-  getData('/categorias')
+  getData('/categorias','GET')
     .then(({data,meta})=>{
         setCategories({
             cant:meta.total,
@@ -48,8 +48,20 @@ useEffect(() => {
 }, []);
 /* Inicializacion de producto e imagenes seleccionado */
  useEffect(() => {
-    getData(`/productos/detalle/${id}`)
+    getData(`/productos/detalle/${id}`,'GET')
         .then(({data})=>{
+            data={
+                id:data.id,
+                name :data.name,
+                price :data.price,
+                detail :data.detail,
+                amount :data.amount,
+                discount :data.discount,
+                imagenes:data.imagenes,
+                marca:data.marca.name,
+                marcaid:data.marca.id,
+                category:data.categoria
+            }
             setProduct({
                 original:data, 
                 modificado:data})
@@ -111,6 +123,7 @@ useEffect(() => {
 const handleChange = event => {
     const name = event.target.name;
     const value = event.target.value;
+    console.log('nameeee: ',name,'          value:',value);
     setProduct({original:product.original, modificado:{...product.modificado,
       [name]: value}
     })
@@ -131,8 +144,7 @@ const backState = () =>{
 }
 /* Eliminacion de imagenes */
 const handleDelete= (isOpen,imagen)=> {
-    console.log('-------cant imagenes', imagenes.cant)
-    console.log('-------imagenes subidas', upImage.length);
+   
     if (imagen.id) {
         setImagenes({
             cant:imagenes.cant,
@@ -152,9 +164,7 @@ const handleDelete= (isOpen,imagen)=> {
             explain:'Esta imagen se perdera',
             imagen:imagen.url ? imagen.url : URL.createObjectURL(imagen),
             accept:false
-        })     
-    console.log('-------cant imagenes ..post', imagenes.cant)
-    console.log('-------imagenes subidas..post', upImage.length);    
+        })       
 }
 /* Validacion de cantidad de imagenes */
 const imageAmount = (e) =>{
@@ -187,7 +197,28 @@ const imageAmount = (e) =>{
    }
 }}
 const guardarCambios =() =>{
+    let imagenes =  [...product.modificado.imagenes,upImage]
+    imagenes = Array.from( imagenes)
+    if (!error.state) {
+        console.log('.......-.-.-.-.',product.modificado);
+        let productEdit = {
+            name:product.modificado.name,
+            price:product.modificado.price,
+            detail:product.modificado.detail,
+            amount:product.modificado.amount,
+            discount:product.modificado.discount,
+            category:product.modificado.category,
+            brand:product.modificado.marca,
+            image:imagenes
 
+        }
+        getData(`/productos/update/${id}`,'PATCH',productEdit)
+        .then(result => {
+            console.log('-------resultados path',result); 
+            console.log('------------------------------',productEdit);   
+        })
+        .catch(error => console.log(error))
+    }
 }
 const validation = (e) =>{
 
@@ -278,8 +309,6 @@ const validation = (e) =>{
         default:
             break;
     }
-    
-
 }
 
   return (
@@ -324,15 +353,15 @@ const validation = (e) =>{
                 </div>
                 <div>
                     <label>Marca:</label>
-                    <input className='inputsSet' type="text" name="marca" id="" value={product.modificado.marca || ""} onBlur={validation} onChange={handleChange}/>
+                    <input className='inputsSet' type="text" name="marca" id="" value={product.modificado.marca} onBlur={validation} onChange={handleChange}/>
                 </div>
             
                 <div>
                     <label>Categoria:</label>
-                    <select className='inputsSet' >
+                    <select className='inputsSet' onChange={handleChange} name='categoria'>
                         {
                             categories.categ.map((category)=>(
-                                <option value={category.name} key={category.name} selected={product.modificado.categoria == category.name ? category.name : null}>{category.name}</option>
+                                <option  value={category.name} key={category.name} selected={product.modificado.categoria === category.name ? category.name : null}>{category.name}</option>
                             ))
                         }
                     </select>

@@ -3,7 +3,6 @@ import './Modal.css'
 
 function Modal({closeModal,options,accept}) {
   let {title,explain,imagen} = options
-  console.log('%c.......','color:red',imagen);
   return (
     <div className='modalBackground'>
         <div className="modalContainer">
