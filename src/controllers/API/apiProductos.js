@@ -111,7 +111,7 @@ module.exports = {
     detalle: async (req, res) => {
         try {
             const producto = await db.Product.findByPk(req.params.id, options(req));
-            console.log(producto.marca);      
+                 
             return res.status(200).json({
                 ok: true,
                 data:{
@@ -230,9 +230,10 @@ module.exports = {
         try {
             let errors = validationResult(req);
             let errorsDetail = {};
+            
 			if(errors.isEmpty()){
-				const {name, price, discount, detail, amount, category, imagenes, brand} = req.body;
-
+				const {name, price, discount, detail, amount, category, image, brand} = req.body;
+                
                 const categ = await db.Category.findOne({
                     where: {
                         name: category,
@@ -262,27 +263,8 @@ module.exports = {
                     product.category_id = categ.id || product.category_id;
                     product.brand_id = brandFound.id || product.brand_id;
                     await product.save();
-
-                    if(req.files && req.files.length){
                     
-                        req.files.forEach(async (file, index) => {
-                        
-                            if(product.imagenes[index]){
-                                fs.existsSync(path.join(__dirname,'..','..','..','public','images','productos',product.imagenes[index].file)) && fs.unlinkSync(path.join(__dirname,'..','..','..','public','images','productos',product.imagenes[index].file))
-                                product.imagenes[index].file = file.filename;
-                                product.imagenes[index].dataValues.url = `${req.protocol}://${req.get('host')}/productos/images/${file.filename}`
-                                await product.imagenes[index].save();
-                                await product.reload(options(req))
-                            }else{
-                                await db.Image.create({
-                                    product_id:product.id,
-                                    file:file.filename,
-                                    url:path.join(__dirname,'..','..','..','public','images','productos',file.filename)
-                                })
-                                await product.reload(options(req))
-                            }
-                        });
-                    }
+                    
                     return res.status(201).json({
                          ok : true,
                         data : product,
@@ -298,11 +280,7 @@ module.exports = {
                     });
                 }             
 			}else{
-                if(req.files && req.files.length > 0){
-                    req.files.forEach(({filename}) => {
-                        fs.existsSync(path.resolve(__dirname,'..','..','..','public','images','productos',filename)) &&  fs.unlinkSync(path.resolve(__dirname,'..','..','..','public','images','productos',filename))
-                    })
-                }
+             
                 errors = errors.mapped();
                 for (const key in errors) {
                     errorsDetail = {
@@ -327,11 +305,6 @@ module.exports = {
         try {
             producto = await db.Product.findByPk(req.params.id,options(req))
             
-            if (producto && producto.imagenes.length) {
-                producto.imagenes.forEach(async image => {
-					fs.existsSync(path.join(__dirname,'..','..','..','public','images','productos',image.file)) && fs.unlinkSync(path.join(__dirname,'..','..','..','public','images','productos',image.file))
-				});
-            }
             if(producto){
                 await producto.destroy()
                 return res.status(200).json({
@@ -352,5 +325,54 @@ module.exports = {
                 errors:error
             })
         }
-    }
-};
+    },
+    guardarImg: async (req,res) =>{
+        const {idProducto} = req.body
+        if(req.files){
+            let images = req.files.map(file => {
+                return {
+                    file:file.filename,
+                    product_id:newProduct.id
+                }
+            })
+            let data = await db.Image.bulkCreate(images) 
+            return res.status(200).json({
+                ok: true,
+                data: data,
+            });              
+        }else{
+            return res.status(200).json({
+                ok: false,
+                error: 'No se pudo crear',
+            });    
+        };
+    },
+    deleteImg: async (req,res) =>{
+     try {
+        let {id,url} = req.body
+        img = await db.Image.findByPk(id)
+        if (url) {
+            fs.existsSync(url) && fs.unlinkSync(url)
+        }
+        if (img) {
+            await img.destroy();
+            return res.status(200).json({
+                ok:true,
+                msg:'Imagen eliminada con éxito!'
+            })
+        }else{
+            return res.status(400).json({
+                ok:false,
+                error:'Imagen no encontrada'
+            })
+        }
+     } catch (error) {
+        console.log('deleteImg:',error);
+        return res.status(400).json({
+            ok:false,
+            errors:error
+        })
+     }
+
+    },
+}

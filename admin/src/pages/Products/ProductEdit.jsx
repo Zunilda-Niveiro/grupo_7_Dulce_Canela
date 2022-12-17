@@ -115,7 +115,14 @@ useEffect(() => {
                     imagen:[],
                     accept:false}) 
             }
-
+            if (openModal.accept && openModal.title === 'Operacion realizada con exito') {
+                setOpenModal({isOpen:false,
+                    title:openModal.title,
+                    explain:openModal.explain,
+                    imagen:[],
+                    accept:false}) 
+            }
+            
         }
     }
 }, [openModal]);
@@ -197,29 +204,75 @@ const imageAmount = (e) =>{
    }
 }}
 const guardarCambios =() =>{
-    let imagenes =  [...product.modificado.imagenes,upImage]
-    imagenes = Array.from( imagenes)
-    if (!error.state) {
-        console.log('.......-.-.-.-.',product.modificado);
-        let productEdit = {
-            name:product.modificado.name,
-            price:product.modificado.price,
-            detail:product.modificado.detail,
-            amount:product.modificado.amount,
-            discount:product.modificado.discount,
-            category:product.modificado.category,
-            brand:product.modificado.marca,
-            image:imagenes
+    if (imagenes.cant < product.original.imagenes.length){
 
+        product.original.imagenes.forEach(item=>{
+            let bandera=false;
+
+            for (let i = 0; i < imagenes.cant; i++) {
+               
+                if (item.id === imagenes.lista[i].id) {
+                    i=99;
+                    bandera=true
+                }
+                if (!bandera && i === (imagenes.cant - 1)) {
+
+                    getData('/productos/deleteImage','DELETE',{id:item.id,url:item.url})
+                        .then(result=>{console.log('/productos/deleteImage:',result)})
+                        .catch(err=>console.log('error delete',err));
+                }
+            }            
+        })
+        setProduct({
+            original:{
+                ...product.original,
+                imagenes:imagenes.lista
+            },
+            modificado:{
+                ...product.modificado,
+                imagenes:imagenes.lista
+            }
+        })
+    }
+    let dataForm = new FormData();
+    upImage.forEach(item =>{
+        dataForm.append('image',item)
+    })
+    dataForm.append('idProducto',id)
+
+   let prodEdit;
+    if (!error.state) {
+            prodEdit={
+                name:product.modificado.name,
+                detail:product.modificado.detail,
+                brand:product.modificado.marca,
+                price:product.modificado.price,
+                amount:product.modificado.amount,
+                category:product.modificado.category,
+                discount:product.modificado.discount
+            }
         }
-        getData(`/productos/update/${id}`,'PATCH',productEdit)
+       
+        getData('/productos/saveImage','POST',dataForm)
+            .then(result=>{
+                console.log('/////////////',result)  
+            })
+            .catch(err=>console.log('error post',err));
+
+        getData(`/productos/update/${id}`,'PUT',prodEdit)
         .then(result => {
-            console.log('-------resultados path',result); 
-            console.log('------------------------------',productEdit);   
+            console.log('-------resultados path',result);  
         })
         .catch(error => console.log(error))
-    }
+    setOpenModal({
+        isOpen:true,
+        title:'Operacion realizada con exito',
+        explain:'El producto se ha modificado correctamente',
+        imagen:'http://localhost:3000/images/ok.png',
+        accept:false
+    })
 }
+
 const validation = (e) =>{
 
    let element = e.target

@@ -14,7 +14,7 @@ const reset = ()=>{
     <div>
         <div className="card" onMouseOver={color} onMouseLeave={reset} ref={card} >
             <div className="blob" ></div>
-            <span className="img" style={{ backgroundImage: `url('${product.imagenes[0].url ? product.imagenes[0].url : ''}')` }}></span>
+            <span className="img" style={{ backgroundImage: `url('${product.imagenes && product.imagenes[0] ? product.imagenes[0].url : ''}')` }}></span>
             <h2>{product.name}</h2>
             <p>
                 <Link to={`/Products/${product.id}`}><i className="fas fa-edit" ></i></Link>
