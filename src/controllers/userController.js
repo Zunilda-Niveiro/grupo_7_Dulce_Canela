@@ -1,7 +1,7 @@
 
 const { validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
-const db = require('../database/models');
+const db = require('../database/models')
 
 
 
@@ -16,20 +16,20 @@ module.exports = {
 
     procesoLogin: (req, res) => {
         const errors = validationResult(req)
-    
+
         if (errors.isEmpty()) {
-        
+
             db.User.findOne({
-                where:{
-                    email:req.body.email
+                where: {
+                    email: req.body.email
                 }
             })
-                .then(user=>{
+                .then(user => {
                     req.session.userLogin = {
-                        id:user.id,
-                        nombre:user.firstname,
-                        rol:user.rol_id == 1 ? 'user' : 'admi',
-                        imagen:user.avatar,
+                        id: user.id,
+                        nombre: user.firstname,
+                        rol: user.rol_id == 1 ? 'user' : 'admi',
+                        imagen: user.avatar,
                     }
                     if (req.body.recordarme) {
                         res.cookie('DulceCanela', req.session.userLogin, {
@@ -37,7 +37,7 @@ module.exports = {
                         })
                     }
                     return res.redirect('/')
-                }) 
+                })
                 .catch(error => console.log(error))
         } else {
             return res.render('login', {
@@ -49,9 +49,11 @@ module.exports = {
 
     procesoRegistro: (req, res) => {
         const errors = validationResult(req)
+        const { nombre, apellido, domicilio, email, contrasena } = req.body
+
         if (errors.isEmpty()) {
             const { nombre, apellido, domicilio, email, contrasena } = req.body
-        
+
             db.User.create({
                 firstname: nombre.trim(),
                 surname: apellido.trim(),
@@ -62,11 +64,10 @@ module.exports = {
                 rol_id: 1,
                 createdAt: new Date()
             })
-            .then(user => {
-                    res.redirect('/users/login') 
+                .then(user => {
+                    res.redirect('/users/login')
                 })
-            .catch(error => console.log(error))
-            
+                .catch(error => console.log(error))
         } else {
 
             res.render('registro', {
@@ -77,22 +78,22 @@ module.exports = {
     },
     perfil: (req, res) => {
         db.User.findOne({
-            where:{
-                id:req.session.userLogin.id
+            where: {
+                id: req.session.userLogin.id
             }
         })
-        .then(user => {
-            return res.render('perfil', {
-                user,
-                old:user
+            .then(user => {
+                return res.render('perfil', {
+                    user,
+                    old: user
+                })
             })
-        })
     },
     update: (req, res) => {
         const errors = validationResult(req)
         if (errors.isEmpty()) {
             const { nombre, apellido, domicilio, email, contrasena } = req.body
-        
+
             db.User.update({
                 firstname: nombre.trim(),
                 surname: apellido.trim(),
@@ -102,14 +103,14 @@ module.exports = {
                 password: bcryptjs.hashSync(contrasena, 10),
                 rol_id: 1,
                 updatedAt: new Date()
-            },{
-                where:{id:req.params.id}
+            }, {
+                where: { id: req.params.id }
             })
-            .then(user => {
-                    res.redirect('/users/perfil') 
+                .then(user => {
+                    res.redirect('/users/perfil')
                 })
-            .catch(error => console.log(error))
-            
+                .catch(error => console.log(error))
+
         } else {
 
             res.render('perfil', {
@@ -119,15 +120,39 @@ module.exports = {
                     surname: req.body.apellido.trim(),
                     address: req.body.domicilio.trim(),
                     email: req.body.email.trim(),
-                    id:req.params.id
+                    id: req.params.id
                 }
             })
         }
     },
+
     logout: (req, res) => {
         req.session.destroy()
         return res.redirect('/')
-    }
+    },
 
+    //agregado metodo de api verificar email
+    verifyEmail : async (req,res) => {
+        console.log('>>>>>>>>>>>>>>>>>>>>>', req.body)
+        try {
+            const {email} = req.body;
+            let user = await db.User.findOne({
+                where : {
+                    email
+                }
+            })
+
+            return res.status(200).json({
+                ok : true,
+                verified : user ? true : false
+            })
+
+        } catch (error) {
+            return res.status(error.status || 500).json({
+                ok : false,
+                error : error.message
+            })
+        }
+    },
 
 }

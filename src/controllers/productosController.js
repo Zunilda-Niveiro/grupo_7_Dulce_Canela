@@ -1,49 +1,47 @@
-const {validationResult} = require('express-validator');
-const db = require('../database/models')
+const { validationResult } = require('express-validator');
 
 module.exports = {
-
   productos: (req, res) => {
-    
-    if(req.session.userLogin && (req.session.userLogin.rol === 'user') ){
-      
+
+    if (req.session.userLogin && (req.session.userLogin.rol === 'user')) {
+
     }
 
     db.Product.findAll({
-      include : ['imagenes','categoria'],
-      where : {
-        category_id : req.params.id
+      include: ['imagenes', 'categoria'],
+      where: {
+        category_id: req.params.id
       }
     })
-    .then((subproductos) =>{
-    
-      
-      return res.render("productos", {
-      subprod:subproductos,
-      categ: subproductos[0].categoria.name,
-    });
-    })    
+      .then((subproductos) => {
+
+
+        return res.render("productos", {
+          subprod: subproductos,
+          categ: subproductos[0].categoria.name,
+        });
+      })
   },
   agregarProd: (req, res) => {
-    
+
     return res.render("productAdd", {
     });
   },
   detalle: (req, res) => {
 
-    db.Product.findByPk(req.params.id,{include : ['imagenes','categoria']})
-    .then(product => {
-      db.Product.findAll({
-        include:['imagenes'],
-        where:{category_id : product.category_id}
+    db.Product.findByPk(req.params.id, { include: ['imagenes', 'categoria'] })
+      .then(product => {
+        db.Product.findAll({
+          include: ['imagenes'],
+          where: { category_id: product.category_id }
+        })
+          .then(products => {
+            return res.render("detalle", {
+              prod: product,
+              productos: products,
+            });
+          })
       })
-      .then(products =>{
-        return res.render("detalle", {
-                prod:product,
-                productos:products,
-              });
-      })
-    })
   },
   carrito: (req, res) => {
     db.Product.findAll()
@@ -75,174 +73,80 @@ module.exports = {
     }
   },
   agregarProducto: (req, res) => {
-    const errors = validationResult(req);
-    
-    const { nombre, marca, precio, cantidad, categoria, detalle, imagen } = req.body;
+    const errors = validationResult(req)
+    if (errors.isEmpty()) {
 
     if(errors.isEmpty()){
       
       const marc = db.Brand.findOne({where:{name:marca.trim().toLocaleLowerCase()}})
       const categ = db.Category.findOne({where:{name:categoria}}) 
 
-      Promise.all([marc,categ])
-      .then(([marc,categ]) => {
-      
-        if (!marc) {
-          db.Brand.create({
-            name:marca.trim().toLocaleLowerCase(),
-            createAt: new Date()
-          })
-          .then(mar => {
-            db.Product.create({
-              name:nombre.trim(),
-              price:precio.trim(),
-              detail:detalle.trim(),
-              amount:cantidad.trim(),
-              discount:0,
-              category_id:categ.id,
-              brand_id:mar.id,
-              createdAt:new Date()
-            })
-            .then(pro => {
-              db.Image.create({
-                file:req.file ? req.file.filename : 'image_not_fund.jpg',
-                product_id:pro.id
-              })
-              .then(imag => {
-                return res.redirect('/productos/detalle/' + pro.id)
-              })
-            })
-          })
-        } else {
-          db.Product.create({
-            name:nombre.trim(),
-            price:precio.trim(),
-            detail:detalle.trim(),
-            amount:cantidad.trim(),
-            discount:0,
-            category_id:categ.id,
-            brand_id:marc.id,
-            createdAt:new Date()
-          })
-          .then(pro => {
-            db.Image.create({
-              file:req.file ? req.file.filename : 'image_not_fund.jpg',
-              product_id:pro.id
-            })
-            .then(imag => {
-              return res.redirect('/productos/detalle/' + pro.id)
-            })
-        })
-      }})
-    }else{
-      res.render('productAdd',{
-        errors : errors.mapped(),
-        old : req.body
+      };
+      const newProductlist = [...productos, newProduct];
+      storeProduct(newProductlist);
+      return res.redirect("/");
+
+    } else {
+      res.render('productAdd', {
+        errors: errors.mapped(),
+        old: req.body
       })
     }
   },
   editarProducto: (req, res) => {
     db.Product.findOne({
-      include : ['imagenes','categoria','marca'],
-      where:{id:+req.params.id}
+      include: ['imagenes', 'categoria', 'marca'],
+      where: { id: +req.params.id }
     })
-    .then(prod => {
-      return res.render("edicionDeProductos", {
-      prod,
-    });
-    })
+      .then(prod => {
+        return res.render("edicionDeProductos", {
+          prod,
+        });
+      })
   },
   update: (req, res) => {
     const errors = validationResult(req)
-    if(errors.isEmpty()){ 
+    if (errors.isEmpty()) {
+      const products = loadProduct();
       const { id } = req.params;
       const { nombre, marca, precio, cantidad, categoria, imagen, detalle } = req.body;
-
-      const marc = db.Brand.findOne({where:{name:marca.trim().toLocaleLowerCase()}})
-      const categ = db.Category.findOne({where:{name:categoria}}) 
-      
-
-      Promise.all([marc,categ])
-      .then(([marc,categ]) => {
-      
-        if(!marc){
-          db.Brand.create({
-            name:marca.trim().toLocaleLowerCase(),
-            createAt: new Date()
-          }).then(mar =>{
-            
-            db.Product.update({
-              name:nombre.trim(),
-              price:+precio.trim(),
-              detail:detalle.trim(),
-              amount:+cantidad.trim(),
-              discount:0,
-              category_id:categ.id,
-              brand_id:mar.id,
-              updatedAt:new Date()
-            },{
-              where:{id:id}
-            })
-            .then(prod => {
-              if(imagen){
-                db.Image.create({
-                  file:imagen,
-                  product_id:prod.id
-                })
-                .then(imag => {
-                  return res.redirect("/productos/detalle/" + req.params.id);
-                })
-              }else{
-                return res.redirect("/productos/detalle/" + req.params.id);
-              }
-            })
-          })
-        }else{
-          db.Product.update({
-            name:nombre.trim(),
-            price:+precio.trim(),
-            detail:detalle.trim(),
-            amount:+cantidad.trim(),
-            discount:0,
-            category_id:categ.id,
-            brand_id:marc.id,
-            updatedAt:new Date()
-          },{
-            where:{id:id}
-          })
-          .then(prod => {
-            if(imagen){
-              db.Image.create({
-                file:imagen,
-                product_id:prod.id
-              })
-              .then(imag => {
-                return res.redirect("/productos/detalle/" + req.params.id);
-              })
-            }else{
-              return res.redirect("/productos/detalle/" + req.params.id);
-            }
-          })
+      const productosModificados = products.map((prod) => {
+        if (prod.id === +id) {
+          return {
+            ...prod,
+            nombre: nombre,
+            marca: marca,
+            precio: +precio,
+            cantidad: +cantidad,
+            categoria: categoria,
+            imagen: req.file ? req.file.filename : prod.imagen,
+            detalle: detalle,
+          };
         }
-      })      
-    }else{
-      res.render('productEdit' ,{
-        errors : errors.mapped(),
-        prod : req.body
+        return prod;
+
+      });
+      storeProduct(productosModificados);
+      return res.redirect("/productos/detalle/" + req.params.id);
+    } else {
+      const { id } = req.params;
+      res.render('productEdit', {
+        errors: errors.mapped(),
+        prod: req.body
       })
     }
   },
   remove: (req, res) => {
     db.Image.destroy({
-      where:{product_id:req.params.id}
+      where: { product_id: req.params.id }
     })
-    .then(resul => {
-      db.Product.destroy({
-      where:{id:req.params.id}
-    })
-    .then(result => {
-      return res.redirect("/");
-    })
-    }) 
+      .then(resul => {
+        db.Product.destroy({
+          where: { id: req.params.id }
+        })
+          .then(result => {
+            return res.redirect("/");
+          })
+      })
   }
 };

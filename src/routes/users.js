@@ -3,7 +3,7 @@ var router = express.Router();
 const { loginValidacion, registroValidacion } = require('../validaciones');
 
 const { uploadUser } = require('../middleware/uploadFiles')
-const { login, registro, procesoRegistro, procesoLogin,perfil,logout,update } = require('../controllers/userController');
+const { login, registro, procesoRegistro, procesoLogin,perfil,logout,update, verifyEmail } = require('../controllers/userController');
 const userSessionCheck = require('../middleware/userSessionCheck');
 
 
@@ -17,7 +17,7 @@ router
     .get('/perfil',userSessionCheck,perfil)
     .get('/logout',logout)
     .put('/update/:id', uploadUser.single('imagenUser'), registroValidacion,update)
-
+    .get('/verified', verifyEmail) //agregado ruta para validar el email
 
 
 module.exports = router;

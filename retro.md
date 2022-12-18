@@ -51,3 +51,12 @@ En este sprint las cosas fluyeron mucho mejor. Cada instancia se cumplio correct
 <span> Hacer Mas :</span> Aumentar la comunicacion interna durante y post sprint 
 <span> Hacer Menos :</span> Trabajar descorninados, no cumplir con lo que definimos como objetivos. No compartir las inquietudes con el resto de los integrantes. 
 <span> Dejar de hacer :</span> No demostrar interes por el proyecto.
+
+## Sprint 6 
+
+Este sprint fue el que mejor funcionamos. 
+<span> Partiendo por que debemos dejar de hacer:</span> Quedarnos con los problemas en los bolsillos. En esta instancia surgio un problema. Que un integrante del equipo se le asigno una tarea y no pudo lograrla hacer. Llego a la instancia de comprometer la entrega sin levantar la mano. Al notar esto el resto del equipo, lo ayudo y lograron completar lo que faltaba.
+<span> Hacer Mas :</span>  En linea con lo anterior, comunicacion y compromiso el trabajo y las fechas comprometidas.
+<span> Hacer Menos :</span> Guardarse los problemas hasta ultima instancia sin levantar la mano
+<span> Dejar de hacer :</span>  No dar aviso cuando uno no puede. 
+

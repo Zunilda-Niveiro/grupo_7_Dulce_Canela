@@ -15,13 +15,13 @@ module.exports = {
       },
       product_id: {
         type: Sequelize.INTEGER,
-        references : {
-          model : {
-            tableName : 'Products'
+        references: {
+          model: {
+            tableName: 'Products'
           },
-          key : 'id',
+          key: 'id',
         },
-        onDelete:'cascade'
+        onDelete: 'cascade'
       },
       createdAt: {
         allowNull: false,

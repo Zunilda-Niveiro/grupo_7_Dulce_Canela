@@ -1,6 +1,6 @@
-const {validationResult} = require("express-validator");
+const { validationResult } = require("express-validator");
 const db = require("../../database/models");
-const {literal,Op} = require("sequelize");
+const { literal, Op } = require("sequelize");
 const path = require("path");
 const fs = require('fs');
 
@@ -32,7 +32,7 @@ const options = (req) => {
                 "category_id",
                 "brand_id",
             ],
-            include: [[literal(`CONCAT('${req.protocol}://${req.get("host")}/api/productos/detalle/',Product.id)`),"url"]],
+            include: [[literal(`CONCAT('${req.protocol}://${req.get("host")}/api/productos/detalle/',Product.id)`), "url"]],
         },
     };
 };
@@ -42,10 +42,10 @@ module.exports = {
         try {
             let {
                 limit = 4,
-                    page = 1,
-                    order = "ASC",
-                    sortBy = "id",
-                    search = "",
+                page = 1,
+                order = "ASC",
+                sortBy = "id",
+                search = "",
             } = req.query;
 
             limit = limit > 16 ? 16 : +limit;
@@ -54,10 +54,10 @@ module.exports = {
 
             order = ["ASC", "DESC"].includes(order.toUpperCase()) ? order.toUpperCase() : "ASC";
             sortBy = ["name", "price", "category", "newest"].includes(sortBy.toLowerCase()) ? sortBy : "id";
-            let orderQuery = sortBy === "category" ? ['category','name',order] : sortBy === "newest" ? ['createdAt', 'DESC'] : [sortBy, order]
+            let orderQuery = sortBy === "category" ? ['category', 'name', order] : sortBy === "newest" ? ['createdAt', 'DESC'] : [sortBy, order]
 
 
-            const {count,rows: products} = await db.Product.findAndCountAll({
+            const { count, rows: products } = await db.Product.findAndCountAll({
                 ...options(req),
                 subQuery: false,
                 limit,
@@ -65,20 +65,20 @@ module.exports = {
                 order: [orderQuery],
                 where: {
                     [Op.or]: [{
-                            name: {
-                                [Op.substring]: search,
-                            },
+                        name: {
+                            [Op.substring]: search,
                         },
-                        {
-                            detail: {
-                                [Op.substring]: search,
-                            },
+                    },
+                    {
+                        detail: {
+                            [Op.substring]: search,
                         },
-                        {
-                            "$categoria.name$": {
-                                [Op.substring]: search,
-                            },
+                    },
+                    {
+                        "$categoria.name$": {
+                            [Op.substring]: search,
                         },
+                    },
                     ],
                 },
             });
@@ -102,7 +102,7 @@ module.exports = {
                     limit: limit,
                     offset: offset,
                 },
-                data:productsClean
+                data: productsClean
             });
         } catch (error) {
             console.log(error);
@@ -131,12 +131,12 @@ module.exports = {
             console.log(error);
             return res.status(200).json({
                 ok: false,
-                errors:'Producto no encontrado'
+                errors: 'Producto no encontrado'
             });
         }
     },
     agregarProducto: async (req, res) => {
-       
+
         let errors = validationResult(req);
         const {
             name,
@@ -180,16 +180,16 @@ module.exports = {
                 brand_id: brandExist.id,
             });
 
-            if(req.files){
+            if (req.files) {
                 let images = req.files.map(file => {
                     return {
-                        file:file.filename,
-                        product_id:newProduct.id
+                        file: file.filename,
+                        product_id: newProduct.id
                     }
                 })
-                await db.Image.bulkCreate(images)               
+                await db.Image.bulkCreate(images)
             };
-          
+
             await newProduct.reload(options(req))
 
             return res.status(200).json({
@@ -197,9 +197,9 @@ module.exports = {
                 data: newProduct,
             });
         } else {
-            if(req.files.length > 0){
-                req.files.forEach(({filename}) => {
-                    fs.existsSync(path.resolve(__dirname,'..','..','..','public','images','productos',filename)) &&  fs.unlinkSync(path.resolve(__dirname,'..','..','..','public','images','productos',filename))
+            if (req.files.length > 0) {
+                req.files.forEach(({ filename }) => {
+                    fs.existsSync(path.resolve(__dirname, '..', '..', '..', 'public', 'images', 'productos', filename)) && fs.unlinkSync(path.resolve(__dirname, '..', '..', '..', 'public', 'images', 'productos', filename))
                 })
             }
             errors = errors.mapped();
@@ -215,18 +215,18 @@ module.exports = {
             });
         }
     },
-    getImage:(req, res) => {
+    getImage: (req, res) => {
 
-       if (fs.existsSync(path.join(__dirname,"..","..","..","public","images","productos",req.params.image))) {
-            return res.sendFile(path.join(__dirname,"..","..","..","public","images","productos",req.params.image));
-       } else {
-        return res.status(404).json({
-            ok: false,
-            errors:'No existe el archivo'
-        }); 
-       }
+        if (fs.existsSync(path.join(__dirname, "..", "..", "..", "public", "images", "productos", req.params.image))) {
+            return res.sendFile(path.join(__dirname, "..", "..", "..", "public", "images", "productos", req.params.image));
+        } else {
+            return res.status(404).json({
+                ok: false,
+                errors: 'No existe el archivo'
+            });
+        }
     },
-    update: async (req,res) =>{
+    update: async (req, res) => {
         try {
             let errors = validationResult(req);
             let errorsDetail = {};
@@ -245,8 +245,8 @@ module.exports = {
                         name: brand,
                     },
                 });
-    
-            
+
+
                 let product = await db.Product.findByPk(req.params.id, options(req));
 
                 if (!brandFound) {
@@ -254,7 +254,7 @@ module.exports = {
                         name: brand,
                     });
                 }
-                if (product){
+                if (product) {
                     product.name = name.trim() || product.name;
                     product.price = price || product.price;
                     product.detail = detail.trim() || product.detail;
@@ -266,13 +266,13 @@ module.exports = {
                     
                     
                     return res.status(201).json({
-                         ok : true,
-                        data : product,
+                        ok: true,
+                        data: product,
                     });
-                }else{
-                    errorsDetail={
+                } else {
+                    errorsDetail = {
                         ...errorsDetail,
-                        producto:'No existe el producto',
+                        producto: 'No existe el producto',
                     }
                     return res.status(200).json({
                         ok: false,
@@ -297,32 +297,32 @@ module.exports = {
             console.log(error)
             return res.status(error.status || 500).json({
                 ok: false,
-                errors : error.message,
-            }); 
+                errors: error.message,
+            });
         }
     },
-    remove: async (req, res) =>{
+    remove: async (req, res) => {
         try {
             producto = await db.Product.findByPk(req.params.id,options(req))
             
             if(producto){
                 await producto.destroy()
                 return res.status(200).json({
-                    ok:true,
-                    msg:'Producto eliminado con éxito!'
+                    ok: true,
+                    msg: 'Producto eliminado con éxito!'
                 })
-            }else{
+            } else {
                 return res.status(400).json({
-                    ok:false,
-                    error:'Producto no encontrado'
+                    ok: false,
+                    error: 'Producto no encontrado'
                 })
             }
-           
+
         } catch (error) {
-            console.log(error) 
+            console.log(error)
             return res.status(400).json({
-                ok:false,
-                errors:error
+                ok: false,
+                errors: error
             })
         }
     },
