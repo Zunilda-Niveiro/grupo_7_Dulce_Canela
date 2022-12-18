@@ -13,7 +13,7 @@ const styles = {
     <div>
         <div className="card" style={user.rol_id === 2 ? styles : null}>
             <div className="blob" ></div>
-            <span className="img" style={{ backgroundImage: `url('${user.url}')` }}></span>
+            <span className="img" style={{ backgroundImage: `url('${user.url ==='http://localhost:4000/api/users/images/' ? 'http://localhost:4000/api/users/images/userDefault.png' :user.url }')` }}></span>
             <h2>{`${user.firstname} ${user.surname}`}</h2>
             <p>
                 <i className="fas fa-edit" onClick={()=>idUser(user.id)}></i>

@@ -3,15 +3,15 @@
 /** @type {import('sequelize-cli').Migration} */
 const usuarios = require('../../data/usuarios.json')
 
-const users = usuarios.map(usuario => {
+const users = usuarios.map((usuario,index) => {
   return {
-    firstname:usuario.nombre,
-    surname:usuario.apellido,
+    firstname:usuario.firstname,
+    surname:usuario.surname,
     email:usuario.email,
-    password:usuario.contrasena,
-    avatar:usuario.imagen,
-    rol_id:usuario.rol == 'user' ? 1 : 2,
-    address:usuario.direccion,
+    password:usuario.password,
+    avatar:`${index}.jpg`,
+    rol_id:usuario.rol_id,
+    address:usuario.address,
     createdAt: new Date()
   }
 })
