@@ -332,7 +332,7 @@ module.exports = {
             let images = req.files.map(file => {
                 return {
                     file:file.filename,
-                    product_id:newProduct.id
+                    product_id:idProducto
                 }
             })
             let data = await db.Image.bulkCreate(images) 

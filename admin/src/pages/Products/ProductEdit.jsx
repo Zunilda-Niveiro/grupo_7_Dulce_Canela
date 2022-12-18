@@ -74,7 +74,7 @@ useEffect(() => {
  }, []);
  /* Seguimiento de Modal */
 useEffect(() => {
-  
+    
     if (openModal.accept && (imagenes.borrar[0]) > 0) {
         setImagenes({
             cant:imagenes.cant - 1,

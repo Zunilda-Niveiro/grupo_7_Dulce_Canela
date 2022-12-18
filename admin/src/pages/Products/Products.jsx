@@ -124,7 +124,7 @@ useEffect(()=>{
 
       {
         products.data.map((product, index) =>(
-          <ProdUserCard {...product} color='#20BF55' key={product.id}/>
+          <ProdUserCard {...product} color='#20BF55' />
         ))
       }
 

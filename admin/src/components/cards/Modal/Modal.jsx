@@ -1,6 +1,7 @@
 import React from 'react'
 import './Modal.css'
 
+
 function Modal({closeModal,options,accept}) {
   let {title,explain,imagen} = options
   return (

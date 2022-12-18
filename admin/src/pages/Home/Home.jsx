@@ -3,7 +3,7 @@ import  {HomeCards}  from '../../components/cards/HomeCards/HomeCards'
 import './Home.css'
 import {getData} from '../../hooks/GetData'
 export const Home = () => {
-
+  
 const [totales,setTotales] = useState({
   loading: true,
   products: {
