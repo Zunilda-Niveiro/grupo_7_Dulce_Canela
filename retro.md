@@ -44,3 +44,10 @@ Continuar haciendo: seguir construyendo juntos a pesar de las diferencias para l
 Hacer menos: por el momento solo encontramos puntos para fortalecer, este sprint el menos es más. 
 
 Dejar de hacer: no volver a la dinámica inicial. El silencio como recurso. 
+
+## Sprint 5
+En este sprint las cosas fluyeron mucho mejor. Cada instancia se cumplio correctamente 
+<span> Partiendo por que debemos dejar de hacer:</span> Creemos que aun es notoria a falta de reclamos internos ante las fallas de cada uno de los integrandes.
+<span> Hacer Mas :</span> Aumentar la comunicacion interna durante y post sprint 
+<span> Hacer Menos :</span> Trabajar descorninados, no cumplir con lo que definimos como objetivos. No compartir las inquietudes con el resto de los integrantes. 
+<span> Dejar de hacer :</span> No demostrar interes por el proyecto.

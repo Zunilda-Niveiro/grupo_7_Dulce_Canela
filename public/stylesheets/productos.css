@@ -9,7 +9,7 @@
 /* CATEGORIAS TITULO */
 .main__productos h3 {
   text-align: center;
-  color: var(--colorCinco);
+  color: var(--colorFuenteOscura);
   margin: 15px 0;
 }
 /* CATEGORIAS */
@@ -44,7 +44,7 @@
 }
 /* TITULO PRODUCTOS */
 .main__productos h1 {
-  color: var(--colorCinco);
+  color: var(--colorFuenteOscura);
   margin: 15px 0;
   text-transform: uppercase;
   text-align: center;
@@ -55,13 +55,13 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  background-color: var(--colorCinco);
+  background-color: var(--colorFuenteOscura);
   border-radius: 15px;
   margin: 20px 10px;
   color: white;
-  border: 1px solid var(--colorCinco);
-  box-shadow: 0 0 10px var(--colorCinco), 0 0 20px var(--colorCinco),
-    0 0 30px var(--colorCinco);
+  border: 1px solid var(--colorFuenteOscura);
+  box-shadow: 0 0 10px var(--colorFuenteOscura), 0 0 20px var(--colorFuenteOscura),
+    0 0 30px var(--colorFuenteOscura);
   width: 90vw;
   position: relative;
 }
@@ -77,14 +77,14 @@
   height: 250px;
   background-size: cover;
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: 15px 15px 0px 0px;
 }
 .btn-add {
     display: inline-block;
     border-radius: 4px;
     background-color: var(--colorPrimario);
     border: none;
-    color: #020202;
+    color: #ffffff;
     text-align: center;
     font-size: 17px;
     padding: 16px;
