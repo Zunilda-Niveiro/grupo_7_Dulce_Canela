@@ -17,6 +17,7 @@ var productosRouter = require('./routes/productos');
 const apiRouter = require('./routes/API/apiProductosRutas');
 const apiCategoriesRouter = require('./routes/API/apiCategoriasRutas');
 const apiTotalsRouter = require('./routes/API/apiTotales');
+const apiUsersRouter = require('./routes/API/apiUsersRutas');
 require('dotenv').config()
 var app = express();
 
@@ -47,6 +48,7 @@ app.use('/productos', productosRouter);
 app.use('/api/productos',apiRouter)
 app.use('/api/categorias',apiCategoriesRouter)
 app.use('/api/totals',apiTotalsRouter)
+app.use('/api/users',apiUsersRouter)
 
 
 

@@ -1,5 +1,5 @@
 import React, {useRef,useState,useEffect} from 'react'
-import {Link, useNavigate, redirect} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { getData } from '../../../hooks/GetData'
 import Modal from '../Modal/Modal'
 import './ProdUserCard.css'
