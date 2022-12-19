@@ -5,8 +5,9 @@
         <% if(locals.userLogin){ %>
             <div class="imagen_de_usuario">
                 <h3>Bienvenid@ <%= userLogin.nombre %> </h3>
-                
+            <div class="avatarUser">
                 <a href="/users/perfil"><img src="/images/usuarios/<%= userLogin.imagen ? userLogin.imagen : 'userDefault.png' %>" alt="" srcset="">
+            </div>
             </div>
             <% } %>
     
@@ -40,7 +41,7 @@
             <% if(userLogin.rol === "admi"){ %>
             <li><a href="/productos/productAdd">Agregar Producto</a></li>
             <li><a href="/productos/productos/1">Productos</a></li>
-            <li><a href="/users/administracionUsuarios">Administracion de Usuarios</a></li>
+            <li><a href="http://localhost:3000" target="_blank">Panel de Administracion</a></li>
             <% } %>
             <% } else{ %>
             <li><a href="/productos/productos/1">Productos</a></li>
