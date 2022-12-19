@@ -1,3 +1,4 @@
+const productos = require("../data/productos.json");
 const { validationResult } = require('express-validator');
 const db = require('../database/models')
 
@@ -54,6 +55,7 @@ module.exports = {
     res.redirect("/productos/detalle/" + req.params.id);
   },
   busqueda: (req, res) => {
+
     
     const subprod = productos.filter((producto) =>
       producto.nombre

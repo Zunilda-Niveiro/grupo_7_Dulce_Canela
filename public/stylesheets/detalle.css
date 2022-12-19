@@ -116,6 +116,7 @@ width: 100%;
         width: 50%;
     }
     .section__imagenes--ppal img{
+        margin: 10px;
         height: 400px;
         object-fit: cover;
         border-radius: 15px;
