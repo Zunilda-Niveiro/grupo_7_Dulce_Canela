@@ -12,6 +12,8 @@ let save = useRef()
 let cancel = useRef()
 let user =useRef()
 let admin = useRef()
+
+
 useEffect( () => {
   getData('/users','GET')
     .then(({data}) => {
@@ -29,6 +31,9 @@ useEffect( () => {
     })
     .catch(err=>console.log(err))
 }, []);
+useEffect(() => {
+ console.log('productos actualizado')
+}, [users]);
 
 const idUser = (ids) =>{
   let use = users.lista.filter((user)=>user.id === ids)
@@ -41,32 +46,23 @@ const handleSelect =() =>{
 const changeDisplay =() =>{
   save.current.style.display='none'
   cancel.current.style.display='none'
-  console.log(',.,.,...,.,',edit.rol_id);
   if (edit.rol_id === 1) {
     user.current.selected=true
   }else{
     admin.current.selected=true
   }
+}
+const saveUser = () =>{
 
 }
-const saveUser =() =>{
-
-}
-const searcher = (e) =>{
-  let results=[];
-    if (!e.target.value) {
-        results=users
-    }else{
-      console.log('?????? userlista',users.lista);
-        results = users.lista.filter((dato)=>dato.surname.toLowerCase().includes(e.target.value.toLocaleLowerCase()))
-        setUsers(results)
-        console.log('?????? results',results);
-    }
+const sendUser = (a) =>{
+  let usuari = users.lista.filter((item)=>item.id === +a)
+  setEdit(usuari[0])
 }
   return (
-    <div className='users'>
-      <Search searcher={searcher}/>
+    <div className='users'>  
       <div className="userDetail">
+        <Search user={users} sendUser={sendUser}/>
         <div className="detail" onMouseLeave={changeDisplay}>
             <h2>{edit ? edit.firstname : ''}, {edit ? edit.surname : ''}</h2>
             <div className='editImg' style={{ backgroundImage: `url('${ edit && edit.url ? edit.url : 'http://localhost:4000/api/users/images/userDefault.png'}')` }}><p></p></div>
