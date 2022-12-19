@@ -15,12 +15,7 @@ export const ProdUserCard = (product,colors) => {
         accept:false
     })
 let card = useRef()
-const color = ()=>{
-    card.current.style.backgroundColor=colors
-}
-const reset = ()=>{
-    card.current.style.backgroundColor='#f0f0f0'
-}
+
 const eliminar = () =>{
     setOpenModal({
         isOpen:true,
@@ -66,7 +61,7 @@ useEffect(() => {
                 imagen:openModal.imagen,
                 accept:aux})} 
             />}
-        <div className="card" onMouseOver={color} onMouseLeave={reset} ref={card} >
+        <div className="cardX"  ref={card} >
             <div className="blob" ></div>
             <span className="img" style={{ backgroundImage: `url('${product.imagenes && product.imagenes[0] ? product.imagenes[0].url : ''}')` }}></span>
             <h2>{product.name}</h2>
