@@ -30,6 +30,13 @@ export const Fetch = async (endpoint, method,data) => {
                 body :JSON.stringify(data),
                 headers : {"Content-type" : "application/json"}
             })
+            break; 
+         case "PATCH":
+            response = await fetch(url,{
+                method,
+                body :JSON.stringify(data),
+                headers : {"Content-type" : "application/json"}
+            })
             break;          
         default:
             break;

@@ -150,12 +150,12 @@ module.exports = {
     },
     todosLosUsuarios: async (req, res) => {
         try {
-            let { limit = 10,
+            let { limit = 20,
                 page = 1,
                 order = "ASC",
                 sortBy = "id",
             } = req.query;
-            limit = limit > 10 ? 10 : +limit;
+            limit = limit > 10 ? 20 : +limit;
             page = +page;
             order = ["ASC", "DESC"].includes(order.toUpperCase()) ? order.toUpperCase() : "ASC"; 
             sortBy = ["firstname", "surname"].includes(sortBy.toLowerCase()) ? sortBy : "id";
@@ -243,7 +243,6 @@ module.exports = {
         }
     },
     verifyEmail: async (req, res) => {
-        console.log('>>>>>>>>>>>>>>>>>>>>>', req.body)
         try {
             const { email } = req.body;
             let user = await db.User.findOne({
@@ -264,4 +263,25 @@ module.exports = {
             })
         }
     },
+    modifyUserTipe: async (req,res) =>{
+        try {
+            let {id} = req.params
+            let user = await db.User.findByPk(id)
+            if (user) {
+                user.rol_id = user.rol_id === 1 ? 2 : 1
+                await user.save()
+            } else {
+                return res.status(200).json({
+                    ok: false,
+                    ChangeType: 'Usuario no encontrado'
+                })
+            }
+            return res.status(200).json({
+                ok: true,
+                ChangeType: 'Usuario actualizado:'
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }

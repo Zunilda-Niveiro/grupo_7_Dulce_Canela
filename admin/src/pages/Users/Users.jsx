@@ -17,7 +17,6 @@ let admin = useRef()
 useEffect( () => {
   getData('/users','GET')
     .then(({data}) => {
-      
         setUsers({
           total:data.Total_User,
           lista:data.Users.map(function(user){
@@ -52,8 +51,13 @@ const changeDisplay =() =>{
     admin.current.selected=true
   }
 }
-const saveUser = () =>{
-
+const saveUser = async () =>{
+  await getData(`/users/change/${edit.id}`,'PATCH')
+    .then(result =>{
+      console.log('resultado:',result);
+    })
+    .catch(err => console.log(err))
+  window.location.reload()
 }
 const sendUser = (a) =>{
   let usuari = users.lista.filter((item)=>item.id === +a)

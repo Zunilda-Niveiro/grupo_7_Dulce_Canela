@@ -1,15 +1,11 @@
 const productos = require("../data/productos.json");
 const { validationResult } = require('express-validator');
 const db = require('../database/models')
-
 module.exports = {
 
   productos: (req, res) => {
-
     if (req.session.userLogin && (req.session.userLogin.rol === 'user')) {
-
     }
-
     db.Product.findAll({
       include: ['imagenes', 'categoria'],
       where: {
@@ -17,8 +13,6 @@ module.exports = {
       }
     })
       .then((subproductos) => {
-
-
         return res.render("productos", {
           subprod: subproductos,
           categ: subproductos[0].categoria.name,
@@ -26,7 +20,6 @@ module.exports = {
       })
   },
   agregarProd: (req, res) => {
-
     return res.render("productAdd", {
     });
   },
@@ -56,7 +49,7 @@ module.exports = {
   },
   busqueda: (req, res) => {
 
-    
+
     const subprod = productos.filter((producto) =>
       producto.nombre
         .toLocaleLowerCase()
@@ -78,17 +71,12 @@ module.exports = {
   },
   agregarProducto: (req, res) => {
     const errors = validationResult(req);
-
     const { nombre, marca, precio, cantidad, categoria, detalle, imagen } = req.body;
-
     if (errors.isEmpty()) {
-
       const marc = db.Brand.findOne({ where: { name: marca.trim().toLocaleLowerCase() } })
       const categ = db.Category.findOne({ where: { name: categoria } })
-
       Promise.all([marc, categ])
         .then(([marc, categ]) => {
-
           if (!marc) {
             db.Brand.create({
               name: marca.trim().toLocaleLowerCase(),
