@@ -36,7 +36,12 @@ module.exports = {
                             maxAge: 1000 * 60
                         })
                     }
-                    return res.redirect('/')
+                    if(user.rol_id == 1){
+                        return res.redirect('/')
+                    }else{
+                        return res.redirect('http://localhost:3000')
+                    }
+                    
                 })
                 .catch(error => console.log(error))
         } else {

@@ -26,6 +26,11 @@
                     <input class="<%= locals.errors && errors.apellido ? "input_error" : null %> " type="text" name="apellido" id="last_name" value="<%= locals.old && old.apellido ? old.apellido : null %>" placeholder="Ingrese su apellido" >
                     <small class="error_msg"><%= locals.errors && errors.apellido ? errors.apellido.msg : null %> </small>
                     <small id="apellidoError"></small>
+                    
+                    <input class="<%= locals.errors && errors.domicilio ? "input_error" : null %> " type="text" name="domicilio" id="" placeholder="Domicilio" value="<%= locals.old && old.domicilio ? old.domicilio : null %>">
+                    <small class="error_msg"><%= locals.errors && errors.domicilio ? errors.domicilio.msg : null %> </small>
+
+
 
                     <h4>Seleccione imagen de Perfil</h4>
                     <input type="file" name="imagenUser" id="imagen" accept="image/png, .jpeg, .jpg, image/gif">

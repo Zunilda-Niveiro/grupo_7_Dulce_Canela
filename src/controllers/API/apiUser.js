@@ -150,12 +150,12 @@ module.exports = {
     },
     todosLosUsuarios: async (req, res) => {
         try {
-            let { limit = 10,
+            let { limit = 20,
                 page = 1,
                 order = "ASC",
                 sortBy = "id",
             } = req.query;
-            limit = limit > 10 ? 10 : +limit;
+            limit = limit > 10 ? 20 : +limit;
             page = +page;
             order = ["ASC", "DESC"].includes(order.toUpperCase()) ? order.toUpperCase() : "ASC"; 
             sortBy = ["firstname", "surname"].includes(sortBy.toLowerCase()) ? sortBy : "id";
