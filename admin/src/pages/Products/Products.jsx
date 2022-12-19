@@ -23,7 +23,7 @@ const [openModal,setOpenModal] = useState({
 
 /* Carga inicial Productos*/
 useEffect(() => {
-  getData(`/productos?limit=16&page=${page}`)
+  getData(`/productos?limit=16&page=${page}`,'GET')
  
     .then(({data,meta}) => {
         
@@ -45,7 +45,7 @@ const paginaNext = async() => {
     let newPage= page + 1
     await setPage(newPage);
     
-    getData(`/productos?limit=16&page=${newPage}`)
+    getData(`/productos?limit=16&page=${newPage}`,'GET')
       .then((response) => {
         setProducts({
         ...products,
@@ -70,7 +70,7 @@ const paginaBack = async() => {
     let newPage= page - 1
     await setPage(newPage);
    
-    getData(`/productos?limit=16&page=${newPage}`)
+    getData(`/productos?limit=16&page=${newPage}`,'GET')
         .then((response) => {
           setProducts({
           ...products,
@@ -124,7 +124,7 @@ useEffect(()=>{
 
       {
         products.data.map((product, index) =>(
-          <ProdUserCard {...product} color='#20BF55' key={product.id}/>
+          <ProdUserCard {...product} color='#20BF55' />
         ))
       }
 

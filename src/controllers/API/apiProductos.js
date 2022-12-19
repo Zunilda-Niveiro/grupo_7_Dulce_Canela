@@ -7,20 +7,22 @@ const fs = require('fs');
 const options = (req) => {
     return {
         include: [{
-            association: "imagenes",
-            attributes: {
-                exclude: ["createdAt", "updatedAt", "deletedAt", "product_id"],
-                include: [[literal(`CONCAT('${req.protocol}://${req.get("host")}/api/productos/images/',file)`), "url"]],
+                association: "imagenes",
+                attributes: {
+                    exclude: ["createdAt", "updatedAt", "deletedAt", "product_id"],
+                    include: [[literal(`CONCAT('${req.protocol}://${req.get("host")}/api/productos/images/',file)`),"url"]],
+                },
             },
-        },
-        {
-            association: "categoria",
-            attributes: ["name"],
-        },
-        {
-            association: "marca",
-            attributes: ["name"],
-        },
+            {
+                association: "categoria",
+                attributes: ["name"],
+            },
+            {
+                association: "marca",
+                attributes: {
+                    include:["name","id"]
+                }
+            },
         ],
         attributes: {
             exclude: [
@@ -80,19 +82,18 @@ module.exports = {
                     ],
                 },
             });
-            let productsClean = products.map((product) => {
-                return {
-                    'id': product.id,
-                    'name': product.name,
-                    'price': product.price,
-                    'detail': product.detail,
-                    'amount': product.amount,
-                    'discount': product.discount,
-                    'url': product.url,
-                    'imagenes': product.imagenes,
-                    'marca': product.marca.name,
-                    'categoria': product.categoria.name
-                }
+            let productsClean = products.map((product)=>{
+              return {  
+                'id':product.id,
+                'name':product.name,
+                'price':product.price,
+                'detail':product.detail,
+                'amount':product.amount,
+                'discount':product.discount,
+                'url':product.url,
+                'imagenes':product.imagenes,
+                'marca':[product.marca.id,product.marca.name],
+                'categoria':product.categoria.name}
             })
             return res.status(200).json({
                 ok: true,
@@ -110,20 +111,20 @@ module.exports = {
     detalle: async (req, res) => {
         try {
             const producto = await db.Product.findByPk(req.params.id, options(req));
-
+                 
             return res.status(200).json({
                 ok: true,
-                data: {
-                    'id': producto.id,
-                    'name': producto.name,
-                    'price': producto.price,
-                    'detail': producto.detail,
-                    'amount': producto.amount,
-                    'discount': producto.discount,
-                    'url': producto.url,
-                    'imagenes': producto.imagenes,
-                    'marca': producto.marca.name,
-                    'categoria': producto.categoria.name
+                data:{
+                    'id':producto.id,
+                    'name':producto.name,
+                    'price':producto.price,
+                    'detail':producto.detail,
+                    'amount':producto.amount,
+                    'discount':producto.discount,
+                    'url':producto.url,
+                    'imagenes':producto.imagenes,
+                    'marca':{id:producto.marca.id,name:producto.marca.name},
+                    'categoria':producto.categoria.name
                 },
             });
         } catch (error) {
@@ -229,9 +230,10 @@ module.exports = {
         try {
             let errors = validationResult(req);
             let errorsDetail = {};
-            if (errors.isEmpty()) {
-                const { name, price, discount, detail, amount, category, imagenes, brand } = req.body;
-
+            
+			if(errors.isEmpty()){
+				const {name, price, discount, detail, amount, category, image, brand} = req.body;
+                
                 const categ = await db.Category.findOne({
                     where: {
                         name: category,
@@ -261,28 +263,8 @@ module.exports = {
                     product.category_id = categ.id || product.category_id;
                     product.brand_id = brandFound.id || product.brand_id;
                     await product.save();
-
-                    if (req.files && req.files.length) {
-
-                        req.files.forEach(async (file, index) => {
-
-                            if (product.imagenes[index]) {
-                                fs.existsSync(path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', product.imagenes[index].file)) && fs.unlinkSync(path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', product.imagenes[index].file))
-                                product.imagenes[index].file = file.filename;
-                                product.imagenes[index].dataValues.url = `${req.protocol}://${req.get('host')}/productos/images/${file.filename}`
-                                await product.imagenes[index].save();
-                                await product.reload(options(req))
-                            } else {
-                                console.log(file.filename, path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', file.filename));
-                                await db.Image.create({
-                                    product_id: product.id,
-                                    file: file.filename,
-                                    url: path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', file.filename)
-                                })
-                                await product.reload(options(req))
-                            }
-                        });
-                    }
+                    
+                    
                     return res.status(201).json({
                         ok: true,
                         data: product,
@@ -296,13 +278,9 @@ module.exports = {
                         ok: false,
                         errors: errorsDetail,
                     });
-                }
-            } else {
-                if (req.files.length > 0) {
-                    req.files.forEach(({ filename }) => {
-                        fs.existsSync(path.resolve(__dirname, '..', '..', '..', 'public', 'images', 'productos', filename)) && fs.unlinkSync(path.resolve(__dirname, '..', '..', '..', 'public', 'images', 'productos', filename))
-                    })
-                }
+                }             
+			}else{
+             
                 errors = errors.mapped();
                 for (const key in errors) {
                     errorsDetail = {
@@ -325,14 +303,9 @@ module.exports = {
     },
     remove: async (req, res) => {
         try {
-            producto = await db.Product.findByPk(req.params.id, options(req))
-
-            if (producto && producto.imagenes.length) {
-                producto.imagenes.forEach(async image => {
-                    fs.existsSync(path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', image.file)) && fs.unlinkSync(path.join(__dirname, '..', '..', '..', 'public', 'images', 'productos', image.file))
-                });
-            }
-            if (producto) {
+            producto = await db.Product.findByPk(req.params.id,options(req))
+            
+            if(producto){
                 await producto.destroy()
                 return res.status(200).json({
                     ok: true,
@@ -352,5 +325,54 @@ module.exports = {
                 errors: error
             })
         }
-    }
-};
+    },
+    guardarImg: async (req,res) =>{
+        const {idProducto} = req.body
+        if(req.files){
+            let images = req.files.map(file => {
+                return {
+                    file:file.filename,
+                    product_id:idProducto
+                }
+            })
+            let data = await db.Image.bulkCreate(images) 
+            return res.status(200).json({
+                ok: true,
+                data: data,
+            });              
+        }else{
+            return res.status(200).json({
+                ok: false,
+                error: 'No se pudo crear',
+            });    
+        };
+    },
+    deleteImg: async (req,res) =>{
+     try {
+        let {id,url} = req.body
+        img = await db.Image.findByPk(id)
+        if (url) {
+            fs.existsSync(url) && fs.unlinkSync(url)
+        }
+        if (img) {
+            await img.destroy();
+            return res.status(200).json({
+                ok:true,
+                msg:'Imagen eliminada con éxito!'
+            })
+        }else{
+            return res.status(400).json({
+                ok:false,
+                error:'Imagen no encontrada'
+            })
+        }
+     } catch (error) {
+        console.log('deleteImg:',error);
+        return res.status(400).json({
+            ok:false,
+            errors:error
+        })
+     }
+
+    },
+}

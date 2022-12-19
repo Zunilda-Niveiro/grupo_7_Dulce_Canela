@@ -8,8 +8,8 @@ const { remove, todosLosUsuarios, unUsuario,getUserImage, verifyEmail } = requir
 /* GET users listing. */
 
 router
-    .get('/perfil', perfil)
-    .put('/update/:id', update)
+  /*   .get('/perfil', perfil)
+    .put('/update/:id', update) */
     .delete('/remove/:id', remove)
     .get('/', todosLosUsuarios)
     .get('/:id', unUsuario)

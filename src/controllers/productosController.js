@@ -54,7 +54,7 @@ module.exports = {
     res.redirect("/productos/detalle/" + req.params.id);
   },
   busqueda: (req, res) => {
-
+    
     const subprod = productos.filter((producto) =>
       producto.nombre
         .toLocaleLowerCase()

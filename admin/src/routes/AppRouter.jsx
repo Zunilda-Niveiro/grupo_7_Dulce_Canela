@@ -2,9 +2,9 @@ import React from 'react'
 import {Route,createBrowserRouter,createRoutesFromElements,RouterProvider} from 'react-router-dom'
 import { Home } from '../pages/Home/Home'
 import { Root } from '../pages/Root'
-import {Categorias} from '../pages/Categorias'
+import {Categorias} from '../pages/Categorias/Categorias'
 import {Products} from '../pages/Products/Products'
-import {Users} from '../pages/Users'
+import {Users} from '../pages/Users/Users'
 import ProductEdit from '../pages/Products/ProductEdit'
 
 const router = createBrowserRouter(

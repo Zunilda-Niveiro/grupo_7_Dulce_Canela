@@ -1,122 +1,92 @@
 [
-   {
-      "id": 1,
-      "nombre": "Esteban",
-      "apellido": "Rey",
-      "direccion": "domicilio",
-      "imagen": "logo.jpg",
-      "email": "Esteban-Rey@gmail.com",
-      "contrasena": "12345",
-      "rol": "user"
-   },
-   {
-      "id": 2,
-      "nombre": "Lucas",
-      "apellido": "Barros",
-      "direccion": "domicilio",
-      "imagen": "logo.jpg",
-      "email": "LucasBarros@gmail.com",
-      "contrasena": "Nagbacalan",
-      "rol": "user"
-   },
-   {
-      "id": 3,
-      "nombre": "Zunilda",
-      "apellido": "Niveiro",
-      "direccion": "domicilio",
-      "imagen": "logo.jpg",
-      "email": "niveiro.zunilda@gmail.com",
-      "contrasena": "$2a$10$.ssAqRcfwN7Y0N1/SKVmnuVzNeJ9RJ/jYlI8l4LuGw..l0xFVN03u",
-      "rol": "user"
-   },
-   {
-      "id": 4,
-      "nombre": "Shaine",
-      "apellido": "Dermott",
-      "direccion": "domicilio",
-      "imagen": "logo.jpg",
-      "email": "516962.sd@gmail.com",
-      "contrasena": "Puan7Selatan",
-      "rol": "user"
-   },
-   {
-      "id": 5,
-      "nombre": "Betsy",
-      "apellido": "Atwel",
-      "direccion": "domicilio",
-      "imagen": "logo.jpg",
-      "email": "49jklk@gmail.com",
-      "contrasena": "Prolet12",
-      "rol": "user"
-   },
-   {
-      "id": 6,
-      "nombre": "noemi",
-      "apellido": "ejemplo",
-      "direccion": "lomas",
-      "imagen": "userDefault.png",
-      "email": "ejemplo@gmail.com",
-      "contrasena": "$2a$10$.ssAqRcfwN7Y0N1/SKVmnuVzNeJ9RJ/jYlI8l4LuGw..l0xFVN03u",
-      "rol": "user"
-   },
-   {
-      "id": 7,
-      "nombre": "Braian Esteban",
-      "apellido": "Rey",
-      "direccion": "condarco 2081",
-      "imagen": "user-1663631279998.jpg",
-      "email": "estebanbraianrey@gmail.com",
-      "contrasena": "$2a$10$vQoEurTumsD8omfUvOSluOWqgbHF5/P3/kxZGFKdXIwDGFjcLCTN2",
-      "rol": "admin"
-   },
-   {
-      "id": 8,
-      "nombre": "lucas",
-      "apellido": "barros",
-      "direccion": "potenzoni",
-      "imagen": "userDefault.png",
-      "email": "lucas@mail.com",
-      "contrasena": "$2a$10$WoCnQ.izBmwD0ZmaR/xGl.63wGSoF7yRoRDFfQXvi7PVXLyqMvNS2",
-      "rol": "user"
-   },
-   {
-      "id": 9,
-      "nombre": "Juan Pablo",
-      "apellido": "Segundo",
-      "direccion": "calle Falsa 123",
-      "imagen": "user-1663627286926.jpg",
-      "email": "estebanrey14@gmail.com",
-      "contrasena": "$2a$10$Dug6TYEypeAcGnpVMtDRaO5Ye2/kTE8kEfVZFLqWBDgYtya.tsn2S",
-      "rol": "user"
-   },
-   {
-      "id": 10,
-      "nombre": "Esteban Roberto",
-      "apellido": "Castillo",
-      "direccion": "condarco 123",
-      "imagen": "user-1663631279998.jpg",
-      "email": "esteban@gmail.com",
-      "contrasena": "$2a$10$OYEio8UsRzRAixy.1hsYu.D2oHoIXdAP/WitMWaDKWDcwGWkB1tUy",
-      "rol": "user"
-   },
-   {
-      "id": 11,
-      "nombre": "Roberto",
-      "apellido": "Figueroa",
-      "direccion": "Falsa 123",
-      "imagen": "user-1664230919268.png",
-      "email": "estebannrey@gmail.com",
-      "contrasena": "$2a$10$40kcKXiOcUdG8wSlizdQPuoXNbntahdsj.K0dMb9oAw3oR3ZhEldi",
-      "rol": "user"
-   },
-   {
-      "id": 12,
-      "nombre": "Braian Esteban",
-      "apellido": "Rey",
-      "direccion": "condarco 2081",
-      "imagen": "user-1664234298924.jpg",
-      "email": "esteban12345@gmail.com",
-      "contrasena": "$2a$10$Iobe6fxozJOvJTlhHtJstOj2jIphFG7J8KMGJbRPTqtzSciyvFzxi",
-      "rol": "user"
-   }
+  {
+    "firstname": "Bibbie",
+    "surname": "Dalgliesh",
+    "email": "bdalgliesh0@google.nl",
+    "password": "u5h6u6jVJsym",
+    "avatar": 1,
+    "address": "39 Park Meadow Terrace",
+    "rol_id": 2
+  },
+  {
+    "firstname": "Else",
+    "surname": "Maylam",
+    "email": "emaylam1@booking.com",
+    "password": "gtl9bPK",
+    "avatar": 4,
+    "address": "395 Jay Plaza",
+    "rol_id": 1
+  },
+  {
+    "firstname": "Carr",
+    "surname": "Wyldish",
+    "email": "cwyldish2@furl.net",
+    "password": "EvdBvw",
+    "avatar": 6,
+    "address": "5 Namekagon Park",
+    "rol_id": 2
+  },
+  {
+    "firstname": "Tommy",
+    "surname": "Jessett",
+    "email": "tjessett3@slashdot.org",
+    "password": "PRIHxyIdJ",
+    "avatar": 7,
+    "address": "1 Sutteridge Road",
+    "rol_id": 2
+  },
+  {
+    "firstname": "Harriett",
+    "surname": "Ockendon",
+    "email": "hockendon4@dailymail.co.uk",
+    "password": "U9KZzoE",
+    "avatar": 7,
+    "address": "5 Mayer Lane",
+    "rol_id": 2
+  },
+  {
+    "firstname": "Rossy",
+    "surname": "Bellin",
+    "email": "rbellin5@cornell.edu",
+    "password": "1kvSrC",
+    "avatar": 6,
+    "address": "8 Lawn Place",
+    "rol_id": 1
+  },
+  {
+    "firstname": "Tallou",
+    "surname": "Wile",
+    "email": "twile6@plala.or.jp",
+    "password": "nTF7CcC",
+    "avatar": 2,
+    "address": "76977 Mallard Center",
+    "rol_id": 2
+  },
+  {
+    "firstname": "Alisander",
+    "surname": "Basillon",
+    "email": "abasillon7@wp.com",
+    "password": "rpzrlhX",
+    "avatar": 6,
+    "address": "1 Union Way",
+    "rol_id": 1
+  },
+  {
+    "firstname": "Wally",
+    "surname": "Goforth",
+    "email": "wgoforth8@hexun.com",
+    "password": "d6um98an",
+    "avatar": 4,
+    "address": "43299 Ruskin Parkway",
+    "rol_id": 1
+  },
+  {
+    "firstname": "Darby",
+    "surname": "Neagle",
+    "email": "dneagle9@de.vu",
+    "password": "RSWDdv",
+    "avatar": 3,
+    "address": "0 Grim Plaza",
+    "rol_id": 2
+  }
 ]
