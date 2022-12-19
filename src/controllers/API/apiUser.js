@@ -243,7 +243,6 @@ module.exports = {
         }
     },
     verifyEmail: async (req, res) => {
-        console.log('>>>>>>>>>>>>>>>>>>>>>', req.body)
         try {
             const { email } = req.body;
             let user = await db.User.findOne({
@@ -264,4 +263,25 @@ module.exports = {
             })
         }
     },
+    modifyUserTipe: async (req,res) =>{
+        try {
+            let {id} = req.params
+            let user = await db.User.findByPk(id)
+            if (user) {
+                user.rol_id = user.rol_id === 1 ? 2 : 1
+                await user.save()
+            } else {
+                return res.status(200).json({
+                    ok: false,
+                    ChangeType: 'Usuario no encontrado'
+                })
+            }
+            return res.status(200).json({
+                ok: true,
+                ChangeType: 'Usuario actualizado:'
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }

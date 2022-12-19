@@ -20,15 +20,7 @@ function Modal({closeModal,options,accept}) {
           <button onClick={() => closeModal(false)}>Cancelar</button>
         </div>
       </div>
-      <div className="title"><h2>{title}</h2></div>
-      <div className="body">
-        {imagen && <img src={imagen} alt="" />}
-        <p>{explain}</p>
-      </div>
-      <div className="footer">
-        <button onClick={() => accept(true)}>Aceptar</button>
-        <button onClick={() => closeModal(false)}>Cancelar</button>
-      </div>
+      
     </div>
   )
 }

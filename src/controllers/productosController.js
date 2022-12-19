@@ -1,5 +1,5 @@
 const { validationResult } = require('express-validator');
-
+const db = require('../database/models')
 module.exports = {
   productos: (req, res) => {
 
