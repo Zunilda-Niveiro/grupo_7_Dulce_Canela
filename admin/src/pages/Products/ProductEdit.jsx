@@ -189,13 +189,13 @@ const imageAmount = (e) =>{
     for (let i = 0; i < e.target.files.length; i++) {
 
         let exten = e.target.files[i].type.split('/').pop()
-
+        console.log('------',exten)
         if (!extValid.exec(exten)) {
             setOpenModal({
                 isOpen:true,
                 title:'Tipo de archivo incorrecto',
                 explain:`El archivo ${e.target.files[i].name} es de formato invalido por favor ingrese otro`,
-                imagen:null,
+                imagen:[],
                 accept:false
             }) 
             e.target.value=null

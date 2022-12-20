@@ -23,7 +23,7 @@ useEffect(() => {
     return (
         <div className='Header' id='id_header'>
             <div className='HeaderAvatar' style={{ backgroundImage: `url('${state.userImage}')` }}></div>        
-            <p>Usuario</p>
+            <p>Admin</p>
            
         </div>
     )

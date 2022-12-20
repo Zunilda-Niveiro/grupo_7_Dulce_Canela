@@ -14,10 +14,10 @@
             <article class="main__login__form">
 
                 <% if(locals.userLogin){ %>
-                <img src="/images/usuarios/<%= userLogin.imagen ? userLogin.imagen : 'userDefault.png' %>" <% } %> <img
+                <img src="/images/usuarios/<%= userLogin.imagen ? userLogin.imagen : 'userDefault.png' %>" <% } %> 
                     class="form__logo" src="/images/logo.png" alt="">
 
-                <img class="form__logo" src="/images/logo.png" alt="">
+              <!--   <img class="form__logo" src="/images/logo.png" alt=""> -->
 
                 <form action="/users/update/<%= old.id %>?_method=PUT" class="form_style" method="POST" enctype="multipart/form-data">
                     <h3>Informacion Personal</h3>
