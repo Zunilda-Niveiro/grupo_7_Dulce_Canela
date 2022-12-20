@@ -49,25 +49,27 @@ module.exports = {
   },
   busqueda: (req, res) => {
 
-
-    const subprod = productos.filter((producto) =>
-      producto.nombre
-        .toLocaleLowerCase()
-        .includes(req.query.busqueda.toLocaleLowerCase())
-    );
-    let categ = "Resultados";
-    if (subprod != "") {
-      return res.render("productos", {
-        subprod,
-        categ,
-      });
-    } else {
-      categ = "Sin resultados";
-      return res.render("productos", {
-        subprod,
-        categ,
-      });
-    }
+    db.Product.findAll({
+      include: ['imagenes', 'categoria'],
+    })
+      .then((productos) => {
+          const subprod = productos.filter((producto) =>
+            producto.dataValues.name.toLowerCase().includes(req.query.busqueda.toLowerCase())
+      );
+      let categ = "Resultados";
+      if (subprod != "") {
+        return res.render("productos", {
+          subprod,
+          categ,
+        });
+      } else {
+        categ = "Sin resultados";
+        return res.render("productos", {
+          subprod,
+          categ,
+        });
+      }
+      })  
   },
   agregarProducto: (req, res) => {
     const errors = validationResult(req);
