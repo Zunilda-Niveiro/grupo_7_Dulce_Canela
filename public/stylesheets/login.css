@@ -28,8 +28,10 @@
 .form__logo {
   margin-top: 10px;
   width: 100px;
+  height: 100px;
   border-radius: 50%;
   right: calc(50% - 50px);
+  object-fit: cover;
 }
 
 .form_style {
@@ -65,7 +67,13 @@
   color: white;
   cursor: pointer;
 }
-
+#iniciar_sesion{
+  background-color: var(--colorPrimario);
+}
+#guardar_cambios{
+  background-color: var(--colorPrimario);
+  box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.63);
+}
 /* MEDIA QUERIES */
 @media (min-width: 768px) {
   .main__login__form {

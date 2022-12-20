@@ -10,12 +10,7 @@
                 <div class="section__imagenes--ppal">
                     <img class="" src="/images/productos/<%= prod.imagenes[0].file %>" alt="">
                 </div>
-<!--                 <div class="section__mini">
-                    <img class="section__imagenes__mini" src="/images/productos/amaranto1.jpg" alt="">
-                    <img class="section__imagenes__mini" src="/images/productos/amaranto1.jpg" alt="">
-                    <img class="section__imagenes__mini" src="/images/productos/amaranto1.jpg" alt="">
-                </div>
- -->            </article>
+           </article>
             <article class="section__descripcion">
                 <h4><%= prod.name %> x <%= prod.amount %> gr</h4>
                 <hr>
@@ -30,7 +25,7 @@
                 <hr>
                 <p><%= prod.detail %></p>
                 <form action="/" method="get">
-                    <button type="submit" class="btn-add">Agregar al carrito</button>
+                    <button type="submit" class="btn-add btn-detail">Agregar al carrito</button>
                 </form>
                 <% if(locals.userLogin){ %>
                 <% if (userLogin.rol === 'admi') { %>

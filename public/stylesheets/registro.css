@@ -7,7 +7,7 @@
   justify-content: center;
 }
 .container-form h4{
-  color: var(--colorCinco);
+  color:black;
 }
 
 .error_msg{
@@ -17,4 +17,21 @@
 }
 .input_error{
   box-shadow: 1px 1px 10px red;
+}
+.form_style{
+  font-size: 20px;
+}
+.form_style input{
+  text-shadow: none;
+}
+.form_style h4{
+ color: white;
+ font-weight: bold;
+}
+#crear_cuenta{
+  background-color: var(--colorPrimario);
+  box-shadow: 8px 8px 15px black;
+}
+.form_style small{
+  color: red;
 }

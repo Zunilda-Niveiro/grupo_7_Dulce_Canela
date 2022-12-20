@@ -52,7 +52,7 @@
 
 /* BUSQUEDA */
 .home__main__busq {
-    background-color: var(--colorCinco);
+    background-color: var(--colorPrimario);
     height: 50px;
     display: flex;
     align-items: center;

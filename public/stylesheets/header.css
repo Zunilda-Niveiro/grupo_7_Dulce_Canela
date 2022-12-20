@@ -45,7 +45,9 @@
     font-size: 20px;
     padding: 15px;
 }
-
+.home__header__nav--i:hover{
+   cursor: pointer;
+}
 .home__header__nav ul {
     display: flex;
     flex-direction: column;

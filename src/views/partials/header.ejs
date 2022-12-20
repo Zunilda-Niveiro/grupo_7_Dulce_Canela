@@ -19,17 +19,16 @@
     </div>
     <!-- NAvEGACION -->
     <div class="userBar">
-    <label for="check"><i class="fa-solid fa-bars home__header__nav--i"></i></label>
-    <input type="checkbox" name="check" id="check" />
-    <% if(locals.userLogin){ %>
-        <div class="imagen_de_usuario">
-            <span id="bienvenidoUser">Bienvenid@</span> <span id="imgUser"><%= userLogin.nombre %></span>
-            <div class="avatarUser">
-                <a href="/users/perfil"><img src="/images/usuarios/<%= userLogin.imagen ? userLogin.imagen : 'userDefault.png' %>" alt="" srcset=""></a>
+        <label for="check"><i class="fa-solid fa-bars home__header__nav--i" id="menuHambu"></i></label>
+        <input type="checkbox" name="check" id="check" />
+        <% if(locals.userLogin){ %>
+            <div class="imagen_de_usuario">
+                <span id="bienvenidoUser">Bienvenid@</span> <span id="imgUser"><%= userLogin.nombre %></span>
+                <div class="avatarUser">
+                    <a href="/users/perfil"><img src="/images/usuarios/<%= userLogin.imagen ? userLogin.imagen : 'userDefault.png' %>" alt="" srcset=""></a>
+                </div>
             </div>
-        </div>
-        <% } %>
-        
+            <% } %>
     </div>
     <nav class="home__header__nav" >
         <ul id="homeHeaderNav">        
@@ -62,6 +61,14 @@
         window.addEventListener('load', function(){
 
             $("logoHeader").addEventListener('click',function(e){
+
+                if($("homeHeaderNav").style.maxHeight === '300px'){
+                    $("homeHeaderNav").style.maxHeight = '0px'
+                }else{
+                    $("homeHeaderNav").style.maxHeight = '300px'
+                }
+            })
+              $("menuHambu").addEventListener('click',function(e){
 
                 if($("homeHeaderNav").style.maxHeight === '300px'){
                     $("homeHeaderNav").style.maxHeight = '0px'
