@@ -144,6 +144,10 @@
 
 /*nueva tarjeta de productos E.Rey*/
 
+.new_card{
+  display: flex;
+  margin: 5px;
+}
 
 
 
