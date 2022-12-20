@@ -2,38 +2,38 @@
 
     <!-- BARRA SUPERIOR -->
     <div class="home__header--sup">
-        <% if(locals.userLogin){ %>
-            <div class="imagen_de_usuario">
-                <h3>Bienvenid@ <%= userLogin.nombre %> </h3>
-            <div class="avatarUser">
-                <a href="/users/perfil"><img src="/images/usuarios/<%= userLogin.imagen ? userLogin.imagen : 'userDefault.png' %>" alt="" srcset="">
-            </div>
-            </div>
-            <% } %>
-    
+       
         <div>
             <a href=""><span class="home__header--span"><i class="fa-solid fa-location-dot home__header--i"></i>Calle
                     123,
                     San Santus</span></a>
             <a href="#dire"><span id="ubic"><i class="fa-solid fa-location-dot"></i>Ubicación</span></a>
-            <a href="#dire"><span class="home__header--span"><i
-                        class="fa-solid fa-clock home__header--i"></i>Horarios</span></a>
+            <a href="#dire"><span class="home__header--span"><i class="fa-solid fa-clock home__header--i"></i>Horarios</span></a>
         </div>
         <div>
             <span class="home__header--span"><i class="fa-solid fa-phone home__header--i"></i>+54 011 45621489</span>
             <a href="#dire"><span id="cont"><i class="fa-solid fa-phone"></i>Contacto</span></a>
-            <a href="#dire"><span class="home__header--span"><i
-                        class="fa-brands fa-instagram home__header--i"></i>Redes</span></a>
+            <a href="#dire"><span class="home__header--span"><i class="fa-brands fa-instagram home__header--i"></i>Redes</span></a>
 
         </div>
     </div>
     <!-- NAvEGACION -->
+    <div class="userBar">
     <label for="check"><i class="fa-solid fa-bars home__header__nav--i"></i></label>
     <input type="checkbox" name="check" id="check" />
-    <nav class="home__header__nav">
-        <ul>        
+    <% if(locals.userLogin){ %>
+        <div class="imagen_de_usuario">
+            <span id="bienvenidoUser">Bienvenid@</span> <span id="imgUser"><%= userLogin.nombre %></span>
+            <div class="avatarUser">
+                <a href="/users/perfil"><img src="/images/usuarios/<%= userLogin.imagen ? userLogin.imagen : 'userDefault.png' %>" alt="" srcset=""></a>
+            </div>
+        </div>
+        <% } %>
+        
+    </div>
+    <nav class="home__header__nav" >
+        <ul id="homeHeaderNav">        
             <li><a href="/">Home</a></li>
-
             <% if(locals.userLogin){ %>
             <li><a href="/users/logout">Cerrar Sesion</a></li>
             <li><a href="/users/perfil">Mi Perfil</a></li>
@@ -48,15 +48,28 @@
             <li><a href="/users/registro">Registro</a></li>
             <li><a href="/users/login/#login">Login</a></li>
             <% }%>
-
-
         </ul>
         <!-- LOGO -->
-        <label for="check"><img class="home__header__nav--logo" src="/images/logo.png" alt="" /></label>
+        <label for="check"><img class="home__header__nav--logo" src="/images/logo.png" alt="" id="logoHeader"/></label>
     </nav>
     <!-- IMAGEN DE FONDO Y H1 -->
     <div class="home__header__h1">
         <h1>dulce canela almacén natural</h1>
     </div>
     <!-- CARRITO -->
+    <script>
+        const $ = (element) => document.getElementById(element);
+
+        window.addEventListener('load', function(){
+
+            $("logoHeader").addEventListener('click',function(e){
+
+                if($("homeHeaderNav").style.maxHeight === '300px'){
+                    $("homeHeaderNav").style.maxHeight = '0px'
+                }else{
+                    $("homeHeaderNav").style.maxHeight = '300px'
+                }
+            })
+        })
+    </script>
 </header>

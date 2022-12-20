@@ -24,6 +24,9 @@
     margin: 0 8px 0 15px;
     color:var(--colorFuente);
 }
+#bienvenidoUser{
+    display: none;
+}
 
 /* NAVBAR */
 .home__header {
@@ -66,12 +69,22 @@ a {
 
 
 /* imagen de usuario */
+.userBar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+#imgUser{
+    text-transform: capitalize;
+    font-weight: bold;
+}
 .imagen_de_usuario {
-    margin-left: 10px;
-    margin-top: 15px;
+    display: inline;
     display: flex;
     align-items: center;
     gap: 12px;
+    margin-right: 15px;
 }
 
 .imagen_de_usuario img{
@@ -143,7 +156,7 @@ object-fit: cover;
     #cont i {
         display: none;
     }
-
+ 
 }
 
 @media (min-width:1024px) {
@@ -162,5 +175,8 @@ object-fit: cover;
 
     .home__header__h1 {
         background-position: 100% 60%;
+    }
+    #bienvenidoUser{
+        display: inline;
     }
 }

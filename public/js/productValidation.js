@@ -52,4 +52,6 @@ $("name").addEventListener("blur", function ({ target }) {
             validField("imagenError",e.target); 
         }
     })
+
+    
 })

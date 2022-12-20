@@ -108,7 +108,7 @@ module.exports = {
                 where: { id: req.params.id }
             })
                 .then(user => {
-                    res.redirect('/users/perfil')
+                    res.redirect('/')
                 })
                 .catch(error => console.log(error))
 
