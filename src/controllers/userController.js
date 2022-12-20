@@ -36,11 +36,7 @@ module.exports = {
                             maxAge: 1000 * 60
                         })
                     }
-                    if(user.rol_id == 1){
-                        return res.redirect('/')
-                    }else{
-                        return res.redirect('http://localhost:3000')
-                    }
+                return res.redirect('/')
                     
                 })
                 .catch(error => console.log(error))
@@ -112,7 +108,7 @@ module.exports = {
                 where: { id: req.params.id }
             })
                 .then(user => {
-                    res.redirect('/users/perfil')
+                    res.redirect('/')
                 })
                 .catch(error => console.log(error))
 
