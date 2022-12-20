@@ -5,7 +5,7 @@ export const Header = () => {
 
     const [state, setstate] = useState({
         loading:true,
-        userImage:'/images/userDefault.png'
+        userImage:'http://localhost:4000/api/users/images/user-1671541029298.png'
     });
 
 useEffect(() => {
