@@ -32,8 +32,10 @@
   object-fit: cover;
   max-width: 240px;
   max-height: 240px;
+  border-radius: 10px;
+  filter: drop-shadow(10px 10px 10px black);
 }
-.main__productos__categ p {
+.main__productos__categ  p {
   position: absolute;
   bottom: 15.5vw;
   background-color: rgba(0, 0, 0, 0.425);
@@ -42,9 +44,17 @@
   text-align: center;
   padding: 15px 0;
 }
+.main__productos__categ  a{
+  margin-top: 15px;
+  color: #ffffff;
+  font-size: 20px;
+  text-decoration: underline;
+}
 /* TITULO PRODUCTOS */
 .main__productos h1 {
   color: var(--colorFuenteOscura);
+  font-weight: bold;
+  font-size: 28px;
   margin: 15px 0;
   text-transform: uppercase;
   text-align: center;

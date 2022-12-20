@@ -17,5 +17,6 @@
     list-style: none;
     text-decoration: none;
     font-family: var(--fuenteSecundaria);
+    text-shadow: 5px 5px 8px black;
 }
 
