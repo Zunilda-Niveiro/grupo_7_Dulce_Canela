@@ -112,4 +112,7 @@
         text-transform: capitalize;
         margin-top: 15px;
      }
-     
+.card>h5>i{
+  color:#43b2e2;
+  font-weight: bold;
+}
